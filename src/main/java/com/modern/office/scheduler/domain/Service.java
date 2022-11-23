@@ -17,6 +17,7 @@ public class Service {
 	@Column(name="service_name")
 	private String serviceName;
 	
+	
 	public int getServiceNo() {
 		return serviceNo;
 	}
