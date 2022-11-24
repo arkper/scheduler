@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Insurance;
+import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
 import com.modern.office.scheduler.services.SchedulerApiService;
@@ -25,13 +26,19 @@ public class SchedulerApiController {
 		this.schedulerApiService = schedulerApiService;
 	}
 
+	@GetMapping(path = "/services", produces = "application/json")
+	public ResponseEntity<Iterable<Product>> getProducts()
+	{
+		return ResponseEntity.ok().body(this.schedulerApiService.getProducts());
+	}
+
 	@GetMapping(path = "/providers", produces = "application/json")
 	public ResponseEntity<Iterable<Provider>> getProviders()
 	{
 		return ResponseEntity.ok().body(this.schedulerApiService.getProviders());
 	}
 
-	@PostMapping(path = "/providers", produces = "application/json", consumes = "application/json")
+	//@PostMapping(path = "/providers", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<Provider> saveProvider(@RequestBody final Provider provider)
 	{
 		return ResponseEntity.ok().body(this.schedulerApiService.save(provider));
@@ -43,7 +50,7 @@ public class SchedulerApiController {
 		return ResponseEntity.ok().body(this.schedulerApiService.getInsurances());
 	}
 
-	@PostMapping(path = "/insurances", produces = "application/json", consumes = "application/json")
+	//@PostMapping(path = "/insurances", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<Insurance> saveInsurance(@RequestBody final Insurance insurance)
 	{
 		return ResponseEntity.ok().body(this.schedulerApiService.save(insurance));
@@ -55,7 +62,7 @@ public class SchedulerApiController {
 		return ResponseEntity.ok().body(this.schedulerApiService.getByProviderNo(providerNo));
 	}
 
-	@PostMapping(path = "/provider-block", produces = "application/json", consumes = "application/json")
+	//@PostMapping(path = "/provider-block", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<ProviderBlock> saveProviderBlock(@RequestBody final ProviderBlock providerBlock)
 	{
 		return ResponseEntity.ok().body(this.schedulerApiService.save(providerBlock));

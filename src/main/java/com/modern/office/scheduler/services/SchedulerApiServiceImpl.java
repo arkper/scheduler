@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Insurance;
+import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
 import com.modern.office.scheduler.repository.AppointmentRepository;
 import com.modern.office.scheduler.repository.InsuranceRepository;
+import com.modern.office.scheduler.repository.ProductRepository;
 import com.modern.office.scheduler.repository.ProviderBlockRepository;
 import com.modern.office.scheduler.repository.ProviderRepository;
 
@@ -19,16 +21,19 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final InsuranceRepository insuranceRepo;
 	private final ProviderBlockRepository providerBlockRepo;
 	private final AppointmentRepository appointmentRepo;
+	private final ProductRepository productRepo;
 	
 	public SchedulerApiServiceImpl(final ProviderRepository providerRepo,
 			final InsuranceRepository insuranceRepo,
 			final ProviderBlockRepository providerBlockRepo,
-			final AppointmentRepository appointmentRepo)
+			final AppointmentRepository appointmentRepo,
+			final ProductRepository productRepo)
 	{
 		this.providerRepo = providerRepo;
 		this.insuranceRepo = insuranceRepo;
 		this.providerBlockRepo = providerBlockRepo;
 		this.appointmentRepo = appointmentRepo;
+		this.productRepo = productRepo;
 	}
 
 	public Iterable<Provider> getProviders() {
@@ -68,6 +73,10 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 	public ProviderBlock save(ProviderBlock providerBlock) {
 		return this.providerBlockRepo.save(providerBlock);
+	}
+
+	public Iterable<Product> getProducts() {
+		return this.productRepo.findAll();
 	}
 
 }
