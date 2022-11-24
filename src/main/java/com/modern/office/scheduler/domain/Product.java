@@ -17,6 +17,9 @@ public class Product {
 	
 	@Column(name = "prd_desc")
 	private String prdDescription;
+	
+	@Column(name = "prd_appsch_ind")
+	private int productAvailable;
 
 	public int getPrdNo() {
 		return prdNo;
@@ -34,5 +37,11 @@ public class Product {
 		this.prdDescription = prdDescription;
 	}
 
-	
+	public int getProductAvailable() {
+		return productAvailable;
+	}
+
+	public void setProductAvailable(int productAvailable) {
+		this.productAvailable = productAvailable;
+	}
 }

@@ -75,8 +75,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		return this.providerBlockRepo.save(providerBlock);
 	}
 
-	public Iterable<Product> getProducts() {
-		return this.productRepo.findAll();
+	public Iterable<Product> getAvailableProducts() {
+		return this.productRepo.getProductsByProductAvailable(1);
 	}
 
 }

@@ -13,7 +13,7 @@ public interface SchedulerApiService {
 	Provider save(Provider provider);
 	Iterable<Insurance> getInsurances();
 	Insurance save(Insurance insurance);
-	Iterable<Product> getProducts();
+	Iterable<Product> getAvailableProducts();
 	Iterable<ProviderBlock> getByProviderNo(int providerNo);
 	ProviderBlock save(ProviderBlock providerBlock);
 	Iterable<Appointment> getAppointmentByApptDateBetween(LocalDate startDate, LocalDate endDate);

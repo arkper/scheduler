@@ -29,7 +29,7 @@ public class SchedulerApiController {
 	@GetMapping(path = "/services", produces = "application/json")
 	public ResponseEntity<Iterable<Product>> getProducts()
 	{
-		return ResponseEntity.ok().body(this.schedulerApiService.getProducts());
+		return ResponseEntity.ok().body(this.schedulerApiService.getAvailableProducts());
 	}
 
 	@GetMapping(path = "/providers", produces = "application/json")
