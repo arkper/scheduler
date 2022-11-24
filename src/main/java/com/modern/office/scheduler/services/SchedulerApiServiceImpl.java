@@ -32,7 +32,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	}
 
 	public Iterable<Provider> getProviders() {
-		return this.providerRepo.findAll();
+		return this.providerRepo.getProviderByIsProviderAndProviderActive(1, true);
 	}
 
 	public Iterable<Insurance> getInsurances() {
