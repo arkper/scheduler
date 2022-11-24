@@ -27,7 +27,7 @@ public class Appointment {
 	private int locationId;
 	
 	@Column(name="ins_no")
-	private int insuranceNo;
+	private Integer insuranceNo;
 
 	@Column(name="appt_name")
 	private String apptName;
@@ -51,10 +51,10 @@ public class Appointment {
 	private String apptEndTime;
 
 	@Column(name="appt_dayofweek")
-	private int apptDayofWeek;
+	private Integer apptDayofWeek;
 
 	@Column(name="appt_color")
-	private int apptColor;
+	private Integer apptColor;
 
 	public int getApptNo() {
 		return apptNo;
@@ -88,11 +88,11 @@ public class Appointment {
 		this.locationId = locationId;
 	}
 
-	public int getInsuranceNo() {
+	public Integer getInsuranceNo() {
 		return insuranceNo;
 	}
 
-	public void setInsuranceNo(int insuranceNo) {
+	public void setInsuranceNo(Integer insuranceNo) {
 		this.insuranceNo = insuranceNo;
 	}
 
@@ -152,19 +152,19 @@ public class Appointment {
 		this.apptEndTime = apptEndTime;
 	}
 
-	public int getApptDayofWeek() {
+	public Integer getApptDayofWeek() {
 		return apptDayofWeek;
 	}
 
-	public void setApptDayofWeek(int apptDayofWeek) {
+	public void setApptDayofWeek(Integer apptDayofWeek) {
 		this.apptDayofWeek = apptDayofWeek;
 	}
 
-	public int getApptColor() {
+	public Integer getApptColor() {
 		return apptColor;
 	}
 
-	public void setApptColor(int apptColor) {
+	public void setApptColor(Integer apptColor) {
 		this.apptColor = apptColor;
 	}
 }
