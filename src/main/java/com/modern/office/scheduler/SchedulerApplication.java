@@ -1,9 +1,25 @@
 package com.modern.office.scheduler;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.naming.AuthenticationException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.core.userdetails.User;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -33,5 +49,37 @@ public class SchedulerApplication {
 	    mapper.registerModule(new JavaTimeModule());
 
 	    return mapper;
+	}
+	
+	@Configuration
+	@EnableWebSecurity
+	public class SecurityConfig {
+
+	    @Autowired
+	    private CustomIpAuthenticationProvider authenticationProvider;
+
+	    @Autowired
+	    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	        auth.inMemoryAuthentication().withUser("user").password("{noop}test").roles("USER");
+	        auth.authenticationProvider(authenticationProvider);
+	    }
+	    
+	    @Bean
+	    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	        http.authorizeRequests()
+	            .antMatchers("/login")
+	            .permitAll()
+	            .antMatchers("/**")
+	            .access("isAuthenticated()")
+	            .anyRequest()
+	            .authenticated()
+	            .and()
+	            .formLogin()
+	            .permitAll()
+	            .and()
+	            .csrf()
+	            .disable();
+	        return http.build();
+	    }
 	}
 }
