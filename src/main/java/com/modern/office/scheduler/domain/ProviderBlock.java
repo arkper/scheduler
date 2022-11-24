@@ -34,7 +34,7 @@ public class ProviderBlock {
     private String endDateTime;
     
     @Column(name = "prb_duration")
-    private int duration;
+    private Integer duration;
    
     @Column(name = "prb_day_of_week")
     private int dayOfWeek;
@@ -87,11 +87,11 @@ public class ProviderBlock {
 		this.endDateTime = endDateTime;
 	}
 
-	public int getDuration() {
+	public Integer getDuration() {
 		return duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
 
