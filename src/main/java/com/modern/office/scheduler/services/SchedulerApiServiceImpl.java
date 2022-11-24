@@ -4,11 +4,13 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
 
+import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Insurance;
 import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
+import com.modern.office.scheduler.repository.AddressRepository;
 import com.modern.office.scheduler.repository.AppointmentRepository;
 import com.modern.office.scheduler.repository.InsuranceRepository;
 import com.modern.office.scheduler.repository.ProductRepository;
@@ -22,18 +24,22 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final ProviderBlockRepository providerBlockRepo;
 	private final AppointmentRepository appointmentRepo;
 	private final ProductRepository productRepo;
+	private final AddressRepository addressRepo;
+	
 	
 	public SchedulerApiServiceImpl(final ProviderRepository providerRepo,
 			final InsuranceRepository insuranceRepo,
 			final ProviderBlockRepository providerBlockRepo,
 			final AppointmentRepository appointmentRepo,
-			final ProductRepository productRepo)
+			final ProductRepository productRepo,
+			final AddressRepository addressRepo)
 	{
 		this.providerRepo = providerRepo;
 		this.insuranceRepo = insuranceRepo;
 		this.providerBlockRepo = providerBlockRepo;
 		this.appointmentRepo = appointmentRepo;
 		this.productRepo = productRepo;
+		this.addressRepo = addressRepo;
 	}
 
 	public Iterable<Provider> getProviders() {
@@ -77,6 +83,15 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 	public Iterable<Product> getAvailableProducts() {
 		return this.productRepo.getProductsByProductAvailable(1);
+	}
+	
+	public Address getAddress(int addressNo)
+	{
+		return this.addressRepo.findById(addressNo).orElse(null);
+	}
+
+	public Address save(Address address) {
+		return this.addressRepo.save(address);
 	}
 
 }

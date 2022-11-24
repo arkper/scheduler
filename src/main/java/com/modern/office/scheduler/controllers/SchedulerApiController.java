@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Insurance;
 import com.modern.office.scheduler.domain.Product;
@@ -24,6 +25,18 @@ public class SchedulerApiController {
 	public SchedulerApiController(final SchedulerApiService schedulerApiService)
 	{
 		this.schedulerApiService = schedulerApiService;
+	}
+
+	@GetMapping(path = "/addressses/{address-no}", produces = "application/json")
+	public ResponseEntity<Address> getAddress(int addressNo)
+	{
+		return ResponseEntity.ok().body(this.schedulerApiService.getAddress(addressNo));
+	}
+
+	@PostMapping(path = "/addressses", produces = "application/json")
+	public ResponseEntity<Address> save(@RequestBody Address address)
+	{
+		return ResponseEntity.ok().body(this.schedulerApiService.save(address));
 	}
 
 	@GetMapping(path = "/services", produces = "application/json")
