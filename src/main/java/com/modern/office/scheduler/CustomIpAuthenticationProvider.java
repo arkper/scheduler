@@ -16,7 +16,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-import sun.util.logging.resources.logging;
 
 @Component
 @Slf4j
@@ -27,6 +26,7 @@ public class CustomIpAuthenticationProvider implements AuthenticationProvider {
     public CustomIpAuthenticationProvider() {
         whitelist.add("18.189.210.54");
         whitelist.add("185.183.92.88");
+        whitelist.add("67.81.99.20");
         whitelist.add("127.0.0.1");
         whitelist.add("0:0:0:0:0:0:0:1");
     }
@@ -34,14 +34,14 @@ public class CustomIpAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
         WebAuthenticationDetails details = (WebAuthenticationDetails) auth.getDetails();
         String userIp = details.getRemoteAddress();
-        System.out.println("Remote IP address: " + userIp);
+        log.info("Remote IP address: " + userIp);
         if(! whitelist.contains(userIp)){
             throw new BadCredentialsException("Invalid IP Address");
         }
         final String name = auth.getName();
         final String password = auth.getCredentials().toString();
         
-        if (name.equals("john") && password.equals("123")) {
+        if (name.equals("user123") && password.equals("password123")) {
         List<GrantedAuthority> authorities =new ArrayList<GrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         return new UsernamePasswordAuthenticationToken(name, password, authorities);
