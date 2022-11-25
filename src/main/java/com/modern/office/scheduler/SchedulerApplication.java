@@ -15,6 +15,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -51,35 +52,31 @@ public class SchedulerApplication {
 	    return mapper;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Configuration
-	@EnableWebSecurity
-	public class SecurityConfig {
+	@EnableWebSecurity//(debug = true)
+	public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	    @Autowired
 	    private CustomIpAuthenticationProvider authenticationProvider;
 
-	    @Autowired
-	    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	        auth.inMemoryAuthentication().withUser("user").password("{noop}test").roles("USER");
-	        auth.authenticationProvider(authenticationProvider);
+	    @Override
+	    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+	       //auth.inMemoryAuthentication().withUser("john").password("{noop}123").authorities("ROLE_USER");
+	       auth.authenticationProvider(authenticationProvider);
 	    }
-	    
-	    @Bean
-	    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+	    @Override
+	    protected void configure(final HttpSecurity http) throws Exception {
+	        // @formatter:off
 	        http.authorizeRequests()
-	            .antMatchers("/login")
-	            .permitAll()
-	            .antMatchers("/**")
-	            .access("isAuthenticated()")
-	            .anyRequest()
-	            .authenticated()
-	            .and()
-	            .formLogin()
-	            .permitAll()
-	            .and()
-	            .csrf()
-	            .disable();
-	        return http.build();
+	            .antMatchers("/login").permitAll()
+//	            .antMatchers("/foos/**").hasIpAddress("11.11.11.11")
+	            .antMatchers("/foos/**").access("isAuthenticated() and hasIpAddress('11.11.11.11')")
+	            .anyRequest().authenticated()
+	            .and().formLogin().permitAll()
+	            .and().csrf().disable();
+	        // @formatter:on
 	    }
-	}
+    }
 }
