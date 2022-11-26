@@ -49,4 +49,7 @@ public class PatientInsurance {
 	
 	@Column(name="insured_id")
 	private String insuredId;
+
+	@Column(name="inactive")
+	private int inactive = 0;
 }

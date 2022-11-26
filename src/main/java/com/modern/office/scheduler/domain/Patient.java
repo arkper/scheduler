@@ -42,6 +42,36 @@ public class Patient {
 	@Column(name = "salutation")
 	private String salutation;
 	
-	@Column(name = "birthtime")
+	@Column(name = "birth_date")
 	private LocalDate birthDate;
+
+	@Column(name = "source_cd")
+	private int sourceCode = 12;
+	
+	@Column(name = "mid_name")
+	private String midName = "";
+	
+	@Column(name = "suffix")
+	private String suffix = "";
+	
+	@Column(name = "sex")
+	private int sex = 0;
+	
+	@Column(name = "ss_no")
+	private String ssNo = "";
+	
+	@Column(name = "title")
+	private String title = "";
+
+	@Column(name = "active")
+	private int active = 1;
+	
+	@Column(name = "locationid")
+	private int locationId = 2;
+	
+	@Column(name = "entry_date")
+	private LocalDate entryDate = LocalDate.now();
+	
+	@Column(name = "provider_cd")
+	private int providerCd = 20;
 }
