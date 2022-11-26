@@ -16,10 +16,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Entity
 @Table(name = "patient")
 @Data
+@Accessors(chain = true)
 public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +32,9 @@ public class Patient {
 	@JoinColumn(name = "address_no", referencedColumnName = "address_no")
 	private Address address;
 	
+	@Column(name = "address_no_old")
+	private int addressNoOld;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "patientNo", fetch = FetchType.EAGER, orphanRemoval = true)
 	private Set<PatientInsurance> patientInsurances;
 	

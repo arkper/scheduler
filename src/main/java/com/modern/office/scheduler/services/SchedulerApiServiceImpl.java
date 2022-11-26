@@ -138,7 +138,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 	@Override
 	public Patient save(Patient patient) {
-		Patient saved = this.patientRepo.save(patient);
+		Patient saved = this.patientRepo.save(patient.setAddressNoOld(patient.getAddress().getAddressNo()));
+		
 		patient.getPatientInsurances()
 		    .forEach(pi -> this.patientInsuranceRepo.save(pi.setPatientNo(patient.getPatientNo()).setInsuredNo(patient.getPatientNo())));
 		
