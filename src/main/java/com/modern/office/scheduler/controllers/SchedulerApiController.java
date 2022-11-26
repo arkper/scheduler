@@ -3,15 +3,20 @@ package com.modern.office.scheduler.controllers;
 import java.time.LocalDate;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Insurance;
+import com.modern.office.scheduler.domain.Patient;
+import com.modern.office.scheduler.domain.PatientInsurance;
 import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
@@ -27,13 +32,13 @@ public class SchedulerApiController {
 		this.schedulerApiService = schedulerApiService;
 	}
 
-	@GetMapping(path = "/addressses/{address-no}", produces = "application/json")
-	public ResponseEntity<Address> getAddress(int addressNo)
+	@GetMapping(value = "/addresses/{address-no}", produces = "application/json")
+	public ResponseEntity<Address> getAddress(@PathVariable("address-no") int addressNo)
 	{
 		return ResponseEntity.ok().body(this.schedulerApiService.getAddress(addressNo));
 	}
 
-	@PostMapping(path = "/addressses", produces = "application/json")
+	@PostMapping(path = "/addresses", produces = "application/json", consumes = "application/json")
 	public ResponseEntity<Address> save(@RequestBody Address address)
 	{
 		return ResponseEntity.ok().body(this.schedulerApiService.save(address));
@@ -108,5 +113,50 @@ public class SchedulerApiController {
 	public ResponseEntity<Appointment> save(@RequestBody Appointment appointment)
 	{
 		return ResponseEntity.ok().body(this.schedulerApiService.save(appointment));
+	}
+
+	@GetMapping(path = "/patient-insurances/{patient-no}", produces = "application/json")
+	public ResponseEntity<Iterable<PatientInsurance>> getPatientInsurances(
+			@PathVariable("patient-no") int patientNo)
+	{
+		Iterable<PatientInsurance> insurances = this.schedulerApiService.getPatientInsurances(
+				patientNo);
+		
+		return ResponseEntity.ok().body(insurances);
+	}
+
+	@PostMapping(path = "/patient-insurances", consumes = "application/json", produces = "application/json" )
+	public ResponseEntity<PatientInsurance> save(@RequestBody PatientInsurance insurance)
+	{
+		return ResponseEntity.ok().body(this.schedulerApiService.save(insurance));
+	}
+
+	@GetMapping(path = "/patients/{patient-no}", produces = "application/json")
+	public ResponseEntity<Patient> getPatient(
+			@PathVariable("patient-no") int patientNo)
+	{
+		return ResponseEntity.ok().body(this.schedulerApiService.getPatient(patientNo));
+	}
+
+	@GetMapping(path = "/patients-by-birthdate/{last-name}/{birth-date}", produces = "application/json")
+	public ResponseEntity<Iterable<Patient>> getPatientsByBirthdate(
+			@PathVariable("last-name") String lastName,
+			@PathVariable("birth-date") LocalDate birthDate)
+	{
+		return ResponseEntity.ok().body(this.schedulerApiService.findPatientsByLastNameAndBirthDate(lastName, birthDate));
+	}
+
+	@GetMapping(path = "/patients-by-name/{last-name}/{first-name}", produces = "application/json")
+	public ResponseEntity<Iterable<Patient>> getPatientsByName(
+			@PathVariable("last-name") String lastName,
+			@PathVariable("first-name") String firstName)
+	{
+		return ResponseEntity.ok().body(this.schedulerApiService.findPatientsByLastNameAndFirstName(lastName, firstName));
+	}
+
+	@PostMapping(path = "/patients", consumes = "application/json", produces = "application/json" )
+	public ResponseEntity<Patient> save(@RequestBody Patient patient)
+	{
+		return ResponseEntity.ok().body(this.schedulerApiService.save(patient));
 	}
 }

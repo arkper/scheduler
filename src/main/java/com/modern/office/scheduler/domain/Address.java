@@ -9,8 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "address")
+@Data
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,78 +40,7 @@ public class Address {
 	
 	@Column(name = "update_dt")
 	private LocalDate updateDate;
+
 	@Column(name = "pa_update_dt")
 	private LocalDate paUpdateDate;
-	public int getAddressNo() {
-		return addressNo;
-	}
-	public void setAddressNo(int addressNo) {
-		this.addressNo = addressNo;
-	}
-	public String getAddress1() {
-		return address1;
-	}
-	public void setAddress1(String address1) {
-		this.address1 = address1;
-	}
-	public String getAddress2() {
-		return address2;
-	}
-	public void setAddress2(String address2) {
-		this.address2 = address2;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public int getStateNo() {
-		return stateNo;
-	}
-	public void setStateNo(int stateNo) {
-		this.stateNo = stateNo;
-	}
-	public String getZip() {
-		return zip;
-	}
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-	public String getPhone1() {
-		return phone1;
-	}
-	public void setPhone1(String phone1) {
-		this.phone1 = phone1;
-	}
-	public String getPhone2() {
-		return phone2;
-	}
-	public void setPhone2(String phone2) {
-		this.phone2 = phone2;
-	}
-	public String getFax() {
-		return fax;
-	}
-	public void setFax(String fax) {
-		this.fax = fax;
-	}
-	public int getWrongAddressFlag() {
-		return wrongAddressFlag;
-	}
-	public void setWrongAddressFlag(int wrongAddressFlag) {
-		this.wrongAddressFlag = wrongAddressFlag;
-	}
-	public LocalDate getUpdateDate() {
-		return updateDate;
-	}
-	public void setUpdateDate(LocalDate updateDate) {
-		this.updateDate = updateDate;
-	}
-	public LocalDate getPaUpdateDate() {
-		return paUpdateDate;
-	}
-	public void setPaUpdateDate(LocalDate paUpdateDate) {
-		this.paUpdateDate = paUpdateDate;
-	}
 }

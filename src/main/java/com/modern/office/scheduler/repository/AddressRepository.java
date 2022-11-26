@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.modern.office.scheduler.domain.Address;
 
-public interface AddressRepository extends CrudRepository< Address, Integer>{
+public interface AddressRepository extends CrudRepository<Address, Integer>{
 
 }
