@@ -9,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
+@Data
 @Table(name = "Appsch_Appointment")
 public class Appointment {
 	@Id
@@ -55,116 +58,25 @@ public class Appointment {
 
 	@Column(name="appt_color")
 	private Integer apptColor;
+	
+	@Column(name = "appt_Om_no")
+	private int patientNo;
 
-	public int getApptNo() {
-		return apptNo;
-	}
-
-	public void setApptNo(int apptNo) {
-		this.apptNo = apptNo;
-	}
-
-	public int getServNo() {
-		return servNo;
-	}
-
-	public void setServNo(int servNo) {
-		this.servNo = servNo;
-	}
-
-	public int getProviderNo() {
-		return providerNo;
-	}
-
-	public void setProviderNo(int providerNo) {
-		this.providerNo = providerNo;
-	}
-
-	public int getLocationId() {
-		return locationId;
-	}
-
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
-	}
-
-	public Integer getInsuranceNo() {
-		return insuranceNo;
-	}
-
-	public void setInsuranceNo(Integer insuranceNo) {
-		this.insuranceNo = insuranceNo;
-	}
-
-	public String getApptName() {
-		return apptName;
-	}
-
-	public void setApptName(String apptName) {
-		this.apptName = apptName;
-	}
-
-	public String getApptPhone() {
-		return apptPhone;
-	}
-
-	public void setApptPhone(String apptPhone) {
-		this.apptPhone = apptPhone;
-	}
-
-	public String getApptAddress() {
-		return apptAddress;
-	}
-
-	public void setApptAddress(String apptAddress) {
-		this.apptAddress = apptAddress;
-	}
-
-	public String getApptNotes() {
-		return apptNotes;
-	}
-
-	public void setApptNotes(String apptNotes) {
-		this.apptNotes = apptNotes;
-	}
-
-	public LocalDate getApptDate() {
-		return apptDate;
-	}
-
-	public void setApptDate(LocalDate apptDate) {
-		this.apptDate = apptDate;
-	}
-
-	public String getApptStartTime() {
-		return apptStartTime;
-	}
-
-	public void setApptStartTime(String apptStartTime) {
-		this.apptStartTime = apptStartTime;
-	}
-
-	public String getApptEndTime() {
-		return apptEndTime;
-	}
-
-	public void setApptEndTime(String apptEndTime) {
-		this.apptEndTime = apptEndTime;
-	}
-
-	public Integer getApptDayofWeek() {
-		return apptDayofWeek;
-	}
-
-	public void setApptDayofWeek(Integer apptDayofWeek) {
-		this.apptDayofWeek = apptDayofWeek;
-	}
-
-	public Integer getApptColor() {
-		return apptColor;
-	}
-
-	public void setApptColor(Integer apptColor) {
-		this.apptColor = apptColor;
-	}
+	@Column(name = "appt_cancel_ind")
+	private int apptCancelIndc;
+	
+	@Column(name = "appt_confirmed_ind")
+	private int apptConfirmedInd = 0;
+	
+	@Column(name = "appt_left_msg_ind")
+	private int apptLeftMsgInd = 0;
+	
+	@Column(name = "appt_no_answer_ind")
+	private int apptNoAnswerInd = 0;
+	
+	@Column(name = "appt_show_ind")
+	private int apptShowInd = 0;
+	
+	@Column(name = "appt_new_pat_ind")
+	private int apptNewPatientInd = 0;
 }
