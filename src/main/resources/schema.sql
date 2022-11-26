@@ -62,7 +62,14 @@ CREATE TABLE Appsch_Appointment(
 	appt_start_time nvarchar(11) NULL,
 	appt_end_time nvarchar(11) NULL,
 	appt_dayofweek smallint NULL,
-	appt_color int NULL
+	appt_color int NULL,
+	appt_cancel_ind bit NULL,
+	appt_confirmed_ind bit NULL,
+	appt_left_msg_ind bit NULL,
+	appt_no_answer_ind bit NULL,
+	appt_show_ind smallint NULL,
+	appt_new_pat_ind bit NULL,
+	appt_Om_no int NULL
 );
 
 CREATE TABLE address(
