@@ -1,0 +1,2477 @@
+code_category_cd,code,user_code,code_removed,code_default,code_calc,system_code,code_dev,rje_code,VSP_Code,VSP_CODE_Category,VSP_Code_desc,Warntime1,Warntime2,CDA_Code,CDA_Code_Description,Description,DoNotShow
+5,2,Z,False,False,5,True,2,,,,,,,,,PPO,
+5,3,Z,False,False,2,True,3,,,,,,,,,VSP,
+5,4,C,False,True,1,True,4,,,,,,,,,Medicare Part B,
+5,5,D,False,False,3,True,5,,,,,,,,,Medicaid,
+5,6,I,False,False,4,True,6,,,,,,,,,HMO,
+6,7,,False,False,0,False,7,,,,,,,,,United States,
+6,8,,False,False,0,False,8,,,,,,,,,Israel,
+8,11, ,False,False,0,False,11,,,,,,,,,Yellow Pages,
+8,12, ,False,False,0,False,12,,,,,,,,,Walk in Patient,
+8,13, ,False,False,0,False,13,,,,,,,,,Patient Referral,
+8,14, ,False,False,0,False,14,,,,,,,,,Professional Referral,
+11,15,CLE,False,True,0,True,15,,,,,,,,,Clear,
+11,17,BLU,False,False,0,True,17,,,,,,,,,Blue,
+11,18,BRO,False,False,0,True,18,,,,,,,,,Brown,
+27,25, ,False,False,0,False,25,,,,,,,,,Examination Services,
+27,26, ,False,False,0,False,26,,,,,,,,,Contact Lens Services,
+27,27, ,False,False,0,False,27,,,,,,,,,Low Vision & Visual Therapy Svcs,
+27,28, ,False,False,0,False,28,,,,,,,,,Diagnostic & Treatment Procedures,
+27,29, ,False,False,0,False,29,,,,,,,,,Contact Lens - Ophthalmic Materials ,
+27,30, ,False,False,0,False,30,,,,,,,,,Ophthalmic Lenses - Ophthalmic Materials,
+30,31,,False,False,0,False,31,,,,,,,,,Single Provider,
+30,32,,False,False,0,False,32,,,,,,,,,Multiple Provider,
+30,33,,False,False,0,False,33,,,,,,,,,Multiple corporations,
+30,34,,False,False,0,False,34,,,,,,,,,Multiple Offices,
+31,35,OPTO,False,False,0,False,35,,,,,,,,,Optometry,
+31,36,OPTHA,False,False,0,False,36,,,,,,,,,Ophthalmology,
+31,37, ,False,False,0,False,37,,,,,,,,,Opticianry,
+33,38,,False,False,0,False,38,,,,,,,,,Radial Keratomtry,
+33,39,,False,False,0,False,39,,,,,,,,,Corneal Transplants,
+34,40,S,True,False,0,False,40,,,,,,,,,Social Security Number,
+34,41,E,True,False,0,False,41,,,,,,,,,Employer I.D. Number,
+35,42,003,False,False,0,True,42,,,,,,,,,PA (Professional Association),
+35,43,004,False,False,0,True,43,,,,,,,,,Clinic,
+35,44,005,False,False,0,True,44,,,,,,,,,Single Entity Facility,
+35,45,001,False,False,0,True,45,,,,,,,,,Solo Practice,
+35,46,006,False,False,0,True,46,,,,,,,,,Distinct Part Facility,
+4,47,,False,False,0,False,47,,,,,,,2054-5,Black or African American,Black or African American,
+4,48,,False,False,0,False,48,,,,,,,1002-5,American Indian or Alaska Native,American Indian or Alaska Native,
+4,49, ,False,False,0,False,49,,,,,,,,,Hispanic,
+6,55,,False,False,0,False,55,,,,,,,,,England,
+32,56,CA,False,False,0,True,56,,,,,,,,,California,
+32,57,NV,False,False,0,True,57,,,,,,,,,Nevada,
+37,59, ,False,False,0,False,59,,,,,,,,,Lens Laboratory,
+37,60, ,False,False,0,False,60,,,,,,,,,Frame Manufacturer/Vendor,
+37,61, ,False,False,0,False,61,,,,,,,,,Frame Supplier,
+32,65,NY,False,False,0,True,65,,,,,,,,,New York,
+37,66, ,False,False,0,False,66,,,,,,,,,Frame Importer,
+38,67,11,False,True,0,True,67,,,,,,,,,Office,
+38,68,34,False,False,0,True,68,,,,,,,,,Hospice,
+38,69,12,False,False,0,True,69,,,,,,,,,Patient Home,
+38,70,21,False,False,0,True,70,,,,,,,,,Inpatient Hospital,
+38,71,22,False,False,0,True,71,,,,,,,,,Outpatient Hospital,
+38,72,23,False,False,0,True,72,,,,,,,,,Emergency Room - Hospital,
+38,73,81,False,False,0,True,73,,,,,,,,,Independent Laboratory,
+38,74,72,False,False,0,True,74,,,,,,,,,Rural Health Clinic,
+32,75,NM,False,False,0,True,75,,,,,,,,,New Mexico,
+4,79, ,False,False,0,False,79,,,,,,,2028-9,Asian,Asian,
+14,80, ,False,False,0,False,80,,,,,,,,,Dr.,
+32,86,NJ,False,False,0,True,86,,,,,,,,,New Jersey,
+35,87,007,False,False,0,True,87,,,,,,,,,Corporation with SSN,
+39,88,21,False,False,0,False,88,,,,,,,,,21 Prolonged Evaluation & Management,
+39,89,24,False,False,0,False,89,,,,,,,,,24  Unrelated Eval & Mgt Svc by Same Dr.,
+39,90,25,False,False,0,False,90,,,,,,,,,25  Sig, Sep Ident Eval & Mgt Same Dr.,
+39,91,32,False,False,0,False,91,,,,,,,,,32  Mandated Services,
+39,93,57,False,False,0,False,93,,,,,,,,,57  Decision for Surgery,
+40,95,01,False,False,0,True,95,,,,,,,,,Medical Care,
+40,96,02,False,False,0,True,96,,,,,,,,,Surgery,
+40,97,03,False,False,0,True,97,,,,,,,,,Consultation,
+40,98,12,False,False,0,True,98,,,,,,,,,DME Purchase,
+41,99,,False,False,0,True,99,,,,,,,,,Description only,
+41,100,,False,False,0,True,100,,,,,,,,,Non Stock,
+41,101,,False,False,0,True,101,,,,,,,,,Stock,
+41,102,,False,False,0,True,102,,,,,,,,,Package,
+42,103,0.0000,False,False,0,False,103,,,,,,,,,Non taxable,
+42,104,0.0000,False,False,0,False,104,,,,,,,,,Services tax rate,
+42,105,0.0000,False,False,0,False,105,,,,,,,,,Materials tax rate,
+44,110,01,False,False,0,False,110,,,,,,,,,Plastic,
+44,112,03,False,False,0,False,112,,,,,,,,,Combination,
+44,113,04,False,False,0,False,113,,,,,,,,,Carbon Fiber Graphite,
+44,114,99,False,False,0,False,114,,,,,,,,,Miscellaneous,
+45,115,01,False,False,0,False,115,,2,43,Zyl,,,,,Plastic,
+45,116,02,False,False,0,True,116,,1,43,Metal,,,,,Metal,
+45,117,03,False,False,0,False,117,,5,43,Grooved Rimless,,,,,Rimless,
+45,118,04,False,False,0,False,118,,4,43,Drilled Rimless,,,,,3-Piece,
+45,119,99,True,False,0,False,119,,,,,,,,,Miscellaneous,
+46,121,2,False,False,0,False,121,,,,,,,,,Women's,
+46,122,3,False,False,0,False,122,,,,,,,,,Men's,
+46,123,4,False,False,0,False,123,,,,,,,,,Unisex Children's,
+46,124,5,False,False,0,False,124,,,,,,,,,Girl's,
+46,125,6,False,False,0,False,125,,,,,,,,,Boy's,
+46,126,7,False,False,0,False,126,,,,,,,,,Miscellaneous,
+46,127,8,False,False,0,False,127,,,,,,,,,Women's & Girl's,
+46,128,9,False,False,0,False,128,,,,,,,,,Men's & Boy's,
+47,129,01,False,False,0,False,129,,,,,,,,,Complete Spectacle Frame,
+47,130,02,False,False,0,False,130,,,,,,,,,Complete Sunglass Frame,
+47,131,03,False,False,0,False,131,,,,,,,,,Frame Front,
+47,132,04,False,False,0,False,132,,,,,,,,,Temple Pair,
+47,133,05,False,False,0,False,133,,,,,,,,,Right Temple,
+47,134,06,False,False,0,False,134,,,,,,,,,Left Temple,
+47,135,99,False,False,0,False,135,,,,,,,,,Miscellaneous,
+48,136,01,False,False,0,False,136,,,,,,,,,Regular Rx,
+48,137,02,False,False,0,False,137,,,,,,,,,Sport,
+48,138,03,False,False,0,False,138,,,,,,,,,Industrial,
+48,139,04,False,False,0,False,139,,,,,,,,,Half Eye,
+48,140,99,False,False,0,False,140,,,,,,,,,Miscellaneous,
+49,141,,False,True,0,False,141,,,,,,,,,Each,
+49,142,,False,False,0,False,142,,,,,,,,,Pack,
+49,143,,False,False,0,False,143,,,,,,,,,Pair,
+49,144,,False,False,0,False,144,,,,,,,,,Ounces,
+50,145, ,False,False,0,False,145,,,,,,,,,Mauve,
+50,147, ,False,False,0,False,147,,,,,,,,,Grey,
+50,148, ,False,False,0,False,148,,,,,,,,,Black,
+51,149,,False,False,0,True,149,,,,,,,,,Soft Sphere,
+51,150,,False,False,0,True,150,,,,,,,,,Soft Sphere Disposable,
+51,151,,False,False,0,True,151,,,,,,,,,Soft Toric,
+51,152,,False,False,0,True,152,,,,,,,,,Soft Bifocal,
+51,153,,False,False,0,True,153,,,,,,,,,Rigid Sphere,
+51,154,,False,False,0,True,154,,,,,,,,,Rigid Bitoric,
+51,155,,False,False,0,True,155,,,,,,,,,Rigid Bifocal,
+52,156, ,False,False,0,False,156,,,,,,,,,Finished Single Vision,
+52,157, ,False,False,0,False,157,,,,,,,,,Unfinished,
+52,158, ,False,False,0,False,158,,,,,,,,,Semi-Finished,
+53,159, ,False,False,0,False,159,,,,,,,,,Solutions,
+53,160, ,False,False,0,False,160,,,,,,,,,Frame Case,
+53,161, ,False,False,0,False,161,,,,,,,,,Frame Accessories,
+53,162, ,False,False,0,False,162,,,,,,,,,Contact Lens Kit,
+53,163, ,False,False,0,False,163,,,,,,,,,Sport Cord,
+37,164, ,False,False,0,False,164,,,,,,,,,Accessory Vendor,
+32,168,ND,False,False,0,True,168,,,,,,,,,North Dakota,
+35,169,002,False,False,0,True,169,,,,,,,,,Partnership,
+37,176, ,False,False,0,False,176,,,,,,,,,Contact Lens Manufacturer,
+64,177, ,False,False,0,False,177,,,,,,,,,Daily Disposable,
+64,178, ,False,False,0,False,178,,,,,,,,,Weekly Disposable,
+64,179, ,False,False,0,False,179,,,,,,,,,Bi-weekly Disposable,
+64,180, ,False,True,0,False,180,,,,,,,,,Monthly Replacement,
+64,181, ,False,False,0,False,181,,,,,,,,,Semi-Annual Replacement,
+65,186, ,False,False,0,False,186,,,,,,,,,Ophthalmic Materials Sales,
+33,188,,False,False,0,False,188,,,,,,,,,Eye Surgery,
+55,190,,False,False,0,False,190,,,,,,,,,Week(s),
+55,191,,False,False,-1,False,191,,,,,,,,,Month(s),
+56,192,,False,False,0,False,192,,,,,,,,,Before,
+56,193,,False,False,-1,False,193,,,,,,,,,After,
+57,194,,False,False,0,False,194,,,,,,,,,Recall Date,
+58,197, ,False,False,0,False,197,,,,,,,,,Glaucoma,
+58,198, ,False,False,0,False,198,,,,,,,,,Diabetic,
+32,199,OK,False,False,0,True,199,,,,,,,,,Oklahoma,
+5,200,Z,False,False,6,True,200,,,,,,,,,Other Vision Plan,
+5,201,Z,False,False,7,True,201,,,,,,,,,Managed Care,
+5,202,F,False,False,8,True,202,,,,,,,,,Commercial Insurance Company,
+12,214, ,False,False,0,False,214,,,,,,,,,Blurred Vision,
+12,215, ,False,False,0,False,215,,,,,,,,,Near vision Problem,
+12,216, ,False,False,0,False,216,,,,,,,,,Far Vision Problem,
+70,218,,False,False,0,False,218,,,,,,,,,Services,
+70,219,,False,False,0,False,219,,,,,,,,,Frames,
+70,220,,False,False,0,False,220,,,,,,,,,Contact Lenses,
+70,221,,False,False,0,False,221,,,,,,,,,Ophthalmic Lenses,
+70,222,,False,False,0,False,222,,,,,,,,,Other,
+71,231,,False,False,0,False,231,,,,,,,,,Second,
+71,232,,False,False,0,False,232,,,,,,,,,Third,
+71,235,,False,False,0,False,235,,,,,,,,,Fourth,
+71,236,,False,False,0,False,236,,,,,,,,,Fifth,
+71,237,,False,False,0,False,237,,,,,,,,,Sixth,
+73,238, ,False,False,0,False,238,,,,,,,,,American Express,
+73,239, ,False,False,0,False,239,,,,,,,,,Visa,
+73,240, ,False,False,0,False,240,,,,,,,,,Mastercard,
+74,241,,False,False,1,False,241,,,,,,,,,Recall,
+74,242,,False,False,2,False,242,,,,,,,,,Birthday,
+74,243,,False,False,3,False,243,,,,,,,,,Welcome,
+74,244,,False,False,4,False,244,,,,,,,,,Appointments,
+74,245,,False,False,5,False,245,,,,,,,,,Delinquent,
+74,246,,False,False,6,False,246,,,,,,,,,Referring Patients,
+74,247,,False,False,7,False,247,,,,,,,,,Service Agreement Renewal,
+74,248, ,False,False,8,False,248,,,,,,,,,Other,
+67,249, ,False,False,0,False,249,,,,,,,,,White,
+67,250, ,False,False,0,False,250,,,,,,,,,Black,
+67,251,GRE,False,False,0,True,251,,,,,,,,,Green,
+67,252,NO COLOR,False,False,0,False,252,,,,,,,,,No Color,
+79,256, ,False,False,0,False,256,,,,,,,,,Letter,
+79,257, ,False,False,0,False,257,,,,,,,,,Laser 4 per Page,
+36,261, ,False,False,0,False,261,,,,,,,,,Money Order,
+42,263,0.0000,False,False,0,False,263,,,,,,,,,Frames tax,
+215,264, ,False,False,0,False,264,,,,,,,,,Refractions,
+215,265, ,False,False,0,False,265,,,,,,,,,Plastic Frame Fees,
+78,267, ,False,False,0,False,267,,,,,,,,,Frame,
+78,268, ,False,False,0,False,268,,,,,,,,,SV CR39,
+78,269, ,False,False,0,False,269,,,,,,,,,BF FT 25-28,
+213,270, ,False,False,0,False,270,,,,,,,,,Light,
+213,271, ,False,False,0,False,271,,,,,,,,,Medium,
+213,272, ,False,False,0,False,272,,,,,,,,,Heavy,
+211,274, ,False,False,0,False,274,,,,,,,,,Polymacon,
+214,276,DIS,False,False,0,False,276,,,,,,,,,Distance,
+214,278, ,False,False,0,False,278,,,,,,,,,Sport,
+73,279, ,False,False,0,False,279,,,,,,,,,Discover,
+4,280,,False,False,0,False,280,,,,,,,2106-3,White,White,
+14,282, ,False,False,0,False,282,,,,,,,,,Ms.,
+14,283, ,False,False,0,False,283,,,,,,,,,Mrs.,
+14,284, ,False,False,0,False,284,,,,,,,,,Mr.,
+14,285, ,False,False,0,False,285,,,,,,,,,Master,
+37,289, ,False,False,0,False,289,,,,,,,,,Contact Lens Manufacturer/Vendor,
+37,290, ,False,False,0,False,290,,,,,,,,,Lens Manufacturer,
+37,291, ,False,False,0,False,291,,,,,,,,,Lens Manufacturer/Vendor,
+37,292, ,False,False,0,False,292,,,,,,,,,Solutions Manufacturer,
+37,293, ,False,False,0,False,293,,,,,,,,,Solutions Manufacturer/Vendor,
+32,294,MD,False,False,0,True,294,,,,,,,,,Maryland,
+78,296, ,False,False,0,False,296,,,,,,,,,TF FT 25-28,
+78,297, ,False,False,0,False,297,,,,,,,,,Trifocal,
+78,298, ,False,False,0,False,298,,,,,,,,,Cosmetic Contact Lens,
+78,299, ,False,False,0,False,299,,,,,,,,,Therapeutic Contact Lens,
+78,300, ,False,False,0,False,300,,,,,,,,,Exam - Comprehensive,
+78,301, ,False,False,0,False,301,,,,,,,,,Dispensing Fee,
+205,306, ,False,False,0,False,306,,,,,,,,,Plastic,
+205,307, ,False,False,0,False,307,,,,,,,,,Glass,
+29,308, ,False,False,0,False,308,,,,,,,,,Employee Fee,
+29,309, ,False,False,0,False,309,,,,,,,,,Senior Citizen Fee,
+62,310, ,False,False,0,False,310,,,,,,,,,Plumber,
+62,311, ,False,False,0,False,311,,,,,,,,,Engineer,
+62,312, ,False,False,0,False,312,,,,,,,,,Doctor,
+60,313, ,False,False,0,False,313,,,,,,,,,Jr.,
+60,314, ,False,False,0,False,314,,,,,,,,,Sr.,
+60,315, ,False,False,0,False,315,,,,,,,,,I I,
+60,316, ,False,False,0,False,316,,,,,,,,,I I I,
+43,317, ,False,False,0,False,317,,,,,,,,,CEO,
+43,318, ,False,False,0,False,318,,,,,,,,,Fendi,
+50,319, ,False,False,0,False,319,,,,,,,,,Tortoise,
+50,320, ,False,False,0,False,320,,,,,,,,,Demibrown,
+53,321, ,False,False,0,False,321,,,,,,,,,Eyewear Add On,
+53,322, ,False,False,0,False,322,,,,,,,,,Contact Lens,
+53,323, ,False,False,0,False,323,,,,,,,,,Ophthalmic Lens Blank,
+77,324, ,False,False,0,False,324,,,,,,,,,Comprehensive Exams,
+77,325, ,False,False,0,False,325,,,,,,,,,Contact lens Exams,
+77,326, ,False,False,0,False,326,,,,,,,,,Frame Sales,
+77,327, ,False,False,0,False,327,,,,,,,,,Contact Lens Sales,
+77,328, ,False,False,0,False,328,,,,,,,,,Walk in Sales,
+58,329, ,False,False,0,False,329,,,,,,,,,Disposable Lens,
+58,330, ,False,False,0,False,330,,,,,,,,,Soft Sphere Daily,
+58,331, ,False,False,0,False,331,,,,,,,,,Soft Bifocal Wearer,
+58,332, ,False,False,0,False,332,,,,,,,,,Plano,
+35,334,008,False,False,0,True,334,,,,,,,,,Corporation,
+59,335,01,False,False,0,True,335,,,,,,,,,Self,
+61,336,1,False,False,0,True,336,,,,,,,,,Employed Full-Time,
+63,337,M,False,False,0,True,337,,,,,,,,,Married,
+36,338, ,False,False,0,False,338,,,,,,,,,Visa,
+36,339, ,False,False,0,False,339,,,,,,,,,Master Card,
+36,340, ,False,False,0,False,340,,,,,,,,,Discover,
+15,341,,False,False,0,True,341,,,,,,,,,Patient Payment,
+15,343,,False,False,0,True,343,,,,,,,,,Insurance Payment,
+15,344,,False,False,0,False,344,,,,,,,,,Insurance Adjustment,
+15,345,,False,False,0,False,345,,,,,,,,,Insurance Write-Off,
+15,346,,False,False,0,False,346,,,,,,,,,Patient Write-Off,
+75,348, ,False,False,0,False,348,,,,,,,,,New Patient,
+83,349,-1,False,False,1,False,349,,,,,,,,,First Name,
+83,350,-1,False,False,2,False,350,,,,,,,,,Last Name,
+83,351,-1,False,False,3,False,351,,,,,,,,,Address Line 1,
+83,352,-1,False,False,4,False,352,,,,,,,,,City,
+83,353,0,False,False,5,False,353,,,,,,,,,State,
+83,354,-1,False,False,6,False,354,,,,,,,,,Zip,
+83,355,0,False,False,7,False,355,,,,,,,,,Social Security Number,
+83,356,-1,False,False,8,False,356,,,,,,,,,Sex,
+83,357,-1,False,False,9,False,357,,,,,,,,,Date of Birth,
+83,358,-1,False,False,10,False,358,,,,,,,,,Provider,
+83,359,-1,False,False,11,False,359,,,,,,,,,Source,
+83,360,-1,False,False,12,False,360,,,,,,,,,Insurance Type,
+84,362,-1,False,False,8,False,362,,,,,,,,,Social Security Number,
+84,363,-1,False,False,3,False,363,,,,,,,,,Age,
+84,364,-1,False,False,5,False,364,,,,,,,,,Chart Number,
+84,365,-1,False,False,1,False,365,,,,,,,,,Alert,
+84,367,0,False,False,9,False,367,,,,,,,,,Provider,
+84,368,-1,False,False,4,False,368,,,,,,,,,Insurance Type,
+84,369,0,False,False,7,False,369,,,,,,,,,Home Phone,
+85,371,0,False,False,1,False,371,,,,,,,,,Missing Full Recall Date,
+85,372,-1,False,False,2,False,372,,,,,,,,,Missing Required Data,
+85,373,-1,False,False,3,False,373,,,,,,,,,No Welcome Doc on New Patient,
+84,374,-1,False,False,2,False,374,,,,,,,,,Notes,
+84,375,0,False,False,6,False,375,,,,,,,,,Daytime Phone,
+62,377,,False,False,0,False,377,,,,,,,,,Home Maker,
+32,378,TX,False,False,0,True,378,,,,,,,,,Texas,
+10,379,MNLY,False,False,0,False,379,,,,,,,,,Monthly,
+10,380, ,False,False,0,False,380,,,,,,,,,Quarterly,
+10,381, ,False,False,0,False,381,,,,,,,,,Semi-Annual,
+10,382,ANLY,False,False,0,False,382,,,,,,,,,Annual,
+207,405, ,False,False,0,False,405,,,,,,,,,10%,
+207,406, ,False,False,0,False,406,,,,,,,,,20%,
+202,407, ,False,False,0,False,407,,,,,,,,,Family Discount,
+202,408, ,False,False,0,False,408,,,,,,,,,Relative Discount,
+214,412,MON,False,False,0,False,412,,,,,,,,,Monovision,
+214,413, ,False,False,0,False,413,,,,,,,,,All Around,
+10,420, ,False,False,0,False,420,,,,,,,,,12 Weeks,
+10,421, ,False,False,0,False,421,,,,,,,,,26 Weeks,
+212,426, ,False,False,0,False,426,,,,,,,,,Aosept,
+212,427, ,False,False,0,False,427,,,,,,,,,Soak and Aosept Weekly,
+212,428, ,False,False,0,False,428,,,,,,,,,Soak, Aosept & Enzyme Weekly,
+200,429, ,False,False,0,False,429,,,,,,,,,Reading,
+200,430,DRV,False,False,0,False,430,,,,,,,,,Driving,
+200,431,SPT,False,False,0,False,431,,,,,,,,,Sports,
+200,432,DIS,False,False,0,False,432,,,,,,,,,Distance,
+200,433,RSV,False,False,0,True,433,,,,,,,,,Reading Single Vision,
+200,434,DSV,False,False,0,True,434,,,,,,,,,Distance Single Vision,
+200,435,BFC,False,False,0,False,435,,,,,,,,,Bifocal with Far Contacts,
+200,436,BNC,False,False,0,False,436,,,,,,,,,Bifocal with Near Contacts,
+202,438, ,True,False,0,False,438,,,,,,,,,Waiting for Frame,
+201,446, ,False,False,0,False,446,,,,,,,,,Frame on Order,
+201,447, ,False,False,0,False,447,,,,,,,,,Dispensed to Patient,
+201,448, ,False,False,0,False,448,,,,,,,,,At Lab,
+51,449, ,False,False,0,False,449,,,,,,,,,Hard SV,
+51,450, ,False,False,0,False,450,,,,,,,,,Hard MF,
+28,451,,False,False,0,False,451,,,,,,,,,Tears,
+28,452,,False,False,0,False,452,,,,,,,,,General/Symptoms/Contrib. Diseases,
+28,453,,False,False,0,False,453,,,,,,,,,Retina,
+28,454,,False,False,0,False,454,,,,,,,,,Other,
+28,455,,False,False,0,False,455,,,,,,,,,Globe,
+28,456,,False,False,0,False,456,,,,,,,,,Binocularity,
+28,457,,False,False,0,False,457,,,,,,,,,Lens,
+28,458,,False,False,0,False,458,,,,,,,,,Optic Nerve,
+28,459,,False,False,0,False,459,,,,,,,,,Eyelids,
+28,460,,False,False,0,False,460,,,,,,,,,Vitreous,
+218,466, ,False,False,0,False,466,,,,,,,,,Supply,
+218,467, ,False,False,0,False,467,,,,,,,,,Enclosed,
+218,468, ,False,False,0,False,468,,,,,,,,,To Follow,
+218,469, ,False,False,0,False,469,,,,,,,,,Lens Only,
+52,473, ,False,False,0,False,473,,,,,,,,,Finished Multi-focal,
+205,475, ,False,False,0,False,475,,,,,,,,,Hi-Index Plastic,
+205,476, ,False,False,0,False,476,,,,,,,,,Aspheric,
+205,477, ,False,False,0,False,477,,,,,,,,,Transitions,
+205,478, ,False,False,0,False,478,,,,,,,,,Polarized Plastic,
+205,479, ,False,False,0,False,479,,,,,,,,,Polarized Glass,
+205,480, ,False,False,0,False,480,,,,,,,,,Hi Lite,
+205,481, ,False,False,0,False,481,,,,,,,,,Polycarbonate,
+205,482, ,False,False,0,False,482,,,,,,,,,CR-39,
+9,484,DALY,False,False,0,False,484,,1D,9,Disposable 1 day,,,,,Daily,
+9,485,WKLY,False,False,0,False,485,,,,,,,,,Weekly,
+9,486,TWKS,False,False,0,False,486,,2W,9,Disposable 2 weeks,,,,,Bi-weekly,
+9,487,MNLY,False,False,0,False,487,,1M,9,Disposable 1 month,,,,,Monthly,
+40,488,VC,False,False,0,True,488,,,,,,,,,Vision Care,
+40,489,HC,False,False,0,True,489,,,,,,,,,Home Care Program,
+215,504, ,False,False,0,False,504,,,,,,,,,New Patient Refractions,
+215,505, ,False,False,0,False,505,,,,,,,,,Existing Patient Refractions,
+215,506, ,False,False,0,False,506,,,,,,,,,Rx Change,
+215,507, ,False,False,0,False,507,,,,,,,,,Professional Fees,
+215,508, ,False,False,0,False,508,,,,,,,,,Designer Frames Fees,
+215,509, ,False,False,0,False,509,,,,,,,,,Soft CL Revenues,
+207,511, ,False,False,0,False,511,,,,,,,,,60%,
+207,512, ,False,False,0,False,512,,,,,,,,,80%,
+207,513, ,False,False,0,False,513,,,,,,,,,A,
+207,514, ,False,False,0,False,514,,,,,,,,,B,
+207,515, ,False,False,0,False,515,,,,,,,,,C,
+211,516, ,False,False,0,False,516,,,,,,,,,PMMA,
+211,517, ,False,False,0,False,517,,,,,,,,,Hema,
+204,524, ,False,False,0,False,524,,,,,,,,,Single Vision,
+204,525, ,False,False,0,False,525,,,,,,,,,BF FT 25,
+204,526, ,True,False,0,False,526,,,,,,,,,Trifocal,
+204,527, ,False,False,0,False,527,,,,,,,,,Progressive,
+204,528,OCC,False,False,0,False,528,,,,,,,,,Occupational,
+29,529, ,False,True,0,False,529,,,,,,,,,Usual and Customary Fee,
+36,530, ,False,False,0,False,530,,,,,,,,,American Express,
+59,531,02,False,False,0,True,531,,,,,,,,,Spouse,
+59,532,03,False,False,0,True,532,,,,,,,,,Child,
+59,533,04,True,False,0,True,533,,,,,,,,,Natural Child/Ins has no Fin Resp,
+61,534,F,False,False,0,True,534,,,,,,,,,Full-Time Student,
+61,535,P,False,False,0,True,535,,,,,,,,,Part-Time Student,
+63,536,S,False,False,0,True,536,,,,,,,,,Single,
+63,537,D,False,False,0,True,537,,,,,,,,,Divorced,
+32,538,FL,False,False,0,True,538,,,,,,,,,Florida,
+28,539,,False,False,0,False,539,,,,,,,,,Anterior Chamber,
+28,540,,False,False,0,False,540,,,,,,,,,Cornea,
+28,541,,False,False,0,False,541,,,,,,,,,Conjunctive & Sclera,
+39,542,22,False,False,0,False,542,,,,,,,,,22 Unusual Service,
+39,543,26,False,False,0,False,543,,,,,,,,,26 Component Service,
+39,544,52,False,False,0,False,544,,,,,,,,,52 Reduced Service,
+39,545,56,False,False,0,False,545,,,,,,,,,56 Pre Opt Management,
+39,546,75,False,False,0,False,546,,,,,,,,,75 Concurrent Care,
+39,547,76,False,False,0,False,547,,,,,,,,,76 Repeat Procedure,
+39,548,99,False,False,0,False,548,,,,,,,,,99 Multi-Modifiers,
+39,549,AP,False,False,0,False,549,,,,,,,,,AP No Refraction,
+39,550,RT,False,False,0,False,550,,,,,,,,,RT (OD) Right Eye,
+39,551,LT,False,False,0,False,551,,,,,,,,,LT (OS) Left Eye,
+39,552,YB,False,False,0,False,552,,,,,,,,,YB (OU) Both Eyes,
+39,553,VP,False,False,0,False,553,,,,,,,,,VP Aphakic,
+39,554,YP,False,False,0,False,554,,,,,,,,,YP Binocular,
+65,556,,False,False,0,False,556,,,,,,,,,Contact Lens Fees,
+65,558,,False,False,0,False,558,,,,,,,,,Contact Lens Exam Fees,
+65,560,,False,False,0,False,560,,,,,,,,,Diagnostic Services Fees,
+40,562,09,False,False,0,True,562,,,,,,,,,Other Medical,
+65,563,,False,False,0,False,563,,,,,,,,,Examination Fees,
+38,565,12,False,False,0,True,565,,,,,,,,,Home,
+38,566,24,False,False,0,True,566,,,,,,,,,Ambulatory Surgical Center,
+38,567,31,False,False,0,True,567,,,,,,,,,Skilled Nursing Facility,
+38,568,32,False,False,0,True,568,,,,,,,,,Nursing Facility,
+38,570,71,False,False,0,True,570,,,,,,,,,State or Local Public Health Clinic,
+38,571,99,False,False,0,True,571,,,,,,,,,Other Unlisted Facility,
+211,572, ,False,False,0,False,572,,,,,,,,,Etafilcon A,
+50,573,BRO,False,False,0,True,573,,,,,,,,,Brown,
+50,574,,False,False,0,False,574,,,,,,,,,Demigrey,
+5,575,H,False,False,9,True,575,,,,,,,,,Champus,
+5,576,H,False,False,10,True,576,,,,,,,,,ChampVA,
+5,577,E,False,False,11,True,577,,,,,,,,,Group Health Plan,
+5,578,E,False,False,12,True,578,,,,,,,,,FECA Black Lung,
+27,580, ,False,False,0,False,580,,,,,,,,,New Item,
+202,581,,False,False,0,False,581,,,,,,,,,Newspaper Ad Discount,
+202,582,,False,False,0,False,582,,,,,,,,,Senior Citizen Discount,
+202,583,,False,False,0,False,583,,,,,,,,,Employee Discount,
+66,584,CLE,False,True,0,True,584,,,,,,,,,Clear,
+66,585,,False,False,0,False,585,,,,,,,,,Pink 40%,
+66,586,,False,False,0,False,586,,,,,,,,,Grey 30%,
+66,587,,False,False,0,False,587,,,,,,,,,Photogrey,
+66,588,,False,False,0,False,588,,,,,,,,,Transitions Plus,
+32,591,AL,False,False,0,True,591,,,,,,,,,Alabama,
+32,592,AK,False,False,0,True,592,,,,,,,,,Alaska,
+32,593,AZ,False,False,0,True,593,,,,,,,,,Arizona,
+32,594,AR,False,False,0,True,594,,,,,,,,,Arkansas,
+32,595,CO,False,False,0,True,595,,,,,,,,,Colorado,
+32,596,CT,False,False,0,True,596,,,,,,,,,Connecticut,
+32,597,DE,False,False,0,True,597,,,,,,,,,Delaware,
+32,598,DC,False,False,0,True,598,,,,,,,,,District of Columbia,
+32,600,GA,False,False,0,True,600,,,,,,,,,Georgia,
+32,601,HI,False,False,0,True,601,,,,,,,,,Hawaii,
+32,602,ID,False,False,0,True,602,,,,,,,,,Idaho,
+32,603,IL,False,False,0,True,603,,,,,,,,,Illinois,
+32,604,IN,False,False,0,True,604,,,,,,,,,Indiana,
+32,605,IA,False,False,0,True,605,,,,,,,,,Iowa,
+32,606,KS,False,False,0,True,606,,,,,,,,,Kansas,
+32,607,KY,False,False,0,True,607,,,,,,,,,Kentucky,
+32,608,LA,False,False,0,True,608,,,,,,,,,Louisiana,
+32,609,ME,False,False,0,True,609,,,,,,,,,Maine,
+32,610,MA,False,False,0,True,610,,,,,,,,,Massachusetts,
+32,611,MI,False,False,0,True,611,,,,,,,,,Michigan,
+32,612,MN,False,False,0,True,612,,,,,,,,,Minnesota,
+32,613,MS,False,False,0,True,613,,,,,,,,,Mississippi,
+32,614,MO,False,False,0,True,614,,,,,,,,,Missouri,
+32,615,MT,False,False,0,True,615,,,,,,,,,Montana,
+32,616,NE,False,False,0,True,616,,,,,,,,,Nebraska,
+32,618,NH,False,False,0,True,618,,,,,,,,,New Hampshire,
+32,619,NC,False,False,0,True,619,,,,,,,,,North Carolina,
+32,620,OH,False,False,0,True,620,,,,,,,,,Ohio,
+32,621,OR,False,False,0,True,621,,,,,,,,,Oregon,
+32,622,PA,False,False,0,True,622,,,,,,,,,Pennsylvania,
+32,623,PR,False,False,0,True,623,,,,,,,,,Puerto Rico,
+32,624,RI,False,False,0,True,624,,,,,,,,,Rhode Island,
+32,625,SC,False,False,0,True,625,,,,,,,,,South Carolina,
+32,626,SD,False,False,0,True,626,,,,,,,,,South Dakota,
+32,627,TN,False,False,0,True,627,,,,,,,,,Tennessee,
+32,628,UT,False,False,0,True,628,,,,,,,,,Utah,
+32,629,VT,False,False,0,True,629,,,,,,,,,Vermont,
+32,630,VA,False,False,0,True,630,,,,,,,,,Virginia,
+32,631,WA,False,False,0,True,631,,,,,,,,,Washington,
+32,632,WV,False,False,0,True,632,,,,,,,,,West Virginia,
+32,633,WI,False,False,0,True,633,,,,,,,,,Wisconsin,
+32,634,WY,False,False,0,True,634,,,,,,,,,Wyoming,
+32,635,CN,False,False,0,True,635,,,,,,,,,Canada,
+61,642,N,False,False,0,True,642,,,,,,,,,Not a Student,
+63,643,W,False,False,0,True,643,,,,,,,,,Widowed,
+63,644,X,False,False,0,True,644,,,,,,,,,Legally Separated,
+63,645,U,False,True,0,True,645,,,,,,,,,Unknown,
+5,651,G,False,False,0,True,651,,,,,,,,,Blue Cross,
+5,652,G,False,False,0,True,652,,,,,,,,,Blue Shield,
+59,653,05,True,False,0,True,653,,,,,,,,,Step Child,
+59,654,06,True,False,0,True,654,,,,,,,,,Foster Child,
+59,655,07,True,False,0,True,655,,,,,,,,,Ward of Court,
+59,656,08,False,False,0,True,656,,,,,,,,,Employee,
+59,657,09,False,False,0,True,657,,,,,,,,,Unknown,
+59,658,10,True,False,0,True,658,,,,,,,,,Handicapped Dependent,
+59,659,13,True,False,0,True,659,,,,,,,,,Grandchild,
+59,660,14,True,False,0,True,660,,,,,,,,,Niece/Nephew,
+59,661,15,True,False,0,True,661,,,,,,,,,Injured Plaintiff,
+59,662,16,True,False,0,True,662,,,,,,,,,Sponsored Dependent,
+59,663,17,True,False,0,True,663,,,,,,,,,Minor Dependent of a Minor Dependent,
+59,664,18,True,False,0,True,664,,,,,,,,,Parent,
+59,665,19,True,False,0,True,665,,,,,,,,,Grandparent,
+60,666, ,False,False,0,False,666,,,,,,,,,I,
+60,667, ,False,False,0,False,667,,,,,,,,,IV,
+40,668,11,False,False,0,True,668,,,,,,,,,Used DME,
+40,669,17,False,False,0,True,669,,,,,,,,,Pre-Admission Testing,
+40,670,18,False,False,0,True,670,,,,,,,,,DME Rental,
+40,671,99,False,False,0,True,671,,,,,,,,,Other,
+215,672,,False,False,0,False,672,,,,,,,,,Diagnostic Procedures,
+61,673,2,False,False,0,True,673,,,,,,,,,Employed Part-time,
+61,674,3,False,False,0,True,674,,,,,,,,,Not Employed,
+61,675,4,False,False,0,True,675,,,,,,,,,Self Employed,
+61,676,5,False,False,0,True,676,,,,,,,,,Retired,
+61,677,6,False,False,0,True,677,,,,,,,,,On Active Military Duty,
+61,678,9,False,True,0,True,678,,,,,,,,,Unknown,
+41,679,,False,False,0,True,679,,,,,,,,,Professional Service,
+71,680,,False,False,0,False,680,,,,,,,,,Seventh,
+71,681,,False,False,0,False,681,,,,,,,,,Eighth,
+71,682,,False,False,0,False,682,,,,,,,,,Ninth,
+57,683,,False,False,0,False,683,,,,,,,,,Renewal Date,
+28,687,,False,False,0,False,687,,,,,,,,,Visual Fields,
+15,729,,False,False,0,True,729,,,,,,,,,Transfer to Another Insurance,
+39,730,55,False,False,0,False,730,,,,,,,,,55 Post-Opt-Mgt,
+62,732,,False,False,0,False,732,,,,,,,,,Lawyer,
+62,733,,False,False,0,False,733,,,,,,,,,Programmer,
+62,734,,False,False,0,False,734,,,,,,,,,Electrician,
+62,735,,False,False,0,False,735,,,,,,,,,Construction Worker,
+62,736,,False,False,0,False,736,,,,,,,,,Secretary,
+62,737,,False,False,0,False,737,,,,,,,,,Carpenter,
+62,738,,False,False,0,False,738,,,,,,,,,Welder,
+62,739,,False,False,0,False,739,,,,,,,,,Policeman,
+28,740,,False,False,0,False,740,,,,,,,,,Vision/Refractive Errors,
+47,749,10,False,False,0,False,749,,,,,,,,,Men's Plastic,
+47,751,5,False,False,0,False,751,,,,,,,,,Women's Plastic,
+47,754,25,False,False,0,False,754,,,,,,,,,Girls',
+44,755,386,False,False,0,False,755,,,,,,,,,Stainless Steel,
+47,756,40,False,False,0,False,756,,,,,,,,,Metal,
+47,759,32,False,False,0,False,759,,,,,,,,,Women's Combinations,
+47,760,35,False,False,0,False,760,,,,,,,,,Half Eyes,
+47,762,30,False,False,0,False,762,,,,,,,,,Boys',
+47,763,45,False,False,0,False,763,,,,,,,,,Rimless,
+44,764,281,False,False,0,False,764,,,,,,,,,Plastic & Metal,
+44,765,352,False,False,0,False,765,,,,,,,,,Propionate,
+5,766,MG,False,False,0,True,766,,,,,,,,,Medigap,
+47,767,SUN,False,False,0,False,767,,,,,,,,,Sunglasses,
+29,774,,False,False,0,False,774,,,,,,,,,Relative Fee,
+15,776,,False,False,0,True,776,,,,,,,,,Transfer from Insurance to Patient,
+15,777,,False,False,0,True,777,,,,,,,,,Late Charge,
+15,778,,False,False,0,True,778,,,,,,,,,Finance Charge,
+15,779,,False,False,0,True,779,,,,,,,,,Global Insurance Write-off,
+44,780,422,False,False,0,False,780,,,,,,,,,Zyl,
+44,782,13,False,False,0,False,782,,,,,,,,,Acetate Cellulose & Nickel Silver,
+44,783,194,False,False,0,False,783,,,,,,,,,Metal & Cellulose Acetate,
+47,784,33,False,False,0,False,784,,,,,,,,,Men's Combinations,
+14,785,,False,False,0,False,785,,,,,,,,,Miss,
+44,792,165,False,False,0,False,792,,,,,,,,,Injected Acetate,
+44,793,81,False,False,0,False,793,,,,,,,,,Co-Polyamide,
+44,794,94,False,False,0,False,794,,,,,,,,,Copolyamide,
+44,796,241,False,False,0,False,796,,,,,,,,,MXP,
+79,803,,False,False,0,False,803,,,,,,,,,4 X 6 Continuous,
+79,804,,False,False,0,False,804,,,,,,,,,4 1/4 X 6 Continuous,
+74,807,,False,False,0,False,807,,,,,,,,,Spectacle Rx,
+74,808,,False,False,0,False,808,,,,,,,,,Contact Lens Rx,
+74,809,,False,False,0,False,809,,,,,,,,,Statement,
+74,810,,False,False,0,False,810,,,,,,,,,HCFA-1500,
+216,811, ,False,False,0,False,523,,,,,,,,,Black Lung,
+216,812,,False,False,0,False,731,,,,,,,,,Capitation Plan,
+216,813, ,False,False,0,False,521,,,,,,,,,Champus,
+216,814, ,False,False,0,False,522,,,,,,,,,ChampVA,
+216,815, ,False,False,0,False,303,,,,,,,,,HMO,
+216,816,,False,False,0,False,770,,,,,,,,,Managed Care,
+216,817, ,False,False,0,False,520,,,,,,,,,Medicaid,
+216,818, ,False,False,0,False,519,,,,,,,,,Medicare,
+216,819,,False,False,0,False,768,,,,,,,,,Medigap,
+216,821, ,False,False,0,False,304,,,,,,,,,PPO,
+216,822, ,False,False,0,False,302,,,,,,,,,Private Pay,
+216,823, ,False,False,0,False,305,,,,,,,,,Vision Plan,
+216,824,,False,False,0,False,769,,,,,,,,,VSP,
+302,825,005,False,False,0,False,0,,,,,,,,,Texas Blue Shield,
+400,826,A,False,False,0,False,826,,,,,,,,,Self Pay,
+400,827,B,False,False,0,False,828,,,,,,,,,Workers Compensation,
+400,828,C,False,True,0,False,829,,,,,,,,,Medicare,
+400,829,D,False,False,0,False,830,,,,,,,,,Medicaid,
+400,830,E,False,False,0,False,831,,,,,,,,,Other Federal Program,
+400,831,F,False,False,0,False,832,,,,,,,,,Commercial Insurance Company,
+400,832,G,False,False,0,False,833,,,,,,,,,Blue Cross and Blue Shield,
+400,833,H,False,False,0,False,834,,,,,,,,,CHAMPUS,
+400,834,I,False,False,0,False,835,,,,,,,,,HMO,
+400,835,Z,False,False,0,False,836,,,,,,,,,Other,
+88,837,,False,False,0,False,0,,,,,,,,,Damaged,
+88,838,,False,False,0,False,0,,,,,,,,,Can't use,
+89,839,,False,False,0,False,0,,,,,,,,,Restocking fee,
+89,840,,False,False,0,False,0,,,,,,,,,Handling Fee,
+89,841,,False,False,0,False,0,,,,,,,,,Return Fee,
+89,842,,False,False,0,False,0,,,,,,,,,Damaged Fee,
+88,843,,False,False,0,False,0,,,,,,,,,Wrong Frame,
+15,844,,False,False,0,True,844,,,,,,,,,Product Return,
+15,845,,False,False,0,True,845,,,,,,,,,Patient Refund,
+15,846,,False,False,0,True,846,,,,,,,,,Non-refundable Adjustment,
+50,850,,False,False,0,False,0,,,,,,,,,Gold,
+50,851,,False,False,0,False,0,,,,,,,,,Silver,
+50,852,,False,False,0,False,0,,,,,,,,,Havanna,
+66,853,,False,False,0,False,0,,,,,,,,,Pink 20%,
+66,854,,False,False,0,False,0,,,,,,,,,Pink 30%,
+66,855,,False,False,0,False,0,,,,,,,,,Grey 20%,
+66,856,,False,False,0,False,0,,,,,,,,,Photo Brown Xtra,
+66,857,,False,False,0,False,0,,,,,,,,,Photo Grey Xtra,
+200,858,MLT,False,False,0,False,0,,,,,,,,,Multifocal,
+200,859,DOC,False,False,0,False,0,,,,,,,,,Driving over Contacts,
+200,860,OCC,False,False,0,False,0,,,,,,,,,Occupational,
+206,862,,False,False,0,False,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Pink,
+206,863,BLU,False,False,0,True,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Blue,
+206,864,BRO,False,False,0,True,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Brown,
+206,865,GRA,False,False,0,True,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Gray,
+206,866,GRE,False,False,0,True,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Green,
+206,867,,False,False,0,False,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Amber,
+206,868,,False,False,0,False,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Rose,
+206,869,,False,False,0,False,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Blue Pink,
+206,870,VIO,False,False,0,True,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Violet,
+206,871,,False,False,0,False,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Brown Pink,
+8,872,,False,False,0,False,0,,,,,,,,,Marketing Mailer,
+87,873,,False,False,0,False,0,,,,,,,,,Metal Frame,
+87,874,,False,False,0,False,0,,,,,,,,,Plastic Frame,
+87,875,,True,False,0,False,0,,,,,,,,,Single Vision Lenses,
+87,876,,False,False,0,False,0,,,,,,,,,Soft Contact Lenses,
+87,877,,False,False,0,False,0,,,,,,,,,Rigid Contact Lenses,
+11,878,AQU,False,False,0,True,0,,,,,,,,,Aqua,
+11,881,HAN,False,False,0,True,0,,,,,,,,,Handling Tint,
+11,882,ENH,False,False,0,True,0,,,,,,,,,Enhancing,
+214,884,OCC,False,False,0,False,0,,,,,,,,,Occupational,
+202,885,,False,False,0,False,0,,,,,,,,,Marketing Discount,
+201,886,,False,False,0,False,0,,,,,,,,,Frame on Backorder,
+207,887,,False,False,0,False,0,,,,,,,,,# 1,
+207,888,,False,False,0,False,0,,,,,,,,,# 2,
+207,889,,False,False,0,False,0,,,,,,,,,# 3,
+36,890,,False,False,0,False,0,,,,,,,,,Gift Certificate,
+212,894,,False,False,0,False,0,,,,,,,,,Chemical,
+212,895,,False,False,0,False,0,,,,,,,,,Renu,
+212,896,,False,False,0,False,0,,,,,,,,,Boston,
+212,897,,False,False,0,False,0,,,,,,,,,Optifree,
+211,898,,True,False,0,False,0,,,,,,,,,Phemfilcon A,
+10,899,WKLY,False,False,0,False,0,,,,,,,,,Weekly,
+10,900,TWKS,False,False,0,False,0,,,,,,,,,2 Weeks,
+10,901,DALY,False,False,0,False,0,,,,,,,,,Daily,
+10,902,TMNT,False,False,0,False,0,,,,,,,,,3 Months,
+9,908,ASND,False,False,0,False,0,,,,,,,,,As Needed,
+10,909,ASND,False,False,0,False,0,,,,,,,,,As Needed,
+212,910,,False,False,0,False,0,,,,,,,,,None,
+11,912,GRE,False,False,0,True,0,,,,,,,,,Green,
+201,917,,False,False,0,False,0,,,,,,,,,Patient notified awaiting pickup,
+65,918,,False,False,0,False,0,,,,,,,,,Consultations,
+215,919,,False,False,0,False,0,,,,,,,,,Consultations,
+44,920,02,False,False,0,False,0,,,,,,,,,Metal,
+46,922,1,True,False,0,False,0,,,,,,,,,Unisex,
+215,923,,False,False,0,False,0,,,,,,,,,Frame Add-on Fees,
+78,924,,False,False,0,False,0,,,,,,,,,Coating Add-on,
+215,925,,False,False,0,False,0,,,,,,,,,SV Lens Blank Fees,
+78,926,,False,False,0,False,0,,,,,,,,,Lens/Frame Co-payment,
+78,927,,False,False,0,False,0,,,,,,,,,Frame Co-payment,
+78,928,,False,False,0,False,0,,,,,,,,,Total Co-payment,
+78,929,,False,False,0,False,0,,,,,,,,,Exam Co-payment,
+78,930,,False,False,0,False,0,,,,,,,,,Coating - AR,
+78,931,,False,False,0,False,0,,,,,,,,,Coating - MIrror,
+78,932,,False,False,0,False,0,,,,,,,,,Coating - Scratchcoat SV,
+78,933,,False,False,0,False,0,,,,,,,,,Coating - Ski Type,
+78,934,,False,False,0,False,0,,,,,,,,,OS - SV (56+),
+78,935,,False,False,0,False,0,,,,,,,,,Edge Polish,
+78,936,,False,False,0,False,0,,,,,,,,,Edge Coating,
+78,937,,True,True,0,False,0,,,,,,,,,Facetted Lenses,
+78,938,,False,False,0,False,0,,,,,,,,,Coating - UV SV,
+78,939,,False,False,0,False,0,,,,,,,,,Photochr- SV Glass A,
+78,940,,False,False,0,False,0,,,,,,,,,Photochr - MV Glass A,
+78,941,,False,False,0,False,0,,,,,,,,,Photochr - SV Glass B,
+78,942,,False,False,0,False,0,,,,,,,,,Photochr - MV Glass B,
+78,943,,False,False,0,False,0,,,,,,,,,Dyes- Plastic Solid (Exc Pink I & II),
+78,944,,False,False,0,False,0,,,,,,,,,Dyes - Plastic Gradient,
+78,945,,False,False,0,False,0,,,,,,,,,Tints - MF Pl Gradient,
+78,946,,False,False,0,False,0,,,,,,,,,Tints - MF Pl Solid,
+78,947,,False,False,0,False,0,,,,,,,,,OS - MF (56+),
+78,948,,False,False,0,False,0,,,,,,,,,Exam - Intermediate,
+78,949,,False,False,0,False,0,,,,,,,,,BF FT 35,
+78,950,,False,False,0,False,0,,,,,,,,,BF Executive,
+78,951,,False,False,0,False,0,,,,,,,,,TF FT 35,
+78,952,,False,False,0,False,0,,,,,,,,,TF Executive,
+78,953,,False,False,0,False,0,,,,,,,,,Progessive Standard,
+78,954,,False,False,0,False,0,,,,,,,,,Progressive Premium,
+78,955,,False,False,0,False,0,,,,,,,,,SV Glass,
+78,956,,False,False,0,False,0,,,,,,,,,MF Glass,
+78,957,,False,False,0,False,0,,,,,,,,,SV Oversize (56+) ,
+78,958,,False,False,0,False,0,,,,,,,,,MF OS (56+) ,
+78,959,,False,False,0,False,0,,,,,,,,,Polycarbonate - SV,
+78,960,,False,False,0,False,0,,,,,,,,,Polycarbonate - MF,
+78,961,,False,False,0,False,0,,,,,,,,,Coating - UV MF,
+78,962,,False,False,0,False,0,,,,,,,,,Coating - Scratchcoat MF,
+78,963,,False,False,0,False,0,,,,,,,,,Prism to 4.00D SV,
+78,964,,False,False,0,False,0,,,,,,,,,Prism to 4.00D MV,
+200,965,FRF,False,False,0,False,0,,,,,,,,,Final Refraction Rx,
+214,966,,False,False,0,False,0,,,,,,,,,Final CL Refraction Rx,
+211,967,,False,False,0,False,0,,,,,,,,,Vfilcon,
+211,968,,False,False,0,False,0,,,,,,,,,Methafilcon,
+211,970,,False,False,0,False,0,,,,,,,,,Rosifocon A,
+60,971,,False,False,0,False,0,,,,,,,,,M.D.,
+60,972,,False,False,0,False,0,,,,,,,,,D.D.S,
+60,973,,False,False,0,False,0,,,,,,,,,O.D,
+87,974,,False,False,0,False,0,,,,,,,,,Bifocal Lenses,
+87,975,,False,False,0,False,0,,,,,,,,,Contact Lens Solutions,
+87,976,,False,False,0,False,0,,,,,,,,,Comprehensive Examination,
+87,977,,False,False,0,False,0,,,,,,,,,Contact Lens Check,
+78,978,,False,False,0,False,0,,,,,,,,,AddOn-Gl SV,
+78,979,,False,False,0,False,0,,,,,,,,,AddOn-Gl MF,
+78,980,,False,False,0,False,0,,,,,,,,,OvrPwer +\-7DSPH SV,
+78,981,,False,False,0,False,0,,,,,,,,,OvrPwer +\-7DSPH MF,
+78,982,,False,False,0,False,0,,,,,,,,,OvrPwer +\-8DSPH MF,
+78,983,,False,False,0,False,0,,,,,,,,,OvrPwer +\-9DSPH MF,
+78,984,,False,False,0,False,0,,,,,,,,,OvrPwer +\-10DSPH MF,
+78,985,,False,False,0,False,0,,,,,,,,,OvrPwer +\-8DSPH SV,
+78,986,,False,False,0,False,0,,,,,,,,,OvrPwer +\-9DSPH SV,
+78,987,,False,False,0,False,0,,,,,,,,,OvrPwer +\-10DSPH SV,
+78,988,,False,False,0,False,0,,,,,,,,,OvrPwer +\-4DCYL SV,
+78,989,,False,False,0,False,0,,,,,,,,,OvrPwer +\-5DCYL SV,
+78,990,,False,False,0,False,0,,,,,,,,,OvrPwer +\-6DCYL SV,
+78,991,,False,False,0,False,0,,,,,,,,,OvrPwer +\-4DCYL MF,
+78,992,,False,False,0,False,0,,,,,,,,,OvrPwer +\-5DCYL MF,
+78,993,,False,False,0,False,0,,,,,,,,,OvrPwer +\-6DCYL MF,
+78,994,,False,False,0,False,0,,,,,,,,,OvrPwer +\-7DCYL MF,
+78,995,,False,False,0,False,0,,,,,,,,,OvrPwer +\-7DCYL SV,
+78,996,,False,False,0,False,0,,,,,,,,,Tints - SV Pl Gradient,
+78,997,,False,False,0,False,0,,,,,,,,,Tints - SV Pl Solid,
+78,998,,False,False,0,False,0,,,,,,,,,Exam - Follow-up,
+78,999,,False,False,0,False,0,,,,,,,,,Lenticular/AphakicMono,
+78,1000,,False,False,0,False,0,,,,,,,,,Lenticular/AphakicMulti,
+78,1001,,False,False,0,False,0,,,,,,,,,Prism 4.25+,
+78,1002,,False,False,0,False,0,,,,,,,,,Prism-Slab Off,
+78,1003,,False,False,0,False,0,,,,,,,,,Contacts- Med Necessary,
+78,1004,,False,False,0,False,0,,,,,,,,,Contacts- Cosmetic,
+204,1005,,False,False,0,False,0,,,,,,,,,BF FT 35,
+204,1006,,False,False,0,False,0,,,,,,,,,BF FT28,
+204,1007,,False,False,0,False,0,,,,,,,,,TF FT 25,
+204,1008,,False,False,0,False,0,,,,,,,,,TF FT 28,
+204,1009,,False,False,0,False,0,,,,,,,,,TF FT 35,
+204,1010,,False,False,0,False,0,,,,,,,,,Safety  3.0,
+215,1011,,False,False,0,False,0,,,,,,,,,Hard CL Fees,
+215,1012,,False,False,0,False,0,,,,,,,,,Rigid CL Fees,
+215,1013,,False,False,0,False,0,,,,,,,,,Disposable Lens Fees,
+215,1014,,False,False,0,False,0,,,,,,,,,Lens Add On Fees,
+215,1015,,False,False,0,False,0,,,,,,,,,Solutions Fees,
+215,1016,,False,False,0,False,0,,,,,,,,,Core Frames Fees,
+215,1017,,False,False,0,False,0,,,,,,,,,MV Lens Blank Fees,
+215,1018,,False,False,0,False,0,,,,,,,,,Hi-index Lens Blank Fees,
+215,1019,,False,False,0,False,0,,,,,,,,,New Patient Exams,
+215,1020,,False,False,0,False,0,,,,,,,,,Established Patient Exams,
+200,1021,ORF,False,False,0,False,0,,,,,,,,,Over-refraction,
+44,1022,123,False,False,0,False,0,,,,,,,,,Flexon,
+215,1023,,False,False,0,False,0,,,,,,,,,Metal Frame Fees,
+306,1032,,False,False,0,False,0,,,,,,,,,Patient thank you letter default,
+307,1033,,False,False,0,False,0,,,,,,,,,Patient referral letter default,
+400,1034,M,False,False,0,False,1034,,,,,,,,,Medicare Claim Review,
+400,1035,N,False,False,0,False,1035,,,,,,,,,Medicare ADS Responses,
+34,1037,X,True,False,0,False,1037,,,,,,,,,Corporate Name, but SS#,
+401,1039,SP,False,False,0,False,1039,,,,,,,,,Supplemental Policy,
+401,1040,IP,False,False,0,False,1040,,,,,,,,,Individual Policy,
+401,1041,PP,False,False,0,False,1041,,,,,,,,,Personal Payment(Cash-No Insurance),
+401,1042,GP,False,False,0,False,1042,,,,,,,,,Group Policy,
+401,1043,LT,False,False,0,False,1043,,,,,,,,,Litigation,
+401,1044,AP,False,False,0,False,1044,,,,,,,,,Auto Insurance Policy,
+401,1045,LD,False,False,0,False,1045,,,,,,,,,Long Term Policy,
+401,1046,OT,False,False,0,False,1046,,,,,,,,,Other,
+401,1047,MP,False,True,0,False,1047,,,,,,,,,Medicare Primary,
+90,1065,,False,False,0,True,0,,,,,,,,,Annual Cycle,
+91,1066,1,False,False,0,True,0,,,,,,,,,Barell,
+91,1067,2,False,False,0,True,0,,,,,,,,,Round,
+305,1068,Y,False,False,0,True,0,,,,,,,,,PPO/HMO Agreement,
+305,1069,E,False,False,0,True,0,,,,,,,,,CHAMPUS External Agreement,
+305,1070,I,False,False,0,True,0,,,,,,,,,CHAMPUS Internal Agreement,
+305,1071,N,True,False,0,True,0,,,,,,,,,No PPO/HMP Agreement,
+410,1072,258,False,False,0,True,0,,,,,,,,,5389 - Post Card 4 X 6,
+410,1073,259,False,False,0,True,0,,,,,,,,,5315 - Notecard  3.75 X 5,
+410,1074,260,False,False,0,True,0,,,,,,,,,5386 - Rotary Index 3 X 5,
+411,1075,SP,True,False,0,True,0,,,,,,,,,Supplemental Policy,
+411,1076,GP,True,False,0,True,0,,,,,,,,,Group Policy,
+411,1077,IP,True,False,0,True,0,,,,,,,,,Individual Policy,
+411,1078,AP,True,False,0,True,0,,,,,,,,,Auto Insurance Policy,
+411,1079,LD,True,False,0,True,0,,,,,,,,,Long Term Policy,
+411,1080,OT,True,False,0,True,0,,,,,,,,,Other,
+411,1081,MP,True,False,0,True,0,,,,,,,,,Medicare Primary,
+411,1082,LT,True,False,0,True,0,,,,,,,,,Litigation,
+411,1083,PP,True,False,0,True,0,,,,,,,,,Personal Payment,
+411,1084,MG,True,False,0,True,0,,,,,,,,,Medigap,
+92,1085,,False,False,0,False,0,,,,,,,,,Inventory Adjustment,
+15,1086,,False,False,0,True,0,,,,,,,,,VSP - Insurance Charge Adj.,
+15,1087,,False,False,0,True,0,,,,,,,,,VSP - Lab Charge Adjustment,
+36,1088,,False,False,0,True,0,,,,,,,,,Patient Return,
+36,1089,,False,False,0,True,0,,,,,,,,,Patient Credit,
+15,1090,,False,False,0,True,1090,,,,,,,,,Transfer from Patient to Insurance,
+305,1091,N,False,False,0,True,0,,,,,,,,,No PPO/HMO Agreement,
+40,1092,04,False,False,0,True,0,,,,,,,,,Diagnostic X-Ray,
+40,1093,05,False,False,0,True,0,,,,,,,,,Diagnostic Laboratory,
+40,1094,06,False,False,0,True,0,,,,,,,,,Radiation Therapy,
+40,1095,07,False,False,0,True,0,,,,,,,,,Anesthesia,
+40,1096,08,False,False,0,True,0,,,,,,,,,Surgical Assistance,
+40,1097,09,False,False,0,True,0,,,,,,,,,Other Medical Services,
+40,1098,10,False,False,0,True,0,,,,,,,,,Blood Charges,
+40,1099,13,False,False,0,True,0,,,,,,,,,ASC facility,
+40,1100,14,False,False,0,True,0,,,,,,,,,Rental Supplies in the Home,
+40,1101,15,False,False,0,True,0,,,,,,,,,Alternate Method Dialysis Payment,
+40,1102,16,False,False,0,True,0,,,,,,,,,CRD Equipment,
+40,1103,19,False,False,0,True,0,,,,,,,,,Pneumonia Vaccine,
+40,1104,20,False,False,0,True,0,,,,,,,,,2nd Surgical Opinion,
+40,1105,21,False,False,0,True,0,,,,,,,,,3rd Surgical Opinion,
+93,1106,,False,False,0,False,0,,,,,,,,,Privacy,
+93,1107,,False,False,0,False,0,,,,,,,,,Consent,
+93,1108,,False,False,0,False,0,,,,,,,,,Complaint,
+93,1109,,False,False,0,False,0,,,,,,,,,Other,
+94,1110,,False,False,0,True,1,,,,,,,,,Patient Refund,
+94,1111,,False,False,0,True,2,,,,,,,,,Unapplied Insurance Transfer,
+411,1112,C1,False,False,0,True,0,,,,,,,,,Commercial,
+411,1113,HM,True,False,0,True,0,,,,,,,,,Health Maintenance Organization,
+411,1114,MB,True,False,0,True,0,,,,,,,,,Medicare Part B,
+411,1115,MC,True,False,0,True,0,,,,,,,,,Medicaid,
+5,1133,K,True,False,0,True,1133,,,,,,,,,Central Certification,
+5,1134,11,False,False,0,True,1134,,,,,,,,,Other Non-Federal Programs,
+5,1135,12,False,False,0,True,1135,,,,,,,,,Preferred Provider Organization,
+5,1136,13,False,False,0,True,1136,,,,,,,,,Point of Service,
+5,1137,14,False,False,0,True,1137,,,,,,,,,Exclusive Provider Organization,
+5,1138,15,False,False,0,True,1138,,,,,,,,,Indemnity Insurance,
+5,1139,AM,False,False,0,True,1139,,,,,,,,,Automobile Medical,
+5,1140,DS,False,False,0,True,1140,,,,,,,,,Disability,
+5,1141,LI,True,False,0,True,1141,,,,,,,,,Liability,
+5,1142,LM,False,False,0,True,1142,,,,,,,,,Liability Medical,
+5,1143,T,False,False,0,True,1143,,,,,,,,,Title V,
+5,1144,B,False,False,0,True,1144,,,,,,,,,Workers Compensation Health Claim,
+5,1145,Z,False,False,0,False,0,,,,,,,,,Mutually Defined Unknown,
+15,1146,,False,False,0,True,1146,,,,,,,,,Insurance Denial,
+36,1147,,False,False,0,True,0,,,,,,,,,Unapplied Insurance Transfer,
+412,1148,L1,False,False,0,True,0,,,,,,,,,20 Degree or .5 Diop Sp/Cyl Change Met,
+412,1149,L2,False,False,0,True,0,,,,,,,,,Replacement Due to Loss or Theft,
+412,1150,L3,False,False,0,True,0,,,,,,,,,Replacement Due to Breaking or Damage,
+412,1151,L4,False,False,0,True,0,,,,,,,,,Replacement Due to Patient Preference,
+412,1152,L5,False,False,0,True,0,,,,,,,,,Replacement Due to Medical Reason,
+15,1153,,False,False,0,True,1145,,,,,,,,,Insurance Overpayment,
+500,1154,RCPT,False,False,0,False,0,,,,,,,,,Reception,
+500,1155,PRE1,False,False,0,False,0,,,,,,,,,Pretest 1,
+500,1157,EXAM1,False,False,0,False,0,,,,,,,,,Examination 1,
+500,1159,DISP,False,False,0,False,0,,,,,,,,,Dispensary,
+500,1160,WAIT,False,False,0,False,0,,,,,,,,,Waiting room,
+81,1161,0,False,False,0,False,0,,,0,,,,,,Scanning Laser Ophthalmoscopy,
+81,1162,0,False,False,0,False,0,,,0,,,,,,Topography,
+81,1163,0,False,False,0,False,0,,,0,,,,,,Fields,
+81,1164,0,False,False,0,False,0,,,0,,,,,,Lab Results,
+81,1165,0,False,False,0,False,0,,,0,,,,,,Insurance Authorization,
+81,1166,0,False,False,0,False,0,,,0,,,,,,Prior paper records,
+81,1167,0,False,False,0,False,0,,,0,,,,,,Patient photo,
+81,1168,0,False,False,0,False,0,,,0,,,,,,Anterior Seg pictures,
+81,1169,0,False,False,0,False,0,,,0,,,,,,Miscellaneous,
+81,1170,0,False,False,0,False,0,,,0,,,,,,Biometry,
+502,1171,FX,False,False,0,True,0,,,0,,,,,,By Fax,
+502,1172,BM,False,False,0,True,0,,,0,,,,,,By Mail,
+502,1173,AA,False,False,0,True,0,,,0,,,,,,Available on Request at Provider Site,
+501,1174,RT,False,False,0,True,0,,,0,,,,,,Report of Test and Analysis Report,
+501,1175,RR,False,False,0,True,0,,,0,,,,,,Radiology Report,
+501,1176,RB,False,False,0,True,0,,,0,,,,,,Radiology Films,
+501,1177,PZ,False,False,0,True,0,,,0,,,,,,Physical Therapy Certification,
+501,1178,PO,False,False,0,True,0,,,0,,,,,,Prosthetics or Orthotic Certification,
+501,1179,PN,False,False,0,True,0,,,0,,,,,,Physical Therapy Notes,
+501,1180,OZ,False,False,0,True,0,,,0,,,,,,Support Data for Claim,
+501,1181,OB,False,False,0,True,0,,,0,,,,,,Operative Note,
+501,1182,NN,False,False,0,True,0,,,0,,,,,,Nursing Notes,
+501,1183,MT,False,False,0,True,0,,,0,,,,,,Models,
+501,1184,EB,False,False,0,True,0,,,0,,,,,,Explanation of Benefits,
+501,1185,DS,False,False,0,True,0,,,0,,,,,,Discharge Summary,
+501,1186,DG,False,False,0,True,0,,,0,,,,,,Diagnostic Report,
+501,1187,DA,False,False,0,True,0,,,0,,,,,,Dental Models,
+501,1188,CT,False,False,0,True,0,,,0,,,,,,Certification,
+501,1189,B2,False,False,0,True,0,,,0,,,,,,Prescription,
+501,1190,AS,False,False,0,True,0,,,0,,,,,,Admission Summary,
+39,1191,1P,False,False,0,False,0,,,0,,,,,,Performance Measure Exclusion 1,
+39,1192,2P,False,False,0,False,0,,,0,,,,,,Performance Measure Exclusion 2,
+39,1193,3P,False,False,0,False,0,,,0,,,,,,Performance Measure Exclusion 3,
+504,1194,0B,False,False,0,True,0,,,0,,,,,,State License Number,
+504,1195,1A,True,False,0,True,0,,,0,,,,,,Blue Cross Provider Number,
+504,1196,1B,True,False,0,True,0,,,0,,,,,,Blue Shield Provider Number,
+504,1197,1C,True,False,0,True,0,,,0,,,,,,Medicare Provider Number,
+504,1198,1D,True,False,0,True,0,,,0,,,,,,Medicaid Provider Number,
+504,1199,1G,True,False,0,True,0,,,0,,,,,,Provider UPIN Number,
+504,1200,LU,False,False,0,True,0,,,0,,,,,,Location Number,
+504,1201,1H,True,False,0,True,0,,,0,,,,,,CHAMPUS Identification Number,
+504,1202,G2,False,False,0,True,0,,,0,,,,,,Provider Commercial Number,
+504,1203,N5,True,False,0,True,0,,,0,,,,,,Provider Plan Network Identification Num,
+504,1204,TJ,True,False,0,True,0,,,0,,,,,,Federal TaxPayer's Identification Number,
+504,1205,X4,True,False,0,True,0,,,0,,,,,,Clinical Lab. Improvement Amendment Num,
+504,1206,X5,True,False,0,True,0,,,0,,,,,,State Industrial Accident Provider Num,
+506,1210,1J,True,False,0,True,0,,,0,,,,,,Facility ID Number,
+506,1211,0B,True,False,0,True,0,,,0,,,,,,State License Number,
+506,1212,1A,True,False,0,True,0,,,0,,,,,,Blue Cross Provider Number,
+506,1213,1B,True,False,0,True,0,,,0,,,,,,Blue Shield Provider Number,
+506,1214,1C,True,False,0,True,0,,,0,,,,,,Medicare Provider Number,
+506,1215,1D,True,False,0,True,0,,,0,,,,,,Medicaid Provider Number,
+506,1216,1G,True,False,0,True,0,,,0,,,,,,Provider UPIN Number,
+506,1217,1H,True,False,0,True,0,,,0,,,,,,CHAMPUS Identification Number,
+506,1218,G2,True,False,0,True,0,,,0,,,,,,Provider Commercial Number,
+506,1219,LU,True,False,0,True,0,,,0,,,,,,Location Number,
+506,1220,X5,True,False,0,True,0,,,0,,,,,,State Industrial Accident Provider Num,
+506,1221,B3,True,False,0,True,0,,,0,,,,,,Preferred Provider Organization Number,
+506,1222,BQ,True,False,0,True,0,,,0,,,,,,HMO Vode Number,
+506,1223,FH,True,False,0,True,0,,,0,,,,,,Clinic Number,
+506,1224,G5,True,False,0,True,0,,,0,,,,,,Provider Site Number,
+506,1225,U3,True,False,0,True,0,,,0,,,,,,Unique Supplier Identification Number,
+507,1226,0B,False,False,0,True,0,,,0,,,,,,State License Number,
+507,1227,1B,True,False,0,True,0,,,0,,,,,,Blue Shield Provider Number,
+507,1228,1C,True,False,0,True,0,,,0,,,,,,Medicare Provider Number,
+507,1229,1D,True,False,0,True,0,,,0,,,,,,Medicaid Provider Number,
+507,1230,1G,False,False,0,True,0,,,0,,,,,,Provider UPIN Number,
+507,1231,1H,True,False,0,True,0,,,0,,,,,,CHAMPUS Identification Number,
+507,1232,G2,False,False,0,True,0,,,0,,,,,,Provider Commercial Number,
+507,1233,LU,False,False,0,True,0,,,0,,,,,,Location Number,
+507,1234,N5,True,False,0,True,0,,,0,,,,,,Provider Plan Network ID Number,
+507,1235,X5,True,False,0,True,0,,,0,,,,,,State Industrial Accident Provider Num,
+507,1236,EI,True,False,0,True,0,,,0,,,,,,Employer's Identification Number,
+507,1237,SY,True,False,0,True,0,,,0,,,,,,Social Security Number,
+508,1238,0B,False,False,0,True,0,,,0,,,,,,State License Number,
+508,1239,1B,True,False,0,True,0,,,0,,,,,,Blue Shield Provider Number,
+508,1240,1C,True,False,0,True,0,,,0,,,,,,Medicare Provider Number,
+508,1241,1D,True,False,0,True,0,,,0,,,,,,Medicaid Provider Number,
+508,1242,1G,False,False,0,True,0,,,0,,,,,,Provider UPIN Number,
+508,1243,1H,True,False,0,True,0,,,0,,,,,,CHAMPUS Identification Number,
+508,1244,G2,False,False,0,True,0,,,0,,,,,,Provider Commercial Number,
+508,1245,LU,True,False,0,True,0,,,0,,,,,,Location Number,
+508,1246,N5,True,False,0,True,0,,,0,,,,,,Provider Plan Network ID Number,
+508,1247,X5,True,False,0,True,0,,,0,,,,,,State Industrial Accident Provider Num,
+508,1248,SY,True,False,0,True,0,,,0,,,,,,Social Security Number,
+508,1249,EI,True,False,0,True,0,,,0,,,,,,Employer's Identification Number,
+503,1251,TPO,True,False,0,True,0,,,,,,,,,Third Party Organization Notes,
+503,1252,PMT,True,False,0,True,0,,,,,,,,,Payment,
+503,1253,DCP,False,False,0,True,0,,,,,,,,,Goals, Rehab Potential/Discharge Plans,
+503,1254,ADD,False,False,0,True,0,,,,,,,,,Additional Information,
+510,1255,AV,False,False,0,True,0,,,0,,,,,,Available - Not Used,
+510,1256,S2,False,False,0,True,0,,,0,,,,,,Under Treatment,
+510,1257,ST,False,False,0,True,0,,,0,,,,,,New Service Requested,
+510,1258,NU,False,False,0,True,0,,,0,,,,,,Not Used,
+510,1259,N,False,False,0,True,0,,,0,,,,,,No,
+510,1260,Y,False,False,0,True,0,,,0,,,,,,Yes,
+54,1261,,False,False,0,False,0,,,0,,,,,,Brooklyn,
+54,1262,,False,False,0,False,0,,,0,,,,,,New York,
+54,1263,,False,False,0,False,0,,,0,,,,,,Bronx,
+54,1264,,False,False,0,False,0,,,0,,,,,,Far Rockaway,
+39,1265,50,False,False,0,False,0,,,0,,,,,,50 (OU),
+36,1266,,False,False,0,False,0,,,0,,,,,,Debit,
+88,1267,,False,False,0,False,0,,,0,,,,,,Unhappy,
+202,1268,,False,False,0,False,0,,,0,,,,,,Personal Discount,
+202,1269,,False,False,0,False,0,,,0,,,,,,Manager Discount,
+88,1270,,False,False,0,False,0,,,0,,,,,,Never Picked Up ,
+504,1271,ZZ,True,False,0,True,0,,,0,,,,,,Provider Taxonomy,
+506,1272,ZZ,False,False,0,True,0,,,0,,,,,,Provider Taxonomy,
+507,1273,ZZ,False,False,0,True,0,,,0,,,,,,Provider Taxonomy,
+508,1274,ZZ,True,False,0,True,0,,,0,,,,,,Provider Taxonomy,
+39,1275,E1,False,False,0,False,0,,,0,,,,,,E1 Left Upper Lid,
+39,1276,E2,False,False,0,False,0,,,0,,,,,,E2 Left Lower Lid,
+39,1277,E3,False,False,0,False,0,,,0,,,,,,E3 Right Upper Lid,
+39,1278,E4,False,False,0,False,0,,,0,,,,,,E4 Right Lower Lid,
+81,1279,0,False,False,0,False,0,,,0,,,,,,Release Of Medical Info,
+81,1280,0,False,False,0,False,0,,,0,,,,,,Transportation Approval,
+81,1281,0,False,False,0,False,0,,,0,,,,,,Medicaid Eyeglasses,
+93,1282,,False,False,0,False,0,,,0,,,,,,Consent To Examination,
+69,1283,,False,False,0,False,0,,,0,,,,,,11223,
+69,1284,,False,False,0,False,0,,,0,,,,,,11235,
+69,1285,,False,False,0,False,0,,,0,,,,,,11234,
+69,1286,,False,False,0,False,0,,,0,,,,,,11229,
+69,1287,,False,False,0,False,0,,,0,,,,,,11204,
+69,1288,,False,False,0,False,0,,,0,,,,,,11214,
+69,1289,,False,False,0,False,0,,,0,,,,,,11219,
+69,1290,,False,False,0,False,0,,,0,,,,,,11209,
+69,1291,,False,False,0,False,0,,,0,,,,,,11233,
+500,1292,VF,False,False,0,False,0,,,0,,,,,,Visual Field,
+500,1293,OCT,False,False,0,False,0,,,0,,,,,,OCT,
+500,1294,FDSK,False,False,0,False,0,,,0,,,,,,Front Desk,
+66,1295,,False,False,0,False,0,,,0,,,,,,Grey 40%,
+66,1296,,False,False,0,False,0,,,0,,,,,,Grey 60%,
+66,1297,,False,False,0,False,0,,,0,,,,,,Brown 20%,
+66,1298,,False,False,0,False,0,,,0,,,,,,Brown 30%,
+66,1299,,False,False,0,False,0,,,0,,,,,,Brown 40%,
+66,1300,,False,False,0,False,0,,,0,,,,,,Brown 50%,
+66,1301,,False,False,0,False,0,,,0,,,,,,Blue 20%,
+66,1302,,False,False,0,False,0,,,0,,,,,,Blue 40%,
+204,1303,,False,False,0,False,0,,,0,,,,,,BF Executive,
+202,1304,,False,False,0,False,0,,,0,,,,,,Facebook ,
+202,1305,,False,False,0,False,0,,,0,,,,,,Web Site,
+202,1306,,False,False,0,False,0,,,0,,,,,,Radio,
+202,1307,,False,False,0,False,0,,,0,,,,,,TV,
+136,1308,,False,False,0,False,0,,,0,,,,,,Visa,
+136,1309,,False,False,0,False,0,,,0,,,,,,Mastercard,
+511,1310,,False,False,0,False,0,,,0,,,,,,Over/Short,
+512,1311,,False,False,0,True,0,,,0,,,,,,Physical Count Variance,
+512,1312,,False,False,0,True,0,,,0,,,,,,Order Cancelled,
+513,1313,N,False,False,0,False,0,,,0,,,,,,Insurance Discount,
+514,1314,N,False,False,0,False,0,,,0,,,,,,Contract,
+514,1315,N,False,False,0,False,0,,,0,,,,,,Plan Contract,
+515,1316,,False,False,0,False,0,,,0,,,,,,2 WK 6PK,
+515,1317,,False,False,0,False,0,,,0,,,,,,AV2 OPQ 6PK,
+515,1318,,False,False,0,False,0,,,0,,,,,,B3,
+515,1319,,False,False,0,False,0,,,0,,,,,,CPR HT 6PK,
+515,1320,,False,False,0,False,0,,,0,,,,,,H3,
+515,1321,,False,False,0,False,0,,,0,,,,,,OPT 38 DW,
+515,1322,,False,False,0,False,0,,,0,,,,,,PC COMPAT,
+515,1323,,False,False,0,False,0,,,0,,,,,,PCC TOR TRL,
+515,1324,,False,False,0,False,0,,,0,,,,,,SAF UV55 6PK,
+516,1325,en,False,False,0,True,2039,,,0,,,,en,English,English,False
+516,1326,es,False,False,0,True,2147,,,0,,,,es,Spanish; Castilian,Spanish,False
+201,1327,,False,False,0,True,0,,,0,,,,,,Lab Status-Cancelled,
+201,1328,,False,False,0,True,1775,,,0,,,,,,Picked Product for Job,
+201,1329,,False,False,0,True,1776,,,0,,,,,,Shipped to Location,
+201,1330,,False,False,0,True,1777,,,0,,,,,,Product Received,
+201,1331,,False,False,0,True,277,,,0,,,,,,Lab - Received,
+201,1332,,False,False,0,True,278,,,0,,,,,,Lab - Frame on Backorder,
+201,1333,,False,False,0,True,279,,,0,,,,,,Lab - Lens on Backorder,
+201,1334,,False,False,0,True,280,,,0,,,,,,Lab - Shipped,
+201,1335,,False,False,0,True,0,,,0,,,,,,Transmitted to lab,
+15,1336,,False,False,0,True,1774,,,0,,,,,,Applied Payment Adjustment,
+15,1337,,False,False,0,True,1770,,,0,,,,,,Contractual Adjustment - Tax,
+15,1338,,False,False,0,True,1771,,,0,,,,,,Return Adjustment,
+15,1339,,False,False,0,True,1274,,,0,,,,,,Contractual Adjustment,
+517,1340,,False,False,0,False,0,,,0,,,,,,No longer available,
+517,1341,,False,False,0,False,0,,,0,,,,,,No longer needed,
+518,1342,,False,False,0,False,0,,,0,,,,,,Dispenser Error,
+518,1343,,False,False,0,False,0,,,0,,,,,,Incorrect RX,
+518,1344,,False,False,0,False,0,,,0,,,,,,Incorrect PD,
+518,1345,,False,False,0,False,0,,,0,,,,,,Damaged Lens,
+518,1346,,False,False,0,False,0,,,0,,,,,,Lab Error,
+518,1347,,False,False,0,False,0,,,0,,,,,,Breakage – Warranty,
+518,1348,,False,False,0,False,0,,,0,,,,,,Decentration Off,
+518,1349,,False,False,0,False,0,,,0,,,,,,Lens Loose,
+518,1350,,False,False,0,False,0,,,0,,,,,,Dr.’s Change,
+81,1351,0,False,False,0,False,0,,,0,,,,,,CCR Import,
+81,1352,0,False,False,0,False,0,,,0,,,,,,CCD Import,
+81,1353,0,False,False,0,False,0,,,0,,,,,,Lab Results Import CCR,
+81,1354,0,False,False,0,False,0,,,0,,,,,,Lab Results Import CCD,
+81,1355,0,False,False,0,False,0,,,0,,,,,,Clinical Summary CCR,
+81,1356,0,False,False,0,False,0,,,0,,,,,,Patient Health History CCR,
+81,1357,0,False,False,0,False,0,,,0,,,,,,Internal Bulletin,
+45,1358,,False,False,0,True,0,,2,43,Plastic,,,,,Zyl,
+45,1359,,False,False,0,True,0,,4,43,Drilled Rimless,,,,,Drilled Rimless,
+45,1360,,False,False,0,True,0,,5,43,Grooved Rimless,,,,,Grooved Rimless,
+45,1361,,False,False,0,True,0,,1,43,Metal,,,,,Safety Metal,
+45,1362,,False,False,0,True,0,,2,43,Zyl,,,,,Safety ZYL,
+206,1363,,False,False,0,True,0,,BROW,17,Brown 1,,,,,Brown 1,
+206,1364,,False,False,0,True,0,,BROW2,17,Brown 2,,,,,Brown 2,
+206,1365,,False,False,0,True,0,,BROW3,17,Brown 3,,,,,Brown 3,
+206,1366,,False,False,0,True,0,,CRUXA,17,Crux A,,,,,Crux A,
+206,1367,,False,False,0,True,0,,CRUXX,17,Crux AX,,,,,Crux AX,
+206,1368,,False,False,0,True,0,,G15,17,G 15,,,,,G 15,
+206,1369,,False,False,0,True,0,,GRA1,17,Gray 1,,,,,Gray 1,
+206,1370,,False,False,0,True,0,,GRA2,17,Gray 2,,,,,Gray 2,
+206,1371,,False,False,0,True,0,,GRA3,17,Gray 3,,,,,Gray 3,
+206,1372,,False,False,0,True,0,,PINK1,17,Pink 1,,,,,Pink 1,
+206,1373,,False,False,0,True,0,,PINK2,17,Pink 2,,,,,Pink 2,
+206,1374,,False,False,0,True,0,,PINK3,17,Pink 3,,,,,Pink 3,
+206,1375,,False,False,0,True,0,,ROSE1,17,Rose 1,,,,,Rose 1,
+206,1376,,False,False,0,True,0,,ROSE2,17,Rose 2,,,,,Rose 2,
+206,1377,,False,False,0,True,0,,ROSE3,17,Rose 3,,,,,Rose 3,
+36,1378,,False,False,0,False,0,,,0,,,,,,EFT,
+519,1379,,False,False,0,True,0,,,0,,,,2135-2,Hispanic or Latino,Hispanic or Latino,
+519,1380,,False,False,0,True,0,,,0,,,,,,Native Hawaiian/Other Pacific Islander,
+519,1381,,False,False,0,True,0,,,0,,,,2186-5,Not Hispanic or Latino,Not Hispanic or Latino,
+4,1382,,False,False,0,False,0,,,0,,,,2076-8,Native Hawaiian or Other Pacific Islander,Native Hawaiian or Other Pacific Islander,
+524,1383,,False,False,0,False,0,,,0,,,,,,Standard,
+524,1384,,False,False,0,False,0,,,0,,,,,,Priority,
+524,1385,,False,False,0,False,0,,,0,,,,,,Two day,
+525,1386,,False,False,0,False,0,,,0,,,,,,Mail,
+525,1387,,False,False,0,False,0,,,0,,,,,,UPS,
+525,1388,,False,False,0,False,0,,,0,,,,,,FedEx,
+526,1389,DIS,False,False,0,False,0,,,0,,,,,,Distance,
+526,1390,,False,False,0,False,0,,,0,,,,,,Near,
+526,1391,,False,False,0,False,0,,,0,,,,,,High,
+526,1392,,False,False,0,False,0,,,0,,,,,,Low,
+527,1393,,False,False,0,True,1772,,,0,,,,,,Payment Reversal,
+527,1394,,False,False,0,True,1773,,,0,,,,,,Correct Payment Amount,
+530,1395,0,False,False,0,True,0,,,0,,,,,,Anterior segment consult,
+530,1396,0,False,False,0,True,0,,,0,,,,,,Cataract consult,
+530,1397,0,False,False,0,True,0,,,0,,,,,,Cataract surgery,
+530,1398,0,False,False,0,True,0,,,0,,,,,,Corneal consult,
+530,1399,0,False,False,0,True,0,,,0,,,,,,Conjunctival consult,
+530,1400,0,False,False,0,True,0,,,0,,,,,,Diabetic consult,
+530,1401,0,False,False,0,True,0,,,0,,,,,,Diabetic Retinopathy consult,
+530,1402,0,False,False,0,True,0,,,0,,,,,,Dry eye consult,
+530,1403,0,False,False,0,True,0,,,0,,,,,,Eyelid consult,
+530,1404,0,False,False,0,True,0,,,0,,,,,,Growth/Lesion consult,
+530,1405,0,False,False,0,True,0,,,0,,,,,,Macular consult,
+530,1406,0,False,False,0,True,0,,,0,,,,,,Vitreal consult,
+530,1407,0,False,False,0,True,0,,,0,,,,,,Retinal (vascular) consult,
+530,1408,0,False,False,0,True,0,,,0,,,,,,Retinal (hole) consult,
+530,1409,0,False,False,0,True,0,,,0,,,,,,Retinal (tear/detachment) consult,
+530,1410,0,False,False,0,True,0,,,0,,,,,,Refractive surgery consult,
+530,1411,0,False,False,0,True,0,,,0,,,,,,Refractive surgery,
+530,1412,0,False,False,0,True,0,,,0,,,,,,Vision Therapy consult,
+531,1413,,False,False,0,False,0,,,0,,,,,,Postal,
+531,1414,,False,False,0,False,0,,,0,,,,,,Email,
+531,1415,,False,False,0,False,0,,,0,,,,,,Telephone,
+206,1416,,False,False,0,True,0,,OTHER,17,Other (Indicate Tint Not Listed),,,,,Other (Indicate Tint Not Listed),
+39,1417,51,False,False,0,False,0,,,0,,,,,,51 Multiple Procedures,
+54,1418,,False,False,0,False,0,,,0,,,,,,Staten Island,
+207,1419,,False,False,0,False,0,,,0,,,,,,40%,
+207,1420,,False,False,0,False,0,,,0,,,,,,50%,
+207,1421,,False,False,0,False,0,,,0,,,,,,70%,
+88,1422,,False,False,0,False,0,,,0,,,,,,Refused,
+8,1423,,False,False,0,False,0,,,0,,,,,,Medical Office Magazine,
+8,1424,,False,False,0,False,0,,,0,,,,,,Radio,
+8,1425,,False,False,0,False,0,,,0,,,,,,TV,
+8,1426,,False,False,0,False,0,,,0,,,,,,Friend,
+15,1427,,False,False,0,True,0,,,0,,,,,,Insurance Refund,
+73,1428,,False,False,0,False,0,,,0,,,,,,Care Credit,
+518,1429,,False,False,0,False,0,,,0,,,,,,Progressive Non Adapt,
+39,1430,RB,False,False,0,False,0,,,0,,,,,,RB Replacement,
+518,1431,,False,False,0,False,0,,,0,,,,,,Changing Frame,
+518,1432,,False,False,0,False,0,,,0,,,,,,Doctors Error,
+518,1433,,False,False,0,False,0,,,0,,,,,,Patient Demand Change,
+8,1434,,False,False,0,False,0,,,0,,,,,,Living Social,
+8,1435,,False,False,0,False,0,,,0,,,,,,Groupon,
+81,1436,0,False,False,0,False,0,,,0,,,,,,Specular Microscopy,
+540,1437,Y4,False,False,0,False,0,,,0,,,,,,Property Casualty Claim Number,
+538,1438,454,False,False,0,False,0,,,0,,,,,,Initial Treatment,
+538,1439,304,False,False,0,False,0,,,0,,,,,,Latest Visit or Consultation,
+538,1440,453,False,False,0,False,0,,,0,,,,,,Acute Manifestation of a Chronic Conditi,
+538,1441,439,False,False,0,False,0,,,0,,,,,,Accident,
+538,1442,455,False,False,0,False,0,,,0,,,,,,Last X-ray,
+538,1443,471,False,False,0,False,0,,,0,,,,,,Prescription,
+538,1444,090,False,False,0,False,0,,,0,,,,,,Report Start (Assumed Care Date),
+538,1445,091,False,False,0,False,0,,,0,,,,,,Report End (Relinquished Care Date),
+538,1446,444,False,False,0,False,0,,,0,,,,,,First Visit Or Consultation,
+539,1447,DN,False,False,0,False,0,,,0,,,,,,Referring Provider,
+4,1448,zxx,False,False,0,True,1801,,,0,,,,,,Declined to Specify,False
+11,1449,CRY,False,False,0,True,0,,,0,,,,,,Crystal Blue,False
+11,1450,MAJ,False,False,0,True,0,,,0,,,,,,Majestic Blue,False
+11,1451,GRA,False,False,0,True,0,,,0,,,,,,Gray,False
+11,1452,RED,False,False,0,True,0,,,0,,,,,,Red,False
+11,1453,VIO,False,False,0,True,0,,,0,,,,,,Violet,False
+81,1454,0,False,False,0,False,0,,,0,,,,,,Amendment Accepted - Patient,False
+81,1455,0,False,False,0,False,0,,,0,,,,,,Amendment Denied - Patient,False
+81,1456,0,False,False,0,True,0,,,0,,,,,,CDA Import - Transition of Care,False
+81,1457,0,False,False,0,True,1641,,,0,,,,,,CDA Export - Clinical Summary,False
+81,1458,0,False,False,0,True,1642,,,0,,,,,,CDA Export - Transition of Care,False
+81,1459,0,False,False,0,False,0,,,0,,,,,,Receipt of Specialist Report,False
+81,1460,0,False,False,0,True,0,,,0,,,,,,Lab Results Import CDA,False
+81,1461,0,False,False,0,False,0,,,0,,,,,,Amendment Accepted - Representative,False
+81,1462,0,False,False,0,False,0,,,0,,,,,,Amendment Accepted - Other,False
+81,1463,0,False,False,0,False,0,,,0,,,,,,Amendment Denied - Representative,False
+81,1464,0,False,False,0,False,0,,,0,,,,,,Amendment Denied - Other,False
+200,1465,REA,False,False,0,True,0,,,0,,,,,,OTC Readers,False
+200,1466,CSV,False,False,0,True,0,,,0,,,,,,Computer Single Vision,False
+200,1467,COC,False,False,0,True,0,,,0,,,,,,Computer over Contacts,False
+200,1468,SUN,False,False,0,True,0,,,0,,,,,,Sunglasses,False
+200,1469,CMF,False,False,0,True,0,,,0,,,,,,Computer Multifocal,False
+200,1470,MOC,False,False,0,True,0,,,0,,,,,,Multifocal Over  Contacts,False
+200,1471,SAF,False,False,0,True,0,,,0,,,,,,Safety,False
+200,1472,SUM,False,False,0,True,0,,,0,,,,,,Sunglasses Multifocal,False
+214,1473,MLT,False,False,0,True,0,,,0,,,,,,Multifocal,False
+214,1474,SPT,False,False,0,True,0,,,0,,,,,,Sports,False
+214,1475,FRF,False,False,0,True,0,,,0,,,,,,Final Refraction Rx,False
+214,1476,MOD,False,False,0,True,0,,,0,,,,,,Monovision OD,False
+214,1477,MOS,False,False,0,True,0,,,0,,,,,,Monovision OS,False
+516,1478,zxx,False,False,0,True,1803,,,0,,,,zxx,Declined to Specify,Declined to Specify,False
+516,1479,aa,False,False,0,True,2000,,,0,,,,aa,Afar,Afar,True
+516,1480,ab,False,False,0,True,2001,,,0,,,,ab,Abkhazian,Abkhazian,True
+516,1481,af,False,False,0,True,2002,,,0,,,,af,Afrikaans,Afrikaans,True
+516,1482,ak,False,False,0,True,2003,,,0,,,,ak,Akan,Akan,True
+516,1483,sq,False,False,0,True,2004,,,0,,,,sq,Albanian,Albanian,True
+516,1484,am,False,False,0,True,2005,,,0,,,,am,Amharic,Amharic,True
+516,1485,ar,False,False,0,True,2006,,,0,,,,ar,Arabic,Arabic,True
+516,1486,an,False,False,0,True,2007,,,0,,,,an,Aragonese,Aragonese,True
+516,1487,hy,False,False,0,True,2008,,,0,,,,hy,Armenian,Armenian,True
+516,1488,as,False,False,0,True,2009,,,0,,,,as,Assamese,Assamese,True
+516,1489,av,False,False,0,True,2010,,,0,,,,av,Avaric,Avaric,True
+516,1490,ae,False,False,0,True,2011,,,0,,,,ae,Avestan,Avestan,True
+516,1491,ay,False,False,0,True,2012,,,0,,,,ay,Aymara,Aymara,True
+516,1492,az,False,False,0,True,2013,,,0,,,,az,Azerbaijani,Azerbaijani,True
+516,1493,ba,False,False,0,True,2014,,,0,,,,ba,Bashkir,Bashkir,True
+516,1494,bm,False,False,0,True,2015,,,0,,,,bm,Bambara,Bambara,True
+516,1495,eu,False,False,0,True,2016,,,0,,,,eu,Basque,Basque,True
+516,1496,be,False,False,0,True,2017,,,0,,,,be,Belarusian,Belarusian,True
+516,1497,bn,False,False,0,True,2018,,,0,,,,bn,Bengali,Bengali,True
+516,1498,bh,False,False,0,True,2019,,,0,,,,bh,Bihari languages,Bihari languages,True
+516,1499,bi,False,False,0,True,2020,,,0,,,,bi,Bislama,Bislama,True
+516,1500,bs,False,False,0,True,2021,,,0,,,,bs,Bosnian,Bosnian,True
+516,1501,br,False,False,0,True,2022,,,0,,,,br,Breton,Breton,True
+516,1502,bg,False,False,0,True,2023,,,0,,,,bg,Bulgarian,Bulgarian,True
+516,1503,my,False,False,0,True,2024,,,0,,,,my,Burmese,Burmese,True
+516,1504,ca,False,False,0,True,2025,,,0,,,,ca,Catalan; Valencian,Catalan; Valencian,True
+516,1505,ch,False,False,0,True,2026,,,0,,,,ch,Chamorro,Chamorro,True
+516,1506,che,False,False,0,True,2027,,,0,,,,che,Chechen,Chechen,True
+516,1507,zh,False,False,0,True,2028,,,0,,,,zh,Chinese,Chinese,True
+516,1508,cu,False,False,0,True,2029,,,0,,,,cu,Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic,Church Slavic; Old Slavonic; Church Slav,True
+516,1509,cv,False,False,0,True,2030,,,0,,,,cv,Chuvash,Chuvash,True
+516,1510,kw,False,False,0,True,2031,,,0,,,,kw,Cornish,Cornish,True
+516,1511,co,False,False,0,True,2032,,,0,,,,co,Corsican,Corsican,True
+516,1512,cr,False,False,0,True,2033,,,0,,,,cr,Cree,Cree,True
+516,1513,cs,False,False,0,True,2034,,,0,,,,cs,Czech,Czech,True
+516,1514,da,False,False,0,True,2035,,,0,,,,da,Danish,Danish,True
+516,1515,dv,False,False,0,True,2036,,,0,,,,dv,Divehi; Dhivehi; Maldivian,Divehi; Dhivehi; Maldivian,True
+516,1516,nl,False,False,0,True,2037,,,0,,,,nl,Dutch; Flemish,Dutch; Flemish,True
+516,1517,dz,False,False,0,True,2038,,,0,,,,dz,Dzongkha,Dzongkha,True
+516,1518,eo,False,False,0,True,2040,,,0,,,,eo,Esperanto,Esperanto,True
+516,1519,et,False,False,0,True,2041,,,0,,,,et,Estonian,Estonian,True
+516,1520,ee,False,False,0,True,2042,,,0,,,,ee,Ewe,Ewe,True
+516,1521,fo,False,False,0,True,2043,,,0,,,,fo,Faroese,Faroese,True
+516,1522,fj,False,False,0,True,2044,,,0,,,,fj,Fijian,Fijian,True
+516,1523,fi,False,False,0,True,2045,,,0,,,,fi,Finnish,Finnish,True
+516,1524,fr,False,False,0,True,2046,,,0,,,,fr,French,French,False
+516,1525,fy,False,False,0,True,2047,,,0,,,,fy,Western Frisian,Western Frisian,True
+516,1526,ff,False,False,0,True,2048,,,0,,,,ff,Fulah,Fulah,True
+516,1527,ka,False,False,0,True,2049,,,0,,,,ka,Georgian,Georgian,True
+516,1528,de,False,False,0,True,2050,,,0,,,,de,German,German,True
+516,1529,gd,False,False,0,True,2051,,,0,,,,gd,Gaelic; Scottish Gaelic,Gaelic; Scottish Gaelic,True
+516,1530,ga,False,False,0,True,2052,,,0,,,,ga,Irish,Irish,True
+516,1531,gl,False,False,0,True,2053,,,0,,,,gl,Galician,Galician,True
+516,1532,gv,False,False,0,True,2054,,,0,,,,gv,Manx,Manx,True
+516,1533,el,False,False,0,True,2055,,,0,,,,el,Greek, Modern (1453-),Greek, Modern (1453-),True
+516,1534,gn,False,False,0,True,2056,,,0,,,,gn,Guarani,Guarani,True
+516,1535,gu,False,False,0,True,2057,,,0,,,,gu,Gujarati,Gujarati,True
+516,1536,ht,False,False,0,True,2058,,,0,,,,ht,Haitian; Haitian Creole,Haitian; Haitian Creole,True
+516,1537,ha,False,False,0,True,2059,,,0,,,,ha,Hausa,Hausa,True
+516,1538,he,False,False,0,True,2060,,,0,,,,he,Hebrew,Hebrew,True
+516,1539,hz,False,False,0,True,2061,,,0,,,,hz,Herero,Herero,True
+516,1540,hi,False,False,0,True,2062,,,0,,,,hi,Hindi,Hindi,True
+516,1541,ho,False,False,0,True,2063,,,0,,,,ho,Hiri Motu,Hiri Motu,True
+516,1542,hr,False,False,0,True,2064,,,0,,,,hr,Croatian,Croatian,True
+516,1543,hu,False,False,0,True,2065,,,0,,,,hu,Hungarian,Hungarian,True
+516,1544,ig,False,False,0,True,2066,,,0,,,,ig,Igbo,Igbo,True
+516,1545,is,False,False,0,True,2067,,,0,,,,is,Icelandic,Icelandic,True
+516,1546,io,False,False,0,True,2068,,,0,,,,io,Ido,Ido,True
+516,1547,ii,False,False,0,True,2069,,,0,,,,ii,Sichuan Yi; Nuosu,Sichuan Yi; Nuosu,True
+516,1548,iu,False,False,0,True,2070,,,0,,,,iu,Inuktitut,Inuktitut,True
+516,1549,ie,False,False,0,True,2071,,,0,,,,ie,Interlingue; Occidental,Interlingue; Occidental,True
+516,1550,ia,False,False,0,True,2072,,,0,,,,ia,Interlingua (International Auxiliary Language Association),Interlingua (International Auxiliary Lan,True
+516,1551,id,False,False,0,True,2073,,,0,,,,id,Indonesian,Indonesian,True
+516,1552,ik,False,False,0,True,2074,,,0,,,,ik,Inupiaq,Inupiaq,True
+516,1553,it,False,False,0,True,2075,,,0,,,,it,Italian,Italian,True
+516,1554,jv,False,False,0,True,2076,,,0,,,,jv,Javanese,Javanese,True
+516,1555,ja,False,False,0,True,2077,,,0,,,,ja,Japanese,Japanese,False
+516,1556,kl,False,False,0,True,2078,,,0,,,,kl,Kalaallisut; Greenlandic,Kalaallisut; Greenlandic,True
+516,1557,kn,False,False,0,True,2079,,,0,,,,kn,Kannada,Kannada,True
+516,1558,ks,False,False,0,True,2080,,,0,,,,ks,Kashmiri,Kashmiri,True
+516,1559,kr,False,False,0,True,2081,,,0,,,,kr,Kanuri,Kanuri,True
+516,1560,kk,False,False,0,True,2082,,,0,,,,kk,Kazakh,Kazakh,True
+516,1561,km,False,False,0,True,2083,,,0,,,,km,Central Khmer,Central Khmer,True
+516,1562,ki,False,False,0,True,2084,,,0,,,,ki,Kikuyu; Gikuyu,Kikuyu; Gikuyu,True
+516,1563,rw,False,False,0,True,2085,,,0,,,,rw,Kinyarwanda,Kinyarwanda,True
+516,1564,ky,False,False,0,True,2086,,,0,,,,ky,Kirghiz; Kyrgyz,Kirghiz; Kyrgyz,True
+516,1565,kv,False,False,0,True,2087,,,0,,,,kv,Komi,Komi,True
+516,1566,kg,False,False,0,True,2088,,,0,,,,kg,Kongo,Kongo,True
+516,1567,ko,False,False,0,True,2089,,,0,,,,ko,Korean,Korean,True
+516,1568,kj,False,False,0,True,2090,,,0,,,,kj,Kuanyama; Kwanyama,Kuanyama; Kwanyama,True
+516,1569,ku,False,False,0,True,2091,,,0,,,,ku,Kurdish,Kurdish,True
+516,1570,lo,False,False,0,True,2092,,,0,,,,lo,Lao,Lao,True
+516,1571,la,False,False,0,True,2093,,,0,,,,la,Latin,Latin,True
+516,1572,lv,False,False,0,True,2094,,,0,,,,lv,Latvian,Latvian,True
+516,1573,li,False,False,0,True,2095,,,0,,,,li,Limburgan; Limburger; Limburgish,Limburgan; Limburger; Limburgish,True
+516,1574,ln,False,False,0,True,2096,,,0,,,,ln,Lingala,Lingala,True
+516,1575,lt,False,False,0,True,2097,,,0,,,,lt,Lithuanian,Lithuanian,True
+516,1576,lb,False,False,0,True,2098,,,0,,,,lb,Luxembourgish; Letzeburgesch,Luxembourgish; Letzeburgesch,True
+516,1577,lu,False,False,0,True,2099,,,0,,,,lu,Luba-Katanga,Luba-Katanga,True
+516,1578,lg,False,False,0,True,2100,,,0,,,,lg,Ganda,Ganda,True
+516,1579,mk,False,False,0,True,2101,,,0,,,,mk,Macedonian,Macedonian,True
+516,1580,mh,False,False,0,True,2102,,,0,,,,mh,Marshallese,Marshallese,True
+516,1581,ml,False,False,0,True,2103,,,0,,,,ml,Malayalam,Malayalam,True
+516,1582,mi,False,False,0,True,2104,,,0,,,,mi,Maori,Maori,True
+516,1583,mr,False,False,0,True,2105,,,0,,,,mr,Marathi,Marathi,True
+516,1584,ms,False,False,0,True,2106,,,0,,,,ms,Malay,Malay,True
+516,1585,mg,False,False,0,True,2107,,,0,,,,mg,Malagasy,Malagasy,True
+516,1586,mt,False,False,0,True,2108,,,0,,,,mt,Maltese,Maltese,True
+516,1587,mn,False,False,0,True,2109,,,0,,,,mn,Mongolian,Mongolian,True
+516,1588,na,False,False,0,True,2110,,,0,,,,na,Nauru,Nauru,True
+516,1589,nv,False,False,0,True,2111,,,0,,,,nv,Navajo; Navaho,Navajo; Navaho,True
+516,1590,nr,False,False,0,True,2112,,,0,,,,nr,Ndebele, South; South Ndebele,Ndebele, South; South Ndebele,True
+516,1591,nd,False,False,0,True,2113,,,0,,,,nd,Ndebele, North; North Ndebele,Ndebele, North; North Ndebele,True
+516,1592,ng,False,False,0,True,2114,,,0,,,,ng,Ndonga,Ndonga,True
+516,1593,ne,False,False,0,True,2115,,,0,,,,ne,Nepali,Nepali,True
+516,1594,nn,False,False,0,True,2116,,,0,,,,nn,Norwegian Nynorsk; Nynorsk, Norwegian,Norwegian Nynorsk; Nynorsk, Norwegian,True
+516,1595,nb,False,False,0,True,2117,,,0,,,,nb,Bokmål, Norwegian; Norwegian Bokmål,Bokmål, Norwegian; Norwegian Bokmål,True
+516,1596,no,False,False,0,True,2118,,,0,,,,no,Norwegian,Norwegian,True
+516,1597,ny,False,False,0,True,2119,,,0,,,,ny,Chichewa; Chewa; Nyanja,Chichewa; Chewa; Nyanja,True
+516,1598,oc,False,False,0,True,2120,,,0,,,,oc,Occitan (post 1500),Occitan (post 1500); Provençal,True
+516,1599,oj,False,False,0,True,2121,,,0,,,,oj,Ojibwa,Ojibwa,True
+516,1600,or,False,False,0,True,2122,,,0,,,,or,Oriya,Oriya,True
+516,1601,om,False,False,0,True,2123,,,0,,,,om,Oromo,Oromo,True
+516,1602,os,False,False,0,True,2124,,,0,,,,os,Ossetian; Ossetic,Ossetian; Ossetic,True
+516,1603,pa,False,False,0,True,2125,,,0,,,,pa,Panjabi; Punjabi,Panjabi; Punjabi,True
+516,1604,fa,False,False,0,True,2126,,,0,,,,fa,Persian,Persian,True
+516,1605,pi,False,False,0,True,2127,,,0,,,,pi,Pali,Pali,True
+516,1606,pl,False,False,0,True,2128,,,0,,,,pl,Polish,Polish,True
+516,1607,pt,False,False,0,True,2129,,,0,,,,pt,Portuguese,Portuguese,True
+516,1608,ps,False,False,0,True,2130,,,0,,,,ps,Pushto; Pashto,Pushto; Pashto,True
+516,1609,qu,False,False,0,True,2131,,,0,,,,qu,Quechua,Quechua,True
+516,1610,rm,False,False,0,True,2132,,,0,,,,rm,Romansh,Romansh,True
+516,1611,ro,False,False,0,True,2133,,,0,,,,ro,Romanian; Moldavian; Moldovan,Romanian; Moldavian; Moldovan,True
+516,1612,rn,False,False,0,True,2134,,,0,,,,rn,Rundi,Rundi,True
+516,1613,ru,False,False,0,True,2135,,,0,,,,ru,Russian,Russian,True
+516,1614,sg,False,False,0,True,2136,,,0,,,,sg,Sango,Sango,True
+516,1615,sa,False,False,0,True,2137,,,0,,,,sa,Sanskrit,Sanskrit,True
+516,1616,si,False,False,0,True,2138,,,0,,,,si,Sinhala; Sinhalese,Sinhala; Sinhalese,True
+516,1617,sk,False,False,0,True,2139,,,0,,,,sk,Slovak,Slovak,True
+516,1618,sl,False,False,0,True,2140,,,0,,,,sl,Slovenian,Slovenian,True
+516,1619,se,False,False,0,True,2141,,,0,,,,se,Northern Sami,Northern Sami,True
+516,1620,sm,False,False,0,True,2142,,,0,,,,sm,Samoan,Samoan,True
+516,1621,sn,False,False,0,True,2143,,,0,,,,sn,Shona,Shona,True
+516,1622,sd,False,False,0,True,2144,,,0,,,,sd,Sindhi,Sindhi,True
+516,1623,so,False,False,0,True,2145,,,0,,,,so,Somali,Somali,True
+516,1624,st,False,False,0,True,2146,,,0,,,,st,Sotho, Southern,Sotho, Southern,True
+516,1625,sc,False,False,0,True,2148,,,0,,,,sc,Sardinian,Sardinian,True
+516,1626,sr,False,False,0,True,2149,,,0,,,,sr,Serbian,Serbian,True
+516,1627,ss,False,False,0,True,2150,,,0,,,,ss,Swati,Swati,True
+516,1628,su,False,False,0,True,2151,,,0,,,,su,Sundanese,Sundanese,True
+516,1629,sw,False,False,0,True,2152,,,0,,,,sw,Swahili,Swahili,True
+516,1630,sv,False,False,0,True,2153,,,0,,,,sv,Swedish,Swedish,True
+516,1631,ty,False,False,0,True,2154,,,0,,,,ty,Tahitian,Tahitian,True
+516,1632,ta,False,False,0,True,2155,,,0,,,,ta,Tamil,Tamil,True
+516,1633,tt,False,False,0,True,2156,,,0,,,,tt,Tatar,Tatar,True
+516,1634,te,False,False,0,True,2157,,,0,,,,te,Telugu,Telugu,True
+516,1635,tg,False,False,0,True,2158,,,0,,,,tg,Tajik,Tajik,True
+516,1636,tl,False,False,0,True,2159,,,0,,,,tl,Tagalog,Tagalog,True
+516,1637,th,False,False,0,True,2160,,,0,,,,th,Thai,Thai,True
+516,1638,bo,False,False,0,True,2161,,,0,,,,bo,Tibetan,Tibetan,True
+516,1639,ti,False,False,0,True,2162,,,0,,,,ti,Tigrinya,Tigrinya,True
+516,1640,to,False,False,0,True,2163,,,0,,,,to,Tonga (Tonga Islands),Tonga (Tonga Islands),True
+516,1641,tn,False,False,0,True,2164,,,0,,,,tn,Tswana,Tswana,True
+516,1642,ts,False,False,0,True,2165,,,0,,,,ts,Tsonga,Tsonga,True
+516,1643,tk,False,False,0,True,2166,,,0,,,,tk,Turkmen,Turkmen,True
+516,1644,tr,False,False,0,True,2167,,,0,,,,tr,Turkish,Turkish,True
+516,1645,tw,False,False,0,True,2168,,,0,,,,tw,Twi,Twi,True
+516,1646,ug,False,False,0,True,2169,,,0,,,,ug,Uighur; Uyghur,Uighur; Uyghur,True
+516,1647,uk,False,False,0,True,2170,,,0,,,,uk,Ukrainian,Ukrainian,True
+516,1648,ur,False,False,0,True,2171,,,0,,,,ur,Urdu,Urdu,True
+516,1649,uz,False,False,0,True,2172,,,0,,,,uz,Uzbek,Uzbek,True
+516,1650,ve,False,False,0,True,2173,,,0,,,,ve,Venda,Venda,True
+516,1651,vi,False,False,0,True,2174,,,0,,,,vi,Vietnamese,Vietnamese,True
+516,1652,vo,False,False,0,True,2175,,,0,,,,vo,Volapük,Volapük,True
+516,1653,cy,False,False,0,True,2176,,,0,,,,cy,Welsh,Welsh,True
+516,1654,wa,False,False,0,True,2177,,,0,,,,wa,Walloon,Walloon,True
+516,1655,wo,False,False,0,True,2178,,,0,,,,wo,Wolof,Wolof,True
+516,1656,xh,False,False,0,True,2179,,,0,,,,xh,Xhosa,Xhosa,True
+516,1657,yi,False,False,0,True,2180,,,0,,,,yi,Yiddish,Yiddish,True
+516,1658,yo,False,False,0,True,2181,,,0,,,,yo,Yoruba,Yoruba,True
+516,1659,za,False,False,0,True,2182,,,0,,,,za,Zhuang; Chuang,Zhuang; Chuang,True
+516,1660,zu,False,False,0,True,2183,,,0,,,,zu,Zulu,Zulu,True
+519,1661,zxx,False,False,0,True,1802,,,0,,,,ASKU,Declined to Specify,Declined to Specify,False
+532,1662,,False,False,0,True,1900,,,0,,,,,,Problem/Diagnosis,False
+532,1663,,False,False,0,True,1901,,,0,,,,,,Procedure,False
+532,1664,,False,False,0,True,1902,,,0,,,,,,Family History,False
+532,1665,,False,False,0,True,1903,,,0,,,,,,Medications,False
+532,1666,,False,False,0,True,1904,,,0,,,,,,Lab Specimens,False
+533,1667,,False,False,0,False,0,,,0,,,,BRO,Brother,Brother,False
+533,1668,,False,False,0,False,0,,,0,,,,CGV,Care Giver,Care Giver,False
+533,1669,,False,False,0,False,0,,,0,,,,FCH,Foster Child,Foster Child,False
+533,1670,,False,False,0,False,0,,,0,,,,FTH,Father,Father,False
+533,1671,,False,False,0,False,0,,,0,,,,GRD,Guardian,Guardian,False
+533,1672,,False,False,0,False,0,,,0,,,,GRP,Grandparent,Grandparent,False
+533,1673,,False,False,0,False,0,,,0,,,,MTH,Mother,Mother,False
+533,1674,,False,False,0,False,0,,,0,,,,OTH,Other,Other,False
+533,1675,,False,False,0,False,0,,,0,,,,PAR,Parent,Parent,False
+533,1676,,False,False,0,False,0,,,0,,,,SCH,Stepchild,Stepchild,False
+533,1677,,False,False,0,False,0,,,0,,,,SEL,Self,Self,False
+533,1678,,False,False,0,False,0,,,0,,,,SIB,Sibling,Sibling,False
+533,1679,,False,False,0,False,0,,,0,,,,SIS,Sister,Sister,False
+533,1680,,False,False,0,False,0,,,0,,,,SPO,Spouse,Spouse,False
+534,1681,,False,False,0,False,0,,,0,,,,LT,Left Thigh,Left Thigh,False
+534,1682,,False,False,0,False,0,,,0,,,,LA,Left Arm,Left Arm,False
+534,1683,,False,False,0,False,0,,,0,,,,LD,Left Deltoid,Left Deltoid,False
+534,1684,,False,False,0,False,0,,,0,,,,LG,Left Gluteous Medius,Left Gluteous Medius,False
+534,1685,,False,False,0,False,0,,,0,,,,LVL,Left Vastus Lateralis,Left Vastus Lateralis,False
+534,1686,,False,False,0,False,0,,,0,,,,LLFA,Left Lower Forearm,Left Lower Forearm,False
+534,1687,,False,False,0,False,0,,,0,,,,RA,Right Arm,Right Arm,False
+534,1688,,False,False,0,False,0,,,0,,,,RT,Right Thigh,Right Thigh,False
+534,1689,,False,False,0,False,0,,,0,,,,RVL,Right Vastus Lateralis,Right Vastus Lateralis,False
+534,1690,,False,False,0,False,0,,,0,,,,RG,Right Gluteous Medius,Right Gluteous Medius,False
+534,1691,,False,False,0,False,0,,,0,,,,RD,Right Deltoid,Right Deltoid,False
+534,1692,,False,False,0,False,0,,,0,,,,RLFA,Right Lower Forearm,Right Lower Forearm,False
+535,1693,AB,False,False,0,False,0,,,0,,,,AB,Abbott Laboratories,Abbot Laboratories,False
+535,1694,ACA,False,False,0,False,0,,,0,,,,ACA,Acambis, Inc,Acambis, Inc,False
+535,1695,AD,False,False,0,False,0,,,0,,,,AD,Adams Laboratories, Inc.,Adams Laboratories, Inc.,False
+535,1696,AKR,False,False,0,False,0,,,0,,,,AKR,Akorn, Inc,Akorn, Inc,False
+535,1697,,False,False,0,False,0,,,0,,,,ALP,Alpha Therapeutic Corporation,Alpha Therapeutic Corporation,False
+535,1698,,False,False,0,False,0,,,0,,,,AR,Armour,Armour,False
+535,1699,,False,False,0,False,0,,,0,,,,AVB,Aventis Behring L.L.C.,Aventis Behring L.L.C.,False
+535,1700,,False,False,0,False,0,,,0,,,,AVI,Aviron,Aviron,False
+535,1701,,False,False,0,False,0,,,0,,,,BRR,Barr Laboratories,Barr Laboratories,False
+535,1702,,False,False,0,False,0,,,0,,,,BAH,Baxter Healthcare Corporation,Baxter Healthcare Corporation,False
+535,1703,,False,False,0,False,0,,,0,,,,BA,Baxter Healthcare Corporation-inactive,Baxter Healthcare Corporation-inactive,False
+535,1704,,False,False,0,False,0,,,0,,,,BAY,Bayer Corporation,Bayer Corporation,False
+535,1705,,False,False,0,False,0,,,0,,,,BP,Berna Products,Berna Products,False
+535,1706,,False,False,0,False,0,,,0,,,,BPC,Berna Products Corporation,Berna Products Corporation,False
+535,1707,,False,False,0,False,0,,,0,,,,BTP,Biotest Pharmaceuticals Corporation,Biotest Pharmaceuticals Corporation,False
+535,1708,,False,False,0,False,0,,,0,,,,CNJ,Cangene Corporation,Cangene Corporation,False
+535,1709,,False,False,0,False,0,,,0,,,,CMP,Celltech Medeva Pharmaceuticals,Celltech Medeva Pharmaceuticals,False
+535,1710,,False,False,0,False,0,,,0,,,,CEN,Centeon L.L.C.,Centeon L.L.C.,False
+535,1711,,False,False,0,False,0,,,0,,,,CHI,Chiron Corporation,Chiron Corporation,False
+535,1712,,False,False,0,False,0,,,0,,,,CON,Connaught,Connaught,False
+535,1713,,False,False,0,False,0,,,0,,,,CSL,CSL Behring, Inc,CSL Behring, Inc,False
+535,1714,,False,False,0,False,0,,,0,,,,DVC,DynPort Vaccine Company, LLC,DynPort Vaccine Company, LLC,False
+535,1715,,False,False,0,False,0,,,0,,,,MIP,Emergent BioDefense Operations Lansing,Emergent BioDefense Operations Lansing,False
+535,1716,,False,False,0,False,0,,,0,,,,EVN,Evans Medical Limited,Evans Medical Limited,False
+535,1717,,False,False,0,False,0,,,0,,,,GEO,GeoVax Labs, Inc.,GeoVax Labs, Inc.,False
+535,1718,,False,False,0,False,0,,,0,,,,SKB,GlaxoSmithKline,GlaxoSmithKline,False
+535,1719,,False,False,0,False,0,,,0,,,,GRE,Greer Laboratories, Inc.,Greer Laboratories, Inc.,False
+535,1720,,False,False,0,False,0,,,0,,,,IAG,Immuno International AG,Immuno International AG,False
+535,1721,,False,False,0,False,0,,,0,,,,IUS,Immuno-U.S., Inc.,Immuno-U.S., Inc.,False
+535,1722,,False,False,0,False,0,,,0,,,,INT,Intercell Biomedical,Intercell Biomedical,False
+535,1723,,False,False,0,False,0,,,0,,,,JNJ,Johnson and Johnson,Johnson and Johnson,False
+535,1724,,False,False,0,False,0,,,0,,,,KGC,Korea Green Cross Corporation,Korea Green Cross Corporation,False
+535,1725,,False,False,0,False,0,,,0,,,,LED,Lederle,Lederle,False
+535,1726,,False,False,0,False,0,,,0,,,,MBL,Massachusetts Biologic Laboratories,Massachusetts Biologic Laboratories,False
+535,1727,,False,False,0,False,0,,,0,,,,MA,Massachusetts Public Health Biologic Laboratories,Massachusetts Public Health Biologic Lab,False
+535,1728,,False,False,0,False,0,,,0,,,,MED,MedImmune, Inc.,MedImmune, Inc.,False
+535,1729,,False,False,0,False,0,,,0,,,,MSD,Merck & Co., Inc.,Merck & Co., Inc.,False
+535,1730,,False,False,0,False,0,,,0,,,,IM,Merieux,Merieux,False
+535,1731,,False,False,0,False,0,,,0,,,,MIL,Miles,Miles,False
+535,1732,,False,False,0,False,0,,,0,,,,NAB,NABI,NABI,False
+535,1733,,False,False,0,False,0,,,0,,,,NYB,New York Blood Center,New York Blood Center,False
+535,1734,,False,False,0,False,0,,,0,,,,NAV,North American Vaccine, Inc.,North American Vaccine, Inc.,False
+535,1735,,False,False,0,False,0,,,0,,,,NOV,Novartis Pharmaceutical Corporation,Novartis Pharmaceutical Corporation,False
+535,1736,,False,False,0,False,0,,,0,,,,NVX,Novavax, Inc.,Novavax, Inc.,False
+535,1737,,False,False,0,False,0,,,0,,,,OTC,Organon Teknika Corporation,Organon Teknika Corporation,False
+535,1738,,False,False,0,False,0,,,0,,,,ORT,Ortho-clinical Diagnostics,Ortho-clinical Diagnostics,False
+535,1739,,False,False,0,False,0,,,0,,,,OTH,Other manufacturer,Other manufacturer,False
+535,1740,,False,False,0,False,0,,,0,,,,PD,Parkedale Pharmaceuticals,Parkedale Pharmaceuticals,False
+535,1741,,False,False,0,False,0,,,0,,,,PFR,Pfizer, Inc,Pfizer, Inc,False
+535,1742,,False,False,0,False,0,,,0,,,,PWJ,PowderJect Pharmaceuticals,PowderJect Pharmaceuticals,False
+535,1743,,False,False,0,False,0,,,0,,,,PRX,Praxis Biologics,Praxis Biologics,False
+535,1744,,False,False,0,False,0,,,0,,,,PMC,sanofi pasteur,sanofi pasteur,False
+535,1745,,False,False,0,False,0,,,0,,,,SCL,Sclavo, Inc.,Sclavo, Inc.,False
+535,1746,,False,False,0,False,0,,,0,,,,SOL,Solvay Pharmaceuticals,Solvay Pharmaceuticals,False
+535,1747,,False,False,0,False,0,,,0,,,,SI,Swiss Serum and Vaccine Inst.,Swiss Serum and Vaccine Inst.,False
+535,1748,,False,False,0,False,0,,,0,,,,TAL,Talecris Biotherapeutics,Talecris Biotherapeutics,False
+535,1749,,False,False,0,False,0,,,0,,,,JPN,The Research Foundation for Microbial Diseases of Osaka University (BIKEN),The Research Foundation for Microbial Di,False
+535,1750,,False,False,0,False,0,,,0,,,,USA,United States Army Medical Research and Material Command,United States Army Medical Research and ,False
+535,1751,,False,False,0,False,0,,,0,,,,UNK,Unknown manufacturer,Unknown manufacturer,False
+535,1752,,False,False,0,False,0,,,0,,,,VXG,VaxGen,VaxGen,False
+535,1753,,False,False,0,False,0,,,0,,,,WAL,Wyeth,Wyeth,False
+535,1754,,False,False,0,False,0,,,0,,,,WA,Wyeth-Ayerst,Wyeth-Ayerst,False
+535,1755,,False,False,0,False,0,,,0,,,,ZLB,ZLB Behring,ZLB Behring,False
+536,1756,MU2,False,False,0,False,0,,,0,,,,,,Meaningful Use Stage 2,False
+537,1757,1,False,False,0,False,0,,,0,,,,,,Eastern,False
+537,1758,2,False,False,0,False,0,,,0,,,,,,Pacific,False
+537,1759,3,False,False,0,False,0,,,0,,,,,,Mountain,False
+537,1760,4,False,False,0,False,0,,,0,,,,,,Mountain-Phoenix,False
+537,1761,5,False,False,0,False,0,,,0,,,,,,Central,False
+537,1762,6,False,False,0,False,0,,,0,,,,,,Atlantic,False
+537,1763,7,False,False,0,False,0,,,0,,,,,,Alaska,False
+537,1764,8,False,False,0,False,0,,,0,,,,,,Hawaii-Aleutian,False
+539,1765,DK,False,False,0,False,0,,,0,,,,,,Ordering Provider,False
+39,1766,53,False,False,0,False,0,,,0,,,,,,Discontinued Procedure,
+39,1767,54,False,False,0,False,0,,,0,,,,,,Surgical Care Only,
+39,1768,58,False,False,0,False,0,,,0,,,,,,Staged or Related Procedure by same Dr.,
+39,1769,59,False,False,0,False,0,,,0,,,,,,Distinct Procedural Service,
+39,1770,62,False,False,0,False,0,,,0,,,,,,Two Primary Surgeons,
+39,1771,66,False,False,0,False,0,,,0,,,,,,Surgical Team,
+39,1772,73,False,False,0,False,0,,,0,,,,,,Disc. Out-patient Proc before Anesthesia,
+39,1773,74,False,False,0,False,0,,,0,,,,,,Disc. Out-patient Proc after Anesthesia,
+39,1774,77,False,False,0,False,0,,,0,,,,,,Repeat Procedure by Another Dr,
+39,1775,78,False,False,0,False,0,,,0,,,,,,Unplanned Return to Oper Rm same Dr,
+39,1776,79,False,False,0,False,0,,,0,,,,,,Unrelated Procedure by Same Dr,
+39,1777,80,False,False,0,False,0,,,0,,,,,,Assistant Surgeon,
+39,1778,81,False,False,0,False,0,,,0,,,,,,Minimum Assistant Surgeon,
+39,1779,82,False,False,0,False,0,,,0,,,,,,Assistant Surgeon,
+39,1780,8P,False,False,0,False,0,,,0,,,,,,Performance Measure Exclusion 4,
+39,1781,90,False,False,0,False,0,,,0,,,,,,Reference (Outside) Laboratory,
+39,1782,91,False,False,0,False,0,,,0,,,,,,Repeat Clinical Diagnostic Lab Test,
+39,1783,92,False,False,0,False,0,,,0,,,,,,Alternative Lab Platform Testing,
+200,1784,BIF,False,False,0,False,0,,,0,,,,,,Bifocal,False
+200,1785,TRI,False,False,0,False,0,,,0,,,,,,Trifocal,False
+200,1786,PAL,False,False,0,False,0,,,0,,,,,,Progressive,False
+541,1787,AGP,False,False,0,False,0,,,0,,,,,,Aspheric GP,False
+541,1788,CRP,False,False,0,False,0,,,0,,,,,,Corneal Reshaping,False
+541,1789,KGP,False,False,0,False,0,,,0,,,,,,Keratoconus GP,False
+541,1790,PGP,False,False,0,False,0,,,0,,,,,,Progressive Multifocal GP,False
+541,1791,RGP,False,False,0,False,0,,,0,,,,,,Reverse Geometry GP,False
+541,1792,SGP,False,False,0,False,0,,,0,,,,,,Scleral GP,False
+541,1793,SPP,False,False,0,False,0,,,0,,,,,,Spherical GP,False
+541,1794,TGP,False,False,0,False,0,,,0,,,,,,Toric GP,False
+541,1795,TBP,False,False,0,False,0,,,0,,,,,,Translating Bifocal GP,False
+541,1796,THP,False,False,0,False,0,,,0,,,,,,Trifocal/Hybrid GP,False
+5,1797,17,False,False,0,True,0,,,0,,,,,,Dental Maintenance Organization,
+5,1798,FI,False,False,0,True,0,,,0,,,,,,Federal Employees Program,
+5,1799,MA,False,False,1,True,0,,,0,,,,,,Medicare Part A,
+59,1800,21,False,False,0,True,0,,,0,,,,,,Other,
+59,1801,20,False,False,0,True,0,,,0,,,,,,Life Partner,
+59,1802,12,False,False,0,True,0,,,0,,,,,,Cadaver Donor,
+59,1803,11,False,False,0,True,0,,,0,,,,,,Organ Donor,
+411,1804,47,False,False,0,True,0,,,0,,,,,,Other Liability Insurance,
+411,1805,43,False,False,0,True,0,,,0,,,,,,Disabled Beneficiary with LGHP,
+411,1806,42,False,False,0,True,0,,,0,,,,,,Veteran's Administration,
+411,1807,41,False,False,0,True,0,,,0,,,,,,Black Lung,
+411,1808,16,False,False,0,True,0,,,0,,,,,,Public Health Service,
+411,1809,15,False,False,0,True,0,,,0,,,,,,Worker's Compensation,
+411,1810,14,False,False,0,True,0,,,0,,,,,,No-fault Insurance,
+411,1811,13,False,False,0,True,0,,,0,,,,,,End-Stage Renal Disease Beneficiary,
+411,1812,12,False,False,0,True,0,,,0,,,,,,Working Aged Beneficiary or Spouse Emplr,
+501,1813,P4,False,False,0,True,0,,,0,,,,,,Pathology Report,
+501,1814,LA,False,False,0,True,0,,,0,,,,,,Laboratory Results,
+501,1815,M1,False,False,0,True,0,,,0,,,,,,Medical Record Attachment,
+501,1816,OC,False,False,0,True,0,,,0,,,,,,Oxygen Content Averaging Report,
+501,1817,OD,False,False,0,True,0,,,0,,,,,,Orders and Treatments Document,
+501,1818,OX,False,False,0,True,0,,,0,,,,,,Oxygen Therapy Certification,
+501,1819,V5,False,False,0,True,0,,,0,,,,,,Death Notification,
+501,1820,P5,False,False,0,True,0,,,0,,,,,,Patient Medical History Document,
+501,1821,PE,False,False,0,True,0,,,0,,,,,,Parenteral or Enteral Certification,
+501,1822,PY,False,False,0,True,0,,,0,,,,,,Physician's Report,
+501,1823,SG,False,False,0,True,0,,,0,,,,,,Symptoms Document,
+501,1824,IR,False,False,0,True,0,,,0,,,,,,State School Immunication Records,
+501,1825,PQ,False,False,0,True,0,,,0,,,,,,Paramedical Results,
+501,1826,XP,False,False,0,True,0,,,0,,,,,,Photographs,
+501,1827,OE,False,False,0,True,0,,,0,,,,,,Objective Physical Exam Document,
+501,1828,10,False,False,0,True,0,,,0,,,,,,Continued Treatment,
+501,1829,RX,False,False,0,True,0,,,0,,,,,,Renewable Oxygen Content Report,
+501,1830,15,False,False,0,True,0,,,0,,,,,,Justification for Admission,
+501,1831,I5,False,False,0,True,0,,,0,,,,,,Immunization Record,
+501,1832,21,False,False,0,True,0,,,0,,,,,,Recovery Plan,
+501,1833,BT,False,False,0,True,0,,,0,,,,,,Blanket Test Results,
+501,1834,A4,False,False,0,True,0,,,0,,,,,,Autopsy Report,
+501,1835,BS,False,False,0,True,0,,,0,,,,,,Baseline,
+501,1836,BR,False,False,0,True,0,,,0,,,,,,Benchmark Testing Results,
+501,1837,B4,False,False,0,True,0,,,0,,,,,,Referral Form,
+501,1838,13,False,False,0,True,0,,,0,,,,,,Certified Test Report,
+501,1839,11,False,False,0,True,0,,,0,,,,,,Chemical Analysis,
+501,1840,A3,False,False,0,True,0,,,0,,,,,,Allergies/Sensitivities Document,
+501,1841,AM,False,False,0,True,0,,,0,,,,,,Ambulance Certification,
+501,1842,CK,False,False,0,True,0,,,0,,,,,,Consent Forms,
+501,1843,HR,False,False,0,True,0,,,0,,,,,,Health Clinic Records,
+501,1844,HC,False,False,0,True,0,,,0,,,,,,Health Certificate,
+501,1845,DJ,False,False,0,True,0,,,0,,,,,,Discharge Monitoring Report,
+501,1846,B3,False,False,0,True,0,,,0,,,,,,Physician Order,
+501,1847,D2,False,False,0,True,0,,,0,,,,,,Drug Profile Document,
+501,1848,09,False,False,0,True,0,,,0,,,,,,Progress Report,
+501,1849,CB,False,False,0,True,0,,,0,,,,,,Chiropractic Justification,
+501,1850,03,False,False,0,True,0,,,0,,,,,,Report Justifying Treatment Beyond,
+501,1851,04,False,False,0,True,0,,,0,,,,,,Drugs Administered,
+501,1852,05,False,False,0,True,0,,,0,,,,,,Treatment Diagnosis,
+501,1853,06,False,False,0,True,0,,,0,,,,,,Initial Assessment,
+501,1854,07,False,False,0,True,0,,,0,,,,,,Functional Goals,
+501,1855,08,False,False,0,True,0,,,0,,,,,,Plan of Treatment,
+501,1856,DB,False,False,0,True,0,,,0,,,,,,Durable Medical Equipment Rx,
+502,1857,EM,False,False,0,True,0,,,0,,,,,,E-Mail,
+502,1858,EL,False,False,0,True,0,,,0,,,,,,Electronically Only,
+502,1859,FT,False,False,0,True,0,,,0,,,,,,File Transfer,
+506,1860,EI,False,False,0,True,0,,,0,,,,,,Employer's Identification Number,
+506,1861,SY,False,False,0,True,0,,,0,,,,,,Social Security Number,
+39,1862,4p,False,False,0,False,0,,,0,,,,,,test,
+39,1863,99,False,False,0,False,0,,,0,,,,,,Test,
+9,1864,,False,False,0,True,0,,3M,9,Disposable 3 months,,,,,Disposable 3 months,
+9,1865,,False,False,0,True,0,,6M,9,Disposable 6 months,,,,,Disposable 6 months,
+9,1866,ANLY,False,False,0,True,0,,1Y,9,Conventional 1 year,,,,,Conventional 1 year,
+9,1867,,False,False,0,True,0,,2Y,9,Conventional 2 years,,,,,Conventional 2 years,
+81,1868,0,False,False,0,False,0,,,0,,,,,,Reichert ORA,
+88,1869,,False,False,0,False,0,,,0,,,,,,Dispensor Error,
+39,1870,QW,False,False,0,False,1936,,,0,,,,,,QW CLIA-Waived laboratory,
+516,1871,ace,False,False,0,False,0,,,0,,,,ace,Achinese,Achinese,True
+516,1872,ach,False,False,0,False,0,,,0,,,,ach,Acoli,Acoli,True
+516,1873,ada,False,False,0,False,0,,,0,,,,ada,Adangme,Adangme,True
+516,1874,ady,False,False,0,False,0,,,0,,,,ady,Adyghe; Adygei,Adyghe; Adygei,True
+516,1875,afa,False,False,0,False,0,,,0,,,,afa,Afro-Asiatic languages,Afro-Asiatic languages,True
+516,1876,afh,False,False,0,False,0,,,0,,,,afh,Afrihili,Afrihili,True
+516,1877,ain,False,False,0,False,0,,,0,,,,ain,Ainu,Ainu,True
+516,1878,akk,False,False,0,False,0,,,0,,,,akk,Akkadian,Akkadian,True
+516,1879,alg,False,False,0,False,0,,,0,,,,alg,Algonquian,Algonquian,True
+516,1880,alt,False,False,0,False,0,,,0,,,,alt,Southern Altai,Southern Altai,True
+516,1881,ang,False,False,0,False,0,,,0,,,,ang,English, Old (ca.450-1100),English, Old (ca.450-1100),True
+516,1882,anp,False,False,0,False,0,,,0,,,,anp,Angika,Angika,True
+516,1883,apa,False,False,0,False,0,,,0,,,,apa,Apache languages,Apache languages,True
+516,1884,arc,False,False,0,False,0,,,0,,,,arc,Official Aramaic (700-300 BCE),Official Aramaic (700-300 BCE),True
+516,1885,arn,False,False,0,False,0,,,0,,,,arn,Mapudungun; Mapuche,Mapudungun; Mapuche,True
+516,1886,arp,False,False,0,False,0,,,0,,,,arp,Arapaho,Arapaho,True
+516,1887,art,False,False,0,False,0,,,0,,,,art,Artificial languages,Artificial languages,True
+516,1888,arw,False,False,0,False,0,,,0,,,,arw,Arawak,Arawak,True
+516,1889,ast,False,False,0,False,0,,,0,,,,ast,Asturian; Bable; Leonese; Asturleonese,Asturian; Bable; Leonese; Asturleonese,True
+516,1890,ath,False,False,0,False,0,,,0,,,,ath,Althapascan languages,Althapascan languages,True
+516,1891,aus,False,False,0,False,0,,,0,,,,aus,Australian languages,Australian languages,True
+516,1892,awa,False,False,0,False,0,,,0,,,,awa,Awadhi,Awadhi,True
+516,1893,bad,False,False,0,False,0,,,0,,,,bad,Banda languages,Banda languages,True
+516,1894,bai,False,False,0,False,0,,,0,,,,bai,Bamileke languages,Bamileke languages,True
+516,1895,bal,False,False,0,False,0,,,0,,,,bal,Baluchi,Baluchi,True
+516,1896,ban,False,False,0,False,0,,,0,,,,ban,Balinese,Balinese,True
+516,1897,bas,False,False,0,False,0,,,0,,,,bas,Basa,Basa,True
+516,1898,bat,False,False,0,False,0,,,0,,,,bat,Baltic languages,Baltic languages,True
+516,1899,bej,False,False,0,False,0,,,0,,,,bej,Beja; Bedawiyet,Beja; Bedawiyet,True
+516,1900,bem,False,False,0,False,0,,,0,,,,bem,Bemba,Bemba,True
+516,1901,ber,False,False,0,False,0,,,0,,,,ber,Berber languages,Berber languages,True
+516,1902,bho,False,False,0,False,0,,,0,,,,bho,Bhojpuri,Bhojpuri,True
+516,1903,bik,False,False,0,False,0,,,0,,,,bik,Bikol,Bikol,True
+516,1904,bin,False,False,0,False,0,,,0,,,,bin,Bini; Edo,Bini; Edo,True
+516,1905,bla,False,False,0,False,0,,,0,,,,bla,Siksika,Siksika,True
+516,1906,bnt,False,False,0,False,0,,,0,,,,bnt,Bantu languages,Bantu languages,True
+516,1907,bra,False,False,0,False,0,,,0,,,,bra,Braj,Braj,True
+516,1908,btk,False,False,0,False,0,,,0,,,,btk,Batak languages,Batak languages,True
+516,1909,bua,False,False,0,False,0,,,0,,,,bua,Buriat,Buriat,True
+516,1910,bug,False,False,0,False,0,,,0,,,,bug,Buginese,Buginese,True
+516,1911,byn,False,False,0,False,0,,,0,,,,byn,Blin; Bilin,Blin; Bilin,True
+516,1912,cad,False,False,0,False,0,,,0,,,,cad,Caddo,Caddo,True
+516,1913,cai,False,False,0,False,0,,,0,,,,cai,Central American Indian languages,Central American Indian languages,True
+516,1914,car,False,False,0,False,0,,,0,,,,car,Galibi Carib,Galibi Carib,True
+516,1915,cau,False,False,0,False,0,,,0,,,,cau,Caucasian languages,Caucasian languages,True
+516,1916,ceb,False,False,0,False,0,,,0,,,,ceb,Cebuano,Cebuano,True
+516,1917,cel,False,False,0,False,0,,,0,,,,cel,Celtic languages,Celtic languages,True
+516,1918,chb,False,False,0,False,0,,,0,,,,chb,Chibcha,Chibcha,True
+516,1919,chg,False,False,0,False,0,,,0,,,,chg,Chagatai,Chagatai,True
+516,1920,chk,False,False,0,False,0,,,0,,,,chk,Chuukese,Chuukese,True
+516,1921,chm,False,False,0,False,0,,,0,,,,chm,Mari,Mari,True
+516,1922,chn,False,False,0,False,0,,,0,,,,chn,Chinook jargon,Chinook jargon,True
+516,1923,cho,False,False,0,False,0,,,0,,,,cho,Choctaw,Choctaw,True
+516,1924,chp,False,False,0,False,0,,,0,,,,chp,Chipewyan; Dene Suline,Chipewyan; Dene Suline,True
+516,1925,chr,False,False,0,False,0,,,0,,,,chr,Cherokee,Cherokee,True
+516,1926,chy,False,False,0,False,0,,,0,,,,chy,Cheyenne,Cheyenne,True
+516,1927,cmc,False,False,0,False,0,,,0,,,,cmc,Chamic languages,Chamic languages,True
+516,1928,cop,False,False,0,False,0,,,0,,,,cop,Coptic,Coptic,True
+516,1929,cpe,False,False,0,False,0,,,0,,,,cpe,Creoles and pidgins, English based,Creoles and pidgins, English based,True
+516,1930,cpf,False,False,0,False,0,,,0,,,,cpf,Creoles and pidgins, French-based,Creoles and pidgins, French-based,True
+516,1931,cpp,False,False,0,False,0,,,0,,,,cpp,Creoles and pidgins, Portuguese-based,Creoles and pidgins, Portuguese-based,True
+516,1932,crh,False,False,0,False,0,,,0,,,,crh,Crimean Tatar; Crimean Turkish,Crimean Tatar; Crimean Turkish,True
+516,1933,crp,False,False,0,False,0,,,0,,,,crp,Creoles and pidgins,Creoles and pidgins,True
+516,1934,csb,False,False,0,False,0,,,0,,,,csb,Kashubian,Kashubian,True
+516,1935,cus,False,False,0,False,0,,,0,,,,cus,Cushitic languages,Cushitic languages,True
+516,1936,dak,False,False,0,False,0,,,0,,,,dak,Dakota,Dakota,True
+516,1937,dar,False,False,0,False,0,,,0,,,,dar,Dargwa,Dargwa,True
+516,1938,day,False,False,0,False,0,,,0,,,,day,Land Dayak languages,Land Dayak languages,True
+516,1939,den,False,False,0,False,0,,,0,,,,den,Slave (Athapascan),Slave (Athapascan),True
+516,1940,dgr,False,False,0,False,0,,,0,,,,dgr,Dogrib,Dogrib,True
+516,1941,din,False,False,0,False,0,,,0,,,,din,Dinka,Dinka,True
+516,1942,doi,False,False,0,False,0,,,0,,,,doi,Dogri,Dogri,True
+516,1943,dra,False,False,0,False,0,,,0,,,,dra,Dravidian languages,Dravidian languages,True
+516,1944,dsb,False,False,0,False,0,,,0,,,,dsb,Lower Sorbian,Lower Sorbian,True
+516,1945,dua,False,False,0,False,0,,,0,,,,dua,Duala,Duala,True
+516,1946,dum,False,False,0,False,0,,,0,,,,dum,Dutch, Middle (ca. 1050-1350),Dutch, Middle (ca. 1050-1350),True
+516,1947,dyu,False,False,0,False,0,,,0,,,,dyu,Dyula,Dyula,True
+516,1948,efi,False,False,0,False,0,,,0,,,,efi,Efik,Efik,True
+516,1949,egy,False,False,0,False,0,,,0,,,,egy,Egyptian (Ancient),Egyptian (Ancient),True
+516,1950,eka,False,False,0,False,0,,,0,,,,eka,Ekajuk,Ekajuk,True
+516,1951,elx,False,False,0,False,0,,,0,,,,elx,Elamite,Elamite,True
+516,1952,enm,False,False,0,False,0,,,0,,,,enm,English, Middle (1100-1500),English, Middle (1100-1500),True
+516,1953,ewo,False,False,0,False,0,,,0,,,,ewo,Ewondo,Ewondo,True
+516,1954,fan,False,False,0,False,0,,,0,,,,fan,Fang,Fang,True
+516,1955,fat,False,False,0,False,0,,,0,,,,fat,Fanti,Fanti,True
+516,1956,fil,False,False,0,False,0,,,0,,,,fil,Filipino; Pilipino,Filipino; Pilipino,True
+516,1957,fiu,False,False,0,False,0,,,0,,,,fiu,Finno-Ugrian languages,Finno-Ugrian languages,True
+516,1958,fon,False,False,0,False,0,,,0,,,,fon,Fon,Fon,True
+516,1959,frm,False,False,0,False,0,,,0,,,,frm,French, Middle (ca. 1400-1600),French, Middle (ca. 1400-1600),True
+516,1960,fro,False,False,0,False,0,,,0,,,,fro,French, Old (842-ca. 1400),French, Old (842-ca. 1400),True
+516,1961,frr,False,False,0,False,0,,,0,,,,frr,Northern Frisian,Northern Frisian,True
+516,1962,frs,False,False,0,False,0,,,0,,,,frs,Eastern Frisian,Eastern Frisian,True
+516,1963,fur,False,False,0,False,0,,,0,,,,fur,Friulian,Friulian,True
+516,1964,gaa,False,False,0,False,0,,,0,,,,gaa,Ga,Ga,True
+516,1965,gay,False,False,0,False,0,,,0,,,,gay,Gayo,Gayo,True
+516,1966,gba,False,False,0,False,0,,,0,,,,gba,Gbaya,Gbaya,True
+516,1967,gem,False,False,0,False,0,,,0,,,,gem,Germanic languages,Germanic languages,True
+516,1968,gez,False,False,0,False,0,,,0,,,,gez,Geez,Geez,True
+516,1969,gil,False,False,0,False,0,,,0,,,,gil,Gilbertese,Gilbertese,True
+516,1970,gmh,False,False,0,False,0,,,0,,,,gmh,German, Middle High (ca.1050-1500),German, Middle High (ca.1050-1500),True
+516,1971,goh,False,False,0,False,0,,,0,,,,goh,German, Old High (ca.750-1050),German, Old High (ca.750-1050),True
+516,1972,gon,False,False,0,False,0,,,0,,,,gon,Gondi,Gondi,True
+516,1973,gor,False,False,0,False,0,,,0,,,,gor,Gorontalo,Gorontalo,True
+516,1974,got,False,False,0,False,0,,,0,,,,got,Gothic,Gothic,True
+516,1975,grb,False,False,0,False,0,,,0,,,,grb,Grebo,Grebo,True
+516,1976,grc,False,False,0,False,0,,,0,,,,grc,Greek, Ancient (to 1453),Greek, Ancient (to 1453),True
+516,1977,gsw,False,False,0,False,0,,,0,,,,gsw,Swiss German; Alemannic; Alsatian,Swiss German; Alemannic; Alsatian,True
+516,1978,gwi,False,False,0,False,0,,,0,,,,gwi,Gwich'in,Gwich'in,True
+516,1979,hai,False,False,0,False,0,,,0,,,,hai,Haida,Haida,True
+516,1980,haw,False,False,0,False,0,,,0,,,,haw,Hawaiian,Hawaiian,True
+516,1981,hil,False,False,0,False,0,,,0,,,,hil,Hiligaynon,Hiligaynon,True
+516,1982,him,False,False,0,False,0,,,0,,,,him,Himachali languages; Western Pahari languages,Himachali languages; Western Pahari languages,True
+516,1983,hit,False,False,0,False,0,,,0,,,,hit,Hittite,Hittite,True
+516,1984,hmn,False,False,0,False,0,,,0,,,,hmn,Hmong; Mong,Hmong; Mong,True
+516,1985,hsb,False,False,0,False,0,,,0,,,,hsb,Upper Sorbian,Upper Sorbian,True
+516,1986,hup,False,False,0,False,0,,,0,,,,hup,Hupa,Hupa,True
+516,1987,iba,False,False,0,False,0,,,0,,,,iba,Iban,Iban,True
+516,1988,ijo,False,False,0,False,0,,,0,,,,ijo,Ijo languages,Ijo languages,True
+516,1989,ilo,False,False,0,False,0,,,0,,,,ilo,Iloko,Iloko,True
+516,1990,inc,False,False,0,False,0,,,0,,,,inc,Indic Languages,Indic Languages,True
+516,1991,ine,False,False,0,False,0,,,0,,,,ine,Indo-European languages,Indo-European languages,True
+516,1992,inh,False,False,0,False,0,,,0,,,,inh,Ingush,Ingush,True
+516,1993,ira,False,False,0,False,0,,,0,,,,ira,Iranian languages,Iranian languages,True
+516,1994,iro,False,False,0,False,0,,,0,,,,iro,Iroquoian languages,Iroquoian languages,True
+516,1995,jbo,False,False,0,False,0,,,0,,,,jbo,Lojban,Lojban,True
+516,1996,jpr,False,False,0,False,0,,,0,,,,jpr,Judeo-Persian,Judeo-Persian,True
+516,1997,jrb,False,False,0,False,0,,,0,,,,jrb,Judeo-Arabic,Judeo-Arabic,True
+516,1998,kaa,False,False,0,False,0,,,0,,,,kaa,Kara-Kalpak,Kara-Kalpak,True
+516,1999,kab,False,False,0,False,0,,,0,,,,kab,Kabyle,Kabyle,True
+516,2000,kac,False,False,0,False,0,,,0,,,,kac,Kachin; Jingpho,Kachin; Jingpho,True
+516,2001,kam,False,False,0,False,0,,,0,,,,kam,Kamba,Kamba,True
+516,2002,kar,False,False,0,False,0,,,0,,,,kar,Karen languages,Karen languages,True
+516,2003,kaw,False,False,0,False,0,,,0,,,,kaw,Kawi,Kawi,True
+516,2004,kbd,False,False,0,False,0,,,0,,,,kbd,Kabardian,Kabardian,True
+516,2005,kha,False,False,0,False,0,,,0,,,,kha,Khasi,Khasi,True
+516,2006,khi,False,False,0,False,0,,,0,,,,khi,Khoisan languages,Khoisan languages,True
+516,2007,kho,False,False,0,False,0,,,0,,,,kho,Khotanese; Sakan,Khotanese; Sakan,True
+516,2008,kmb,False,False,0,False,0,,,0,,,,kmb,Kimbundu,Kimbundu,True
+516,2009,kok,False,False,0,False,0,,,0,,,,kok,Konkani,Konkani,True
+516,2010,kos,False,False,0,False,0,,,0,,,,kos,Kosraean,Kosraean,True
+516,2011,kpe,False,False,0,False,0,,,0,,,,kpe,Kpelle,Kpelle,True
+516,2012,krc,False,False,0,False,0,,,0,,,,krc,Karachay-Balkar,Karachay-Balkar,True
+516,2013,krl,False,False,0,False,0,,,0,,,,krl,Karelian,Karelian,True
+516,2014,kro,False,False,0,False,0,,,0,,,,kro,Kru languages,Kru languages,True
+516,2015,kru,False,False,0,False,0,,,0,,,,kru,Kurukh,Kurukh,True
+516,2016,kum,False,False,0,False,0,,,0,,,,kum,Kumyk,Kumyk,True
+516,2017,kut,False,False,0,False,0,,,0,,,,kut,Kutenai,Kutenai,True
+516,2018,lad,False,False,0,False,0,,,0,,,,lad,Ladino,Ladino,True
+516,2019,lah,False,False,0,False,0,,,0,,,,lah,Lahnda,Lahnda,True
+516,2020,lam,False,False,0,False,0,,,0,,,,lam,Lamba,Lamba,True
+516,2021,lez,False,False,0,False,0,,,0,,,,lez,Lezghian,Lezghian,True
+516,2022,lol,False,False,0,False,0,,,0,,,,lol,Mongo,Mongo,True
+516,2023,loz,False,False,0,False,0,,,0,,,,loz,Lozi,Lozi,True
+516,2024,lua,False,False,0,False,0,,,0,,,,lua,Luba-Lulua,Luba-Lulua,True
+516,2025,lui,False,False,0,False,0,,,0,,,,lui,Luiseno,Luiseno,True
+516,2026,lun,False,False,0,False,0,,,0,,,,lun,Lunda,Lunda,True
+516,2027,luo,False,False,0,False,0,,,0,,,,luo,Luo (Kenya and Tanzania),Luo (Kenya and Tanzania),True
+516,2028,lus,False,False,0,False,0,,,0,,,,lus,Lushai,Lushai,True
+516,2029,mad,False,False,0,False,0,,,0,,,,mad,Madurese,Madurese,True
+516,2030,mag,False,False,0,False,0,,,0,,,,mag,Magahi,Magahi,True
+516,2031,mai,False,False,0,False,0,,,0,,,,mai,Maithili,Maithili,True
+516,2032,mak,False,False,0,False,0,,,0,,,,mak,Makasar,Makasar,True
+516,2033,man,False,False,0,False,0,,,0,,,,man,Mandingo,Mandingo,True
+516,2034,map,False,False,0,False,0,,,0,,,,map,Austronesian languages,Austronesian languages,True
+516,2035,mas,False,False,0,False,0,,,0,,,,mas,Masai,Masai,True
+516,2036,mdf,False,False,0,False,0,,,0,,,,mdf,Moksha,Moksha,True
+516,2037,mdr,False,False,0,False,0,,,0,,,,mdr,Mandar,Mandar,True
+516,2038,men,False,False,0,False,0,,,0,,,,men,Mende,Mende,True
+516,2039,mga,False,False,0,False,0,,,0,,,,mga,Irish, Middle (900-1200),Irish, Middle (900-1200),True
+516,2040,mic,False,False,0,False,0,,,0,,,,mic,Mi'kmaq; Micmac,Mi'kmaq; Micmac,True
+516,2041,min,False,False,0,False,0,,,0,,,,min,Minangkabau,Minangkabau,True
+516,2042,mis,False,False,0,False,0,,,0,,,,mis,Uncoded languages,Uncoded languages,True
+516,2043,mkh,False,False,0,False,0,,,0,,,,mkh,Mon-Khmer languages,Mon-Khmer languages,True
+516,2044,mnc,False,False,0,False,0,,,0,,,,mnc,Manchu,Manchu,True
+516,2045,mni,False,False,0,False,0,,,0,,,,mni,Manipuri,Manipuri,True
+516,2046,mno,False,False,0,False,0,,,0,,,,mno,Manobo languages,Manobo languages,True
+516,2047,moh,False,False,0,False,0,,,0,,,,moh,Mohawk,Mohawk,True
+516,2048,mos,False,False,0,False,0,,,0,,,,mos,Mossi,Mossi,True
+516,2049,mul,False,False,0,False,0,,,0,,,,mul,Multiple languages,Multiple languages,True
+516,2050,mun,False,False,0,False,0,,,0,,,,mun,Munda languages,Munda languages,True
+516,2051,mus,False,False,0,False,0,,,0,,,,mus,Creek,Creek,True
+516,2052,mwl,False,False,0,False,0,,,0,,,,mwl,Mirandese,Mirandese,True
+516,2053,mwr,False,False,0,False,0,,,0,,,,mwr,Marwari,Marwari,True
+516,2054,myn,False,False,0,False,0,,,0,,,,myn,Mayan languages,Mayan languages,True
+516,2055,myv,False,False,0,False,0,,,0,,,,myv,Erzya,Erzya,True
+516,2056,nah,False,False,0,False,0,,,0,,,,nah,Nahuatl languages,Nahuatl languages,True
+516,2057,nai,False,False,0,False,0,,,0,,,,nai,North American Indian languages,North American Indian languages,True
+516,2058,nap,False,False,0,False,0,,,0,,,,nap,Neapolitan,Neapolitan,True
+516,2059,nds,False,False,0,False,0,,,0,,,,nds,Low German; Low Saxon; German, Low; Saxon, Low,Low German; Low Saxon; German, Low; Saxon, Low,True
+516,2060,new,False,False,0,False,0,,,0,,,,new,Nepal Bhasa; Newari,Nepal Bhasa; Newari,True
+516,2061,nia,False,False,0,False,0,,,0,,,,nia,Nias,Nias,True
+516,2062,nic,False,False,0,False,0,,,0,,,,nic,Niger-Kordofanian languages,Niger-Kordofanian languages,True
+516,2063,niu,False,False,0,False,0,,,0,,,,niu,Niuean,Niuean,True
+516,2064,nog,False,False,0,False,0,,,0,,,,nog,Nogai,Nogai,True
+516,2065,non,False,False,0,False,0,,,0,,,,non,Norse, Old,Norse, Old,True
+516,2066,nqo,False,False,0,False,0,,,0,,,,nqo,N'Ko,N'Ko,True
+516,2067,nso,False,False,0,False,0,,,0,,,,nso,Pedi; Sepedi; Northern Sotho,Pedi; Sepedi; Northern Sotho,True
+516,2068,nub,False,False,0,False,0,,,0,,,,nub,Nubian languages,Nubian languages,True
+516,2069,nwc,False,False,0,False,0,,,0,,,,nwc,Classical Newari; Old Newari; Classical Nepal Bhasa,Classical Newari; Old Newari; Classical Nepal Bhasa,True
+516,2070,nym,False,False,0,False,0,,,0,,,,nym,Nyamwezi,Nyamwezi,True
+516,2071,nyn,False,False,0,False,0,,,0,,,,nyn,Nyankole,Nyankole,True
+516,2072,nyo,False,False,0,False,0,,,0,,,,nyo,Nyoro,Nyoro,True
+516,2073,nzi,False,False,0,False,0,,,0,,,,nzi,Nzima,Nzima,True
+516,2074,osa,False,False,0,False,0,,,0,,,,osa,Osage,Osage,True
+516,2075,ota,False,False,0,False,0,,,0,,,,ota,Turkish, Ottoman (1500-1928),Turkish, Ottoman (1500-1928),True
+516,2076,oto,False,False,0,False,0,,,0,,,,oto,Otomian languages,Otomian languages,True
+516,2077,paa,False,False,0,False,0,,,0,,,,paa,Papuan languages,Papuan languages,True
+516,2078,pag,False,False,0,False,0,,,0,,,,pag,Pangasinan,Pangasinan,True
+516,2079,pal,False,False,0,False,0,,,0,,,,pal,Pahlavi,Pahlavi,True
+516,2080,pam,False,False,0,False,0,,,0,,,,pam,Pampanga; Kapampangan,Pampanga; Kapampangan,True
+516,2081,pap,False,False,0,False,0,,,0,,,,pap,Papiamento,Papiamento,True
+516,2082,pau,False,False,0,False,0,,,0,,,,pau,Palauan,Palauan,True
+516,2083,peo,False,False,0,False,0,,,0,,,,peo,Persian, Old (ca.600-400 B.C.),Persian, Old (ca.600-400 B.C.),True
+516,2084,phi,False,False,0,False,0,,,0,,,,phi,Philippine languages,Philippine languages,True
+516,2085,phn,False,False,0,False,0,,,0,,,,phn,Phoenician,Phoenician,True
+516,2086,pon,False,False,0,False,0,,,0,,,,pon,Pohnpeian,Pohnpeian,True
+516,2087,pra,False,False,0,False,0,,,0,,,,pra,Prakrit languages,Prakrit languages,True
+516,2088,pro,False,False,0,False,0,,,0,,,,pro,Provencal, Old (to 1500); Occitan, Old (to 1500),Provencal, Old (to 1500); Occitan, Old (to 1500),True
+516,2089,raj,False,False,0,False,0,,,0,,,,raj,Rajasthani,Rajasthani,True
+516,2090,rap,False,False,0,False,0,,,0,,,,rap,Rapanui,Rapanui,True
+516,2091,rar,False,False,0,False,0,,,0,,,,rar,Rarotongan; Cook Islands Maori,Rarotongan; Cook Islands Maori,True
+516,2092,roa,False,False,0,False,0,,,0,,,,roa,Romance languages,Romance languages,True
+516,2093,rom,False,False,0,False,0,,,0,,,,rom,Romany,Romany,True
+516,2094,rup,False,False,0,False,0,,,0,,,,rup,Aromanian; Arumanian; Macedo-Romanian,Aromanian; Arumanian; Macedo-Romanian,True
+516,2095,sad,False,False,0,False,0,,,0,,,,sad,Sandawe,Sandawe,True
+516,2096,sah,False,False,0,False,0,,,0,,,,sah,Yakut,Yakut,True
+516,2097,sai,False,False,0,False,0,,,0,,,,sai,South American Indian languages,South American Indian languages,True
+516,2098,sal,False,False,0,False,0,,,0,,,,sal,Salishan languages,Salishan languages,True
+516,2099,sam,False,False,0,False,0,,,0,,,,sam,Samaritan Aramaic,Samaritan Aramaic,True
+516,2100,sas,False,False,0,False,0,,,0,,,,sas,Sasak,Sasak,True
+516,2101,sat,False,False,0,False,0,,,0,,,,sat,Santali,Santali,True
+516,2102,scn,False,False,0,False,0,,,0,,,,scn,Sicilian,Sicilian,True
+516,2103,sco,False,False,0,False,0,,,0,,,,sco,Scots,Scots,True
+516,2104,sel,False,False,0,False,0,,,0,,,,sel,Selkup,Selkup,True
+516,2105,sem,False,False,0,False,0,,,0,,,,sem,Semitic languages,Semitic languages,True
+516,2106,sga,False,False,0,False,0,,,0,,,,sga,Irish, Old (to 900),Irish, Old (to 900),True
+516,2107,sgn,False,False,0,False,0,,,0,,,,sgn,Sign Languages,Sign Languages,True
+516,2108,shn,False,False,0,False,0,,,0,,,,shn,Shan,Shan,True
+516,2109,sid,False,False,0,False,0,,,0,,,,sid,Sidamo,Sidamo,True
+516,2110,sio,False,False,0,False,0,,,0,,,,sio,Siouan languages,Siouan languages,True
+516,2111,sit,False,False,0,False,0,,,0,,,,sit,Sino-Tibetan languages,Sino-Tibetan languages,True
+516,2112,sla,False,False,0,False,0,,,0,,,,sla,Slavic languages,Slavic languages,True
+516,2113,sma,False,False,0,False,0,,,0,,,,sma,Southern Sami,Southern Sami,True
+516,2114,smi,False,False,0,False,0,,,0,,,,smi,Sami languages,Sami languages,True
+516,2115,smj,False,False,0,False,0,,,0,,,,smj,Lule Sami,Lule Sami,True
+516,2116,smn,False,False,0,False,0,,,0,,,,smn,Inari Sami,Inari Sami,True
+516,2117,sms,False,False,0,False,0,,,0,,,,sms,Skolt Sami,Skolt Sami,True
+516,2118,snk,False,False,0,False,0,,,0,,,,snk,Soninke,Soninke,True
+516,2119,sog,False,False,0,False,0,,,0,,,,sog,Sogdian,Sogdian,True
+516,2120,son,False,False,0,False,0,,,0,,,,son,Songhai languages,Songhai languages,True
+516,2121,srn,False,False,0,False,0,,,0,,,,srn,Sranan Tongo,Sranan Tongo,True
+516,2122,srr,False,False,0,False,0,,,0,,,,srr,Serer,Serer,True
+516,2123,ssa,False,False,0,False,0,,,0,,,,ssa,Nilo-Saharan languages,Nilo-Saharan languages,True
+516,2124,suk,False,False,0,False,0,,,0,,,,suk,Sukuma,Sukuma,True
+516,2125,sus,False,False,0,False,0,,,0,,,,sus,Susu,Susu,True
+516,2126,sux,False,False,0,False,0,,,0,,,,sux,Sumerian,Sumerian,True
+516,2127,syc,False,False,0,False,0,,,0,,,,syc,Classical Syriac,Classical Syriac,True
+516,2128,syr,False,False,0,False,0,,,0,,,,syr,Syriac,Syriac,True
+516,2129,tai,False,False,0,False,0,,,0,,,,tai,Tai languages,Tai languages,True
+516,2130,tem,False,False,0,False,0,,,0,,,,tem,Timne,Timne,True
+516,2131,ter,False,False,0,False,0,,,0,,,,ter,Tereno,Tereno,True
+516,2132,tet,False,False,0,False,0,,,0,,,,tet,Tetum,Tetum,True
+516,2133,tig,False,False,0,False,0,,,0,,,,tig,Tigre,Tigre,True
+516,2134,tiv,False,False,0,False,0,,,0,,,,tiv,Tiv,Tiv,True
+516,2135,tkl,False,False,0,False,0,,,0,,,,tkl,Tokelau,Tokelau,True
+516,2136,tlh,False,False,0,False,0,,,0,,,,tlh,Klingon; tlhlngan-Hol,Klingon; tlhlngan-Hol,True
+516,2137,tli,False,False,0,False,0,,,0,,,,tli,Tlingit,Tlingit,True
+516,2138,tmh,False,False,0,False,0,,,0,,,,tmh,Tamashek,Tamashek,True
+516,2139,tog,False,False,0,False,0,,,0,,,,tog,Tonga (Nyasa),Tonga (Nyasa),True
+516,2140,tpi,False,False,0,False,0,,,0,,,,tpi,Tok Pisin,Tok Pisin,True
+516,2141,tsi,False,False,0,False,0,,,0,,,,tsi,Tsimshian,Tsimshian,True
+516,2142,tum,False,False,0,False,0,,,0,,,,tum,Tumbuka,Tumbuka,True
+516,2143,tup,False,False,0,False,0,,,0,,,,tup,Tupi languages,Tupi languages,True
+516,2144,tut,False,False,0,False,0,,,0,,,,tut,Altaic languages,Altaic languages,True
+516,2145,tvl,False,False,0,False,0,,,0,,,,tvl,Tuvalu,Tuvalu,True
+516,2146,tyv,False,False,0,False,0,,,0,,,,tyv,Tuvinian,Tuvinian,True
+516,2147,udm,False,False,0,False,0,,,0,,,,udm,Udmurt,Udmurt,True
+516,2148,uga,False,False,0,False,0,,,0,,,,uga,Ugaritic,Ugaritic,True
+516,2149,umb,False,False,0,False,0,,,0,,,,umb,Umbundu,Umbundu,True
+516,2150,und,False,False,0,False,0,,,0,,,,und,Undetermined,Undetermined,True
+516,2151,vai,False,False,0,False,0,,,0,,,,vai,Vai,Vai,True
+516,2152,vot,False,False,0,False,0,,,0,,,,vot,Votic,Votic,True
+516,2153,wak,False,False,0,False,0,,,0,,,,wak,Wakashan languages,Wakashan languages,True
+516,2154,wal,False,False,0,False,0,,,0,,,,wal,Wolaitta; Wolaytta,Wolaitta; Wolaytta,True
+516,2155,war,False,False,0,False,0,,,0,,,,war,Waray,Waray,True
+516,2156,was,False,False,0,False,0,,,0,,,,was,Washo,Washo,True
+516,2157,wen,False,False,0,False,0,,,0,,,,wen,Sorbian languages,Sorbian languages,True
+516,2158,xal,False,False,0,False,0,,,0,,,,xal,Kalmyk; Oirat,Kalmyk; Oirat,True
+516,2159,yao,False,False,0,False,0,,,0,,,,yao,Yao,Yao,True
+516,2160,yap,False,False,0,False,0,,,0,,,,yap,Yapese,Yapese,True
+516,2161,ypk,False,False,0,False,0,,,0,,,,ypk,Yupik languages,Yupik languages,True
+516,2162,zap,False,False,0,False,0,,,0,,,,zap,Zapotec,Zapotec,True
+516,2163,zbl,False,False,0,False,0,,,0,,,,zbl,Blissymbols; Blissymbolics; Bliss,Blissymbols; Blissymbolics; Bliss,True
+516,2164,zen,False,False,0,False,0,,,0,,,,zen,Zenaga,Zenaga,True
+516,2165,zgh,False,False,0,False,0,,,0,,,,zgh,Standard Moroccan Tamazight,Standard Moroccan Tamazight,True
+516,2166,znd,False,False,0,False,0,,,0,,,,znd,Zande languages,Zande languages,True
+516,2167,zun,False,False,0,False,0,,,0,,,,zun,Zuni,Zuni,True
+516,2168,zza,False,False,0,False,0,,,0,,,,zza,Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki,Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki,True
+15,2169,,False,False,0,True,0,,,0,,,,,,Transfer to VSP COB,
+542,2170,38628009,False,False,0,False,0,,,0,,,,,,Lesbian, gay or homosexual,
+542,2171,20430005,False,False,0,False,0,,,0,,,,,,Straight or heterosexual,
+542,2172,42035005,False,False,0,False,0,,,0,,,,,,Bisexual,
+542,2173,nullFlavor OTH,False,False,0,False,0,,,0,,,,,,Something else, please describe,
+542,2174,nullFlavor UNK,False,False,0,False,0,,,0,,,,,,Don't know,
+542,2175,nullFlavor ASKU,False,False,0,False,0,,,0,,,,,,Decline to specify,
+543,2176,446151000124109,False,False,0,False,0,,,0,,,,,,Identifies as Male,
+543,2177,446141000124107,False,False,0,False,0,,,0,,,,,,Identifies as Female,
+543,2178,407377005,False,False,0,False,0,,,0,,,,,,Female-to-Male (FTM)/Transgender Male/Trans Man,
+543,2179,407376001,False,False,0,False,0,,,0,,,,,,Male-to-Female (MTF)/Transgender Female/Trans Woman,
+543,2180,446131000124102,False,False,0,False,0,,,0,,,,,,Genderqueer, neither exclusively male nor female,
+543,2181,nullFlavor OTH,False,False,0,False,0,,,0,,,,,,Additional gender category or other, please specify,
+543,2182,nullFlavor ASKU,False,False,0,False,0,,,0,,,,,,Decline to specify,
+4,2183,,False,False,0,False,2184,,,0,,,,2108-9,European,European,
+200,2184,ROC,False,False,0,False,0,,,0,,,,,,Reading Over Contacts,False
+200,2185,FTW,False,False,0,False,0,,,0,,,,,,Full Time Wear,False
+214,2186,MDG,False,False,0,False,0,,,0,,,,,,CL_Monovision_OD_Distance,False
+214,2187,MSG,False,False,0,False,0,,,0,,,,,,CL_Monovision_OS_Distance,False
+214,2188,MDN,False,False,0,False,0,,,0,,,,,,CL_Monovision_OD_Near,False
+214,2189,MSN,False,False,0,False,0,,,0,,,,,,CL_Monovision_OS_Near,False
+81,2190,,False,False,0,False,0,,,0,,,,,,Patient Education Resources,
+9,2191,SANT,False,False,0,False,0,,,0,,,,,,See additional Notes,
+10,2192,DIAG,False,False,0,False,0,,,0,,,,,,Diagnostic,
+10,2193,SMNT,False,False,0,False,0,,,0,,,,,,6 Months,
+10,2194,SSPI,False,False,0,False,0,,,0,,,,,,See Special Instructions,
+212,2195,Dist1,False,False,0,False,0,,,0,,,,,,Alcon ClearCare with Hydraglyde,
+212,2196,Dist2,False,False,0,False,0,,,0,,,,,,Alcon ClearCare,
+212,2197,Dist3,False,False,0,False,0,,,0,,,,,,Alcon Optifree PureMoist,
+212,2198,Dist4,False,False,0,False,0,,,0,,,,,,Alcon Optifree Replenish,
+212,2199,Dist5,False,False,0,False,0,,,0,,,,,,B&L Renu,
+212,2200,Dist6,False,False,0,False,0,,,0,,,,,,B&L Biotrue,
+212,2201,Dist7,False,False,0,False,0,,,0,,,,,,Blink Revitalens,
+212,2202,Dist8,False,False,0,False,0,,,0,,,,,,Lobob Sof/Pro 2,
+212,2203,None,False,False,0,False,0,,,0,,,,,,None,
+212,2204,SSPI,False,False,0,False,0,,,0,,,,,,See Special Instructions,
+212,2205,SBND,False,False,0,False,0,,,0,,,,,,Store Brand,
+11,2206,,False,False,0,False,0,,,0,,,,,,Blue_Gray,
+11,2207,,False,False,0,False,0,,,0,,,,,,Caribbean_Aqua,
+11,2208,,False,False,0,False,0,,,0,,,,,,Dark_Cocoa,
+11,2209,,False,False,0,False,0,,,0,,,,,,Emerald_Green,
+11,2210,,False,False,0,False,0,,,0,,,,,,Evergreen,
+11,2211,,False,False,0,False,0,,,0,,,,,,Granite,
+11,2212,,False,False,0,False,0,,,0,,,,,,Honey,
+11,2213,,False,False,0,False,0,,,0,,,,,,Ice_Blue,
+11,2214,,False,False,0,False,0,,,0,,,,,,Lavender,
+11,2215,,False,False,0,False,0,,,0,,,,,,Pecan,
+11,2216,,False,False,0,False,0,,,0,,,,,,Pistachio,
+11,2217,,False,False,0,False,0,,,0,,,,,,Sapphire_Blue,
+11,2218,,False,False,0,False,0,,,0,,,,,,Stormy_Gray,
+11,2219,,False,False,0,False,0,,,0,,,,,,Aqua_Enhancer,
+11,2220,,False,False,0,False,0,,,0,,,,,,Blue_Enhancer,
+11,2221,,False,False,0,False,0,,,0,,,,,,Green_Enhancer,
+11,2222,,False,False,0,False,0,,,0,,,,,,Migrane_55,
+11,2223,,False,False,0,False,0,,,0,,,,,,Blue_Blocker,
+11,2224,,False,False,0,False,0,,,0,,,,,,Cobalt,
+11,2225,,False,False,0,False,0,,,0,,,,,,Teal,
+11,2226,,False,False,0,False,0,,,0,,,,,,Crystal_Blue,
+11,2227,,False,False,0,False,0,,,0,,,,,,Majestic_Blue,
+50,2228,,False,False,0,False,0,,,0,,,,,,BERRY,
+50,2229,,False,False,0,False,0,,,0,,,,,,BERRY CRYSTAL,
+50,2230,,False,False,0,False,0,,,0,,,,,,BLUE,
+50,2231,,False,False,0,False,0,,,0,,,,,,BLUE CRYSTAL,
+50,2232,,False,False,0,False,0,,,0,,,,,,BLUSH CRYSTAL,
+50,2233,,False,False,0,False,0,,,0,,,,,,BROWN CRYSTAL,
+50,2234,,False,False,0,False,0,,,0,,,,,,BROWN HORN,
+50,2235,,False,False,0,False,0,,,0,,,,,,BURGUNDY,
+50,2236,,False,False,0,False,0,,,0,,,,,,GREY CRYSTAL,
+50,2237,,False,False,0,False,0,,,0,,,,,,GUNMETAL,
+50,2238,,False,False,0,False,0,,,0,,,,,,NAVY,
+50,2239,,False,False,0,False,0,,,0,,,,,,NAVY HORN,
+50,2240,,False,False,0,False,0,,,0,,,,,,ROSE CRYSTAL,
+50,2241,,False,False,0,False,0,,,0,,,,,,ROSE GOLD,
+50,2242,,False,False,0,False,0,,,0,,,,,,ROSE HORN,
+50,2243,,False,False,0,False,0,,,0,,,,,,SMOKE HORN,
+50,2244,,False,False,0,False,0,,,0,,,,,,TAUPE CRYSTAL,
+50,2245,,False,False,0,False,0,,,0,,,,,,TEAL CRYSTAL,
+44,2246,,False,False,0,False,0,,,0,,,,,,Acetate,
+44,2247,,False,False,0,False,0,,,0,,,,,,Acetate/Metal,
+44,2248,,False,False,0,False,0,,,0,,,,,,Metal/Acetate,
+44,2249,,False,False,0,False,0,,,0,,,,,,Stainless Steel-Acetate,
+45,2250,,False,False,0,False,0,,,0,,,,,,Full Rim,
+45,2251,,False,False,0,False,0,,,0,,,,,,Semi-Rimless ,
+50,2252,,False,False,0,False,0,,,0,,,,,,Amethyst Smoke,
+50,2253,,False,False,0,False,0,,,0,,,,,,Antiq Gold Mtt w/Brwn Tort Rim,
+50,2254,,False,False,0,False,0,,,0,,,,,,Antiq Silver Mtt w/Gry Fab Rim,
+50,2255,,False,False,0,False,0,,,0,,,,,,Antique Bronze,
+50,2256,,False,False,0,False,0,,,0,,,,,,Antique Gold,
+50,2257,,False,False,0,False,0,,,0,,,,,,Antique Pewter,
+50,2258,,False,False,0,False,0,,,0,,,,,,Aquamarine,
+50,2259,,False,False,0,False,0,,,0,,,,,,Black And Grey Tortoise,
+50,2260,,False,False,0,False,0,,,0,,,,,,Black Fade to Crystal Matte,
+50,2261,,False,False,0,False,0,,,0,,,,,,Black Fade to Taupe,
+50,2262,,False,False,0,False,0,,,0,,,,,,Black Gloss,
+50,2263,,False,False,0,False,0,,,0,,,,,,Black Gloss w/Bourbon Tortoise,
+50,2264,,False,False,0,False,0,,,0,,,,,,Black Gloss w/Tokyo Tort Tmpl,
+50,2265,,False,False,0,False,0,,,0,,,,,,Black Gloss With Antique Pewte,
+50,2266,,False,False,0,False,0,,,0,,,,,,Black Gloss With Silver Temple,
+50,2267,,False,False,0,False,0,,,0,,,,,,Black Gradient Pink,
+50,2268,,False,False,0,False,0,,,0,,,,,,Black Matte,
+50,2269,,False,False,0,False,0,,,0,,,,,,Black Matte Rubber,
+50,2270,,False,False,0,False,0,,,0,,,,,,Black Matte w/Gold Temples,
+50,2271,,False,False,0,False,0,,,0,,,,,,Black w/Crystal Mountain Core,
+50,2272,,False,False,0,False,0,,,0,,,,,,Black w/Crystal Palm Frond,
+50,2273,,False,False,0,False,0,,,0,,,,,,Black w/Crystal Sea Fan,
+50,2274,,False,False,0,False,0,,,0,,,,,,Black w/Crystal Spear Core,
+50,2275,,False,False,0,False,0,,,0,,,,,,Black w/Grey Tort,
+50,2276,,False,False,0,False,0,,,0,,,,,,Black w/Tokyo Tort,
+50,2277,,False,False,0,False,0,,,0,,,,,,Black White Grey Pearl,
+50,2278,,False,False,0,False,0,,,0,,,,,,Black With Blue,
+50,2279,,False,False,0,False,0,,,0,,,,,,Black with Crystal,
+50,2280,,False,False,0,False,0,,,0,,,,,,Black with Grey,
+50,2281,,False,False,0,False,0,,,0,,,,,,Black With Red Interior,
+50,2282,,False,False,0,False,0,,,0,,,,,,Black With Silver And Grey,
+50,2283,,False,False,0,False,0,,,0,,,,,,Black With Tortoise,
+50,2284,,False,False,0,False,0,,,0,,,,,,Black Yllw Tokyo Tort w/Palm,
+50,2285,,False,False,0,False,0,,,0,,,,,,Black Yllw Tokyo Tort w/Sea,
+50,2286,,False,False,0,False,0,,,0,,,,,,Black/Grey/Tan Horn,
+50,2287,,False,False,0,False,0,,,0,,,,,,Blk/Tran Grn/Lt Tran Gry,
+50,2288,,False,False,0,False,0,,,0,,,,,,Blossom,
+50,2289,,False,False,0,False,0,,,0,,,,,,Blue Black Stripe,
+50,2290,,False,False,0,False,0,,,0,,,,,,Blue Black Stripe Fade,
+50,2291,,False,False,0,False,0,,,0,,,,,,Blue Fade to Aqua,
+50,2292,,False,False,0,False,0,,,0,,,,,,Blue Green Horn w/Olive,
+50,2293,,False,False,0,False,0,,,0,,,,,,Blue Grey and Pearl,
+50,2294,,False,False,0,False,0,,,0,,,,,,Blue Grey with Dove Interior,
+50,2295,,False,False,0,False,0,,,0,,,,,,Blue Horn,
+50,2296,,False,False,0,False,0,,,0,,,,,,Blue Horn Fade To Brown,
+50,2297,,False,False,0,False,0,,,0,,,,,,Blue Matte,
+50,2298,,False,False,0,False,0,,,0,,,,,,Blue Pearl,
+50,2299,,False,False,0,False,0,,,0,,,,,,Blue w/Turquoise,
+50,2300,,False,False,0,False,0,,,0,,,,,,Blue/Black Tort,
+50,2301,,False,False,0,False,0,,,0,,,,,,Blue/Grey/Brown,
+50,2302,,False,False,0,False,0,,,0,,,,,,Blush Pink,
+50,2303,,False,False,0,False,0,,,0,,,,,,Blush Tortoise,
+50,2304,,False,False,0,False,0,,,0,,,,,,Blush Tortoise w/Palm Frond,
+50,2305,,False,False,0,False,0,,,0,,,,,,Blush Tortoise w/Sea Fan,
+50,2306,,False,False,0,False,0,,,0,,,,,,Bronze,
+50,2307,,False,False,0,False,0,,,0,,,,,,Brown Blue Horn w/Orange,
+50,2308,,False,False,0,False,0,,,0,,,,,,Brown Fade to Crystal,
+50,2309,,False,False,0,False,0,,,0,,,,,,Brown Fade to Crystal Matte,
+50,2310,,False,False,0,False,0,,,0,,,,,,Brown Red Satin,
+50,2311,,False,False,0,False,0,,,0,,,,,,Brown Smoke/Pink/Grey Pf Core,
+50,2312,,False,False,0,False,0,,,0,,,,,,Brown Smoke/Pink/Grey Sf Core,
+50,2313,,False,False,0,False,0,,,0,,,,,,Brown Stripe,
+50,2314,,False,False,0,False,0,,,0,,,,,,Brown Tortoise,
+50,2315,,False,False,0,False,0,,,0,,,,,,Brown w/Gold,
+50,2316,,False,False,0,False,0,,,0,,,,,,Brown with Grey,
+50,2317,,False,False,0,False,0,,,0,,,,,,Brown with Light Tortoise,
+50,2318,,False,False,0,False,0,,,0,,,,,,Brown/White/Blue,
+50,2319,,False,False,0,False,0,,,0,,,,,,Brushed Black Gold,
+50,2320,,False,False,0,False,0,,,0,,,,,,Brushed Burgundy Matte,
+50,2321,,False,False,0,False,0,,,0,,,,,,Brushed Chocolate,
+50,2322,,False,False,0,False,0,,,0,,,,,,Brushed Dark Gunmetal,
+50,2323,,False,False,0,False,0,,,0,,,,,,Brushed Grey,
+50,2324,,False,False,0,False,0,,,0,,,,,,Brushed Gunmetal,
+50,2325,,False,False,0,False,0,,,0,,,,,,Brushed Sand,
+50,2326,,False,False,0,False,0,,,0,,,,,,Brushed Silver w/Grey Tort Rim,
+50,2327,,False,False,0,False,0,,,0,,,,,,Brushed Silver w/Powder Blue,
+50,2328,,False,False,0,False,0,,,0,,,,,,Burgundy Fade,
+50,2329,,False,False,0,False,0,,,0,,,,,,Burgundy Pomegranate/Pink,
+50,2330,,False,False,0,False,0,,,0,,,,,,Caramel,
+50,2331,,False,False,0,False,0,,,0,,,,,,Caramel Sand Pearl,
+50,2332,,False,False,0,False,0,,,0,,,,,,Caramel w/Blue,
+50,2333,,False,False,0,False,0,,,0,,,,,,Caramel w/Pale Pink,
+50,2334,,False,False,0,False,0,,,0,,,,,,Charcoal Grad Horn w/Ant Pewte,
+50,2335,,False,False,0,False,0,,,0,,,,,,Charcoal Horn w/Graphite,
+50,2336,,False,False,0,False,0,,,0,,,,,,Cherry Tortoise,
+50,2337,,False,False,0,False,0,,,0,,,,,,Chestnut,
+50,2338,,False,False,0,False,0,,,0,,,,,,Chestnut Fade to Blue,
+50,2339,,False,False,0,False,0,,,0,,,,,,Chestnut Horn w/Gunmetal,
+50,2340,,False,False,0,False,0,,,0,,,,,,Chocolate,
+50,2341,,False,False,0,False,0,,,0,,,,,,Chocolate Fade,
+50,2342,,False,False,0,False,0,,,0,,,,,,Chocolate Moss w/Mountain,
+50,2343,,False,False,0,False,0,,,0,,,,,,Chocolate Moss w/Spear,
+50,2344,,False,False,0,False,0,,,0,,,,,,Chocolate Stripe Fade,
+50,2345,,False,False,0,False,0,,,0,,,,,,Chocolate Tortoise,
+50,2346,,False,False,0,False,0,,,0,,,,,,Chrome Black,
+50,2347,,False,False,0,False,0,,,0,,,,,,Chrome Clear Blue,
+50,2348,,False,False,0,False,0,,,0,,,,,,Cinnamon Fade to Rose,
+50,2349,,False,False,0,False,0,,,0,,,,,,Copper,
+50,2350,,False,False,0,False,0,,,0,,,,,,Copper Horn w/Copper Brn Satin,
+50,2351,,False,False,0,False,0,,,0,,,,,,Crystal,
+50,2352,,False,False,0,False,0,,,0,,,,,,Crystal Matte,
+50,2353,,False,False,0,False,0,,,0,,,,,,Crystal w/Amber Smoke Mt Core,
+50,2354,,False,False,0,False,0,,,0,,,,,,Crystal w/Amber Smoke Sp Core,
+50,2355,,False,False,0,False,0,,,0,,,,,,Crystal w/Black Mt Core,
+50,2356,,False,False,0,False,0,,,0,,,,,,Crystal w/Black Sp Core,
+50,2357,,False,False,0,False,0,,,0,,,,,,Crystal w/Hint of Pink Mt Core,
+50,2358,,False,False,0,False,0,,,0,,,,,,Crystal w/Hint of Pink Pf Core,
+50,2359,,False,False,0,False,0,,,0,,,,,,Crystal w/Hint of Pink Sf Core,
+50,2360,,False,False,0,False,0,,,0,,,,,,Crystal w/Hint of Pink Sp Core,
+50,2361,,False,False,0,False,0,,,0,,,,,,Crystal w/Silver Temples,
+50,2362,,False,False,0,False,0,,,0,,,,,,Crystal w/Tort Mt Core,
+50,2363,,False,False,0,False,0,,,0,,,,,,Crystal w/Tort Sp Core,
+50,2364,,False,False,0,False,0,,,0,,,,,,Crystal with a Hint of Pink,
+50,2365,,False,False,0,False,0,,,0,,,,,,Cyrstal w/Black Inner Rim,
+50,2366,,False,False,0,False,0,,,0,,,,,,Dark Gunmetal,
+50,2367,,False,False,0,False,0,,,0,,,,,,Dark Tort Trans Blue w/Palm,
+50,2368,,False,False,0,False,0,,,0,,,,,,Dark Tort Trans Blue w/Sea,
+50,2369,,False,False,0,False,0,,,0,,,,,,Dark Tort w/Crystal Mt Core,
+50,2370,,False,False,0,False,0,,,0,,,,,,Dark Tortoise,
+50,2371,,False,False,0,False,0,,,0,,,,,,Dark Tortoise w/Gold Temples,
+50,2372,,False,False,0,False,0,,,0,,,,,,Dark Tortoise/Translucent Blue,
+50,2373,,False,False,0,False,0,,,0,,,,,,Dark Translucent Grey,
+50,2374,,False,False,0,False,0,,,0,,,,,,Dove Grey,
+50,2375,,False,False,0,False,0,,,0,,,,,,Electric Blue,
+50,2376,,False,False,0,False,0,,,0,,,,,,Emerald Teal Green Tort,
+50,2377,,False,False,0,False,0,,,0,,,,,,Espresso Fade to Grey,
+50,2378,,False,False,0,False,0,,,0,,,,,,Espresso Smoke,
+50,2379,,False,False,0,False,0,,,0,,,,,,Forest Lime w/Mountain Core,
+50,2380,,False,False,0,False,0,,,0,,,,,,Forest Lime w/Spear Core,
+50,2381,,False,False,0,False,0,,,0,,,,,,Frosted Crystal,
+50,2382,,False,False,0,False,0,,,0,,,,,,Gloss Black,
+50,2383,,False,False,0,False,0,,,0,,,,,,Gloss Black Fade,
+50,2384,,False,False,0,False,0,,,0,,,,,,Gold Honey Brown,
+50,2385,,False,False,0,False,0,,,0,,,,,,Gold Matte,
+50,2386,,False,False,0,False,0,,,0,,,,,,Gold Pink Burgundy,
+50,2387,,False,False,0,False,0,,,0,,,,,,Gold w/Brown Fabric Eye Rim,
+50,2388,,False,False,0,False,0,,,0,,,,,,Gold with Sandstone,
+50,2389,,False,False,0,False,0,,,0,,,,,,Gold With White,
+50,2390,,False,False,0,False,0,,,0,,,,,,Green Stripe,
+50,2391,,False,False,0,False,0,,,0,,,,,,Green Teal,
+50,2392,,False,False,0,False,0,,,0,,,,,,Grey Blue Antique,
+50,2393,,False,False,0,False,0,,,0,,,,,,Grey Fade,
+50,2394,,False,False,0,False,0,,,0,,,,,,Grey Horn,
+50,2395,,False,False,0,False,0,,,0,,,,,,Grey Smoke Mt Core,
+50,2396,,False,False,0,False,0,,,0,,,,,,Grey Smoke/Blue/Grey Pf Core,
+50,2397,,False,False,0,False,0,,,0,,,,,,Grey Smoke/Blue/Grey Sf Core,
+50,2398,,False,False,0,False,0,,,0,,,,,,Grey Tortoise,
+50,2399,,False,False,0,False,0,,,0,,,,,,Grey Tortoise Matte Rubber,
+50,2400,,False,False,0,False,0,,,0,,,,,,Grey Tortoise Stripe,
+50,2401,,False,False,0,False,0,,,0,,,,,,Grey White Tokyo Tort w/Palm,
+50,2402,,False,False,0,False,0,,,0,,,,,,Grey White Tokyo Tort w/Sea,
+50,2403,,False,False,0,False,0,,,0,,,,,,Guava Pink w/Rose Gold,
+50,2404,,False,False,0,False,0,,,0,,,,,,Gunmetal Black,
+50,2405,,False,False,0,False,0,,,0,,,,,,Gunmetal Blue/Black Sleeve,
+50,2406,,False,False,0,False,0,,,0,,,,,,Gunmetal w/Blue Tort Eye Rim,
+50,2407,,False,False,0,False,0,,,0,,,,,,Gunmetal w/Trans Grey Matte,
+50,2408,,False,False,0,False,0,,,0,,,,,,Honey,
+50,2409,,False,False,0,False,0,,,0,,,,,,Honey Havana w/Yellow Gold,
+50,2410,,False,False,0,False,0,,,0,,,,,,Honey Matte,
+50,2411,,False,False,0,False,0,,,0,,,,,,Honey Smoke,
+50,2412,,False,False,0,False,0,,,0,,,,,,Khaki Matte,
+50,2413,,False,False,0,False,0,,,0,,,,,,Koa Tortoise,
+50,2414,,False,False,0,False,0,,,0,,,,,,Light Charcoal,
+50,2415,,False,False,0,False,0,,,0,,,,,,Light Grey Crystal,
+50,2416,,False,False,0,False,0,,,0,,,,,,Lilac Sunset,
+50,2417,,False,False,0,False,0,,,0,,,,,,Marlin,
+50,2418,,False,False,0,False,0,,,0,,,,,,Matte Antique Crystal Arrow,
+50,2419,,False,False,0,False,0,,,0,,,,,,Matte Antique Crystal Weave,
+50,2420,,False,False,0,False,0,,,0,,,,,,Matte Aquamarine Tort/Aqua,
+50,2421,,False,False,0,False,0,,,0,,,,,,Matte Aquamarine Wood Grain,
+50,2422,,False,False,0,False,0,,,0,,,,,,Matte Black,
+50,2423,,False,False,0,False,0,,,0,,,,,,Matte Black Chrome/Black,
+50,2424,,False,False,0,False,0,,,0,,,,,,Matte Black Rubber,
+50,2425,,False,False,0,False,0,,,0,,,,,,Matte Black w/Brush Dark Gun,
+50,2426,,False,False,0,False,0,,,0,,,,,,Matte Black Woodgrain,
+50,2427,,False,False,0,False,0,,,0,,,,,,Matte Black/Red,
+50,2428,,False,False,0,False,0,,,0,,,,,,Matte Blue,
+50,2429,,False,False,0,False,0,,,0,,,,,,Matte Blue Tort/Ice Blue,
+50,2430,,False,False,0,False,0,,,0,,,,,,Matte Blue w/Dark Gun Temples,
+50,2431,,False,False,0,False,0,,,0,,,,,,Matte Bronze,
+50,2432,,False,False,0,False,0,,,0,,,,,,Matte Bronze Wood Grain,
+50,2433,,False,False,0,False,0,,,0,,,,,,Matte Brown,
+50,2434,,False,False,0,False,0,,,0,,,,,,Matte Brown Gold/Brown,
+50,2435,,False,False,0,False,0,,,0,,,,,,Matte Brown w/Brush Copper,
+50,2436,,False,False,0,False,0,,,0,,,,,,Matte Brown Wood Grain,
+50,2437,,False,False,0,False,0,,,0,,,,,,Matte Burgundy,
+50,2438,,False,False,0,False,0,,,0,,,,,,Matte Burgundy w/Gunmetal,
+50,2439,,False,False,0,False,0,,,0,,,,,,Matte Burgundy w/Marble Temple,
+50,2440,,False,False,0,False,0,,,0,,,,,,Matte Chocolate,
+50,2441,,False,False,0,False,0,,,0,,,,,,Matte Crystal,
+50,2442,,False,False,0,False,0,,,0,,,,,,Matte Dark Brown,
+50,2443,,False,False,0,False,0,,,0,,,,,,Matte Dark Gunmetal,
+50,2444,,False,False,0,False,0,,,0,,,,,,Matte Green Smoke,
+50,2445,,False,False,0,False,0,,,0,,,,,,Matte Green Stripe,
+50,2446,,False,False,0,False,0,,,0,,,,,,Matte Green Stripe Rubber,
+50,2447,,False,False,0,False,0,,,0,,,,,,MATTE GREY STRIPE,
+50,2448,,False,False,0,False,0,,,0,,,,,,Matte Gunmetal,
+50,2449,,False,False,0,False,0,,,0,,,,,,Matte Khaki/Brown/Black,
+50,2450,,False,False,0,False,0,,,0,,,,,,Matte Light Tort/Dark Blue,
+50,2451,,False,False,0,False,0,,,0,,,,,,Matte Lilac Tortoise/Lilac,
+50,2452,,False,False,0,False,0,,,0,,,,,,Matte Navy Rootbeer w/Mtn,
+50,2453,,False,False,0,False,0,,,0,,,,,,Matte Navy Rootbeer w/Spear,
+50,2454,,False,False,0,False,0,,,0,,,,,,Matte Purple,
+50,2455,,False,False,0,False,0,,,0,,,,,,Matte Purple Yellow Pearl/Lavn,
+50,2456,,False,False,0,False,0,,,0,,,,,,Matte Raspberry Tort/Rasp,
+50,2457,,False,False,0,False,0,,,0,,,,,,Matte Red,
+50,2458,,False,False,0,False,0,,,0,,,,,,Matte Red w/Brush Light Gun,
+50,2459,,False,False,0,False,0,,,0,,,,,,Matte Silver,
+50,2460,,False,False,0,False,0,,,0,,,,,,Matte Slate Grey w/Gold Temple,
+50,2461,,False,False,0,False,0,,,0,,,,,,Matte Soft Black/White/Blue,
+50,2462,,False,False,0,False,0,,,0,,,,,,Matte Steel Blue w/Gunmetal,
+50,2463,,False,False,0,False,0,,,0,,,,,,Matte Tokyo Tortoise,
+50,2464,,False,False,0,False,0,,,0,,,,,,Matte Tort w/Brush Copper,
+50,2465,,False,False,0,False,0,,,0,,,,,,Matte Tortoise,
+50,2466,,False,False,0,False,0,,,0,,,,,,Matte Tortoise Ombre,
+50,2467,,False,False,0,False,0,,,0,,,,,,Matte Tortoise Rubber,
+50,2468,,False,False,0,False,0,,,0,,,,,,Matte Tortoise w/Black Temples,
+50,2469,,False,False,0,False,0,,,0,,,,,,Matte Trans Grey w/Dark Gun,
+50,2470,,False,False,0,False,0,,,0,,,,,,Matte Trans Grey w/Silver Temp,
+50,2471,,False,False,0,False,0,,,0,,,,,,Matte Trans. Blue Black Stripe,
+50,2472,,False,False,0,False,0,,,0,,,,,,Matte Translucent Amber Arrow,
+50,2473,,False,False,0,False,0,,,0,,,,,,Matte Translucent Amber Weave,
+50,2474,,False,False,0,False,0,,,0,,,,,,Matte Trns Khaki Green Arrow,
+50,2475,,False,False,0,False,0,,,0,,,,,,Matte Trns Khaki Green Weave,
+50,2476,,False,False,0,False,0,,,0,,,,,,Matte White Tokyo Tort/Sky,
+50,2477,,False,False,0,False,0,,,0,,,,,,Matte Wood Grain,
+50,2478,,False,False,0,False,0,,,0,,,,,,Metallic Gloss Copper,
+50,2479,,False,False,0,False,0,,,0,,,,,,Midnight Black,
+50,2480,,False,False,0,False,0,,,0,,,,,,Midnight Ocean w/Mountain,
+50,2481,,False,False,0,False,0,,,0,,,,,,Midnight Ocean w/Spear Core,
+50,2482,,False,False,0,False,0,,,0,,,,,,Milky Almond w/Tort Pf Core,
+50,2483,,False,False,0,False,0,,,0,,,,,,Milky Almond w/Tort Sf Core,
+50,2484,,False,False,0,False,0,,,0,,,,,,Mingle,
+50,2485,,False,False,0,False,0,,,0,,,,,,MJRX Antique Bronze,
+50,2486,,False,False,0,False,0,,,0,,,,,,MJRX Antique Gold,
+50,2487,,False,False,0,False,0,,,0,,,,,,MJRX Antique Pewter,
+50,2488,,False,False,0,False,0,,,0,,,,,,MJRX Aquamarine,
+50,2489,,False,False,0,False,0,,,0,,,,,,MJRX Black,
+50,2490,,False,False,0,False,0,,,0,,,,,,MJRX Black and Grey Tortoise,
+50,2491,,False,False,0,False,0,,,0,,,,,,MJRX Black Gloss,
+50,2492,,False,False,0,False,0,,,0,,,,,,MJRX Black Gloss /SilverTemple,
+50,2493,,False,False,0,False,0,,,0,,,,,,MJRX Black Gloss TokyoTortTmpl,
+50,2494,,False,False,0,False,0,,,0,,,,,,MJRX Black Gloss w/BB Tortoise,
+50,2495,,False,False,0,False,0,,,0,,,,,,MJRX Black Matte,
+50,2496,,False,False,0,False,0,,,0,,,,,,MJRX Black Matte Rubber,
+50,2497,,False,False,0,False,0,,,0,,,,,,MJRX Black w/Grey Tort,
+50,2498,,False,False,0,False,0,,,0,,,,,,MJRX Black w/Tokyo Tort,
+50,2499,,False,False,0,False,0,,,0,,,,,,MJRX Black with Blue,
+50,2500,,False,False,0,False,0,,,0,,,,,,MJRX Black with Crystal,
+50,2501,,False,False,0,False,0,,,0,,,,,,MJRX Black With Red Interior,
+50,2502,,False,False,0,False,0,,,0,,,,,,MJRX Black with Tortoise,
+50,2503,,False,False,0,False,0,,,0,,,,,,MJRX Black/Grey/Tan Horn,
+50,2504,,False,False,0,False,0,,,0,,,,,,MJRX Blk Gloss w/Antique Pewte,
+50,2505,,False,False,0,False,0,,,0,,,,,,MJRX Blk w/Silver and Grey,
+50,2506,,False,False,0,False,0,,,0,,,,,,MJRX Blk/Tran Grn/Lt Tran Gry,
+50,2507,,False,False,0,False,0,,,0,,,,,,MJRX Blue,
+50,2508,,False,False,0,False,0,,,0,,,,,,MJRX Blue Black Stripe,
+50,2509,,False,False,0,False,0,,,0,,,,,,MJRX Blue Black Stripe Fade,
+50,2510,,False,False,0,False,0,,,0,,,,,,MJRX Blue Grey and Pearl,
+50,2511,,False,False,0,False,0,,,0,,,,,,MJRX Blue Grey Dove Interior,
+50,2512,,False,False,0,False,0,,,0,,,,,,MJRX Blue Horn,
+50,2513,,False,False,0,False,0,,,0,,,,,,MJRX Blue w/Turquoise,
+50,2514,,False,False,0,False,0,,,0,,,,,,MJRX Blue/Black Tort,
+50,2515,,False,False,0,False,0,,,0,,,,,,MJRX Blush Pink,
+50,2516,,False,False,0,False,0,,,0,,,,,,MJRX Blush Tortoise,
+50,2517,,False,False,0,False,0,,,0,,,,,,MJRX Bronze,
+50,2518,,False,False,0,False,0,,,0,,,,,,MJRX Brown Fade to Crystal,
+50,2519,,False,False,0,False,0,,,0,,,,,,MJRX Brown Red Satin,
+50,2520,,False,False,0,False,0,,,0,,,,,,MJRX Brown Stripe,
+50,2521,,False,False,0,False,0,,,0,,,,,,MJRX Brown w/Gold,
+50,2522,,False,False,0,False,0,,,0,,,,,,MJRX Brushed Black Gold,
+50,2523,,False,False,0,False,0,,,0,,,,,,MJRX Brushed Burgundy Matte,
+50,2524,,False,False,0,False,0,,,0,,,,,,MJRX Brushed Chocolate,
+50,2525,,False,False,0,False,0,,,0,,,,,,MJRX Brushed Dark Gunmetal,
+50,2526,,False,False,0,False,0,,,0,,,,,,MJRX Brushed Grey,
+50,2527,,False,False,0,False,0,,,0,,,,,,MJRX Brushed Gunmetal,
+50,2528,,False,False,0,False,0,,,0,,,,,,MJRX Brushed Sand,
+50,2529,,False,False,0,False,0,,,0,,,,,,MJRX Brushed Silver PowderBlue,
+50,2530,,False,False,0,False,0,,,0,,,,,,MJRX Burgundy,
+50,2531,,False,False,0,False,0,,,0,,,,,,MJRX Burgundy Fade,
+50,2532,,False,False,0,False,0,,,0,,,,,,MJRX Caramel,
+50,2533,,False,False,0,False,0,,,0,,,,,,MJRX Caramel w/Blue,
+50,2534,,False,False,0,False,0,,,0,,,,,,MJRX Caramel w/Pale Pink,
+50,2535,,False,False,0,False,0,,,0,,,,,,MJRX Chestnut,
+50,2536,,False,False,0,False,0,,,0,,,,,,MJRX Chocolate Fade,
+50,2537,,False,False,0,False,0,,,0,,,,,,MJRX Chocolate Stripe Fade,
+50,2538,,False,False,0,False,0,,,0,,,,,,MJRX Copper,
+50,2539,,False,False,0,False,0,,,0,,,,,,MJRX Crystal,
+50,2540,,False,False,0,False,0,,,0,,,,,,MJRX Crystal Matte,
+50,2541,,False,False,0,False,0,,,0,,,,,,MJRX Crystal w/ Hint of Pink,
+50,2542,,False,False,0,False,0,,,0,,,,,,MJRX Dark Gunmetal,
+50,2543,,False,False,0,False,0,,,0,,,,,,MJRX Dark Tortoise,
+50,2544,,False,False,0,False,0,,,0,,,,,,MJRX Dark Tortoise GoldTemple,
+50,2545,,False,False,0,False,0,,,0,,,,,,MJRX Dark Tortoise/TransluBlue,
+50,2546,,False,False,0,False,0,,,0,,,,,,MJRX Dark Translucent Grey,
+50,2547,,False,False,0,False,0,,,0,,,,,,MJRX Dove Grey,
+50,2548,,False,False,0,False,0,,,0,,,,,,MJRX Electric Blue,
+50,2549,,False,False,0,False,0,,,0,,,,,,MJRX Espresso Smoke,
+50,2550,,False,False,0,False,0,,,0,,,,,,MJRX Frosted Crystal,
+50,2551,,False,False,0,False,0,,,0,,,,,,MJRX Gloss Black,
+50,2552,,False,False,0,False,0,,,0,,,,,,MJRX Gloss Black Fade,
+50,2553,,False,False,0,False,0,,,0,,,,,,MJRX Gold,
+50,2554,,False,False,0,False,0,,,0,,,,,,MJRX Gold Matte,
+50,2555,,False,False,0,False,0,,,0,,,,,,MJRX Gold with Sandstone,
+50,2556,,False,False,0,False,0,,,0,,,,,,MJRX Green Stripe,
+50,2557,,False,False,0,False,0,,,0,,,,,,MJRX Grey,
+50,2558,,False,False,0,False,0,,,0,,,,,,MJRX Grey Fade,
+50,2559,,False,False,0,False,0,,,0,,,,,,MJRX Grey Horn,
+50,2560,,False,False,0,False,0,,,0,,,,,,MJRX Grey Tortoise,
+50,2561,,False,False,0,False,0,,,0,,,,,,MJRX Grey Tortoise Stripe,
+50,2562,,False,False,0,False,0,,,0,,,,,,MJRX GreyTortoise MatteRubber,
+50,2563,,False,False,0,False,0,,,0,,,,,,MJRX Guava Pink w/Rose Gold,
+50,2564,,False,False,0,False,0,,,0,,,,,,MJRX Gunm Blu/Blk Sleeve,
+50,2565,,False,False,0,False,0,,,0,,,,,,MJRX Gunmetal,
+50,2566,,False,False,0,False,0,,,0,,,,,,MJRX Gunmetal Black,
+50,2567,,False,False,0,False,0,,,0,,,,,,MJRX Gunmetal w/Trans GryMatte,
+50,2568,,False,False,0,False,0,,,0,,,,,,MJRX Honey Havana w/YellowGold,
+50,2569,,False,False,0,False,0,,,0,,,,,,MJRX Honey Smoke,
+50,2570,,False,False,0,False,0,,,0,,,,,,MJRX Koa Tortoise,
+50,2571,,False,False,0,False,0,,,0,,,,,,MJRX Light Charcoal,
+50,2572,,False,False,0,False,0,,,0,,,,,,MJRX Light Grey Crystal,
+50,2573,,False,False,0,False,0,,,0,,,,,,MJRX Lilac Sunset,
+50,2574,,False,False,0,False,0,,,0,,,,,,MJRX Marlin,
+50,2575,,False,False,0,False,0,,,0,,,,,,MJRX MATTE Aqua WoodGrain,
+50,2576,,False,False,0,False,0,,,0,,,,,,MJRX Matte Black,
+50,2577,,False,False,0,False,0,,,0,,,,,,MJRX Matte Black Rubber,
+50,2578,,False,False,0,False,0,,,0,,,,,,MJRX Matte Black Woodgrain,
+50,2579,,False,False,0,False,0,,,0,,,,,,MJRX Matte Black/Red,
+50,2580,,False,False,0,False,0,,,0,,,,,,MJRX Matte Blue,
+50,2581,,False,False,0,False,0,,,0,,,,,,MJRX Matte Bronze,
+50,2582,,False,False,0,False,0,,,0,,,,,,MJRX Matte Brown,
+50,2583,,False,False,0,False,0,,,0,,,,,,MJRX Matte Brown Wood Grain,
+50,2584,,False,False,0,False,0,,,0,,,,,,MJRX Matte Chocolate,
+50,2585,,False,False,0,False,0,,,0,,,,,,MJRX Matte Crystal,
+50,2586,,False,False,0,False,0,,,0,,,,,,MJRX MATTE GREEN SMOKE,
+50,2587,,False,False,0,False,0,,,0,,,,,,MJRX Matte Green Stripe,
+50,2588,,False,False,0,False,0,,,0,,,,,,MJRX Matte Green Stripe Rubber,
+50,2589,,False,False,0,False,0,,,0,,,,,,MJRX MATTE GREY STRIPE,
+50,2590,,False,False,0,False,0,,,0,,,,,,MJRX Matte Khaki/Brown/Black,
+50,2591,,False,False,0,False,0,,,0,,,,,,MJRX Matte Silver,
+50,2592,,False,False,0,False,0,,,0,,,,,,MJRX Matte Soft Blk/Wh/Blu,
+50,2593,,False,False,0,False,0,,,0,,,,,,MJRX Matte Tokyo Tortoise,
+50,2594,,False,False,0,False,0,,,0,,,,,,MJRX Matte Tortoise,
+50,2595,,False,False,0,False,0,,,0,,,,,,MJRX Matte Tortoise Ombre,
+50,2596,,False,False,0,False,0,,,0,,,,,,MJRX Matte Tortoise Rubber,
+50,2597,,False,False,0,False,0,,,0,,,,,,MJRX Matte Tortoise w/BkTemple,
+50,2598,,False,False,0,False,0,,,0,,,,,,MJRX Matte TransBluBlkStripe,
+50,2599,,False,False,0,False,0,,,0,,,,,,MJRX Metallic Gloss Copper,
+50,2600,,False,False,0,False,0,,,0,,,,,,MJRX Midnight Black,
+50,2601,,False,False,0,False,0,,,0,,,,,,MJRX Mocha Tortoise,
+50,2602,,False,False,0,False,0,,,0,,,,,,MJRX Mossy/Blush/Peach,
+50,2603,,False,False,0,False,0,,,0,,,,,,MJRX Mtt Dark TransBrTanCream,
+50,2604,,False,False,0,False,0,,,0,,,,,,MJRX Navy Blue w/Blue Tones,
+50,2605,,False,False,0,False,0,,,0,,,,,,MJRX Navy w/Light Blue,
+50,2606,,False,False,0,False,0,,,0,,,,,,MJRX Olive Fade,
+50,2607,,False,False,0,False,0,,,0,,,,,,MJRX Olive Stripe,
+50,2608,,False,False,0,False,0,,,0,,,,,,MJRX Olive Stripe Fade,
+50,2609,,False,False,0,False,0,,,0,,,,,,MJRX Olive Tokyo Tortoise,
+50,2610,,False,False,0,False,0,,,0,,,,,,MJRX Olive Tortoise,
+50,2611,,False,False,0,False,0,,,0,,,,,,MJRX Pink Tokyo Tortoise,
+50,2612,,False,False,0,False,0,,,0,,,,,,MJRX Pink w/Lilac Interior,
+50,2613,,False,False,0,False,0,,,0,,,,,,MJRX Pink w/Pink Tokyo,
+50,2614,,False,False,0,False,0,,,0,,,,,,MJRX Pnk Tort RoseGoldTemple,
+50,2615,,False,False,0,False,0,,,0,,,,,,MJRX Purple Fade,
+50,2616,,False,False,0,False,0,,,0,,,,,,MJRX Purple Tortoise,
+50,2617,,False,False,0,False,0,,,0,,,,,,MJRX Red Stripe,
+50,2618,,False,False,0,False,0,,,0,,,,,,MJRX Redfish,
+50,2619,,False,False,0,False,0,,,0,,,,,,MJRX Rootbeer and Copper,
+50,2620,,False,False,0,False,0,,,0,,,,,,MJRX Rootbeer Blue,
+50,2621,,False,False,0,False,0,,,0,,,,,,MJRX Rootbeer Fade,
+50,2622,,False,False,0,False,0,,,0,,,,,,MJRX Rootbeer Matte,
+50,2623,,False,False,0,False,0,,,0,,,,,,MJRX Rose and Pearl,
+50,2624,,False,False,0,False,0,,,0,,,,,,MJRX Rose Gold,
+50,2625,,False,False,0,False,0,,,0,,,,,,MJRX Rose Gold Trans CocoMatt,
+50,2626,,False,False,0,False,0,,,0,,,,,,MJRX Sandstone with Blue,
+50,2627,,False,False,0,False,0,,,0,,,,,,MJRX Satin Black,
+50,2628,,False,False,0,False,0,,,0,,,,,,MJRX Satin Chocolate,
+50,2629,,False,False,0,False,0,,,0,,,,,,MJRX Satin Dark Gunmetal,
+50,2630,,False,False,0,False,0,,,0,,,,,,MJRX Satin Dark GunmetalBurgdy,
+50,2631,,False,False,0,False,0,,,0,,,,,,MJRX Satin Gold,
+50,2632,,False,False,0,False,0,,,0,,,,,,MJRX Satin Grey,
+50,2633,,False,False,0,False,0,,,0,,,,,,MJRX Satin Sepia,
+50,2634,,False,False,0,False,0,,,0,,,,,,MJRX Shiny Black/Grey/Maroon,
+50,2635,,False,False,0,False,0,,,0,,,,,,MJRX Silver,
+50,2636,,False,False,0,False,0,,,0,,,,,,MJRX Silver w/Blue/Light Blu,
+50,2637,,False,False,0,False,0,,,0,,,,,,MJRX Slate Grey,
+50,2638,,False,False,0,False,0,,,0,,,,,,MJRX Slate Grey BrStripe,
+50,2639,,False,False,0,False,0,,,0,,,,,,MJRX Smoke Grey,
+50,2640,,False,False,0,False,0,,,0,,,,,,MJRX Soft Black/Sea Blue/Grey,
+50,2641,,False,False,0,False,0,,,0,,,,,,MJRX Stormy Grey,
+50,2642,,False,False,0,False,0,,,0,,,,,,MJRX Sunset,
+50,2643,,False,False,0,False,0,,,0,,,,,,MJRX Teal Green,
+50,2644,,False,False,0,False,0,,,0,,,,,,MJRX TiTanium,
+50,2645,,False,False,0,False,0,,,0,,,,,,MJRX Tokyo Tortoise,
+50,2646,,False,False,0,False,0,,,0,,,,,,MJRX Tort./White and Blue,
+50,2647,,False,False,0,False,0,,,0,,,,,,MJRX Tortoise,
+50,2648,,False,False,0,False,0,,,0,,,,,,MJRX Tortoise Matte,
+50,2649,,False,False,0,False,0,,,0,,,,,,MJRX Tortoise w/ Antique Gold,
+50,2650,,False,False,0,False,0,,,0,,,,,,MJRX Tortoise w/Pink Tones,
+50,2651,,False,False,0,False,0,,,0,,,,,,MJRX Tortoise With Peacock,
+50,2652,,False,False,0,False,0,,,0,,,,,,MJRX Tortoise With Raspberry,
+50,2653,,False,False,0,False,0,,,0,,,,,,MJRX Tortoise with Tan,
+50,2654,,False,False,0,False,0,,,0,,,,,,MJRX Tortoise/Peacock Blue,
+50,2655,,False,False,0,False,0,,,0,,,,,,MJRX Trans DrkChocolate w/Blue,
+50,2656,,False,False,0,False,0,,,0,,,,,,MJRX Trans Smoke Grey,
+50,2657,,False,False,0,False,0,,,0,,,,,,MJRX Translucent ChocolateTort,
+50,2658,,False,False,0,False,0,,,0,,,,,,MJRX Translucent Grey,
+50,2659,,False,False,0,False,0,,,0,,,,,,MJRX Translucent Matte Grey,
+50,2660,,False,False,0,False,0,,,0,,,,,,MJRX Translucent Navy Blue,
+50,2661,,False,False,0,False,0,,,0,,,,,,MJRX Translucent Taupe,
+50,2662,,False,False,0,False,0,,,0,,,,,,MJRX Transparent Grey,
+50,2663,,False,False,0,False,0,,,0,,,,,,MJRX Transparent Mocha,
+50,2664,,False,False,0,False,0,,,0,,,,,,MJRX Transparent Pink,
+50,2665,,False,False,0,False,0,,,0,,,,,,MJRX White Pearl,
+50,2666,,False,False,0,False,0,,,0,,,,,,MJRX White Tokyo Tortoise,
+50,2667,,False,False,0,False,0,,,0,,,,,,MJRX White Tokyo w/Gloss Black,
+50,2668,,False,False,0,False,0,,,0,,,,,,MJRX White Tokyo w/White Gold,
+50,2669,,False,False,0,False,0,,,0,,,,,,Mocha Tortoise,
+50,2670,,False,False,0,False,0,,,0,,,,,,Moss Green,
+50,2671,,False,False,0,False,0,,,0,,,,,,Mossy/Blush/Peach,
+50,2672,,False,False,0,False,0,,,0,,,,,,Mtt Dark Trans Brown/Tan/Cream,
+50,2673,,False,False,0,False,0,,,0,,,,,,Navy Light Blue Tort,
+50,2674,,False,False,0,False,0,,,0,,,,,,Navy w/Light Blue,
+50,2675,,False,False,0,False,0,,,0,,,,,,Olive Fade,
+50,2676,,False,False,0,False,0,,,0,,,,,,Olive Stripe,
+50,2677,,False,False,0,False,0,,,0,,,,,,Olive Stripe Fade,
+50,2678,,False,False,0,False,0,,,0,,,,,,Olive Tokyo Tort Mt Core,
+50,2679,,False,False,0,False,0,,,0,,,,,,Olive Tokyo Tort Sp Core,
+50,2680,,False,False,0,False,0,,,0,,,,,,Olive Tokyo Tortoise,
+50,2681,,False,False,0,False,0,,,0,,,,,,Olive Tortoise,
+50,2682,,False,False,0,False,0,,,0,,,,,,Pink Fade to Crystal Matte,
+50,2683,,False,False,0,False,0,,,0,,,,,,Pink Pearl,
+50,2684,,False,False,0,False,0,,,0,,,,,,Pink Tokyo Tortoise,
+50,2685,,False,False,0,False,0,,,0,,,,,,Pink w/Lilac Interior,
+50,2686,,False,False,0,False,0,,,0,,,,,,Pink w/Pink Tokyo,
+50,2687,,False,False,0,False,0,,,0,,,,,,Pnk Tort w/Rose Gold Temples,
+50,2688,,False,False,0,False,0,,,0,,,,,,Purple Fade,
+50,2689,,False,False,0,False,0,,,0,,,,,,Purple Fade to Red Sangria,
+50,2690,,False,False,0,False,0,,,0,,,,,,Purple Fade to Stripe,
+50,2691,,False,False,0,False,0,,,0,,,,,,Purple Lavender Purple Tort,
+50,2692,,False,False,0,False,0,,,0,,,,,,Purple Tortoise,
+50,2693,,False,False,0,False,0,,,0,,,,,,Red,
+50,2694,,False,False,0,False,0,,,0,,,,,,Red Matte,
+50,2695,,False,False,0,False,0,,,0,,,,,,Red Stripe,
+50,2696,,False,False,0,False,0,,,0,,,,,,Redfish,
+50,2697,,False,False,0,False,0,,,0,,,,,,Rootbeer,
+50,2698,,False,False,0,False,0,,,0,,,,,,Rootbeer And Copper,
+50,2699,,False,False,0,False,0,,,0,,,,,,Rootbeer Blue,
+50,2700,,False,False,0,False,0,,,0,,,,,,Rootbeer Fade,
+50,2701,,False,False,0,False,0,,,0,,,,,,Rootbeer Matte,
+50,2702,,False,False,0,False,0,,,0,,,,,,Rootbeer Smoke w/Mountain,
+50,2703,,False,False,0,False,0,,,0,,,,,,Rootbeer Smoke w/Spear,
+50,2704,,False,False,0,False,0,,,0,,,,,,Rose and Pearl,
+50,2705,,False,False,0,False,0,,,0,,,,,,Rose Gold Pink,
+50,2706,,False,False,0,False,0,,,0,,,,,,Rose Gold w/Trans Coconut Matt,
+50,2707,,False,False,0,False,0,,,0,,,,,,Sandstone Horn w/Gold,
+50,2708,,False,False,0,False,0,,,0,,,,,,Sandstone With Blue,
+50,2709,,False,False,0,False,0,,,0,,,,,,Satin Black,
+50,2710,,False,False,0,False,0,,,0,,,,,,Satin Chocolate,
+50,2711,,False,False,0,False,0,,,0,,,,,,Satin Dark Gunmetal,
+50,2712,,False,False,0,False,0,,,0,,,,,,Satin Dark Gunmetal/Burgundy,
+50,2713,,False,False,0,False,0,,,0,,,,,,Satin Gold,
+50,2714,,False,False,0,False,0,,,0,,,,,,Satin Grey,
+50,2715,,False,False,0,False,0,,,0,,,,,,Satin Sepia,
+50,2716,,False,False,0,False,0,,,0,,,,,,Sea Blue Gradient,
+50,2717,,False,False,0,False,0,,,0,,,,,,Shiny Black/Grey/Maroon,
+50,2718,,False,False,0,False,0,,,0,,,,,,Silver w/navy Blue,
+50,2719,,False,False,0,False,0,,,0,,,,,,Silver With Blue And Light Blu,
+50,2720,,False,False,0,False,0,,,0,,,,,,Slate Grey,
+50,2721,,False,False,0,False,0,,,0,,,,,,Slate Grey And Brown Stripe,
+50,2722,,False,False,0,False,0,,,0,,,,,,Smoke Grey,
+50,2723,,False,False,0,False,0,,,0,,,,,,Soft Black/Sea Blue/Grey,
+50,2724,,False,False,0,False,0,,,0,,,,,,Stormy Brown,
+50,2725,,False,False,0,False,0,,,0,,,,,,Stormy Grey,
+50,2726,,False,False,0,False,0,,,0,,,,,,Sunset,
+50,2727,,False,False,0,False,0,,,0,,,,,,Teal Green,
+50,2728,,False,False,0,False,0,,,0,,,,,,Teal Tortoise w/Palm Frond,
+50,2729,,False,False,0,False,0,,,0,,,,,,Teal Tortoise w/Sea Fan,
+50,2730,,False,False,0,False,0,,,0,,,,,,TiTanium,
+50,2731,,False,False,0,False,0,,,0,,,,,,Tokyo Tortoise,
+50,2732,,False,False,0,False,0,,,0,,,,,,Tort./White And Blue,
+50,2733,,False,False,0,False,0,,,0,,,,,,Tortoise Light Pink Bubblegum,
+50,2734,,False,False,0,False,0,,,0,,,,,,Tortoise Matte,
+50,2735,,False,False,0,False,0,,,0,,,,,,Tortoise w/Red,
+50,2736,,False,False,0,False,0,,,0,,,,,,Tortoise With Antique Gold,
+50,2737,,False,False,0,False,0,,,0,,,,,,Tortoise With Peacock,
+50,2738,,False,False,0,False,0,,,0,,,,,,Tortoise With Raspberry,
+50,2739,,False,False,0,False,0,,,0,,,,,,Tortoise with Tan,
+50,2740,,False,False,0,False,0,,,0,,,,,,Tortoise/Peacock Blue,
+50,2741,,False,False,0,False,0,,,0,,,,,,Trans Dark Chocolate w/Blue,
+50,2742,,False,False,0,False,0,,,0,,,,,,Trans Grey + Black Mt Core,
+50,2743,,False,False,0,False,0,,,0,,,,,,Trans Smoke Grey,
+50,2744,,False,False,0,False,0,,,0,,,,,,Trans Taupe w/Dark Gun Temples,
+50,2745,,False,False,0,False,0,,,0,,,,,,Translucent Brown,
+50,2746,,False,False,0,False,0,,,0,,,,,,Translucent Chocolate w/Tort,
+50,2747,,False,False,0,False,0,,,0,,,,,,Translucent Grey,
+50,2748,,False,False,0,False,0,,,0,,,,,,Translucent Grey Mt Core,
+50,2749,,False,False,0,False,0,,,0,,,,,,Translucent Grey w/Blk Outline,
+50,2750,,False,False,0,False,0,,,0,,,,,,Translucent Matte Grey,
+50,2751,,False,False,0,False,0,,,0,,,,,,Translucent Navy Blue,
+50,2752,,False,False,0,False,0,,,0,,,,,,Translucent Taupe,
+50,2753,,False,False,0,False,0,,,0,,,,,,Transparent Grey,
+50,2754,,False,False,0,False,0,,,0,,,,,,Transparent Mocha,
+50,2755,,False,False,0,False,0,,,0,,,,,,Transparent Pink,
+50,2756,,False,False,0,False,0,,,0,,,,,,Turquoise,
+50,2757,,False,False,0,False,0,,,0,,,,,,White Pearl,
+50,2758,,False,False,0,False,0,,,0,,,,,,White Tokyo Tortoise,
+50,2759,,False,False,0,False,0,,,0,,,,,,White Tokyo w/Gloss Black,
+50,2760,,False,False,0,False,0,,,0,,,,,,White Tokyo w/White Gold,
+50,2761,,False,False,0,False,0,,,0,,,,,,Wood Fade to Red,
+44,2762,,False,False,0,False,0,,,0,,,,,,Acetate with Stainless Steel,
+44,2763,,False,False,0,False,0,,,0,,,,,,Beta-Titanium,
+44,2764,,False,False,0,False,0,,,0,,,,,,Grilamid,
+44,2765,,False,False,0,False,0,,,0,,,,,,Magnesium,
+44,2766,,False,False,0,False,0,,,0,,,,,,Metals,
+44,2767,,False,False,0,False,0,,,0,,,,,,Monel,
+44,2768,,False,False,0,False,0,,,0,,,,,,Monel Acetate,
+44,2769,,False,False,0,False,0,,,0,,,,,,Monel/Nickel,
+44,2770,,False,False,0,False,0,,,0,,,,,,Nylon,
+44,2771,,False,False,0,False,0,,,0,,,,,,Proprietary Memory Metal,
+44,2772,,False,False,0,False,0,,,0,,,,,,Stainless Steel w/ Nylon Rims,
+44,2773,,False,False,0,False,0,,,0,,,,,,StainlessSteel,
+44,2774,,False,False,0,False,0,,,0,,,,,,Titanium,
+44,2775,,False,False,0,False,0,,,0,,,,,,Titanium Alloy,
+44,2776,,False,False,0,False,0,,,0,,,,,,Titanium/Nylon,
+45,2777,,False,False,0,False,0,,2,43,,,,,,Acetate,
+45,2778,,False,False,0,False,0,,2,43,,,,,,Aviators,
+45,2779,,False,False,0,False,0,,2,43,,,,,,CLASSIC,
+45,2780,,False,False,0,False,0,,2,43,,,,,,Fashion,
+45,2781,,False,False,0,False,0,,1,43,,,,,,Fullframemetal,
+45,2782,,False,False,0,False,0,,2,43,,,,,,Fullframenylon,
+45,2783,,False,False,0,False,0,,2,43,,,,,,Nylon,
+45,2784,,False,False,0,False,0,,1,43,,,,,,Rimlessmetal,
+45,2785,,False,False,0,False,0,,2,43,,,,,,Rimlessnylon,
+45,2786,,False,False,0,False,0,,1,43,,,,,,Shields,
+45,2787,,False,False,0,False,0,,2,43,,,,,,Wrap,
+46,2788,,False,False,0,False,0,,,0,,,,,,Female,
+46,2789,,False,False,0,False,0,,,0,,,,,,Male,
+46,2790,,False,False,0,False,0,,,0,,,,,,Mens,
+46,2791,,False,False,0,False,0,,,0,,,,,,Womens,
+39,2792,GT,False,False,0,True,0,,,0,,,,,,Beneficiary present,
+39,2793,TC,False,False,0,True,0,,,0,,,,,,Technical component,
+39,2794,PC,False,False,0,True,0,,,0,,,,,,Professional component,
+39,2795,95,False,False,0,True,0,,,0,,,,,,Rendered via synchronous telecommunication,
+39,2796,GQ,False,False,0,True,0,,,0,,,,,,Rendered via asynchronous telecommunication,
+38,2797,02,False,False,0,True,0,,,0,,,,,,Telehealth,
+530,2798,0,False,False,0,False,0,,,0,,,,,,Glaucoma,
+530,2799,0,False,False,0,False,0,,,0,,,,,,Glaucoma consult,
+551,2800,,False,False,0,True,0,,Not_Covered,0,Not Covered,,,,,Not Covered,
+551,2801,,False,False,0,True,0,,Max_Allowance_Met,0,Max Allowance Met,,,,,Max Allowance Met,
+551,2802,,False,False,0,True,0,,Bundled_Service,0,Bundled Service,,,,,Bundled Service,
+551,2803,,False,False,0,True,0,,Timely_Filing,0,Timely Filing,,,,,Timely Filing,
+551,2804,,False,False,0,True,0,,Caption,0,Caption,,,,,Caption,
+551,2805,,False,False,0,True,0,,Deductable,0,Deductible,,,,,Deductible,
+551,2806,,False,False,0,True,0,,Not_Applicable,0,Not Applicable,,,,,Not Applicable,
+201,2807,DISF,False,False,0,False,449,,,0,,,,,,Dispensed and Patient Can Confirm Fit,
+201,2808,ODRD,False,False,0,False,450,,,0,,,,,,Order Trial and Needs Fitting by Doctor,
+201,2809,ODRS,False,False,0,False,451,,,0,,,,,,Order Trial and Needs Fitting by Staff,
+201,2810,ODRF,False,False,0,False,452,,,0,,,,,,Order Trial and Patient Can Confirm Fit,
+550,2811,VISTAKON,False,False,0,False,0,,A,0,VSP Contact Lens Manufacturer -VISTAKON,,,,,,
+550,2812,ALCON,False,False,0,False,0,,B,0,VSP Contact Lens Manufacturer - ALCON,,,,,,
+550,2813,BAUSCH & LOMB,False,False,0,False,0,,C,0,VSP Contact Lens Manufacturer BAUSCH & LOMB,,,,,,
+550,2814,COOPER VISION,False,False,0,False,0,,E,0,VSP Contact Lens Manufacturer - COOPER VISION,,,,,,
+550,2815,HYDROGEL,False,False,0,False,0,,H,0,VSP Contact Lens Manufacturer - HYDROGEL,,,,,,
+550,2816,VSP,False,False,0,False,0,,P,0,Contact Lens Manufacturer - VSP,,,,,,
+550,2817,OTHER,False,False,0,False,0,,O,0,VSP Contact Lens Manufacturer - OTHER,,,,,,
+59,2818,21,False,False,0,True,0,,,0,,,,,,Student,
+59,2819,18,False,False,0,True,0,,,0,,,,,,Parent,
+59,2820,10,False,False,0,True,0,,,0,,,,,,Handicapped Dependent,
+552,2821,Office,False,False,0,False,0,,,0,,,,,,Office,
+552,2822,Telehealth,False,False,0,False,0,,,0,,,,,,Telehealth,
+552,2823,School,False,False,0,False,0,,,0,,,,,,School,
+552,2824,HShelter,False,False,0,False,0,,,0,,,,,,Homeless Shelter,
+552,2825,SNF,False,False,0,False,0,,,0,,,,,,Assisted Living /Skilled Nursing Facility,
+552,2826,Inpatient,False,False,0,False,0,,,0,,,,,,Inpatient Hospital,
+552,2827,ER,False,False,0,False,0,,,0,,,,,,Emergency Room,
+552,2828,ASC,False,False,0,False,0,,,0,,,,,,Ambulatory Surgical Center,
+552,2829,Home,False,False,0,False,0,,,0,,,,,,Home,
+552,2830,GHome,False,False,0,False,0,,,0,,,,,,Group Home,
