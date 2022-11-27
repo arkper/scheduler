@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.modern.office.scheduler.AppConfig;
@@ -169,4 +168,10 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	public Patient getPatient(int patientNo) {
 		return this.patientRepo.findById(patientNo).orElse(null);
 	}
+
+	@Override
+	public Address updatePhone(int addressNo, String newPhoneNumber) {
+		return this.addressRepo.updatePhone(addressNo, newPhoneNumber);
+	}
+
 }
