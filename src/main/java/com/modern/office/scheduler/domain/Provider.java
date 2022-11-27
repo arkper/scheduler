@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "provider")
+@Data
 public class Provider {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,41 +32,4 @@ public class Provider {
 
 	@Column(name = "provider_active")
 	private boolean providerActive;
-
-	public int getProviderNo() {
-		return providerNo;
-	}
-	public void setProviderNo(int providerNo) {
-		this.providerNo = providerNo;
-	}
-	public String getProviderFirstName() {
-		return providerFirstName;
-	}
-	public void setProviderFirstName(String providerFirstName) {
-		this.providerFirstName = providerFirstName;
-	}
-	public String getProviderLastName() {
-		return providerLastName;
-	}
-	public void setProviderLastName(String providerLastName) {
-		this.providerLastName = providerLastName;
-	}
-	public String getProviderMiddleInitial() {
-		return providerMiddleInitial;
-	}
-	public void setProviderMiddleInitial(String providerMiddleInitial) {
-		this.providerMiddleInitial = providerMiddleInitial;
-	}
-	public int getIsProvider() {
-		return isProvider;
-	}
-	public void setIsProvider(int isProvider) {
-		this.isProvider = isProvider;
-	}
-	public boolean isProviderActive() {
-		return providerActive;
-	}
-	public void setProviderActive(boolean providerActive) {
-		this.providerActive = providerActive;
-	}
 }

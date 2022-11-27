@@ -20,35 +20,25 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class CustomIpAuthenticationProvider implements AuthenticationProvider {
-    
-    private final Set<String> whitelist;
+	private final AppConfig securityConfig;
 	
-	private final String userId;
-	
-	private final String pwd;
-	
-	public CustomIpAuthenticationProvider(
-			@Value("${scheduler.security.whitelist}") Set<String> whitelist,
-			@Value("${scheduler.security.user}") String userId,
-			@Value("${scheduler.security.pwd}") String pwd)
+	public CustomIpAuthenticationProvider(final AppConfig securityConfig)
 	{
-		this.whitelist = whitelist;
-		this.userId = userId;
-		this.pwd = pwd;
+		this.securityConfig = securityConfig;
 	}
 
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
         WebAuthenticationDetails details = (WebAuthenticationDetails) auth.getDetails();
         String userIp = details.getRemoteAddress();
         log.info("Remote IP address: " + userIp);
-        if (!whitelist.contains(userIp))
+        if (!this.securityConfig.getWhiteList().contains(userIp))
         {
             throw new BadCredentialsException("Invalid IP Address");
         }
         final String name = auth.getName();
         final String secret = auth.getCredentials().toString();
         
-        if (name.equals(userId) && secret.equals(pwd)) 
+        if (name.equals(this.securityConfig.getUser()) && secret.equals(this.securityConfig.getPwd())) 
         {
             final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
             authorities.add(new SimpleGrantedAuthority("ROLE_USER"));

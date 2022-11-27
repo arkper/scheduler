@@ -7,8 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Builder;
+import lombok.Data;
+
 @Entity
 @Table(name = "insurance")
+@Data
+@Builder
 public class Insurance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,17 +21,4 @@ public class Insurance {
 	private int insuranceNo;
 	@Column(name="insurance_name")
 	private String insuranceName;
-	
-	public int getInsuranceNo() {
-		return insuranceNo;
-	}
-	public void setInsuranceNo(int insuranceNo) {
-		this.insuranceNo = insuranceNo;
-	}
-	public String getInsuranceName() {
-		return insuranceName;
-	}
-	public void setInsuranceName(String insuranceName) {
-		this.insuranceName = insuranceName;
-	}
 }

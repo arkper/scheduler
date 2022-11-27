@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "Appsch_Provider_Blocks")
+@Data
 public class ProviderBlock {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,68 +41,4 @@ public class ProviderBlock {
    
     @Column(name = "prb_day_of_week")
     private int dayOfWeek;
-
-    public int getProviderBlockNo() {
-		return providerBlockNo;
-	}
-
-	public void setProviderBlockNo(int providerBlockNo) {
-		this.providerBlockNo = providerBlockNo;
-	}
-
-	public int getProviderNo() {
-		return providerNo;
-	}
-
-	public void setProviderNo(int providerNo) {
-		this.providerNo = providerNo;
-	}
-
-	public int getLocationId() {
-		return locationId;
-	}
-
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
-	}
-
-	public int getBlockType() {
-		return blockType;
-	}
-
-	public void setBlockType(int blockType) {
-		this.blockType = blockType;
-	}
-
-	public String getStartDateTime() {
-		return startDateTime;
-	}
-
-	public void setStartDateTime(String startDateTime) {
-		this.startDateTime = startDateTime;
-	}
-
-	public String getEndDateTime() {
-		return endDateTime;
-	}
-
-	public void setEndDateTime(String endDateTime) {
-		this.endDateTime = endDateTime;
-	}
-
-	public Integer getDuration() {
-		return duration;
-	}
-
-	public void setDuration(Integer duration) {
-		this.duration = duration;
-	}
-
-	public int getDayOfWeek() {
-		return dayOfWeek;
-	}
-
-	public void setDayOfWeek(int dayOfWeek) {
-		this.dayOfWeek = dayOfWeek;
-	}
 }

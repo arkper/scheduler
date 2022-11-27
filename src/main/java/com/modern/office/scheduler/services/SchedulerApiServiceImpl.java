@@ -1,9 +1,15 @@
 package com.modern.office.scheduler.services;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Insurance;
@@ -31,6 +37,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final AddressRepository addressRepo;
 	private final PatientInsuranceRepository patientInsuranceRepo;
 	private final PatientRepository patientRepo;
+	private final List<Integer> supportedProviders;
+	private final List<String> supportedInsurances;
 
 	
 	public SchedulerApiServiceImpl(final ProviderRepository providerRepo,
@@ -40,7 +48,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 			final ProductRepository productRepo,
 			final AddressRepository addressRepo,
 			final PatientInsuranceRepository patientInsuranceRepo,
-			final PatientRepository patientRepo)
+			final PatientRepository patientRepo,
+			final AppConfig secConfig)
 	{
 		this.providerRepo = providerRepo;
 		this.insuranceRepo = insuranceRepo;
@@ -50,16 +59,26 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		this.addressRepo = addressRepo;
 		this.patientInsuranceRepo = patientInsuranceRepo;
 		this.patientRepo = patientRepo;
+		this.supportedProviders = secConfig.getProviders();
+		this.supportedInsurances = secConfig.getInsurances();
 	}
 
 	@Override
-	public Iterable<Provider> getProviders() {
-		return this.providerRepo.getProviderByIsProviderAndProviderActive(1, true);
+	public List<Provider> getProviders() {
+		Iterable<Provider> it = this.providerRepo.getProviderByIsProviderAndProviderActive(1, true);
+		return StreamSupport.stream(it.spliterator(), false)
+		    .filter(p -> this.supportedProviders.contains(p.getProviderNo()))
+		    .collect(Collectors.toList());
 	}
 
 	@Override
-	public Iterable<Insurance> getInsurances() {
-		return this.insuranceRepo.findAll();
+	public List<Insurance> getInsurances() {
+		return this.supportedInsurances
+		    .stream()
+		    .map(s -> Insurance.builder()
+		    		.insuranceNo(Integer.parseInt(StringUtils.substringAfter(s, ",")))
+		    		.insuranceName(StringUtils.substringBefore(s, ",")).build())
+		    .collect(Collectors.toList());
 	}
 
 	@Override

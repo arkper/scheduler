@@ -1,8 +1,11 @@
 package com.modern.office.scheduler;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +22,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
+import lombok.Getter;
 
 @SpringBootApplication(scanBasePackages = { "com.modern.office.scheduler" })
 @EnableJpaRepositories
@@ -47,15 +52,15 @@ public class SchedulerApplication {
 	@Configuration
 	@EnableWebSecurity
 	@EnableGlobalMethodSecurity(prePostEnabled = true)
+	@Getter
 	public class SecurityConfig {
-
 		@Autowired
 		private CustomIpAuthenticationProvider authenticationProvider;
 
 		@Bean
 		public AuthenticationManager authManager(HttpSecurity http) throws Exception {
-			AuthenticationManagerBuilder authenticationManagerBuilder = http
-					.getSharedObject(AuthenticationManagerBuilder.class);
+			AuthenticationManagerBuilder authenticationManagerBuilder = 
+					http.getSharedObject(AuthenticationManagerBuilder.class);
 			authenticationManagerBuilder.authenticationProvider(authenticationProvider);
 			return authenticationManagerBuilder.build();
 		}

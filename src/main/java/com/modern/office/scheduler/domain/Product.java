@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "product")
+@Data
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,28 +23,4 @@ public class Product {
 	
 	@Column(name = "prd_appsch_ind")
 	private int productAvailable;
-
-	public int getPrdNo() {
-		return prdNo;
-	}
-
-	public void setPrdNo(int prdNo) {
-		this.prdNo = prdNo;
-	}
-
-	public String getPrdDescription() {
-		return prdDescription;
-	}
-
-	public void setPrdDescription(String prdDescription) {
-		this.prdDescription = prdDescription;
-	}
-
-	public int getProductAvailable() {
-		return productAvailable;
-	}
-
-	public void setProductAvailable(int productAvailable) {
-		this.productAvailable = productAvailable;
-	}
 }

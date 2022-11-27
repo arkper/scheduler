@@ -1,0 +1,60 @@
+server:
+  port: 9988
+
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost;databaseName=OMSQLDB;encrypt=false
+    username: OM_USER
+    password: OMSQL@2004
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: none
+    properties:
+      dialect: "org.hibernate.dialect.SQLServer2012Dialect"
+
+scheduler:
+  user: user123
+  pwd: password123
+  white-list: 
+  - 18.189.210.54
+  - 185.183.92.88
+  - 67.81.99.20
+  - 127.0.0.1
+  - 0:0:0:0:0:0:0:1
+
+  providers: 8,20
+  insurances:
+    - AETNA,48
+    - AFFINITY,43
+    - ALLIED,74
+    - ANTHEM,86
+    - CIGNA,54
+    - DC 37,18
+    - ELDERSERVE,60 
+    - EMPIRE BLUE CROSS BLUE SHIELD,30
+    - EMPIRE BLUE CROSS HEALTH PLUS,46
+    - EYEMED,50
+    - CENTER PLAN FOR HEALTHY LEAVING,81
+    - FIDELIS,52
+    - HEALTH FIRST,0
+    - HEALTHCARE PARTNERS,41
+    - HIP HELATH PLAN OF GREATER NEW YORK NEW YORK,4
+    - HORIZON,0
+    - GEHA-ASA,79
+    - GHI,11
+    - INTEGRA,0
+    - LOCAL 1199,6
+    - MAGNACARE,61
+    - MEDICAID,2
+    - METLIFE,0
+    - METROPLUS,47
+    - MEDICARE,1
+    - OXFORD HEALTH PLAN,80
+    - SENIOR WHOLE HEALTH,70
+    - UFT,31 
+    - UNITED HEALTHCARE,63
+    - VNS CHOICE,45
+    - VSP,32
+    - WELLCARE,33
+ 

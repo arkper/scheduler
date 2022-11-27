@@ -1,5 +1,6 @@
-insert into provider(provider_no, provider_last_name, provider_first_name) values(8, 'Givner',  'Steven');
-insert into provider(provider_no, provider_last_name, provider_first_name) values(20, 'Lakovitsky',  'Diana');
+insert into provider(provider_no, provider_last_name, provider_first_name, is_provider, provider_active) values(8, 'Givner',  'Steven', 1, 1);
+insert into provider(provider_no, provider_last_name, provider_first_name, is_provider, provider_active) values(20, 'Lakovitsky',  'Diana', 1, 1);
+insert into provider(provider_no, provider_last_name, provider_first_name, is_provider, provider_active) values(11, 'Optika',  'Modern', 1, 1);
 
 insert into insurance(insurance_no, insurance_name) values(1, 'National Government Services');
 insert into insurance(insurance_no, insurance_name) values(2, 'New York Medicaid');
