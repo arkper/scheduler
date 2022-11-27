@@ -7,6 +7,7 @@ import java.util.stream.StreamSupport;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Address;
@@ -170,6 +171,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	}
 
 	@Override
+	@Transactional
 	public void updatePhone(int addressNo, String newPhoneNumber) {
 		this.addressRepo.updatePhone(addressNo, newPhoneNumber);
 	}
