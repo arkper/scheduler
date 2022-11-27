@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
+import com.modern.office.scheduler.domain.Code;
+import com.modern.office.scheduler.domain.CodeCategory;
 import com.modern.office.scheduler.domain.Insurance;
 import com.modern.office.scheduler.domain.Patient;
 import com.modern.office.scheduler.domain.PatientInsurance;
@@ -224,6 +226,18 @@ public class SchedulerApiController {
 			return ResponseEntity.ok().body(this.schedulerApiService.save(patient));
 		} catch (Exception e) {
 			log.error("Failed saving patient {} with error: {}", patient, e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
+	@GetMapping(path = "/codes/{category}", produces = "application/json")
+	public ResponseEntity<Iterable<Code>> getCodesByCategory(@PathVariable("category") CodeCategory category) {
+		try {
+			return ResponseEntity.ok()
+					.body(this.schedulerApiService.getCodesByCategory(category.getValue()));
+		} catch (Exception e) {
+			log.error("Failed getting codes for category {} with error: {}", category, e.getMessage(), e);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
 					.build();
 		}

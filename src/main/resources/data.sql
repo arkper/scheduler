@@ -20,3 +20,8 @@ insert into Appsch_Appointment(appt_no,serv_no,pro_no,LocationID,ins_no,appt_nam
 values (549,-1,2,2,1,'Feliks Gilman','(718) 891-9836','1245 Ave X 5k, Brn, NY  11235','tran','2009-07-15','01:45','02:00',3,14182472);
 insert into Appsch_Appointment(appt_no,serv_no,pro_no,LocationID,ins_no,appt_name,appt_phone,appt_address,appt_notes,appt_date,appt_start_time,appt_end_time,appt_dayofweek,appt_color)
 values (2,-1,2,2,1,'Vera NOVAKHOVA','(718) 339-1581','1463 east 3 rd street, 6a, Brooklyn, NY  11230','trans','2010-05-27','09:00','09:15',4,14733488);
+
+insert into code(code_category_cd, code, user_code, description) values (32, 56, 'CA', 'California');
+insert into code(code_category_cd, code, user_code, description) values (32, 65, 'NY', 'New York');
+insert into code(code_category_cd, code, user_code, description) values (32, 86, 'NJ', 'New Jersey');
+

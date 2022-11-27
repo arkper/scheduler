@@ -6,12 +6,15 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
+import com.modern.office.scheduler.domain.Code;
+import com.modern.office.scheduler.domain.CodeCategory;
 import com.modern.office.scheduler.domain.Insurance;
 import com.modern.office.scheduler.domain.Patient;
 import com.modern.office.scheduler.domain.PatientInsurance;
@@ -20,6 +23,7 @@ import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
 import com.modern.office.scheduler.repository.AddressRepository;
 import com.modern.office.scheduler.repository.AppointmentRepository;
+import com.modern.office.scheduler.repository.CodeRepository;
 import com.modern.office.scheduler.repository.InsuranceRepository;
 import com.modern.office.scheduler.repository.PatientInsuranceRepository;
 import com.modern.office.scheduler.repository.PatientRepository;
@@ -29,6 +33,12 @@ import com.modern.office.scheduler.repository.ProviderRepository;
 
 @Service
 public class SchedulerApiServiceImpl implements SchedulerApiService {
+	private static final int STATE_CODE_CATEGORY = 32;
+	private static final int RELATION_TO_INSURED_CATEGORY = 59;
+	private static final int PPO_HMO_AGREEMENT_CATEGORY = 305;
+	private static final int POLICY_TYPE_CATEGORY = 411;	
+	private static final int SOURCE_CODE_CATEGORY = 8;	
+
 	private final ProviderRepository providerRepo;
 	private final InsuranceRepository insuranceRepo;
 	private final ProviderBlockRepository providerBlockRepo;
@@ -37,9 +47,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final AddressRepository addressRepo;
 	private final PatientInsuranceRepository patientInsuranceRepo;
 	private final PatientRepository patientRepo;
+	private final CodeRepository codeRepo;
 	private final List<Integer> supportedProviders;
 	private final List<String> supportedInsurances;
-
 	
 	public SchedulerApiServiceImpl(final ProviderRepository providerRepo,
 			final InsuranceRepository insuranceRepo,
@@ -49,6 +59,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 			final AddressRepository addressRepo,
 			final PatientInsuranceRepository patientInsuranceRepo,
 			final PatientRepository patientRepo,
+			final CodeRepository codeRepo,
 			final AppConfig secConfig)
 	{
 		this.providerRepo = providerRepo;
@@ -59,6 +70,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		this.addressRepo = addressRepo;
 		this.patientInsuranceRepo = patientInsuranceRepo;
 		this.patientRepo = patientRepo;
+		this.codeRepo = codeRepo;
 		this.supportedProviders = secConfig.getProviders();
 		this.supportedInsurances = secConfig.getInsurances();
 	}
@@ -176,4 +188,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		this.addressRepo.updatePhone(addressNo, newPhoneNumber);
 	}
 
+	@Override
+	@Cacheable(cacheNames = {"sourceCodeCache"}, key = "#categoryNo")
+	public Iterable<Code> getCodesByCategory(int categoryNo) {
+		return this.codeRepo.getCodesByCategory(categoryNo);
+	}
 }

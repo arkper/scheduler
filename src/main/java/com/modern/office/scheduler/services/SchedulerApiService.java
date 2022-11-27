@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
+import com.modern.office.scheduler.domain.Code;
 import com.modern.office.scheduler.domain.Insurance;
 import com.modern.office.scheduler.domain.Patient;
 import com.modern.office.scheduler.domain.PatientInsurance;
@@ -32,4 +33,5 @@ public interface SchedulerApiService {
 	Iterable<Appointment> getAppointmentByApptDateBetween(LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate, LocalDate endDate);
 	Appointment save(Appointment appointment);
+	Iterable<Code> getCodesByCategory(int categoryNo);
 }

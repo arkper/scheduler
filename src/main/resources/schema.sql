@@ -374,3 +374,25 @@ CREATE TABLE patient(
 	prior_suffix nvarchar(10) NULL,
 	prior_title nvarchar(10) NULL
 );
+
+CREATE TABLE code(
+	code_category_cd smallint NULL,
+	code int NOT NULL,
+	user_code nvarchar(15) NULL,
+	code_removed bit NULL,
+	code_default bit NULL,
+	code_calc smallint NULL,
+	system_code bit NULL,
+	code_dev int NULL,
+	rje_code nvarchar(10) NULL,
+	VSP_Code nvarchar(50) NULL,
+	VSP_CODE_Category int NULL,
+	VSP_Code_desc nvarchar(100) NULL,
+	Warntime1 int NULL,
+	Warntime2 int NULL,
+	CDA_Code nvarchar(255) NULL,
+	CDA_Code_Description nvarchar(255) NULL,
+	Description nvarchar(255) NULL,
+	DoNotShow bit NULL
+);
+
