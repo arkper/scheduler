@@ -57,10 +57,11 @@ public class SchedulerApiController {
 	}
 
 	@PostMapping(path = "/addresses/{address-no}/update-phone/{phone-number}", produces = "application/json")
-	public ResponseEntity<Address> save(@PathVariable("address-no") final int addressNo, 
+	public ResponseEntity<Void> save(@PathVariable("address-no") final int addressNo, 
 			@PathVariable("phone-number") final String phoneNumber) {
 		try {
-			return ResponseEntity.ok().body(this.schedulerApiService.updatePhone(addressNo, phoneNumber));
+			this.schedulerApiService.updatePhone(addressNo, phoneNumber);
+			return ResponseEntity.ok().build();
 		} catch (Exception e) {
 			log.error("Failed updating address with error: {}", e.getMessage(), e);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())

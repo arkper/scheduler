@@ -9,5 +9,5 @@ import com.modern.office.scheduler.domain.Address;
 public interface AddressRepository extends CrudRepository<Address, Integer>{
 	@Modifying
 	@Query("update Address a set a.phone1 = :newPhoneNumber where a.addressNo=:addressNo")
-	Address updatePhone(int addressNo, String newPhoneNumber);
+	void updatePhone(int addressNo, String newPhoneNumber);
 }

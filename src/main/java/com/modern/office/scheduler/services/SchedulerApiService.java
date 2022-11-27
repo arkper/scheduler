@@ -20,7 +20,7 @@ public interface SchedulerApiService {
 	Iterable<Product> getAvailableProducts();
 	Address getAddress(int addressNo);
 	Address save(Address address);
-	Address updatePhone(int addressNo, String newPhoneNumber);
+	void updatePhone(int addressNo, String newPhoneNumber);
 	PatientInsurance save(PatientInsurance patientInsurance);
 	Iterable<PatientInsurance> getPatientInsurances(int patientNo);
 	Patient getPatient(int patientNo);

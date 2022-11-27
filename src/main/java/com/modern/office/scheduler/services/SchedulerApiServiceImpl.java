@@ -170,8 +170,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	}
 
 	@Override
-	public Address updatePhone(int addressNo, String newPhoneNumber) {
-		return this.addressRepo.updatePhone(addressNo, newPhoneNumber);
+	public void updatePhone(int addressNo, String newPhoneNumber) {
+		this.addressRepo.updatePhone(addressNo, newPhoneNumber);
 	}
 
 }
