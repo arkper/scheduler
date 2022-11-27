@@ -3,6 +3,7 @@ package com.modern.office.scheduler.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -178,7 +179,7 @@ public class SchedulerApiController {
 
 	@GetMapping(path = "/patients-by-birthdate/{last-name}/{birth-date}", produces = "application/json")
 	public ResponseEntity<Iterable<Patient>> getPatientsByBirthdate(@PathVariable("last-name") String lastName,
-			@PathVariable("birth-date") LocalDate birthDate) {
+			@PathVariable("birth-date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate birthDate) {
 		try {
 			return ResponseEntity.ok()
 					.body(this.schedulerApiService.findPatientsByLastNameAndBirthDate(lastName, birthDate));
