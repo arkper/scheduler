@@ -12,6 +12,7 @@ import com.modern.office.scheduler.domain.PatientInsurance;
 import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
+import com.modern.office.scheduler.domain.ProviderException;
 
 public interface SchedulerApiService {
 	List<Provider> getProviders();
@@ -30,6 +31,8 @@ public interface SchedulerApiService {
 	Patient save(Patient patient);
 	Iterable<ProviderBlock> getByProviderNo(int providerNo);
 	ProviderBlock save(ProviderBlock providerBlock);
+	Iterable<ProviderException> getExceptionsByProviderNo(int providerNo);
+	Iterable<ProviderException> getExceptionsByProviderNoAndExceptionDate(int providerNo, LocalDate fromDate, LocalDate toDate);
 	Iterable<Appointment> getAppointmentByApptDateBetween(LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate, LocalDate endDate);
 	Appointment save(Appointment appointment);

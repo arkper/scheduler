@@ -14,13 +14,13 @@ import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Code;
-import com.modern.office.scheduler.domain.CodeCategory;
 import com.modern.office.scheduler.domain.Insurance;
 import com.modern.office.scheduler.domain.Patient;
 import com.modern.office.scheduler.domain.PatientInsurance;
 import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
+import com.modern.office.scheduler.domain.ProviderException;
 import com.modern.office.scheduler.repository.AddressRepository;
 import com.modern.office.scheduler.repository.AppointmentRepository;
 import com.modern.office.scheduler.repository.CodeRepository;
@@ -29,19 +29,15 @@ import com.modern.office.scheduler.repository.PatientInsuranceRepository;
 import com.modern.office.scheduler.repository.PatientRepository;
 import com.modern.office.scheduler.repository.ProductRepository;
 import com.modern.office.scheduler.repository.ProviderBlockRepository;
+import com.modern.office.scheduler.repository.ProviderExceptionRepository;
 import com.modern.office.scheduler.repository.ProviderRepository;
 
 @Service
 public class SchedulerApiServiceImpl implements SchedulerApiService {
-	private static final int STATE_CODE_CATEGORY = 32;
-	private static final int RELATION_TO_INSURED_CATEGORY = 59;
-	private static final int PPO_HMO_AGREEMENT_CATEGORY = 305;
-	private static final int POLICY_TYPE_CATEGORY = 411;	
-	private static final int SOURCE_CODE_CATEGORY = 8;	
-
 	private final ProviderRepository providerRepo;
 	private final InsuranceRepository insuranceRepo;
 	private final ProviderBlockRepository providerBlockRepo;
+	private final ProviderExceptionRepository providerExceptionRepo;
 	private final AppointmentRepository appointmentRepo;
 	private final ProductRepository productRepo;
 	private final AddressRepository addressRepo;
@@ -54,6 +50,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	public SchedulerApiServiceImpl(final ProviderRepository providerRepo,
 			final InsuranceRepository insuranceRepo,
 			final ProviderBlockRepository providerBlockRepo,
+			final ProviderExceptionRepository providerExceptionRepo,
 			final AppointmentRepository appointmentRepo,
 			final ProductRepository productRepo,
 			final AddressRepository addressRepo,
@@ -65,6 +62,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		this.providerRepo = providerRepo;
 		this.insuranceRepo = insuranceRepo;
 		this.providerBlockRepo = providerBlockRepo;
+		this.providerExceptionRepo = providerExceptionRepo;
 		this.appointmentRepo = appointmentRepo;
 		this.productRepo = productRepo;
 		this.addressRepo = addressRepo;
@@ -192,5 +190,16 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	@Cacheable(cacheNames = {"sourceCodeCache"}, key = "#categoryNo")
 	public Iterable<Code> getCodesByCategory(int categoryNo) {
 		return this.codeRepo.getCodesByCategory(categoryNo);
+	}
+
+	@Override
+	public Iterable<ProviderException> getExceptionsByProviderNo(int providerNo) {
+		return this.providerExceptionRepo.getProviderExceptionsByProviderNo(providerNo);
+	}
+
+	@Override
+	public Iterable<ProviderException> getExceptionsByProviderNoAndExceptionDate(int providerNo, LocalDate fromDate,
+			LocalDate toDate) {
+		return this.providerExceptionRepo.getProviderExceptionsByProviderNoAndExceptionDateBetween(providerNo, fromDate, toDate);
 	}
 }

@@ -395,4 +395,3 @@ CREATE TABLE code(
 	Description nvarchar(255) NULL,
 	DoNotShow bit NULL
 );
-

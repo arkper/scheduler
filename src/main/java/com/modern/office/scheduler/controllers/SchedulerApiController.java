@@ -22,6 +22,7 @@ import com.modern.office.scheduler.domain.PatientInsurance;
 import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
+import com.modern.office.scheduler.domain.ProviderException;
 import com.modern.office.scheduler.services.SchedulerApiService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -59,7 +60,7 @@ public class SchedulerApiController {
 	}
 
 	@PostMapping(path = "/addresses/{address-no}/update-phone/{phone-number}", produces = "application/json")
-	public ResponseEntity<Void> save(@PathVariable("address-no") final int addressNo, 
+	public ResponseEntity<Void> save(@PathVariable("address-no") final int addressNo,
 			@PathVariable("phone-number") final String phoneNumber) {
 		try {
 			this.schedulerApiService.updatePhone(addressNo, phoneNumber);
@@ -231,11 +232,39 @@ public class SchedulerApiController {
 		}
 	}
 
+	@GetMapping(path = "/provider-exceptions/{provider-no}", produces = "application/json")
+	public ResponseEntity<Iterable<ProviderException>> getProviderExceptionsByProvider(
+			@PathVariable("provider-no") int providerNo) {
+		try {
+			return ResponseEntity.ok().body(this.schedulerApiService.getExceptionsByProviderNo(providerNo));
+		} catch (Exception e) {
+			log.error("Failed getting provider exceptions for providerNo {} with error: {}", providerNo, e.getMessage(),
+					e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
+	@GetMapping(path = "/provider-exceptions/{provider-no}/{from-date}/{to-date}", produces = "application/json")
+	public ResponseEntity<Iterable<ProviderException>> getProviderExceptionsByProviderAndDate(
+			@PathVariable("provider-no") final int providerNo,
+			@PathVariable("from-date") @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate fromDate,
+			@PathVariable("to-date") @DateTimeFormat(pattern = "yyyy-MM-dd") final LocalDate toDate) {
+		try {
+			return ResponseEntity.ok().body(
+					this.schedulerApiService.getExceptionsByProviderNoAndExceptionDate(providerNo, fromDate, toDate));
+		} catch (Exception e) {
+			log.error("Failed getting provider exceptions for providerNo {} with error: {}", providerNo, e.getMessage(),
+					e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
 	@GetMapping(path = "/codes/{category}", produces = "application/json")
 	public ResponseEntity<Iterable<Code>> getCodesByCategory(@PathVariable("category") CodeCategory category) {
 		try {
-			return ResponseEntity.ok()
-					.body(this.schedulerApiService.getCodesByCategory(category.getValue()));
+			return ResponseEntity.ok().body(this.schedulerApiService.getCodesByCategory(category.getValue()));
 		} catch (Exception e) {
 			log.error("Failed getting codes for category {} with error: {}", category, e.getMessage(), e);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
