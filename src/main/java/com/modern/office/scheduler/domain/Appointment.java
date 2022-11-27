@@ -63,20 +63,20 @@ public class Appointment {
 	private int patientNo;
 
 	@Column(name = "appt_cancel_ind")
-	private int apptCancelIndc;
+	private Integer apptCancelIndc;
 	
 	@Column(name = "appt_confirmed_ind")
-	private int apptConfirmedInd = 0;
+	private Integer apptConfirmedInd = 0;
 	
 	@Column(name = "appt_left_msg_ind")
-	private int apptLeftMsgInd = 0;
+	private Integer apptLeftMsgInd = 0;
 	
 	@Column(name = "appt_no_answer_ind")
-	private int apptNoAnswerInd = 0;
+	private Integer apptNoAnswerInd = 0;
 	
 	@Column(name = "appt_show_ind")
-	private int apptShowInd = 0;
+	private Integer apptShowInd = 0;
 	
 	@Column(name = "appt_new_pat_ind")
-	private int apptNewPatientInd = 0;
+	private Integer apptNewPatientInd = 0;
 }
