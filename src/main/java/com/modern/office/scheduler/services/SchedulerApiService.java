@@ -13,6 +13,7 @@ import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
 import com.modern.office.scheduler.domain.ProviderException;
+import com.modern.office.scheduler.domain.Timeslot;
 
 public interface SchedulerApiService {
 	List<Provider> getProviders();
@@ -37,4 +38,5 @@ public interface SchedulerApiService {
 	Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate, LocalDate endDate);
 	Appointment save(Appointment appointment);
 	Iterable<Code> getCodesByCategory(int categoryNo);
+	List<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate);
 }

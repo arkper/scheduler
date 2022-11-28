@@ -8,10 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Entity
 @Table(name = "Appsch_Provider_Blocks")
 @Data
+@Accessors(chain = true)
 public class ProviderBlock {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

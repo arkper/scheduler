@@ -1,8 +1,13 @@
 package com.modern.office.scheduler.services;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import org.apache.commons.lang3.StringUtils;
@@ -21,6 +26,7 @@ import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
 import com.modern.office.scheduler.domain.ProviderException;
+import com.modern.office.scheduler.domain.Timeslot;
 import com.modern.office.scheduler.repository.AddressRepository;
 import com.modern.office.scheduler.repository.AppointmentRepository;
 import com.modern.office.scheduler.repository.CodeRepository;
@@ -32,7 +38,10 @@ import com.modern.office.scheduler.repository.ProviderBlockRepository;
 import com.modern.office.scheduler.repository.ProviderExceptionRepository;
 import com.modern.office.scheduler.repository.ProviderRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final ProviderRepository providerRepo;
 	private final InsuranceRepository insuranceRepo;
@@ -46,19 +55,12 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final CodeRepository codeRepo;
 	private final List<Integer> supportedProviders;
 	private final List<String> supportedInsurances;
-	
-	public SchedulerApiServiceImpl(final ProviderRepository providerRepo,
-			final InsuranceRepository insuranceRepo,
-			final ProviderBlockRepository providerBlockRepo,
-			final ProviderExceptionRepository providerExceptionRepo,
-			final AppointmentRepository appointmentRepo,
-			final ProductRepository productRepo,
-			final AddressRepository addressRepo,
-			final PatientInsuranceRepository patientInsuranceRepo,
-			final PatientRepository patientRepo,
-			final CodeRepository codeRepo,
-			final AppConfig secConfig)
-	{
+
+	public SchedulerApiServiceImpl(final ProviderRepository providerRepo, final InsuranceRepository insuranceRepo,
+			final ProviderBlockRepository providerBlockRepo, final ProviderExceptionRepository providerExceptionRepo,
+			final AppointmentRepository appointmentRepo, final ProductRepository productRepo,
+			final AddressRepository addressRepo, final PatientInsuranceRepository patientInsuranceRepo,
+			final PatientRepository patientRepo, final CodeRepository codeRepo, final AppConfig secConfig) {
 		this.providerRepo = providerRepo;
 		this.insuranceRepo = insuranceRepo;
 		this.providerBlockRepo = providerBlockRepo;
@@ -77,18 +79,15 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	public List<Provider> getProviders() {
 		Iterable<Provider> it = this.providerRepo.getProviderByIsProviderAndProviderActive(1, true);
 		return StreamSupport.stream(it.spliterator(), false)
-		    .filter(p -> this.supportedProviders.contains(p.getProviderNo()))
-		    .collect(Collectors.toList());
+				.filter(p -> this.supportedProviders.contains(p.getProviderNo())).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Insurance> getInsurances() {
-		return this.supportedInsurances
-		    .stream()
-		    .map(s -> Insurance.builder()
-		    		.insuranceNo(Integer.parseInt(StringUtils.substringAfter(s, ",")))
-		    		.insuranceName(StringUtils.substringBefore(s, ",")).build())
-		    .collect(Collectors.toList());
+		return this.supportedInsurances.stream()
+				.map(s -> Insurance.builder().insuranceNo(Integer.parseInt(StringUtils.substringAfter(s, ",")))
+						.insuranceName(StringUtils.substringBefore(s, ",")).build())
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -107,9 +106,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	}
 
 	@Override
-	public Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(
-			int providerNo, 
-			LocalDate startDate,
+	public Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate,
 			LocalDate endDate) {
 		return appointmentRepo.getAppointmentByProviderNoAndApptDateBetween(providerNo, startDate, endDate);
 	}
@@ -133,10 +130,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	public Iterable<Product> getAvailableProducts() {
 		return this.productRepo.getProductsByProductAvailable(1);
 	}
-	
+
 	@Override
-	public Address getAddress(int addressNo)
-	{
+	public Address getAddress(int addressNo) {
 		return this.addressRepo.findById(addressNo).orElse(null);
 	}
 
@@ -168,10 +164,10 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	@Override
 	public Patient save(Patient patient) {
 		Patient saved = this.patientRepo.save(patient.setAddressNoOld(patient.getAddress().getAddressNo()));
-		
-		patient.getPatientInsurances()
-		    .forEach(pi -> this.patientInsuranceRepo.save(pi.setPatientNo(patient.getPatientNo()).setInsuredNo(patient.getPatientNo())));
-		
+
+		patient.getPatientInsurances().forEach(pi -> this.patientInsuranceRepo
+				.save(pi.setPatientNo(patient.getPatientNo()).setInsuredNo(patient.getPatientNo())));
+
 		return saved;
 	}
 
@@ -187,7 +183,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	}
 
 	@Override
-	@Cacheable(cacheNames = {"sourceCodeCache"}, key = "#categoryNo")
+	@Cacheable(cacheNames = { "sourceCodeCache" }, key = "#categoryNo")
 	public Iterable<Code> getCodesByCategory(int categoryNo) {
 		return this.codeRepo.getCodesByCategory(categoryNo);
 	}
@@ -200,6 +196,72 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	@Override
 	public Iterable<ProviderException> getExceptionsByProviderNoAndExceptionDate(int providerNo, LocalDate fromDate,
 			LocalDate toDate) {
-		return this.providerExceptionRepo.getProviderExceptionsByProviderNoAndExceptionDateBetween(providerNo, fromDate, toDate);
+		return this.providerExceptionRepo.getProviderExceptionsByProviderNoAndExceptionDateBetween(providerNo, fromDate,
+				toDate);
+	}
+
+	@Override
+	public List<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate) {
+		AtomicReference<LocalDate> current = new AtomicReference<LocalDate>(fromDate);
+
+		Iterable<ProviderBlock> providerBlocks = this.providerBlockRepo.findAllByProviderNo(providerNo);
+
+		final List<Timeslot> result = new ArrayList<Timeslot>();
+
+		while (toDate.plusDays(1).isAfter(current.get())) {
+			final int dayOfWeek = current.get().getDayOfWeek().getValue();
+			StreamSupport.stream(providerBlocks.spliterator(), false).filter(b -> b.getDayOfWeek() == dayOfWeek)
+					.map(block -> this.getTimeslotsFor(current.get(), block)).forEach(slots -> result.addAll(slots));
+
+			log.debug("Collecting timeslots for {}. Current count is {}", current, result.size());
+			current.set(current.get().plusDays(1));
+		}
+
+		return result;
+	}
+
+	private List<Timeslot> getTimeslotsFor(LocalDate date, ProviderBlock block) {
+		List<Timeslot> result = new ArrayList<Timeslot>();
+
+		LocalDateTime startTime = this.getDateTime(date, block.getStartDateTime());
+		LocalDateTime endTime = this.getDateTime(date, block.getEndDateTime());
+
+		LocalDateTime current = startTime;
+		while (current.isBefore(endTime.minusMinutes(1))) {
+			Timeslot timeslot = Timeslot.builder().date(date).startTime(current).endTime(current.plusMinutes(15))
+					.available(true).build();
+			if (this.isTimeslotAvailable(timeslot, block.getProviderNo())) {
+				result.add(timeslot);
+			}
+			current = current.plusMinutes(15);
+		}
+
+		return result;
+	}
+
+	private boolean isTimeslotAvailable(Timeslot timeslot, int providerNo) {
+		Iterable<ProviderException> exceptions = this.providerExceptionRepo
+				.getProviderExceptionsByProviderNo(providerNo);
+
+		Iterable<Appointment> appointments = this.appointmentRepo
+				.getAppointmentByProviderNoAndApptDateBetween(providerNo, timeslot.getDate(), timeslot.getDate());
+
+		Stream<ProviderException> filteredExceptions = StreamSupport.stream(exceptions.spliterator(), false)
+				.filter(exception -> exception.getExceptionDate().equals(timeslot.getDate()));
+
+		return filteredExceptions.noneMatch(exception -> {
+			return timeslot.getStartTime()
+					.isAfter(this.getDateTime(exception.getExceptionDate(), exception.getStartTime()).minusMinutes(1))
+					&& timeslot.getEndTime().isBefore(
+							this.getDateTime(exception.getExceptionDate(), exception.getEndTime()).plusMinutes(1));
+		}) && StreamSupport.stream(appointments.spliterator(), false).noneMatch(
+				a -> this.getDateTime(a.getApptDate(), a.getApptStartTime()).equals(timeslot.getStartTime()));
+	}
+
+	private LocalDateTime getDateTime(LocalDate date, String time) {
+		if (date == null) {
+			date = LocalDate.now();
+		}
+		return LocalDateTime.parse(date.format(DateTimeFormatter.ISO_DATE) + "T" + time);
 	}
 }
