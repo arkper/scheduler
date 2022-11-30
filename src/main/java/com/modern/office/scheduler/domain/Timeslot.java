@@ -24,11 +24,11 @@ public class Timeslot implements Comparable<Timeslot>{
 		}
 		else if (other.getDate().isBefore(this.getDate()))
 		{
-		    return -1;	
+		    return 1;	
 		}
 		else if (other.getDate().isAfter(this.getDate()))
 		{
-			return 1;
+			return -1;
 		}
 		else if (other.getDate().isEqual(this.getDate())
 				&& other.getStartTime().isBefore(this.startTime))
@@ -43,6 +43,4 @@ public class Timeslot implements Comparable<Timeslot>{
 
 		return 1;
 	}
-
-
 }

@@ -75,7 +75,7 @@ public class ScheduleApiServiceTest {
 		Mockito.when(providerExceptionRepo.getProviderExceptionsByProviderNo(1))
 				.thenReturn(Stream.of(
 						new ProviderException().setProviderNo(1).setExceptionDate(LocalDate.of(2022, 11, 22))
-								.setStartTime("10:00").setEndTime("16:00"),
+								.setStartTime("10:00").setEndTime("15:00"),
 						new ProviderException().setProviderNo(1).setExceptionDate(LocalDate.of(2022, 11, 21))
 								.setStartTime("13:00").setEndTime("14:00"))
 						.collect(Collectors.toList()));
@@ -91,6 +91,6 @@ public class ScheduleApiServiceTest {
 
 		Set<Timeslot> timeslots = this.testObj.getTimeslots(1, LocalDate.of(2022, 11, 20), LocalDate.of(2022, 11, 25));
 
-		Assertions.assertEquals(26, timeslots.size());
+		Assertions.assertEquals(30, timeslots.size());
 	}
 }
