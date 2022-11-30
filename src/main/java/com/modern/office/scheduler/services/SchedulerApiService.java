@@ -2,6 +2,7 @@ package com.modern.office.scheduler.services;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
@@ -38,5 +39,5 @@ public interface SchedulerApiService {
 	Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate, LocalDate endDate);
 	Appointment save(Appointment appointment);
 	Iterable<Code> getCodesByCategory(int categoryNo);
-	List<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate);
+	Set<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate);
 }

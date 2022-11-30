@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -201,7 +203,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	}
 
 	@Override
-	public List<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate) {
+	public Set<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate) {
 		AtomicReference<LocalDate> current = new AtomicReference<LocalDate>(fromDate);
 
 		Iterable<ProviderBlock> providerBlocks = this.providerBlockRepo.findAllByProviderNo(providerNo);
@@ -212,7 +214,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 				.getAppointmentByProviderNoAndApptDateBetween(providerNo, fromDate, toDate);
 
 
-		final List<Timeslot> result = new ArrayList<Timeslot>();
+		final Set<Timeslot> result = new TreeSet<Timeslot>();
 
 		while (toDate.plusDays(1).isAfter(current.get())) {
 			final int dayOfWeek = current.get().getDayOfWeek().getValue();

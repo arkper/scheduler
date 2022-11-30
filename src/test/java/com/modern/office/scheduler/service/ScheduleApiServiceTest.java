@@ -2,7 +2,7 @@ package com.modern.office.scheduler.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -58,7 +58,7 @@ public class ScheduleApiServiceTest {
 				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("17:00"))
 				.collect(Collectors.toList()));
 
-		List<Timeslot> timeslots = this.testObj.getTimeslots(1, LocalDate.of(2022, 11, 20), LocalDate.of(2022, 11, 25));
+		Set<Timeslot> timeslots = this.testObj.getTimeslots(1, LocalDate.of(2022, 11, 20), LocalDate.of(2022, 11, 25));
 
 		Assertions.assertEquals(32, timeslots.size());
 	}
@@ -68,6 +68,7 @@ public class ScheduleApiServiceTest {
 
 		Mockito.when(providerBlockRepo.findAllByProviderNo(1)).thenReturn(Stream.of(
 				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("17:00"),
+				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("10:00"),
 				new ProviderBlock().setProviderNo(1).setDayOfWeek(2).setStartDateTime("10:00").setEndDateTime("16:00"))
 				.collect(Collectors.toList()));
 
@@ -88,7 +89,7 @@ public class ScheduleApiServiceTest {
 								.setApptEndTime("15:30"))
 						.collect(Collectors.toList()));
 
-		List<Timeslot> timeslots = this.testObj.getTimeslots(1, LocalDate.of(2022, 11, 20), LocalDate.of(2022, 11, 25));
+		Set<Timeslot> timeslots = this.testObj.getTimeslots(1, LocalDate.of(2022, 11, 20), LocalDate.of(2022, 11, 25));
 
 		Assertions.assertEquals(26, timeslots.size());
 	}
