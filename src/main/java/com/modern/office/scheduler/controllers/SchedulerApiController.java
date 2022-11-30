@@ -23,6 +23,7 @@ import com.modern.office.scheduler.domain.Product;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.domain.ProviderBlock;
 import com.modern.office.scheduler.domain.ProviderException;
+import com.modern.office.scheduler.domain.Timeslot;
 import com.modern.office.scheduler.services.SchedulerApiService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -267,6 +268,20 @@ public class SchedulerApiController {
 			return ResponseEntity.ok().body(this.schedulerApiService.getCodesByCategory(category.getValue()));
 		} catch (Exception e) {
 			log.error("Failed getting codes for category {} with error: {}", category, e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
+	@GetMapping(path = "/timeslots/{provider-no}/{from-date}/{to-date}", produces = "application/json")
+	public ResponseEntity<Iterable<Timeslot>> getTimeslots(@PathVariable("provider-no") int providerNo,
+			@PathVariable("from-date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fromDate,
+			@PathVariable("to-date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate toDate) {
+		try {
+			return ResponseEntity.ok().body(this.schedulerApiService.getTimeslots(providerNo, fromDate, toDate));
+		} catch (Exception e) {
+			log.error("Failed getting timmeslots for provider {} fromDate {}, toDate {} with error: {}", providerNo,
+					fromDate, toDate, e.getMessage(), e);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
 					.build();
 		}
