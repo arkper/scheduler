@@ -205,13 +205,19 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		AtomicReference<LocalDate> current = new AtomicReference<LocalDate>(fromDate);
 
 		Iterable<ProviderBlock> providerBlocks = this.providerBlockRepo.findAllByProviderNo(providerNo);
+		Iterable<ProviderException> exceptions = this.providerExceptionRepo
+				.getProviderExceptionsByProviderNo(providerNo);
+
+		Iterable<Appointment> appointments = this.appointmentRepo
+				.getAppointmentByProviderNoAndApptDateBetween(providerNo, fromDate, toDate);
+
 
 		final List<Timeslot> result = new ArrayList<Timeslot>();
 
 		while (toDate.plusDays(1).isAfter(current.get())) {
 			final int dayOfWeek = current.get().getDayOfWeek().getValue();
 			StreamSupport.stream(providerBlocks.spliterator(), false).filter(b -> b.getDayOfWeek() == dayOfWeek)
-					.map(block -> this.getTimeslotsFor(current.get(), block)).forEach(slots -> result.addAll(slots));
+					.map(block -> this.getTimeslotsFor(current.get(), block, exceptions, appointments)).forEach(slots -> result.addAll(slots));
 
 			log.debug("Collecting timeslots for {}. Current count is {}", current, result.size());
 			current.set(current.get().plusDays(1));
@@ -220,7 +226,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		return result;
 	}
 
-	private List<Timeslot> getTimeslotsFor(LocalDate date, ProviderBlock block) {
+	private List<Timeslot> getTimeslotsFor(LocalDate date, ProviderBlock block, 
+			Iterable<ProviderException> exceptions, Iterable<Appointment> appointments) {
 		List<Timeslot> result = new ArrayList<Timeslot>();
 
 		LocalDateTime startTime = this.getDateTime(date, block.getStartDateTime());
@@ -230,7 +237,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		while (current.isBefore(endTime.minusMinutes(1))) {
 			Timeslot timeslot = Timeslot.builder().date(date).startTime(current).endTime(current.plusMinutes(15))
 					.available(true).build();
-			if (this.isTimeslotAvailable(timeslot, block.getProviderNo())) {
+			if (this.isTimeslotAvailable(timeslot, block.getProviderNo(), exceptions, appointments)) {
 				result.add(timeslot);
 			}
 			current = current.plusMinutes(15);
@@ -239,13 +246,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		return result;
 	}
 
-	private boolean isTimeslotAvailable(Timeslot timeslot, int providerNo) {
-		Iterable<ProviderException> exceptions = this.providerExceptionRepo
-				.getProviderExceptionsByProviderNo(providerNo);
-
-		Iterable<Appointment> appointments = this.appointmentRepo
-				.getAppointmentByProviderNoAndApptDateBetween(providerNo, timeslot.getDate(), timeslot.getDate());
-
+	private boolean isTimeslotAvailable(Timeslot timeslot, int providerNo,
+			Iterable<ProviderException> exceptions, Iterable<Appointment> appointments) {
 		Stream<ProviderException> filteredExceptions = StreamSupport.stream(exceptions.spliterator(), false)
 				.filter(exception -> exception.getExceptionDate().equals(timeslot.getDate()));
 

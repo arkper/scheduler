@@ -79,8 +79,8 @@ public class ScheduleApiServiceTest {
 								.setStartTime("13:00").setEndTime("14:00"))
 						.collect(Collectors.toList()));
 
-		Mockito.when(appointmentRepo.getAppointmentByProviderNoAndApptDateBetween(1, LocalDate.of(2022, 11, 21),
-				LocalDate.of(2022, 11, 21)))
+		Mockito.when(appointmentRepo.getAppointmentByProviderNoAndApptDateBetween(1, LocalDate.of(2022, 11, 20),
+				LocalDate.of(2022, 11, 25)))
 				.thenReturn(Stream.of(
 						new Appointment().setApptDate(LocalDate.of(2022, 11, 21)).setApptStartTime("09:15")
 								.setApptEndTime("09:30"),
