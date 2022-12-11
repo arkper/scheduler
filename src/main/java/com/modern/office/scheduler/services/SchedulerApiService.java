@@ -8,6 +8,7 @@ import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Code;
 import com.modern.office.scheduler.domain.Insurance;
+import com.modern.office.scheduler.domain.InsurancePlan;
 import com.modern.office.scheduler.domain.Patient;
 import com.modern.office.scheduler.domain.PatientInsurance;
 import com.modern.office.scheduler.domain.Product;
@@ -21,6 +22,7 @@ public interface SchedulerApiService {
 	Provider save(Provider provider);
 	Iterable<Insurance> getInsurances();
 	Insurance save(Insurance insurance);
+	Iterable<InsurancePlan> getInsurancePlans(int insuranceNo);
 	Iterable<Product> getAvailableProducts();
 	Address getAddress(int addressNo);
 	Address save(Address address);
@@ -38,6 +40,7 @@ public interface SchedulerApiService {
 	Iterable<Appointment> getAppointmentByApptDateBetween(LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate, LocalDate endDate);
 	Appointment save(Appointment appointment);
+	Appointment cancel(int apptNo);
 	Iterable<Code> getCodesByCategory(int categoryNo);
 	Set<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate);
 }

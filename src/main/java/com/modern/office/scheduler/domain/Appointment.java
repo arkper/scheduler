@@ -65,7 +65,7 @@ public class Appointment {
 	private int patientNo;
 
 	@Column(name = "appt_cancel_ind")
-	private Integer apptCancelIndc;
+	private Integer apptCancelInd;
 	
 	@Column(name = "appt_confirmed_ind")
 	private Integer apptConfirmedInd = 0;

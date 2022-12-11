@@ -17,6 +17,7 @@ import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Code;
 import com.modern.office.scheduler.domain.CodeCategory;
 import com.modern.office.scheduler.domain.Insurance;
+import com.modern.office.scheduler.domain.InsurancePlan;
 import com.modern.office.scheduler.domain.Patient;
 import com.modern.office.scheduler.domain.PatientInsurance;
 import com.modern.office.scheduler.domain.Product;
@@ -106,6 +107,17 @@ public class SchedulerApiController {
 		}
 	}
 
+	@GetMapping(path = "/insurance-plans/{insurance-no}", produces = "application/json")
+	public ResponseEntity<Iterable<InsurancePlan>> getInsurancePlans(@PathVariable("insurance-no") int insuranceNo) {
+		try {
+			return ResponseEntity.ok().body(this.schedulerApiService.getInsurancePlans(insuranceNo));
+		} catch (Exception e) {
+			log.error("Failed getting insurance plans with error: {}", e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
 	@GetMapping(path = "/provider-blocks/{provider-no}", produces = "application/json")
 	public ResponseEntity<Iterable<ProviderBlock>> getProviderBlocks(@PathVariable("provider-no") int providerNo) {
 		try {
@@ -154,6 +166,17 @@ public class SchedulerApiController {
 			return ResponseEntity.ok().body(this.schedulerApiService.save(appointment));
 		} catch (Exception e) {
 			log.error("Failed saving appointment with error: {}", e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
+	@PostMapping(path = "/appointment/{appt-no}/cancel", produces = "application/json")
+	public ResponseEntity<Appointment> cancel(@PathVariable("appt-no") int apptNo) {
+		try {
+			return ResponseEntity.ok().body(this.schedulerApiService.cancel(apptNo));
+		} catch (Exception e) {
+			log.error("Failed cancelling appointment with error: {}", e.getMessage(), e);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
 					.build();
 		}

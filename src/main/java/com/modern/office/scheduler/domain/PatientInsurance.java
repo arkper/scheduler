@@ -33,7 +33,7 @@ public class PatientInsurance {
 	private Integer insuranceGroupNo;
 	
 	@Column(name="insured_type")
-	private Integer insuredTypeNo;
+	private Integer insuredTypeNo = 0;
 	
 	@Column(name="insured_no")
 	private Integer insuredNo;
@@ -45,7 +45,7 @@ public class PatientInsurance {
 	private int ppoHmoNo;
 	
 	@Column(name="insurance_status")
-	private int insuranceStatus;
+	private int insuranceStatus = 0;
 	
 	@Column(name="insured_id")
 	private String insuredId;

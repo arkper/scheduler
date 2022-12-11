@@ -48,7 +48,7 @@ public class ScheduleApiServiceTest {
 		Mockito.when(appConfig.getProviders()).thenReturn(new ArrayList<Integer>());
 
 		this.testObj = new SchedulerApiServiceImpl(null, null, providerBlockRepo, providerExceptionRepo,
-				appointmentRepo, null, null, null, null, null, appConfig);
+				appointmentRepo, null, null, null, null, null, null, appConfig);
 	}
 
 	@Test

@@ -7,6 +7,11 @@ insert into insurance(insurance_no, insurance_name) values(2, 'New York Medicaid
 insert into insurance(insurance_no, insurance_name) values(3, 'AmeriChoice of New York');
 insert into insurance(insurance_no, insurance_name) values(4, 'HIP - Health Health Plan Of New York');
 
+insert into insurance_plans(insurance_no, plan_no, plan_name) values(1, 1, 'National Government Services');
+insert into insurance_plans(insurance_no, plan_no, plan_name) values(2, 2, 'New York Medicaid');
+insert into insurance_plans(insurance_no, plan_no, plan_name) values(3, 3, 'AmeriChoice of New York');
+insert into insurance_plans(insurance_no, plan_no, plan_name) values(4, 4, 'HIP - Health Health, Plan Of New York');
+
 insert into AppSch_Provider_Blocks(prb_no, pro_no, LocationID, prb_block_type, prb_start_date_time, prb_end_date_time, prb_duration, prb_day_of_week)
 values (140,8,2,2,'11:00:00','17:00:00',360,0);
 

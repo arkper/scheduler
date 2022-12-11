@@ -22,6 +22,7 @@ import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Code;
 import com.modern.office.scheduler.domain.Insurance;
+import com.modern.office.scheduler.domain.InsurancePlan;
 import com.modern.office.scheduler.domain.Patient;
 import com.modern.office.scheduler.domain.PatientInsurance;
 import com.modern.office.scheduler.domain.Product;
@@ -32,6 +33,7 @@ import com.modern.office.scheduler.domain.Timeslot;
 import com.modern.office.scheduler.repository.AddressRepository;
 import com.modern.office.scheduler.repository.AppointmentRepository;
 import com.modern.office.scheduler.repository.CodeRepository;
+import com.modern.office.scheduler.repository.InsurancePlanRepository;
 import com.modern.office.scheduler.repository.InsuranceRepository;
 import com.modern.office.scheduler.repository.PatientInsuranceRepository;
 import com.modern.office.scheduler.repository.PatientRepository;
@@ -55,6 +57,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final PatientInsuranceRepository patientInsuranceRepo;
 	private final PatientRepository patientRepo;
 	private final CodeRepository codeRepo;
+	private final InsurancePlanRepository insurancePlanRepo;
 	private final List<Integer> supportedProviders;
 	private final List<String> supportedInsurances;
 
@@ -62,7 +65,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 			final ProviderBlockRepository providerBlockRepo, final ProviderExceptionRepository providerExceptionRepo,
 			final AppointmentRepository appointmentRepo, final ProductRepository productRepo,
 			final AddressRepository addressRepo, final PatientInsuranceRepository patientInsuranceRepo,
-			final PatientRepository patientRepo, final CodeRepository codeRepo, final AppConfig secConfig) {
+			final PatientRepository patientRepo, final InsurancePlanRepository insurancePlanRepo, 
+			final CodeRepository codeRepo, final AppConfig secConfig) {
 		this.providerRepo = providerRepo;
 		this.insuranceRepo = insuranceRepo;
 		this.providerBlockRepo = providerBlockRepo;
@@ -73,6 +77,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		this.patientInsuranceRepo = patientInsuranceRepo;
 		this.patientRepo = patientRepo;
 		this.codeRepo = codeRepo;
+		this.insurancePlanRepo = insurancePlanRepo;
 		this.supportedProviders = secConfig.getProviders();
 		this.supportedInsurances = secConfig.getInsurances();
 	}
@@ -185,6 +190,20 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	}
 
 	@Override
+	@Transactional
+	public Appointment cancel(int apptNo) {
+		final Appointment appointment = this.appointmentRepo.findById(apptNo)
+		    .orElse(null);
+		
+		if (appointment != null)
+		{
+			appointment.setApptCancelInd(1);
+		}
+		
+		return appointment;
+	}
+
+	@Override
 	@Cacheable(cacheNames = { "sourceCodeCache" }, key = "#categoryNo")
 	public Iterable<Code> getCodesByCategory(int categoryNo) {
 		return this.codeRepo.getCodesByCategory(categoryNo);
@@ -267,5 +286,10 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 			date = LocalDate.now();
 		}
 		return LocalDateTime.parse(date.format(DateTimeFormatter.ISO_DATE) + "T" + time);
+	}
+
+	@Override
+	public Iterable<InsurancePlan> getInsurancePlans(int insuranceNo) {
+		return this.insurancePlanRepo.findInsurancePlansByInsuranceNo(insuranceNo);
 	}
 }
