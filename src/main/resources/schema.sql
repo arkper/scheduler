@@ -105,6 +105,7 @@ CREATE TABLE insurance(
 
 CREATE TABLE Appsch_Provider_Blocks(
 	prb_no int auto_increment NOT NULL,
+	range_no int NULL,
 	pro_no int NULL,
 	LocationID int NULL,
 	prb_block_type smallint NULL,
