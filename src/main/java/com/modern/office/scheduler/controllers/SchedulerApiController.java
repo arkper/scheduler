@@ -160,6 +160,21 @@ public class SchedulerApiController {
 		}
 	}
 
+	@GetMapping(path = "/patient-appointments/{patient-no}/{start-date}/{end-date}", produces = "application/json")
+	public ResponseEntity<Iterable<Appointment>> getAppointmentsByPatient(@PathVariable("patient-no") int patientNo,
+			@PathVariable("start-date") String startDate, @PathVariable("end-date") String endDate) {
+		try {
+			Iterable<Appointment> appointments = this.schedulerApiService.getAppointmentByPatientNoAndApptDateBetween(
+					patientNo, LocalDate.parse(startDate), LocalDate.parse(endDate));
+
+			return ResponseEntity.ok().body(appointments);
+		} catch (Exception e) {
+			log.error("Failed getting appointments for patient {} with error: {}", patientNo, e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
 	@PostMapping(path = "/appointment", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Appointment> save(@RequestBody Appointment appointment) {
 		try {

@@ -65,7 +65,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 			final ProviderBlockRepository providerBlockRepo, final ProviderExceptionRepository providerExceptionRepo,
 			final AppointmentRepository appointmentRepo, final ProductRepository productRepo,
 			final AddressRepository addressRepo, final PatientInsuranceRepository patientInsuranceRepo,
-			final PatientRepository patientRepo, final InsurancePlanRepository insurancePlanRepo, 
+			final PatientRepository patientRepo, final InsurancePlanRepository insurancePlanRepo,
 			final CodeRepository codeRepo, final AppConfig secConfig) {
 		this.providerRepo = providerRepo;
 		this.insuranceRepo = insuranceRepo;
@@ -116,6 +116,12 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	public Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate,
 			LocalDate endDate) {
 		return appointmentRepo.getAppointmentByProviderNoAndApptDateBetween(providerNo, startDate, endDate);
+	}
+
+	@Override
+	public Iterable<Appointment> getAppointmentByPatientNoAndApptDateBetween(int patientNo, LocalDate startDate,
+			LocalDate endDate) {
+		return appointmentRepo.getAppointmentByPatientNoAndApptDateBetween(patientNo, startDate, endDate);
 	}
 
 	@Override
@@ -192,14 +198,12 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	@Override
 	@Transactional
 	public Appointment cancel(int apptNo) {
-		final Appointment appointment = this.appointmentRepo.findById(apptNo)
-		    .orElse(null);
-		
-		if (appointment != null)
-		{
+		final Appointment appointment = this.appointmentRepo.findById(apptNo).orElse(null);
+
+		if (appointment != null) {
 			appointment.setApptCancelInd(1);
 		}
-		
+
 		return appointment;
 	}
 
@@ -232,13 +236,13 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		Iterable<Appointment> appointments = this.appointmentRepo
 				.getAppointmentByProviderNoAndApptDateBetween(providerNo, fromDate, toDate);
 
-
 		final Set<Timeslot> result = new TreeSet<Timeslot>();
 
 		while (toDate.plusDays(1).isAfter(current.get())) {
 			final int dayOfWeek = current.get().getDayOfWeek().getValue();
 			StreamSupport.stream(providerBlocks.spliterator(), false).filter(b -> b.getDayOfWeek() == dayOfWeek)
-					.map(block -> this.getTimeslotsFor(current.get(), block, exceptions, appointments)).forEach(slots -> result.addAll(slots));
+					.map(block -> this.getTimeslotsFor(current.get(), block, exceptions, appointments))
+					.forEach(slots -> result.addAll(slots));
 
 			log.debug("Collecting timeslots for {}. Current count is {}", current, result.size());
 			current.set(current.get().plusDays(1));
@@ -247,8 +251,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		return result;
 	}
 
-	private List<Timeslot> getTimeslotsFor(LocalDate date, ProviderBlock block, 
-			Iterable<ProviderException> exceptions, Iterable<Appointment> appointments) {
+	private List<Timeslot> getTimeslotsFor(LocalDate date, ProviderBlock block, Iterable<ProviderException> exceptions,
+			Iterable<Appointment> appointments) {
 		List<Timeslot> result = new ArrayList<Timeslot>();
 
 		LocalDateTime startTime = this.getDateTime(date, block.getStartDateTime());
@@ -267,8 +271,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		return result;
 	}
 
-	private boolean isTimeslotAvailable(Timeslot timeslot, int providerNo,
-			Iterable<ProviderException> exceptions, Iterable<Appointment> appointments) {
+	private boolean isTimeslotAvailable(Timeslot timeslot, int providerNo, Iterable<ProviderException> exceptions,
+			Iterable<Appointment> appointments) {
 		Stream<ProviderException> filteredExceptions = StreamSupport.stream(exceptions.spliterator(), false)
 				.filter(exception -> exception.getExceptionDate().equals(timeslot.getDate()));
 
@@ -277,8 +281,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 					.isAfter(this.getDateTime(exception.getExceptionDate(), exception.getStartTime()).minusMinutes(1))
 					&& timeslot.getEndTime().isBefore(
 							this.getDateTime(exception.getExceptionDate(), exception.getEndTime()).plusMinutes(1));
-		}) && StreamSupport.stream(appointments.spliterator(), false).noneMatch(
-				a -> this.getDateTime(a.getApptDate(), a.getApptStartTime()).equals(timeslot.getStartTime()));
+		}) && StreamSupport.stream(appointments.spliterator(), false).filter(appt -> appt.getApptCancelInd() == 0)
+				.noneMatch(
+						a -> this.getDateTime(a.getApptDate(), a.getApptStartTime()).equals(timeslot.getStartTime()));
 	}
 
 	private LocalDateTime getDateTime(LocalDate date, String time) {
