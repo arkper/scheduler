@@ -55,7 +55,7 @@ public class ScheduleApiServiceTest {
 	void testGettingTimsSlotsNoExceptions() {
 
 		Mockito.when(providerBlockRepo.findAllByProviderNo(1)).thenReturn(Stream.of(
-				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("17:00"))
+				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("17:00").setBlockType(1))
 				.collect(Collectors.toList()));
 
 		Set<Timeslot> timeslots = this.testObj.getTimeslots(1, LocalDate.of(2022, 11, 20), LocalDate.of(2022, 11, 25));
@@ -67,9 +67,9 @@ public class ScheduleApiServiceTest {
 	void testGettingTimsSlotsTwoExceptionsAndAppointment() {
 
 		Mockito.when(providerBlockRepo.findAllByProviderNo(1)).thenReturn(Stream.of(
-				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("17:00"),
-				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("10:00"),
-				new ProviderBlock().setProviderNo(1).setDayOfWeek(2).setStartDateTime("10:00").setEndDateTime("16:00"))
+				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("17:00").setBlockType(1),
+				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("10:00").setBlockType(1),
+				new ProviderBlock().setProviderNo(1).setDayOfWeek(2).setStartDateTime("10:00").setEndDateTime("16:00").setBlockType(1))
 				.collect(Collectors.toList()));
 
 		Mockito.when(providerExceptionRepo.getProviderExceptionsByProviderNo(1))
