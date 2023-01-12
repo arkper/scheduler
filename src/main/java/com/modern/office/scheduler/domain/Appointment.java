@@ -81,4 +81,7 @@ public class Appointment {
 	
 	@Column(name = "appt_new_pat_ind")
 	private Integer apptNewPatientInd = 0;
+	
+	@Column(name = "appt_deleted_ind")
+	private Integer apptDeletedInd = 0;
 }

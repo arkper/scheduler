@@ -282,7 +282,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 					.isAfter(this.getDateTime(exception.getExceptionDate(), exception.getStartTime()).minusMinutes(1))
 					&& timeslot.getEndTime().isBefore(
 							this.getDateTime(exception.getExceptionDate(), exception.getEndTime()).plusMinutes(1));
-		}) && StreamSupport.stream(appointments.spliterator(), false).filter(appt -> appt.getApptCancelInd() == 0)
+		}) && StreamSupport.stream(appointments.spliterator(), false).filter(appt -> appt.getApptCancelInd() == 0 && appt.getApptDeletedInd() == 0)
 				.noneMatch(
 						a -> this.getDateTime(a.getApptDate(), a.getApptStartTime()).equals(timeslot.getStartTime()));
 	}
