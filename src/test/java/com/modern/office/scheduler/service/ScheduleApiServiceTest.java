@@ -67,6 +67,7 @@ public class ScheduleApiServiceTest {
 	void testGettingTimsSlotsTwoExceptionsAndAppointment() {
 
 		Mockito.when(providerBlockRepo.findAllByProviderNo(1)).thenReturn(Stream.of(
+				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("18:00").setBlockType(1).setRangeNo(2),
 				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("17:00").setBlockType(1),
 				new ProviderBlock().setProviderNo(1).setDayOfWeek(1).setStartDateTime("09:00").setEndDateTime("10:00").setBlockType(1),
 				new ProviderBlock().setProviderNo(1).setDayOfWeek(2).setStartDateTime("10:00").setEndDateTime("16:00").setBlockType(1))

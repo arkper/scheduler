@@ -241,7 +241,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		while (toDate.plusDays(1).isAfter(current.get())) {
 			final int dayOfWeek = current.get().getDayOfWeek().getValue();
 			StreamSupport.stream(providerBlocks.spliterator(), false).filter(b -> b.getDayOfWeek() == dayOfWeek)
-			        .filter(block -> block.getBlockType() == 1)
+			        .filter(block -> block.getBlockType() == 1 && block.getRangeNo() == 0)
 					.map(block -> this.getTimeslotsFor(current.get(), block, exceptions, appointments))
 					.forEach(slots -> result.addAll(slots));
 
