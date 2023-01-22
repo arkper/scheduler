@@ -16,7 +16,7 @@
 	<description>Spring Boot Rest API to manage schedule remotely
 	</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
