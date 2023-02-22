@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicReference;
@@ -21,6 +22,7 @@ import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Code;
+import com.modern.office.scheduler.domain.CodeCategory;
 import com.modern.office.scheduler.domain.Insurance;
 import com.modern.office.scheduler.domain.InsurancePlan;
 import com.modern.office.scheduler.domain.Patient;
@@ -110,6 +112,14 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	@Override
 	public Appointment save(Appointment appointment) {
 		log.info("Saving appointment [{}]", appointment);
+		if (StringUtils.isEmpty(appointment.getApptAddress()))
+		{
+			Patient patient = this.getPatient(appointment.getPatientNo());
+			
+			Address address = patient.getAddress();
+			
+			appointment.setApptAddress(this.getAddressLine(address));
+		}
 		return this.appointmentRepo.save(appointment);
 	}
 
@@ -180,6 +190,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	@Override
 	public Patient save(Patient patient) {
 		log.info("Saving patient [{}]", patient);
+		
+        patient.getAddress().setWrongAddressFlag(0);
+		
 		Patient saved = this.patientRepo.save(patient.setAddressNoOld(patient.getAddress().getAddressNo()));
 
 		patient.getPatientInsurances().forEach(pi -> this.patientInsuranceRepo
@@ -303,4 +316,20 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	public Iterable<InsurancePlan> getInsurancePlans(int insuranceNo) {
 		return this.insurancePlanRepo.findInsurancePlansByInsuranceNo(insuranceNo);
 	}
+	
+	private String getAddressLine(Address address)
+	{
+		return address.getAddress1() + ", " + 
+	       address.getCity() + ", " + 
+	       this.getState(address) + " " + 
+	       address.getZip();
+	}
+	
+	private String getState(Address address)
+	{
+	    return StreamSupport.stream(this.getCodesByCategory(CodeCategory.STATE_CODE_CATEGORY.getValue()).spliterator(), false)
+	        .filter(c -> c.getCode() == address.getStateNo())
+	        .findFirst().get().getUserCode(); 
+	}
+
 }
