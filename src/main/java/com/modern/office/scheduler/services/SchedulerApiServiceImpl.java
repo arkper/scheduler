@@ -109,6 +109,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 	@Override
 	public Appointment save(Appointment appointment) {
+		log.info("Saving appointment [{}]", appointment);
 		return this.appointmentRepo.save(appointment);
 	}
 
@@ -151,6 +152,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 	@Override
 	public Address save(Address address) {
+		log.info("Saving address [{}]", address);
+
 		return this.addressRepo.save(address);
 	}
 
@@ -176,6 +179,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 	@Override
 	public Patient save(Patient patient) {
+		log.info("Saving patient [{}]", patient);
 		Patient saved = this.patientRepo.save(patient.setAddressNoOld(patient.getAddress().getAddressNo()));
 
 		patient.getPatientInsurances().forEach(pi -> this.patientInsuranceRepo
