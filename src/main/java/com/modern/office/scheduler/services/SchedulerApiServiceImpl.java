@@ -191,7 +191,13 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	public Patient save(Patient patient) {
 		log.info("Saving patient [{}]", patient);
 		
-        patient.getAddress().setWrongAddressFlag(0);
+		if (patient.getAddress().getAddressNo() == 0)
+		{
+	        patient.getAddress().setWrongAddressFlag(0);
+			Address savedAddress = this.addressRepo.save(patient.getAddress());
+			patient.setAddress(savedAddress);
+			log.info("Saved patient address [{}]", savedAddress);
+		}
 		
 		Patient saved = this.patientRepo.save(patient.setAddressNoOld(patient.getAddress().getAddressNo()));
 
