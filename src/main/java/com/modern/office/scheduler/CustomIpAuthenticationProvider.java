@@ -2,9 +2,6 @@ package com.modern.office.scheduler;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-public class CustomIpAuthenticationProvider implements AuthenticationProvider {
+public class CustomIpAuthenticationProvider implements AuthenticationProvider 
+{
 	private final AppConfig securityConfig;
 	
 	public CustomIpAuthenticationProvider(final AppConfig securityConfig)

@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicReference;
@@ -49,6 +48,8 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class SchedulerApiServiceImpl implements SchedulerApiService {
+	private static final long DAYS_IN_ADVANCE = 3;
+	
 	private final ProviderRepository providerRepo;
 	private final InsuranceRepository insuranceRepo;
 	private final ProviderBlockRepository providerBlockRepo;
@@ -224,9 +225,21 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		final Appointment appointment = this.appointmentRepo.findById(apptNo).orElse(null);
 
 		if (appointment != null) {
+			log.info("Cancelling appointment {}", appointment);
 			appointment.setApptCancelInd(1);
 		}
+		return appointment;
+	}
 
+	@Override
+	@Transactional
+	public Appointment confirm(int apptNo) {
+		final Appointment appointment = this.appointmentRepo.findById(apptNo).orElse(null);
+
+		if (appointment != null) {
+			log.info("Confirming appointment {}", appointment);
+			appointment.setApptConfirmedInd(1);
+		}
 		return appointment;
 	}
 
@@ -323,6 +336,16 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		return this.insurancePlanRepo.findInsurancePlansByInsuranceNo(insuranceNo);
 	}
 	
+	@Override
+	public Iterable<Appointment> getAppointmentToConfirm() {
+		var appts = this.getAppointmentByApptDateBetween(LocalDate.now(), LocalDate.now().plusDays(DAYS_IN_ADVANCE));
+		
+		return StreamSupport.stream(appts.spliterator(), false)
+				.filter(a -> a.getApptConfirmedInd() == 0)
+				.toList();
+	}
+
+
 	private String getAddressLine(Address address)
 	{
 		return address.getAddress1() + ", " + 
@@ -337,5 +360,4 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	        .filter(c -> c.getCode() == address.getStateNo())
 	        .findFirst().get().getUserCode(); 
 	}
-
 }

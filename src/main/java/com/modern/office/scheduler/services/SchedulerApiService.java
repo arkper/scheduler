@@ -35,13 +35,18 @@ public interface SchedulerApiService {
 	Patient save(Patient patient);
 	Iterable<ProviderBlock> getByProviderNo(int providerNo);
 	ProviderBlock save(ProviderBlock providerBlock);
+	
 	Iterable<ProviderException> getExceptionsByProviderNo(int providerNo);
 	Iterable<ProviderException> getExceptionsByProviderNoAndExceptionDate(int providerNo, LocalDate fromDate, LocalDate toDate);
+	
 	Iterable<Appointment> getAppointmentByApptDateBetween(LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByPatientNoAndApptDateBetween(int patientNo, LocalDate startDate, LocalDate endDate);
+	Iterable<Appointment> getAppointmentToConfirm();
+	
 	Appointment save(Appointment appointment);
 	Appointment cancel(int apptNo);
+	Appointment confirm(int apptNo);
 	Iterable<Code> getCodesByCategory(int categoryNo);
 	Set<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate);
 }

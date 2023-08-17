@@ -163,7 +163,8 @@ CREATE TABLE Appsch_Appointment(
 	appt_no_answer_ind bit NULL,
 	appt_show_ind smallint NULL,
 	appt_new_pat_ind bit NULL,
-	appt_Om_no int NULL
+	appt_Om_no int NULL,
+	APPT_DELETED_IND NULL
 );
 
 CREATE TABLE address(

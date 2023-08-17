@@ -26,18 +26,17 @@ import com.modern.office.scheduler.domain.ProviderBlock;
 import com.modern.office.scheduler.domain.ProviderException;
 import com.modern.office.scheduler.domain.Timeslot;
 import com.modern.office.scheduler.services.SchedulerApiService;
+import com.modern.office.sns.SnsService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController("/")
 @Slf4j
+@RequiredArgsConstructor
 public class SchedulerApiController {
 
 	private final SchedulerApiService schedulerApiService;
-
-	public SchedulerApiController(final SchedulerApiService schedulerApiService) {
-		this.schedulerApiService = schedulerApiService;
-	}
 
 	@GetMapping(value = "/addresses/{address-no}", produces = "application/json")
 	public ResponseEntity<Address> getAddress(@PathVariable("address-no") int addressNo) {

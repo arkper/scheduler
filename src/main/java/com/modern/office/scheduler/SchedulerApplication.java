@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -23,10 +24,11 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import lombok.Getter;
 
-@SpringBootApplication(scanBasePackages = { "com.modern.office.scheduler" })
+@SpringBootApplication(scanBasePackages = { "com.modern.office.scheduler", "com.modern.office.sns" })
 @EnableJpaRepositories
 @EnableConfigurationProperties
 @EnableCaching
+@EnableScheduling
 public class SchedulerApplication {
 
 	public static void main(String[] args) {
@@ -66,6 +68,8 @@ public class SchedulerApplication {
 
 		@Bean
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+			http.authorizeRequests().antMatchers("/reply").permitAll();
+			
 			http
 			   .csrf().disable()
 			   .authorizeRequests()

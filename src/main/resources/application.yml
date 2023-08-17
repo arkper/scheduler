@@ -22,6 +22,7 @@ scheduler:
   - 67.81.99.20
   - 127.0.0.1
   - 0:0:0:0:0:0:0:1
+  - 192.168.1.1
 
   providers: 8,20
   insurances:
@@ -57,4 +58,10 @@ scheduler:
     - VNS CHOICE,45
     - VSP,32
     - WELLCARE,33
+ 
+sns:
+  access-key: AKIAZCBHSIJPZHWUWB26
+  access-secret: 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
+  topic-incoming: arn:aws:sns:us-east-1:622853243487:topic1
+    
  
