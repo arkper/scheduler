@@ -60,8 +60,6 @@ scheduler:
     - WELLCARE,33
  
 sns:
-  access-key: AKIAZCBHSIJPZHWUWB26
-  access-secret: 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
   topic-incoming: arn:aws:sns:us-east-1:622853243487:topic1
     
  

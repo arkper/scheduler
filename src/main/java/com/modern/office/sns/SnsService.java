@@ -28,6 +28,8 @@ import software.amazon.awssdk.services.sns.model.SubscribeResponse;
 @Slf4j
 public class SnsService {
 	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s";
+	private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
+	
 	private final SnsClient snsClient;
 	private final String topicIncoming;
 	private final SchedulerApiService schedulerApiService;
@@ -109,7 +111,7 @@ public class SnsService {
         	StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm().spliterator(), false)
         	    .filter(a -> matchPhone(a.getApptPhone(), phoneNumber))
         	    .findAny()
-        	    .ifPresent(appointment -> this.updateAppointment(appointment, message));
+        	    .ifPresent(appointment -> this.updateAppointment(appointment, message, phoneNumber));
     }
     
     public static boolean matchPhone(String apptPhone, String replyPhone)
@@ -117,14 +119,18 @@ public class SnsService {
     	return replyPhone.replaceAll("[^0-9]", "").contains(apptPhone.replaceAll("[^0-9]", ""));
     }
     
-    private void updateAppointment(Appointment appointment, String message)
+    private void updateAppointment(Appointment appointment, String message, String phoneNumber)
     {
     	if ("1".equals(message))
     	{
     		this.schedulerApiService.confirm(appointment.getApptNo());
-    		return;
     	}
-        this.schedulerApiService.cancel(appointment.getApptNo());
+    	else
+    	{
+            this.schedulerApiService.cancel(appointment.getApptNo());
+    	}
+
+    	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, phoneNumber);
     }
     
 	private String getNotificationMessage(Appointment appt) {
