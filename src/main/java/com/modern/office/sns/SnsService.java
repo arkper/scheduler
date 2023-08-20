@@ -73,6 +73,12 @@ public class SnsService {
 
     public String sendSMS(String message, String phoneNumber) {
         try {
+        	if (!this.phoneEnabled(phoneNumber))
+        	{
+            	log.info("Phone {} is not enabled for SMS service", phoneNumber);
+            	return "";
+        		
+        	}
         	log.info("Sending message {} to {}", message, phoneNumber);
         	
             PublishRequest request = PublishRequest.builder()
@@ -125,7 +131,7 @@ public class SnsService {
     
     private boolean phoneEnabled(String phone)
     {
-    	if (CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone))
+    	if (CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone.replace("+", "")))
     	{
     		return true;
     	}

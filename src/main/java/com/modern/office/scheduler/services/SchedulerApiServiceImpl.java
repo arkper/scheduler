@@ -48,7 +48,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class SchedulerApiServiceImpl implements SchedulerApiService {
-	private static final long DAYS_IN_ADVANCE = 3;
+	private static final long DAYS_IN_ADVANCE = 1;
 	
 	private final ProviderRepository providerRepo;
 	private final InsuranceRepository insuranceRepo;
