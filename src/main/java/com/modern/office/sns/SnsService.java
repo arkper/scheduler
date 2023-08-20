@@ -70,7 +70,7 @@ public class SnsService {
 	public void processNotifications()
 	{
 		log.info("Starting notification processing job");
-		StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm().spliterator(), false)
+		StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0).spliterator(), false)
 		    .filter(appt -> appt.getApptPhone() != null)
 		    .forEach(appt -> this.processNotification(getNotificationMessage(appt), appt));
 		log.info("Finished notification processing job");
@@ -144,7 +144,7 @@ public class SnsService {
         String message = (String) data.get("messageBody");
         String phoneNumber = (String) data.get("originationNumber");
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
-        	StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm().spliterator(), false)
+        	StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
         	    .filter(a -> this.phoneEnabled(phoneNumber) && matchPhone(a.getApptPhone(), phoneNumber))
         	    .findAny()
         	    .ifPresent(appointment -> this.updateAppointment(appointment, message, phoneNumber));

@@ -43,7 +43,7 @@ public interface SchedulerApiService {
 	Iterable<Appointment> getAppointmentByApptDateBetween(LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByPatientNoAndApptDateBetween(int patientNo, LocalDate startDate, LocalDate endDate);
-	Iterable<Appointment> getAppointmentToConfirm();
+	Iterable<Appointment> getAppointmentToConfirm(int confirmInd, int canceInd, int noAnswerInd);
 	
 	Appointment save(Appointment appointment);
 	Appointment cancel(int apptNo);
