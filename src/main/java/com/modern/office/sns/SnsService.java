@@ -1,15 +1,18 @@
 package com.modern.office.sns;
 
 import java.util.LinkedHashMap;
+import java.util.Set;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.services.SchedulerApiService;
 
@@ -34,22 +37,24 @@ public class SnsService {
 	private final String topicIncoming;
 	private final SchedulerApiService schedulerApiService;
 	private final ObjectMapper objectMapper;
+	private AppConfig appConfig;
 	
-	public SnsService(@Value("${sns.access-key}") final String accessKeyId, 
-			@Value("${sns.access-secret}") final String secretAccessKey,
-			@Value("${sns.topic-incoming}") final String topicIncoming,
+	public SnsService(final AppConfig appConfig,
 			final SchedulerApiService schedulerApiService,
 			final ObjectMapper objectMapper)
 	{
-		AwsBasicCredentials awsCreds = AwsBasicCredentials.create(accessKeyId, secretAccessKey);
+		AwsBasicCredentials awsCreds = AwsBasicCredentials.create(
+				appConfig.getAccessKey(), 
+				appConfig.getAccessSecret());
 		
         this.snsClient = SnsClient.builder()
                 .region(Region.US_EAST_1)
                 .credentialsProvider(StaticCredentialsProvider.create(awsCreds))
                 .build();
-        this.topicIncoming = topicIncoming;
+        this.topicIncoming = appConfig.getTopicIncoming();
         this.schedulerApiService = schedulerApiService;
         this.objectMapper = objectMapper;
+        this.appConfig = appConfig;
 	}
 	
 	@Scheduled(cron = "0 0 10 * * *", zone = "America/New_York")
@@ -109,9 +114,19 @@ public class SnsService {
         String phoneNumber = (String) data.get("originationNumber");
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
         	StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm().spliterator(), false)
-        	    .filter(a -> matchPhone(a.getApptPhone(), phoneNumber))
+        	    .filter(a -> this.phoneEnabled(phoneNumber) && matchPhone(a.getApptPhone(), phoneNumber))
         	    .findAny()
         	    .ifPresent(appointment -> this.updateAppointment(appointment, message, phoneNumber));
+    }
+    
+    private boolean phoneEnabled(String phone)
+    {
+    	if (CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone))
+    	{
+    		return true;
+    	}
+    	
+    	return false;
     }
     
     public static boolean matchPhone(String apptPhone, String replyPhone)
