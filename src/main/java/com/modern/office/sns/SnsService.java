@@ -27,6 +27,7 @@ import software.amazon.awssdk.services.sns.model.PublishResponse;
 import software.amazon.awssdk.services.sns.model.SnsException;
 import software.amazon.awssdk.services.sns.model.SubscribeRequest;
 import software.amazon.awssdk.services.sns.model.SubscribeResponse;
+import software.amazon.awssdk.utils.StringUtils;
 
 @Service
 @Slf4j
@@ -149,7 +150,9 @@ public class SnsService {
     
     private boolean phoneEnabled(String phone)
     {
-    	if (CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone.replace("+", "")))
+    	phone = phone.replace("+", "");
+    	phone = phone.startsWith("1") ? phone : "1" + phone;
+    	if (CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone))
     	{
     		return true;
     	}
