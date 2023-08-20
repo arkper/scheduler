@@ -48,6 +48,7 @@ public interface SchedulerApiService {
 	Appointment save(Appointment appointment);
 	Appointment cancel(int apptNo);
 	Appointment confirm(int apptNo);
+	Appointment setNoAnswerInd(int apptNo, int state);
 	Iterable<Code> getCodesByCategory(int categoryNo);
 	Set<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate);
 	

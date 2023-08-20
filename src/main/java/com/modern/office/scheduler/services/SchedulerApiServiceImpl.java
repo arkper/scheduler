@@ -225,6 +225,18 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 	@Override
 	@Transactional
+	public Appointment setNoAnswerInd(int apptNo, int state) {
+		final Appointment appointment = this.appointmentRepo.findById(apptNo).orElse(null);
+
+		if (appointment != null) {
+			log.info("Setting no answer indicator appointment {} to {}", appointment, state);
+			appointment.setApptNoAnswerInd(state);
+		}
+		return appointment;
+	}
+
+	@Override
+	@Transactional
 	public Appointment cancel(int apptNo) {
 		final Appointment appointment = this.appointmentRepo.findById(apptNo).orElse(null);
 
@@ -345,7 +357,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		var appts = this.getAppointmentByApptDateBetween(LocalDate.now(), LocalDate.now().plusDays(DAYS_IN_ADVANCE));
 		
 		return StreamSupport.stream(appts.spliterator(), false)
-				.filter(a -> a.getApptConfirmedInd() == 0 && a.getApptCancelInd() == 0)
+				.filter(a -> a.getApptConfirmedInd() == 0 && a.getApptCancelInd() == 0 && a.getApptNoAnswerInd() == 0)
 				.toList();
 	}
 

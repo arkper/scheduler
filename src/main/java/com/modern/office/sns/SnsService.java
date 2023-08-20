@@ -71,27 +71,29 @@ public class SnsService {
 		log.info("Starting notification processing job");
 		StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm().spliterator(), false)
 		    .filter(appt -> appt.getApptPhone() != null)
-		    .forEach(appt -> this.sendSMS(getNotificationMessage(appt), appt.getApptPhone()));
+		    .forEach(appt -> this.sendSMS(getNotificationMessage(appt), appt));
 		log.info("Finished notification processing job");
 	}
 
-    public String sendSMS(String message, String phoneNumber) {
+    public String sendSMS(String message, Appointment appt) {
         try {
-        	if (!this.phoneEnabled(phoneNumber))
+        	if (!this.phoneEnabled(appt.getApptPhone()))
         	{
-            	log.info("Phone {} is not enabled for SMS service", phoneNumber);
+            	log.info("Phone {} is not enabled for SMS service", appt.getApptPhone());
             	return "";
         		
         	}
-        	log.info("Sending message {} to {}", message, phoneNumber);
+        	log.info("Sending message {} to {}", message, appt.getApptPhone());
         	
             PublishRequest request = PublishRequest.builder()
                 .message(message)
-                .phoneNumber(phoneNumber)
+                .phoneNumber(appt.getApptPhone())
                 .build();
 
             PublishResponse result = this.snsClient.publish(request);
             log.info(result.messageId() + " Message sent. Status is " + result.sdkHttpResponse().statusCode());
+            this.schedulerApiService.setNoAnswerInd(appt.getApptNo(), 1);
+            log.info(result.messageId() + "Updating appointment {} no-answer-indicator to 1", appt.getApptNo());
             return result.messageId();
 
         } catch (SnsException e) {
@@ -164,8 +166,10 @@ public class SnsService {
     	{
             this.schedulerApiService.cancel(appointment.getApptNo());
     	}
+    	
+    	this.schedulerApiService.setNoAnswerInd(appointment.getApptNo(), 0);
 
-    	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, phoneNumber);
+    	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, appointment);
     }
     
 	protected String getNotificationMessage(Appointment appt) {
