@@ -18,7 +18,6 @@ import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Business;
 import com.modern.office.scheduler.domain.Provider;
-import com.modern.office.scheduler.service.ScheduleApiServiceTest;
 import com.modern.office.scheduler.services.SchedulerApiService;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,8 +51,8 @@ public class SnsServiceTest {
 	@Test
 	void testNotificationMessage()
 	{
-		var expected = "Please confirm your appointment on 8/21/23 at 13:30 with Diana Lakovitsky of Modern Optica at 453 Kings Hwy, Brooklyn. Reply Y to confirm or N to cancel.\n" +
-				"Пожалуйста, подтвердите ваш визит с доктором в офисе Modern Optica в 13:30 8/21/23 по адресу 453 Kings Hwy, Brooklyn. Введите Y чтобы подтвердить или N чтобы отменить визит.";
+		var expected = "Please confirm your appointment on 8/21/23 at 13:30 with Diana Lakovitsky of Modern Optica at 453 Kings Hwy, Brooklyn. Reply Y to confirm or N to cancel.\n\n" +
+				"Пожалуйста, подтвердите ваш визит с доктором Diana Lakovitsky в офисе Modern Optica в 13:30 8/21/23 по адресу 453 Kings Hwy, Brooklyn. Введите Y чтобы подтвердить, или N чтобы отменить визит.";
 		var appt = new Appointment()
 				.setProviderNo(1)
 				.setApptDate(LocalDate.of(2023, 8, 21))

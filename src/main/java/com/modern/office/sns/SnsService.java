@@ -33,7 +33,7 @@ import software.amazon.awssdk.services.sns.model.SubscribeResponse;
 public class SnsService {
 	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s of %s at %s. Reply Y to confirm or N to cancel.";
 	
-	private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором в офисе %s в %s %s по адресу %s. Введите Y чтобы подтвердить или N чтобы отменить визит.";
+	private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Введите Y чтобы подтвердить, или N чтобы отменить визит.";
 
 	private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
 	
@@ -177,8 +177,9 @@ public class SnsService {
 				this.getProviderName(appt.getProviderNo()),
 				business.getBusinessName(),
 				this.getAddress(business)) +
-				"\n" +
+				"\n\n" +
 				String.format(NOTIFICATION_MESSAGE_RU,
+				this.getProviderName(appt.getProviderNo()),
 				business.getBusinessName(),
 				appt.getApptStartTime(),
 				appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)),
