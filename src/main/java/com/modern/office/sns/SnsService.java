@@ -120,6 +120,12 @@ public class SnsService {
     {
         LinkedHashMap data = this.objectMapper.readValue(replyMessage, LinkedHashMap.class);
         
+        if (data.containsKey("SubscribeURL"))
+        {
+        	log.info("Please visit url {}", (String) data.get("SubscribeURL"));
+        	return;
+        }
+        
         String message = (String) data.get("messageBody");
         String phoneNumber = (String) data.get("originationNumber");
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);

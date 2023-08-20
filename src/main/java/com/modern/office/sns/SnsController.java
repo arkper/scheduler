@@ -34,11 +34,26 @@ public class SnsController {
 		}
 	}
 	
+	@PostMapping("/process")
+	public ResponseEntity<String> processNotifications()
+	{
+		try
+		{
+			snsService.processNotifications();
+			return ResponseEntity.ok("Finished processings");
+		}
+		catch (Exception e)
+		{
+			log.error("Failed sending SMS", e);
+			return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
+		}
+	}
+
 	@PostMapping("/reply")
 	public String acceptReply(@RequestBody String message) throws JsonMappingException, JsonProcessingException
 	{
 		log.info("Received: " + message);
-		// this.snsService.processReply(message);
+		this.snsService.processReply(message);
 		return "ok";
 	}
 	
