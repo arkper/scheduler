@@ -1,5 +1,7 @@
 package com.modern.office.sns;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.LinkedHashMap;
 import java.util.stream.StreamSupport;
 
@@ -30,6 +32,9 @@ import software.amazon.awssdk.services.sns.model.SubscribeResponse;
 @Slf4j
 public class SnsService {
 	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s of %s at %s. Reply Y to confirm or N to cancel.";
+	
+	private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором в офисе %s в %s %s по адресу %s. Введите Y чтобы подтвердить или N чтобы отменить визит.";
+
 	private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
 	
 	private final SnsClient snsClient;
@@ -163,14 +168,20 @@ public class SnsService {
     	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, phoneNumber);
     }
     
-	private String getNotificationMessage(Appointment appt) {
+	protected String getNotificationMessage(Appointment appt) {
 		var business = this.schedulerApiService.getBusiness(appt.getLocationId());
 		
 		return String.format(NOTIFICATION_MESSAGE, 
-				appt.getApptDate().toString(), 
+				appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)), 
 				appt.getApptStartTime(), 
 				this.getProviderName(appt.getProviderNo()),
 				business.getBusinessName(),
+				this.getAddress(business)) +
+				"\n" +
+				String.format(NOTIFICATION_MESSAGE_RU,
+				business.getBusinessName(),
+				appt.getApptStartTime(),
+				appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)),
 				this.getAddress(business));
 	}
 	

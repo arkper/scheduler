@@ -50,7 +50,7 @@ public class ScheduleApiServiceTest {
 		this.testObj = new SchedulerApiServiceImpl(null, null, providerBlockRepo, providerExceptionRepo,
 				appointmentRepo, null, null, null, null, null, null, null, appConfig);
 	}
-
+	
 	@Test
 	void testGettingTimsSlotsNoExceptions() {
 
