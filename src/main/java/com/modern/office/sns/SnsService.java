@@ -1,10 +1,8 @@
 package com.modern.office.sns;
 
 import java.util.LinkedHashMap;
-import java.util.Set;
 import java.util.stream.StreamSupport;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -14,6 +12,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Appointment;
+import com.modern.office.scheduler.domain.Business;
 import com.modern.office.scheduler.services.SchedulerApiService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +29,7 @@ import software.amazon.awssdk.services.sns.model.SubscribeResponse;
 @Service
 @Slf4j
 public class SnsService {
-	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s at %s";
+	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s of %s at %s. Reply Y to confirm or N to cancel.";
 	private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
 	
 	private final SnsClient snsClient;
@@ -152,7 +151,7 @@ public class SnsService {
     
     private void updateAppointment(Appointment appointment, String message, String phoneNumber)
     {
-    	if ("1".equals(message))
+    	if ("Y".equalsIgnoreCase(message))
     	{
     		this.schedulerApiService.confirm(appointment.getApptNo());
     	}
@@ -165,16 +164,18 @@ public class SnsService {
     }
     
 	private String getNotificationMessage(Appointment appt) {
+		var business = this.schedulerApiService.getBusiness(appt.getLocationId());
+		
 		return String.format(NOTIFICATION_MESSAGE, 
 				appt.getApptDate().toString(), 
 				appt.getApptStartTime(), 
 				this.getProviderName(appt.getProviderNo()),
-				this.getAddress(appt));
+				business.getBusinessName(),
+				this.getAddress(business));
 	}
 	
-	private String getAddress(Appointment appt)
+	private String getAddress(Business business)
 	{		
-		var business = this.schedulerApiService.getBusiness(appt.getLocationId());
 	    return business.getAddress1() + ", " + business.getCity();
 	}
 	
