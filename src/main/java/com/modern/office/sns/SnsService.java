@@ -86,6 +86,8 @@ public class SnsService {
 
     public String sendSMS(String message, String phone) {
         try {
+        	phone = phone.replaceAll("[^0-9]", "");
+        	phone = phone.startsWith("1") ? phone : "1" + phone;
         	if (!this.phoneEnabled(phone))
         	{
             	log.info("Phone {} is not enabled for SMS service", phone);
@@ -150,8 +152,6 @@ public class SnsService {
     
     private boolean phoneEnabled(String phone)
     {
-    	phone = phone.replace("+", "");
-    	phone = phone.startsWith("1") ? phone : "1" + phone;
     	if (CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone))
     	{
     		return true;
