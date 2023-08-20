@@ -51,8 +51,12 @@ public class SnsService {
                 .region(Region.US_EAST_1)
                 .credentialsProvider(StaticCredentialsProvider.create(awsCreds))
                 .build();
+        log.info("Initialized SNS client");
         this.topicIncoming = appConfig.getTopicIncoming();
+        log.info("Incoming SNS topic {}", this.topicIncoming);
+        
         this.schedulerApiService = schedulerApiService;
+        log.info("Enabled phone list: {}", appConfig.getAllowedPhones());
         this.objectMapper = objectMapper;
         this.appConfig = appConfig;
 	}
