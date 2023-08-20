@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
+import com.modern.office.scheduler.domain.Business;
 import com.modern.office.scheduler.domain.Code;
 import com.modern.office.scheduler.domain.Insurance;
 import com.modern.office.scheduler.domain.InsurancePlan;
@@ -49,4 +50,6 @@ public interface SchedulerApiService {
 	Appointment confirm(int apptNo);
 	Iterable<Code> getCodesByCategory(int categoryNo);
 	Set<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate);
+	
+	Business getBusiness(int businessNo);
 }

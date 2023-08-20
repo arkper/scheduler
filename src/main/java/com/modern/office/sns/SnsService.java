@@ -30,7 +30,7 @@ import software.amazon.awssdk.services.sns.model.SubscribeResponse;
 @Service
 @Slf4j
 public class SnsService {
-	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s";
+	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s at %s";
 	private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
 	
 	private final SnsClient snsClient;
@@ -168,7 +168,14 @@ public class SnsService {
 		return String.format(NOTIFICATION_MESSAGE, 
 				appt.getApptDate().toString(), 
 				appt.getApptStartTime(), 
-				this.getProviderName(appt.getProviderNo()));
+				this.getProviderName(appt.getProviderNo()),
+				this.getAddress(appt));
+	}
+	
+	private String getAddress(Appointment appt)
+	{		
+		var business = this.schedulerApiService.getBusiness(appt.getLocationId());
+	    return business.getAddress1() + ", " + business.getCity();
 	}
 	
     private String getProviderName(int providerNo)

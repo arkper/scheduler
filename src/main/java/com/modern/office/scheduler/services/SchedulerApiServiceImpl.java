@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Appointment;
+import com.modern.office.scheduler.domain.Business;
 import com.modern.office.scheduler.domain.Code;
 import com.modern.office.scheduler.domain.CodeCategory;
 import com.modern.office.scheduler.domain.Insurance;
@@ -33,6 +34,7 @@ import com.modern.office.scheduler.domain.ProviderException;
 import com.modern.office.scheduler.domain.Timeslot;
 import com.modern.office.scheduler.repository.AddressRepository;
 import com.modern.office.scheduler.repository.AppointmentRepository;
+import com.modern.office.scheduler.repository.BusinessRepository;
 import com.modern.office.scheduler.repository.CodeRepository;
 import com.modern.office.scheduler.repository.InsurancePlanRepository;
 import com.modern.office.scheduler.repository.InsuranceRepository;
@@ -61,6 +63,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final PatientRepository patientRepo;
 	private final CodeRepository codeRepo;
 	private final InsurancePlanRepository insurancePlanRepo;
+	private final BusinessRepository businessRepository;
 	private final List<Integer> supportedProviders;
 	private final List<String> supportedInsurances;
 
@@ -68,7 +71,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 			final ProviderBlockRepository providerBlockRepo, final ProviderExceptionRepository providerExceptionRepo,
 			final AppointmentRepository appointmentRepo, final ProductRepository productRepo,
 			final AddressRepository addressRepo, final PatientInsuranceRepository patientInsuranceRepo,
-			final PatientRepository patientRepo, final InsurancePlanRepository insurancePlanRepo,
+			final PatientRepository patientRepo, final InsurancePlanRepository insurancePlanRepo, final BusinessRepository businessRepository,
 			final CodeRepository codeRepo, final AppConfig secConfig) {
 		this.providerRepo = providerRepo;
 		this.insuranceRepo = insuranceRepo;
@@ -81,6 +84,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		this.patientRepo = patientRepo;
 		this.codeRepo = codeRepo;
 		this.insurancePlanRepo = insurancePlanRepo;
+		this.businessRepository = businessRepository;
 		this.supportedProviders = secConfig.getProviders();
 		this.supportedInsurances = secConfig.getInsurances();
 	}
@@ -359,5 +363,11 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	    return StreamSupport.stream(this.getCodesByCategory(CodeCategory.STATE_CODE_CATEGORY.getValue()).spliterator(), false)
 	        .filter(c -> c.getCode() == address.getStateNo())
 	        .findFirst().get().getUserCode(); 
+	}
+
+	@Override
+	public Business getBusiness(int businessNo) {
+		return this.businessRepository.findById(businessNo)
+				.orElse(null);
 	}
 }
