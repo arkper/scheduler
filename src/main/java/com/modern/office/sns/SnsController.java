@@ -38,7 +38,7 @@ public class SnsController {
 	public String acceptReply(@RequestBody String message) throws JsonMappingException, JsonProcessingException
 	{
 		log.info("Received: " + message);
-		this.snsService.processReply(message);
+		// this.snsService.processReply(message);
 		return "ok";
 	}
 	

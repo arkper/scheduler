@@ -68,7 +68,7 @@ public class SchedulerApplication {
 
 		@Bean
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-			http.authorizeRequests().antMatchers("/sns/reply").permitAll();
+			http.authorizeRequests().antMatchers("/reply").permitAll();
 			
 			http
 			   .csrf().disable()
