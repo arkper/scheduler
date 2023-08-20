@@ -152,11 +152,14 @@ public class SnsService {
     
     private boolean phoneEnabled(String phone)
     {
+    	phone = phone.replaceAll("[^0-9]", "");
     	if (CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone))
     	{
+    		log.info("Phone {} is enabled", phone);
     		return true;
     	}
     	
+		log.info("Phone {} is not enabled", phone);
     	return false;
     }
     
