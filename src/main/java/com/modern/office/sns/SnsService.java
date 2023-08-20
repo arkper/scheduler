@@ -71,29 +71,35 @@ public class SnsService {
 		log.info("Starting notification processing job");
 		StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm().spliterator(), false)
 		    .filter(appt -> appt.getApptPhone() != null)
-		    .forEach(appt -> this.sendSMS(getNotificationMessage(appt), appt));
+		    .forEach(appt -> this.processNotification(getNotificationMessage(appt), appt));
 		log.info("Finished notification processing job");
 	}
+	
+	public String processNotification(String message, Appointment appt)
+	{
+		final var result = this.sendSMS(message, appt.getApptPhone());
+        this.schedulerApiService.setNoAnswerInd(appt.getApptNo(), 1);
+        log.info("Updating appointment {} no-answer-indicator to 1", appt.getApptNo());
+        return result;
+	}
 
-    public String sendSMS(String message, Appointment appt) {
+    public String sendSMS(String message, String phone) {
         try {
-        	if (!this.phoneEnabled(appt.getApptPhone()))
+        	if (!this.phoneEnabled(phone))
         	{
-            	log.info("Phone {} is not enabled for SMS service", appt.getApptPhone());
+            	log.info("Phone {} is not enabled for SMS service", phone);
             	return "";
         		
         	}
-        	log.info("Sending message {} to {}", message, appt.getApptPhone());
+        	log.info("Sending message {} to {}", message, phone);
         	
             PublishRequest request = PublishRequest.builder()
                 .message(message)
-                .phoneNumber(appt.getApptPhone())
+                .phoneNumber(phone)
                 .build();
 
             PublishResponse result = this.snsClient.publish(request);
             log.info(result.messageId() + " Message sent. Status is " + result.sdkHttpResponse().statusCode());
-            this.schedulerApiService.setNoAnswerInd(appt.getApptNo(), 1);
-            log.info(result.messageId() + "Updating appointment {} no-answer-indicator to 1", appt.getApptNo());
             return result.messageId();
 
         } catch (SnsException e) {
@@ -167,9 +173,8 @@ public class SnsService {
             this.schedulerApiService.cancel(appointment.getApptNo());
     	}
     	
+    	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, appointment.getApptPhone());
     	this.schedulerApiService.setNoAnswerInd(appointment.getApptNo(), 0);
-
-    	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, appointment);
     }
     
 	protected String getNotificationMessage(Appointment appt) {
