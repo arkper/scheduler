@@ -51,8 +51,8 @@ public class SnsServiceTest {
 	@Test
 	void testNotificationMessage()
 	{
-		var expected = "Please confirm your appointment on 8/21/23 at 13:30 with Diana Lakovitsky of Modern Optica at 453 Kings Hwy, Brooklyn. Reply Y to confirm or N to cancel.\n\n" +
-				"Пожалуйста, подтвердите ваш визит с доктором Diana Lakovitsky в офисе Modern Optica в 13:30 8/21/23 по адресу 453 Kings Hwy, Brooklyn. Введите Y чтобы подтвердить, или N чтобы отменить визит.";
+		var expected = "Please confirm your appointment on 8/21/23 at 13:30 with Diana Lakovitsky of Modern Optica at 453 Kings Hwy, Brooklyn. Reply Y to confirm or N to cancel. Reply STOP to opt out of our appointment notification messages going forward.\n\n" +
+				"Пожалуйста, подтвердите ваш визит с доктором Diana Lakovitsky в офисе Modern Optica в 13:30 8/21/23 по адресу 453 Kings Hwy, Brooklyn. Введите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 		var appt = new Appointment()
 				.setProviderNo(1)
 				.setApptDate(LocalDate.of(2023, 8, 21))

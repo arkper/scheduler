@@ -37,7 +37,7 @@ import software.amazon.awssdk.services.sns.model.SubscribeResponse;
 @Service
 @Slf4j
 public class SnsService {
-	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s of %s at %s. Reply Y to confirm or N to cancel. Reply STOP to opt out of our appointment notification messages going forward";
+	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s of %s at %s. Reply Y to confirm or N to cancel. Reply STOP to opt out of our appointment notification messages going forward.";
 	
 	private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Введите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 
@@ -234,7 +234,7 @@ public class SnsService {
     	 try {
 			Files.write(
 				      Paths.get(this.appConfig.getBlackListLocation()), 
-				      ("\n" + phone).getBytes(), 
+				      this.transform(phone).getBytes(), 
 				      StandardOpenOption.APPEND);
 		} catch (IOException e) {
 			log.error("Failed to blacklist phone {}", phone);
