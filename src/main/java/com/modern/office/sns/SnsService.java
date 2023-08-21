@@ -160,7 +160,7 @@ public class SnsService {
     	phone = phone.replaceAll("[^0-9]", "");
     	var blackList = new TreeSet<String>();
     	try {
-			blackList.addAll(Files.readAllLines(Paths.get(URI.create(this.appConfig.getBlackListLocation()))));
+			blackList.addAll(Files.readAllLines(Paths.get(URI.create("file:///" + this.appConfig.getBlackListLocation()))));
 		} catch (IOException e) {
 			log.error("Failed getting blacklist {}", this.appConfig.getBlackListLocation(), e);
 			throw new RuntimeException(e);
