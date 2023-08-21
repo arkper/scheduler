@@ -1,8 +1,14 @@
 package com.modern.office.sns;
 
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.LinkedHashMap;
+import java.util.TreeSet;
 import java.util.stream.StreamSupport;
 
 import org.springframework.scheduling.annotation.Scheduled;
@@ -27,14 +33,13 @@ import software.amazon.awssdk.services.sns.model.PublishResponse;
 import software.amazon.awssdk.services.sns.model.SnsException;
 import software.amazon.awssdk.services.sns.model.SubscribeRequest;
 import software.amazon.awssdk.services.sns.model.SubscribeResponse;
-import software.amazon.awssdk.utils.StringUtils;
 
 @Service
 @Slf4j
 public class SnsService {
-	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s of %s at %s. Reply Y to confirm or N to cancel.";
+	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s of %s at %s. Reply Y to confirm or N to cancel. Reply STOP to opt out of our appointment notification messages going forward";
 	
-	private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Введите Y чтобы подтвердить, или N чтобы отменить визит.";
+	private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Введите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 
 	private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
 	
@@ -70,7 +75,7 @@ public class SnsService {
 	public void processNotifications()
 	{
 		log.info("Starting notification processing job");
-		StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0).spliterator(), false)
+		StreamSupport.<Appointment>stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0).spliterator(), false)
 		    .filter(appt -> appt.getApptPhone() != null)
 		    .forEach(appt -> this.processNotification(getNotificationMessage(appt), appt));
 		log.info("Finished notification processing job");
@@ -78,25 +83,25 @@ public class SnsService {
 	
 	public String processNotification(String message, Appointment appt)
 	{
-		final var result = this.sendSMS(message, appt.getApptPhone());
+		var phone = this.transform(appt.getApptPhone());
+        if (!this.phoneEnabled(phone))
+    	{
+        	log.info("Phone {} is not enabled for SMS service", appt.getApptPhone());
+        	return "";
+    	}
+
+        final var result = this.sendSMS(message, phone);
         this.schedulerApiService.setNoAnswerInd(appt.getApptNo(), 1);
+
         log.info("Updating appointment {} no-answer-indicator to 1", appt.getApptNo());
         return result;
 	}
 
     public String sendSMS(String message, String phone) {
         try {
-        	phone = phone.replaceAll("[^0-9]", "");
-        	phone = phone.startsWith("1") ? phone : "1" + phone;
-        	if (!this.phoneEnabled(phone))
-        	{
-            	log.info("Phone {} is not enabled for SMS service", phone);
-            	return "";
-        		
-        	}
         	log.info("Sending message {} to {}", message, phone);
         	
-            PublishRequest request = PublishRequest.builder()
+            PublishRequest request = (PublishRequest) PublishRequest.builder()
                 .message(message)
                 .phoneNumber(phone)
                 .build();
@@ -153,7 +158,14 @@ public class SnsService {
     private boolean phoneEnabled(String phone)
     {
     	phone = phone.replaceAll("[^0-9]", "");
-    	if (CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone))
+    	var blackList = new TreeSet<String>();
+    	try {
+			blackList.addAll(Files.readAllLines(Paths.get(URI.create(this.appConfig.getBlackListLocation()))));
+		} catch (IOException e) {
+			log.error("Failed getting blacklist {}", this.appConfig.getBlackListLocation(), e);
+			throw new RuntimeException(e);
+		}
+    	if ((CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone)) && !blackList.contains(phone))
     	{
     		log.info("Phone {} is enabled", phone);
     		return true;
@@ -173,6 +185,10 @@ public class SnsService {
     	if ("Y".equalsIgnoreCase(message))
     	{
     		this.schedulerApiService.confirm(appointment.getApptNo());
+    	}
+    	else if ("STOP".equalsIgnoreCase(message))
+    	{
+    		this.blackListPhone(phoneNumber);
     	}
     	else
     	{
@@ -212,5 +228,23 @@ public class SnsService {
     			.map(p -> p.getProviderFirstName() + " " + p.getProviderLastName())
     			.orElse("");
     }
-
+    
+    private void blackListPhone(String phone)
+    {
+    	 try {
+			Files.write(
+				      Paths.get(this.appConfig.getBlackListLocation()), 
+				      ("\n" + phone).getBytes(), 
+				      StandardOpenOption.APPEND);
+		} catch (IOException e) {
+			log.error("Failed to blacklist phone {}", phone);
+			throw new RuntimeException(e);
+		}
+    }
+    
+    private String transform(String originalPhone)
+    {
+    	var phone = originalPhone.replaceAll("[^0-9]", "");
+    	return phone.startsWith("1") ? phone : "1" + phone;
+    }
 }

@@ -24,4 +24,5 @@ public class AppConfig {
 	private String accessKey; 
 	private String accessSecret;
 	private String topicIncoming;
+	private String blackListLocation;
 }
