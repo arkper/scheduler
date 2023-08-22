@@ -229,8 +229,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		final Appointment appointment = this.appointmentRepo.findById(apptNo).orElse(null);
 
 		if (appointment != null) {
-			log.info("Setting no answer indicator appointment {} to {}", appointment, state);
-			appointment.setApptNoAnswerInd(state);
+			log.info("Setting no left message indicator appointment {} to {}", appointment, state);
+			appointment.setApptLeftMsgInd(state);
 		}
 		return appointment;
 	}
@@ -241,8 +241,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		final Appointment appointment = this.appointmentRepo.findById(apptNo).orElse(null);
 
 		if (appointment != null) {
-			log.info("Cancelling appointment {}", appointment);
-			appointment.setApptCancelInd(1);
+			log.info("Cancelling appointment (no show) {}", appointment);
+			appointment.setApptShowInd(0);
 		}
 		return appointment;
 	}
@@ -357,10 +357,19 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		var appts = this.getAppointmentByApptDateBetween(LocalDate.now(), LocalDate.now().plusDays(DAYS_IN_ADVANCE));
 		
 		return StreamSupport.stream(appts.spliterator(), false)
-				.filter(a -> a.getApptConfirmedInd() == confirmInd && a.getApptCancelInd() == canceInd && a.getApptNoAnswerInd() == noAnswerInd)
+				.filter(a -> checkIndicator(a.getApptConfirmedInd(), confirmInd) && checkIndicator(a.getApptCancelInd(), canceInd) && checkIndicator(a.getApptNoAnswerInd(), noAnswerInd))
 				.toList();
 	}
-
+	
+	private boolean checkIndicator(Integer indicatorValue, int targetValue)
+	{
+		if (indicatorValue == null)
+		{
+			indicatorValue = 0;
+		}
+		
+		return indicatorValue == targetValue;
+	}
 
 	private String getAddressLine(Address address)
 	{
