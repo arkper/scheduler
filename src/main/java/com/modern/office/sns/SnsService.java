@@ -200,7 +200,7 @@ public class SnsService {
     }
     
 	protected String getNotificationMessage(Appointment appt) {
-		var business = this.schedulerApiService.getBusiness(appt.getLocationId());
+		var business = this.schedulerApiService.getBusiness(1);
 		
 		return String.format(NOTIFICATION_MESSAGE, 
 				appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)), 
