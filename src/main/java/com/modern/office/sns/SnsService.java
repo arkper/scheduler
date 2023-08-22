@@ -91,7 +91,7 @@ public class SnsService {
     	}
 
         final var result = this.sendSMS(message, phone);
-        this.schedulerApiService.setNoAnswerInd(appt.getApptNo(), 1);
+        this.schedulerApiService.setLeftMsgInd(appt.getApptNo(), 1);
 
         log.info("Updating appointment {} no-answer-indicator to 1", appt.getApptNo());
         return result;
@@ -149,10 +149,13 @@ public class SnsService {
         String message = (String) data.get("messageBody");
         String phoneNumber = (String) data.get("originationNumber");
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
+        if (this.phoneEnabled(phoneNumber))
+        {
         	StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
-        	    .filter(a -> this.phoneEnabled(phoneNumber) && matchPhone(a.getApptPhone(), phoneNumber))
-        	    .findAny()
-        	    .ifPresent(appointment -> this.updateAppointment(appointment, message, phoneNumber));
+    	    .filter(a -> matchPhone(a.getApptPhone(), phoneNumber))
+    	    .findAny()
+    	    .ifPresent(appointment -> this.updateAppointment(appointment, message, phoneNumber));
+        }
     }
     
     private boolean phoneEnabled(String phone)
@@ -196,7 +199,6 @@ public class SnsService {
     	}
     	
     	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, appointment.getApptPhone());
-    	this.schedulerApiService.setNoAnswerInd(appointment.getApptNo(), 0);
     }
     
 	protected String getNotificationMessage(Appointment appt) {

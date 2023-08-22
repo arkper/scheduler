@@ -225,11 +225,11 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 	@Override
 	@Transactional
-	public Appointment setNoAnswerInd(int apptNo, int state) {
+	public Appointment setLeftMsgInd(int apptNo, int state) {
 		final Appointment appointment = this.appointmentRepo.findById(apptNo).orElse(null);
 
 		if (appointment != null) {
-			log.info("Setting no left message indicator appointment {} to {}", appointment, state);
+			log.info("Setting left message indicator appointment {} to {}", appointment, state);
 			appointment.setApptLeftMsgInd(state);
 		}
 		return appointment;
@@ -242,7 +242,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 		if (appointment != null) {
 			log.info("Cancelling appointment (no show) {}", appointment);
-			appointment.setApptShowInd(0);
+			appointment.setApptShowInd(2);
+			appointment.setApptLeftMsgInd(0);
 		}
 		return appointment;
 	}
@@ -255,6 +256,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		if (appointment != null) {
 			log.info("Confirming appointment {}", appointment);
 			appointment.setApptConfirmedInd(1);
+			appointment.setApptLeftMsgInd(0);
 		}
 		return appointment;
 	}
@@ -353,11 +355,11 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	}
 	
 	@Override
-	public Iterable<Appointment> getAppointmentToConfirm(int confirmInd, int canceInd, int noAnswerInd) {
+	public Iterable<Appointment> getAppointmentToConfirm(int confirmInd, int showInd, int leftMsgInd) {
 		var appts = this.getAppointmentByApptDateBetween(LocalDate.now(), LocalDate.now().plusDays(DAYS_IN_ADVANCE));
 		
 		return StreamSupport.stream(appts.spliterator(), false)
-				.filter(a -> checkIndicator(a.getApptConfirmedInd(), confirmInd) && checkIndicator(a.getApptCancelInd(), canceInd) && checkIndicator(a.getApptLeftMsgInd(), noAnswerInd))
+				.filter(a -> checkIndicator(a.getApptConfirmedInd(), confirmInd) && checkIndicator(a.getApptShowInd(), showInd) && checkIndicator(a.getApptLeftMsgInd(), leftMsgInd))
 				.toList();
 	}
 	
