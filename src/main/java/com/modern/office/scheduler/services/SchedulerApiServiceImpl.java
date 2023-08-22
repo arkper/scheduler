@@ -403,5 +403,4 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		appointment.setRecordedDate(LocalDate.now());
 		appointment.setRecordedByComputer("MANAGER_PC");
 	}
-	}
 }
