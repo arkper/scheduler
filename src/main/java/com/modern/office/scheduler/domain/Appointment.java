@@ -92,5 +92,5 @@ public class Appointment {
 	private LocalDate recordedDate;
 
 	@Column(name="aprecorded_by_computer")
-	private LocalDate recordedByComputer;
+	private String recordedByComputer;
 }
