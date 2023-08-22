@@ -357,7 +357,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		var appts = this.getAppointmentByApptDateBetween(LocalDate.now(), LocalDate.now().plusDays(DAYS_IN_ADVANCE));
 		
 		return StreamSupport.stream(appts.spliterator(), false)
-				.filter(a -> checkIndicator(a.getApptConfirmedInd(), confirmInd) && checkIndicator(a.getApptCancelInd(), canceInd) && checkIndicator(a.getApptNoAnswerInd(), noAnswerInd))
+				.filter(a -> checkIndicator(a.getApptConfirmedInd(), confirmInd) && checkIndicator(a.getApptCancelInd(), canceInd) && checkIndicator(a.getApptLeftMsgInd(), noAnswerInd))
 				.toList();
 	}
 	
