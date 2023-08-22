@@ -84,4 +84,13 @@ public class Appointment {
 	
 	@Column(name = "appt_deleted_ind")
 	private Integer apptDeletedInd = 0;
+	
+	@Column(name="recorded_by")
+	private Integer recordedBy;
+
+	@Column(name="recorded_date")
+	private LocalDate recordedDate;
+
+	@Column(name="aprecorded_by_computer")
+	private LocalDate recordedByComputer;
 }

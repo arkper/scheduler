@@ -231,6 +231,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		if (appointment != null) {
 			log.info("Setting left message indicator appointment {} to {}", appointment, state);
 			appointment.setApptLeftMsgInd(state);
+			this.updateAppointmentRecord(appointment);
 		}
 		return appointment;
 	}
@@ -244,6 +245,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 			log.info("Cancelling appointment (no show) {}", appointment);
 			appointment.setApptShowInd(2);
 			appointment.setApptLeftMsgInd(0);
+			this.updateAppointmentRecord(appointment);
 		}
 		return appointment;
 	}
@@ -257,6 +259,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 			log.info("Confirming appointment {}", appointment);
 			appointment.setApptConfirmedInd(1);
 			appointment.setApptLeftMsgInd(0);
+			this.updateAppointmentRecord(appointment);
 		}
 		return appointment;
 	}
@@ -392,5 +395,13 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	public Business getBusiness(int businessNo) {
 		return this.businessRepository.findById(businessNo)
 				.orElse(null);
+	}
+	
+	private void updateAppointmentRecord(Appointment appointment)
+	{
+		appointment.setRecordedBy(3);
+		appointment.setRecordedDate(LocalDate.now());
+		appointment.setRecordedByComputer("MANAGER_PC");
+	}
 	}
 }
