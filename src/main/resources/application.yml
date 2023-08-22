@@ -60,8 +60,6 @@ scheduler:
     - WELLCARE,33
   
   allowed-phones: 
-    - +16469124975
-    - +19178638685
  
   topic-incoming: arn:aws:sns:us-east-1:622853243487:topic1
   
