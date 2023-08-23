@@ -188,7 +188,7 @@ public class SnsService {
     	return false;
     }
     
-    private static boolean matchPhone(String apptPhone, String replyPhone)
+    protected static boolean matchPhone(String apptPhone, String replyPhone)
     {
     	return replyPhone.replaceAll("[^0-9]", "").contains(apptPhone.replaceAll("[^0-9]", ""));
     }
