@@ -69,4 +69,18 @@ public class SnsController {
 			return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
 		}
 	}
+
+	@PostMapping("/opt-in/{phone}")
+	public ResponseEntity<String> optIn(@PathVariable("phone") final String phone)
+	{
+		try
+		{
+			return ResponseEntity.ok(this.snsService.optInPhone("+" + phone));
+		}
+		catch (Exception e)
+		{
+			log.error("Failed optin in phone {}", phone, e);
+			return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
+		}
+	}
 }

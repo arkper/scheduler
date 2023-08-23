@@ -28,6 +28,8 @@ import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sns.SnsClient;
+import software.amazon.awssdk.services.sns.model.OptInPhoneNumberRequest;
+import software.amazon.awssdk.services.sns.model.OptInPhoneNumberResponse;
 import software.amazon.awssdk.services.sns.model.PublishRequest;
 import software.amazon.awssdk.services.sns.model.PublishResponse;
 import software.amazon.awssdk.services.sns.model.SnsException;
@@ -95,6 +97,14 @@ public class SnsService {
 
         log.info("Updating appointment {} no-answer-indicator to 1", appt.getApptNo());
         return result;
+	}
+	
+	public String optInPhone(final String phoneNumber)
+	{
+		OptInPhoneNumberResponse response = 
+				this.snsClient.optInPhoneNumber(OptInPhoneNumberRequest.builder().phoneNumber(phoneNumber).build());
+		
+		return response.toString();
 	}
 
     public String sendSMS(String message, String phone) {
@@ -178,7 +188,7 @@ public class SnsService {
     	return false;
     }
     
-    public static boolean matchPhone(String apptPhone, String replyPhone)
+    private static boolean matchPhone(String apptPhone, String replyPhone)
     {
     	return replyPhone.replaceAll("[^0-9]", "").contains(apptPhone.replaceAll("[^0-9]", ""));
     }
