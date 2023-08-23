@@ -91,6 +91,6 @@ public class Appointment {
 	@Column(name="recorded_date")
 	private LocalDate recordedDate;
 
-	@Column(name="aprecorded_by_computer")
+	@Column(name="recorded_by_computer")
 	private String recordedByComputer;
 }
