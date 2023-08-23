@@ -1,6 +1,7 @@
 package com.modern.office.scheduler.domain;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -89,7 +90,7 @@ public class Appointment {
 	private Integer recordedBy;
 
 	@Column(name="recorded_date")
-	private LocalDate recordedDate;
+	private LocalDateTime recordedDateTime;
 
 	@Column(name="recorded_by_computer")
 	private String recordedByComputer;

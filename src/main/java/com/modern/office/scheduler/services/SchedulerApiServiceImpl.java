@@ -400,7 +400,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private void updateAppointmentRecord(Appointment appointment)
 	{
 		appointment.setRecordedBy(3);
-		appointment.setRecordedDate(LocalDate.now());
+		appointment.setRecordedDateTime(LocalDateTime.now());
 		appointment.setRecordedByComputer("MANAGER_PC");
 	}
 }
