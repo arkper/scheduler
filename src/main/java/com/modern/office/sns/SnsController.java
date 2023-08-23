@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import software.amazon.awssdk.http.SdkHttpResponse;
 
 @RestController("/sns")
 @Slf4j
@@ -71,7 +72,7 @@ public class SnsController {
 	}
 
 	@PostMapping("/opt-in/{phone}")
-	public ResponseEntity<String> optIn(@PathVariable("phone") final String phone)
+	public ResponseEntity<SdkHttpResponse> optIn(@PathVariable("phone") final String phone)
 	{
 		try
 		{

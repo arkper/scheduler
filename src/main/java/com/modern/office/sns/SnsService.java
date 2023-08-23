@@ -26,6 +26,7 @@ import com.modern.office.scheduler.services.SchedulerApiService;
 import lombok.extern.slf4j.Slf4j;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.http.SdkHttpResponse;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sns.SnsClient;
 import software.amazon.awssdk.services.sns.model.OptInPhoneNumberRequest;
@@ -99,12 +100,12 @@ public class SnsService {
         return result;
 	}
 	
-	public String optInPhone(final String phoneNumber)
+	public SdkHttpResponse optInPhone(final String phoneNumber)
 	{
 		OptInPhoneNumberResponse response = 
 				this.snsClient.optInPhoneNumber(OptInPhoneNumberRequest.builder().phoneNumber(phoneNumber).build());
 		
-		return response.toString();
+		return response.sdkHttpResponse();
 	}
 
     public String sendSMS(String message, String phone) {
