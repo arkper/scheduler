@@ -110,6 +110,8 @@ public class SnsService {
 
     public String sendSMS(String message, String phone) {
         try {
+        	phone = this.addCountryCode(phone);
+        	
         	log.info("Sending message {} to {}", message, phone);
         	
             PublishRequest request = (PublishRequest) PublishRequest.builder()
@@ -259,5 +261,10 @@ public class SnsService {
     {
     	var phone = originalPhone.replaceAll("[^0-9]", "");
     	return phone.startsWith("1") ? phone : "1" + phone;
+    }
+    
+    private String addCountryCode(String originalPhone)
+    {
+    	return originalPhone.startsWith("+")? originalPhone : "+" + originalPhone;
     }
 }
