@@ -8,6 +8,7 @@ import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.LinkedHashMap;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.StreamSupport;
 
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.modern.office.scheduler.AppConfig;
 import com.modern.office.scheduler.domain.Appointment;
@@ -50,7 +50,7 @@ public class SnsService {
 	private final String topicIncoming;
 	private final SchedulerApiService schedulerApiService;
 	private final ObjectMapper objectMapper;
-	private AppConfig appConfig;
+	private final AppConfig appConfig;
 	
 	public SnsService(final AppConfig appConfig,
 			final SchedulerApiService schedulerApiService,
@@ -78,26 +78,24 @@ public class SnsService {
 	public void processNotifications()
 	{
 		log.info("Starting notification processing job");
-		StreamSupport.<Appointment>stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0).spliterator(), false)
+		StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0).spliterator(), false)
 		    .filter(appt -> appt.getApptPhone() != null)
 		    .forEach(appt -> this.processNotification(getNotificationMessage(appt), appt));
 		log.info("Finished notification processing job");
 	}
 	
-	public String processNotification(String message, Appointment appt)
+	public void processNotification(String message, Appointment appt)
 	{
 		var phone = this.transform(appt.getApptPhone());
         if (!this.phoneEnabled(phone))
     	{
-        	log.info("Phone {} is not enabled for SMS service", appt.getApptPhone());
-        	return "";
+        	return;
     	}
 
-        final var result = this.sendSMS(message, phone);
+        this.sendSMS(message, phone);
         this.schedulerApiService.setLeftMsgInd(appt.getApptNo(), 1);
 
         log.info("Updating appointment {} no-answer-indicator to 1", appt.getApptNo());
-        return result;
 	}
 	
 	public SdkHttpResponse optInPhone(final String phoneNumber)
@@ -112,9 +110,9 @@ public class SnsService {
         try {
         	phone = this.addCountryCode(phone);
         	
-        	log.info("Sending message {} to {}", message, phone);
+        	log.info("Sending notification message to {}", phone);
         	
-            PublishRequest request = (PublishRequest) PublishRequest.builder()
+            PublishRequest request = PublishRequest.builder()
                 .message(message)
                 .phoneNumber(phone)
                 .build();
@@ -149,13 +147,14 @@ public class SnsService {
          }
     }
     
-    public void processReply(final String replyMessage) throws JsonMappingException, JsonProcessingException
+    public void processReply(final String replyMessage) throws JsonProcessingException
     {
-        LinkedHashMap data = this.objectMapper.readValue(replyMessage, LinkedHashMap.class);
+        @SuppressWarnings("rawtypes")
+		LinkedHashMap data = this.objectMapper.readValue(replyMessage, LinkedHashMap.class);
         
         if (data.containsKey("SubscribeURL"))
         {
-        	log.info("Please visit url {}", (String) data.get("SubscribeURL"));
+        	log.info("Please visit url {}", data.get("SubscribeURL"));
         	return;
         }
         
@@ -174,16 +173,16 @@ public class SnsService {
     private boolean phoneEnabled(String phone)
     {
     	phone = phone.replaceAll("[^0-9]", "");
-    	var blackList = new TreeSet<String>();
+    	Set<String> blackList;
     	try {
-			blackList.addAll(Files.readAllLines(Paths.get(URI.create("file:///" + this.appConfig.getBlackListLocation()))));
+			blackList = new TreeSet<>(Files.readAllLines(Paths.get(URI.create("file:///" + this.appConfig.getBlackListLocation()))));
 		} catch (IOException e) {
 			log.error("Failed getting blacklist {}", this.appConfig.getBlackListLocation(), e);
 			throw new RuntimeException(e);
 		}
     	if ((CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone)) && !blackList.contains(phone))
     	{
-    		log.info("Phone {} is enabled", phone);
+    		log.debug("Phone {} is enabled", phone);
     		return true;
     	}
     	
