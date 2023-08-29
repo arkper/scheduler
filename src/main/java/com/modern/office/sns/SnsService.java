@@ -197,20 +197,14 @@ public class SnsService {
     
     private void updateAppointment(Appointment appointment, String message, String phoneNumber)
     {
-    	if ("Y".equalsIgnoreCase(message))
-    	{
-    		this.schedulerApiService.confirm(appointment.getApptNo());
-    	}
-    	else if ("STOP".equalsIgnoreCase(message))
-    	{
-    		this.blackListPhone(phoneNumber);
-    	}
-    	else
-    	{
-            this.schedulerApiService.cancel(appointment.getApptNo());
-    	}
-    	
-    	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, appointment.getApptPhone());
+		switch(message.toUpperCase())
+		{
+			case "Y", "ДА", "DA" -> this.schedulerApiService.confirm(appointment.getApptNo());
+			case "STOP" -> this.blackListPhone(phoneNumber);
+			default -> this.schedulerApiService.cancel(appointment.getApptNo());
+		}
+
+    	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, phoneNumber);
     }
     
 	protected String getNotificationMessage(Appointment appt) {
