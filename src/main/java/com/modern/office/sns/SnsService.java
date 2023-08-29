@@ -108,7 +108,7 @@ public class SnsService {
 
     public String sendSMS(String message, String phone) {
         try {
-        	phone = this.addCountryCode(phone);
+        	phone = this.addCountryCode(this.transform(phone));
         	
         	log.info("Sending notification message to {}", phone);
         	
