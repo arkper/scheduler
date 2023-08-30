@@ -54,17 +54,9 @@ public class SnsService {
 	
 	public SnsService(final AppConfig appConfig,
 			final SchedulerApiService schedulerApiService,
-			final ObjectMapper objectMapper)
+			final ObjectMapper objectMapper,
+					  final SnsClient snsClient)
 	{
-		AwsBasicCredentials awsCreds = AwsBasicCredentials.create(
-				appConfig.getAccessKey(), 
-				appConfig.getAccessSecret());
-		
-        this.snsClient = SnsClient.builder()
-                .region(Region.US_EAST_1)
-                .credentialsProvider(StaticCredentialsProvider.create(awsCreds))
-                .build();
-        log.info("Initialized SNS client");
         this.topicIncoming = appConfig.getTopicIncoming();
         log.info("Incoming SNS topic {}", this.topicIncoming);
         
@@ -72,6 +64,7 @@ public class SnsService {
         log.info("Enabled phone list: {}", appConfig.getAllowedPhones());
         this.objectMapper = objectMapper;
         this.appConfig = appConfig;
+		this.snsClient = snsClient;
 	}
 	
 	@Scheduled(cron = "0 0 10 * * *", zone = "America/New_York")
@@ -108,13 +101,15 @@ public class SnsService {
 
     public String sendSMS(String message, String phone) {
         try {
-        	phone = this.addCountryCode(this.transform(phone));
+			log.info("Original phone {}", phone);
+
+        	var transformed = this.addCountryCode(this.transform(phone));
         	
-        	log.info("Sending notification message to {}", phone);
+        	log.info("Sending notification message to {}", transformed);
         	
             PublishRequest request = PublishRequest.builder()
                 .message(message)
-                .phoneNumber(phone)
+                .phoneNumber(transformed)
                 .build();
 
             PublishResponse result = this.snsClient.publish(request);
@@ -158,8 +153,8 @@ public class SnsService {
         	return;
         }
         
-        String message = (String) data.get("messageBody");
-        String phoneNumber = (String) data.get("originationNumber");
+        final var message = (String) data.get("messageBody");
+        final var phoneNumber = (String) data.get("originationNumber");
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
         if (this.phoneEnabled(phoneNumber))
         {

@@ -2,6 +2,7 @@ package com.modern.office.sns;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,12 +20,24 @@ import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Business;
 import com.modern.office.scheduler.domain.Provider;
 import com.modern.office.scheduler.services.SchedulerApiService;
+import software.amazon.awssdk.core.SdkResponse;
+import software.amazon.awssdk.http.SdkHttpResponse;
+import software.amazon.awssdk.services.sns.SnsClient;
+import software.amazon.awssdk.services.sns.model.PublishRequest;
+import software.amazon.awssdk.services.sns.model.PublishResponse;
+import software.amazon.awssdk.services.sns.model.SnsResponse;
+
+import static org.hamcrest.Matchers.any;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class SnsServiceTest {
 	
 	@Mock
 	private SchedulerApiService schedulerApiService;
+
+	@Mock
+	private SnsClient snsClient;
 	
 	@Mock
 	private AppConfig appConfig;
@@ -34,11 +47,25 @@ public class SnsServiceTest {
 	@BeforeEach
 	void setup()
 	{
-		Mockito.when(appConfig.getAccessKey()).thenReturn("x");
-		Mockito.when(appConfig.getAccessSecret()).thenReturn("x");
-		
-		testObj = new SnsService(appConfig, schedulerApiService, new ObjectMapper());
-		
+		when(appConfig.getBlackListLocation()).thenReturn("c:/temp/blacklist.txt");
+
+		testObj = new SnsService(appConfig, schedulerApiService, new ObjectMapper(), snsClient);
+	}
+
+	@Test
+	void testProcessReply() throws JsonProcessingException {
+		final var message = "{\"messageBody\":\"Y\", \"originationNumber\":\"+13475551212\"}";
+		final var sdkHttpResponse = SdkHttpResponse.builder().statusCode(200).build();
+		SdkResponse response = PublishResponse.builder().messageId("12345").sdkHttpResponse(sdkHttpResponse).build();
+
+
+		when(this.schedulerApiService.getAppointmentToConfirm(0,0,1))
+				.thenReturn(Lists.list(new Appointment().setApptPhone("(347) 555-1212")));
+
+		when(this.snsClient.publish(Mockito.any(PublishRequest.class)))
+				.thenReturn((PublishResponse) response);
+
+		this.testObj.processReply(message);
 	}
 
 	@Test
@@ -58,11 +85,11 @@ public class SnsServiceTest {
 				.setApptDate(LocalDate.of(2023, 8, 21))
 				.setApptStartTime("13:30");
 		
-		Mockito.when(schedulerApiService.getBusiness(Mockito.anyInt())).thenReturn(new Business()
+		when(schedulerApiService.getBusiness(Mockito.anyInt())).thenReturn(new Business()
 				.setBusinessName("Modern Optica")
 				.setAddress1("453 Kings Hwy")
 				.setCity("Brooklyn"));
-		Mockito.when(schedulerApiService.getProviders()).thenReturn(Lists.list(new Provider()
+		when(schedulerApiService.getProviders()).thenReturn(Lists.list(new Provider()
 				.setProviderNo(1).setProviderLastName("Lakovitsky").setProviderFirstName("Diana")));
 		
 		var message = testObj.getNotificationMessage(appt);

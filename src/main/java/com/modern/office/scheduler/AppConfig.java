@@ -3,16 +3,23 @@ package com.modern.office.scheduler;
 import java.util.List;
 import java.util.Set;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import lombok.Getter;
 import lombok.Setter;
+import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
+import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.sns.SnsClient;
 
 @Configuration
 @ConfigurationProperties(prefix = "scheduler")
 @Getter
 @Setter
+@Slf4j
 public class AppConfig {
 	private String user;
 	private String pwd;
@@ -25,4 +32,19 @@ public class AppConfig {
 	private String accessSecret;
 	private String topicIncoming;
 	private String blackListLocation;
+
+	@Bean
+	public SnsClient snsClient()
+	{
+		AwsBasicCredentials awsCreds = AwsBasicCredentials.create(
+				this.getAccessKey(),
+				this.getAccessSecret());
+
+		var snsClient = SnsClient.builder()
+				.region(Region.US_EAST_1)
+				.credentialsProvider(StaticCredentialsProvider.create(awsCreds))
+				.build();
+		log.info("Initialized SNS client");
+		return snsClient;
+	}
 }
