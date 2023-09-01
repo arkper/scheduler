@@ -34,11 +34,11 @@ public class AppConfig {
 	private String blackListLocation;
 
 	@Bean
-	public SnsClient snsClient()
+	public SnsClient snsClient(final AppConfig appConfig)
 	{
 		AwsBasicCredentials awsCreds = AwsBasicCredentials.create(
-				this.getAccessKey(),
-				this.getAccessSecret());
+				appConfig.getAccessKey(),
+				appConfig.getAccessSecret());
 
 		var snsClient = SnsClient.builder()
 				.region(Region.US_EAST_1)

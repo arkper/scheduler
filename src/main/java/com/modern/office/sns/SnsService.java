@@ -29,13 +29,7 @@ import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.http.SdkHttpResponse;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sns.SnsClient;
-import software.amazon.awssdk.services.sns.model.OptInPhoneNumberRequest;
-import software.amazon.awssdk.services.sns.model.OptInPhoneNumberResponse;
-import software.amazon.awssdk.services.sns.model.PublishRequest;
-import software.amazon.awssdk.services.sns.model.PublishResponse;
-import software.amazon.awssdk.services.sns.model.SnsException;
-import software.amazon.awssdk.services.sns.model.SubscribeRequest;
-import software.amazon.awssdk.services.sns.model.SubscribeResponse;
+import software.amazon.awssdk.services.sns.model.*;
 
 @Service
 @Slf4j
@@ -99,11 +93,25 @@ public class SnsService {
 		return response.sdkHttpResponse();
 	}
 
+	public boolean isPhoneOptedOut(final String phoneNumber)
+	{
+		var response = this.snsClient.checkIfPhoneNumberIsOptedOut
+				(CheckIfPhoneNumberIsOptedOutRequest.builder().phoneNumber(phoneNumber).build());
+
+		return response.sdkHttpResponse().isSuccessful() && response.isOptedOut();
+	}
+
     public String sendSMS(String message, String phone) {
         try {
 			log.info("Original phone {}", phone);
 
         	var transformed = this.addCountryCode(this.transform(phone));
+
+			if (this.isPhoneOptedOut(transformed))
+			{
+				log.info("The phone {} opted out of SMS notifications - exiting", transformed);
+				return "Opted Out";
+			}
         	
         	log.info("Sending notification message to {}", transformed);
         	
@@ -236,7 +244,7 @@ public class SnsService {
     	 try {
 			Files.write(
 				      Paths.get(this.appConfig.getBlackListLocation()), 
-				      this.transform(phone).getBytes(), 
+				      this.transform(phone + "\n").getBytes(),
 				      StandardOpenOption.APPEND);
 		} catch (IOException e) {
 			log.error("Failed to blacklist phone {}", phone);
