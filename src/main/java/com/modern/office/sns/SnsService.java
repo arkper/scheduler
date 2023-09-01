@@ -115,7 +115,6 @@ public class SnsService {
             PublishResponse result = this.snsClient.publish(request);
             log.info(result.messageId() + " Message sent. Status is " + result.sdkHttpResponse().statusCode());
             return result.messageId();
-
         } catch (SnsException e) {
             log.error(e.awsErrorDetails().errorMessage(), e);
             return null;
@@ -194,7 +193,7 @@ public class SnsService {
     {
 		switch(message.toUpperCase())
 		{
-			case "Y", "ДА", "DA" -> this.schedulerApiService.confirm(appointment.getApptNo());
+			case "Y", "YES", "ДА", "DA" -> this.schedulerApiService.confirm(appointment.getApptNo());
 			case "STOP" -> this.blackListPhone(phoneNumber);
 			default -> this.schedulerApiService.cancel(appointment.getApptNo());
 		}
