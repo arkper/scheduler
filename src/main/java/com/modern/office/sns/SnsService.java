@@ -36,7 +36,7 @@ import software.amazon.awssdk.services.sns.model.*;
 public class SnsService {
 	private static final String NOTIFICATION_MESSAGE = "Please confirm your appointment on %s at %s with %s of %s at %s. Reply Y to confirm or N to cancel. Reply STOP to opt out of our appointment notification messages going forward.";
 	
-	private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Введите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
+	private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Нажмите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 
 	private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
 	
@@ -201,7 +201,7 @@ public class SnsService {
     {
 		switch(message.toUpperCase())
 		{
-			case "Y", "YES", "ДА", "DA" -> this.schedulerApiService.confirm(appointment.getApptNo());
+			case "Y", "YES", "ДА", "DA", "OK", "ok" -> this.schedulerApiService.confirm(appointment.getApptNo());
 			case "STOP" -> this.blackListPhone(phoneNumber);
 			default -> this.schedulerApiService.cancel(appointment.getApptNo());
 		}
