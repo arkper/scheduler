@@ -41,7 +41,7 @@ public class SnsService {
 	private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
 
         private static final String NACK_MESSAGE = "Your reponse is invalid. Reply Y to confirm or N to cancel. Reply STOP to opt out of our appointment notification messages going forward.";
-        private static final String NACK_MESSAGE_RU = Ваш ответ не верен. Нажмите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений."; 
+        private static final String NACK_MESSAGE_RU = "Ваш ответ не верен. Нажмите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 	
 	
 	private final SnsClient snsClient;
@@ -208,7 +208,7 @@ public class SnsService {
 			case "Y", "YES", "ДА", "DA", "OK" -> this.schedulerApiService.confirm(appointment.getApptNo());
 			case "STOP" -> this.blackListPhone(phoneNumber);
 			case "N", "NO", "НЕТ", "NET" -> this.schedulerApiService.cancel(appointment.getApptNo());
-			default -> { this.sendSMS(NACK_MESSAGE + "\n" + NACK_MESSAGE_RU, phoneNumber return; }
+			default -> { this.sendSMS(NACK_MESSAGE + "\n" + NACK_MESSAGE_RU, phoneNumber); return; }
 		}
 
     	this.sendSMS(ACKNOWLEDGMENT_MESSAGE, phoneNumber);
