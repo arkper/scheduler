@@ -32,6 +32,8 @@ public class AppConfig {
 	private String accessSecret;
 	private String topicIncoming;
 	private String blackListLocation;
+	private String originalIp;
+	private String ipAdminPhone;
 
 	@Bean
 	public SnsClient snsClient(final AppConfig appConfig)
