@@ -1,5 +1,7 @@
 package com.modern.office.sns;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,11 +24,12 @@ import com.modern.office.scheduler.services.SchedulerApiService;
 import software.amazon.awssdk.core.SdkResponse;
 import software.amazon.awssdk.http.SdkHttpResponse;
 import software.amazon.awssdk.services.sns.SnsClient;
+import software.amazon.awssdk.services.sns.model.CheckIfPhoneNumberIsOptedOutRequest;
+import software.amazon.awssdk.services.sns.model.CheckIfPhoneNumberIsOptedOutResponse;
 import software.amazon.awssdk.services.sns.model.PublishRequest;
 import software.amazon.awssdk.services.sns.model.PublishResponse;
 
-import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class SnsServiceTest {
@@ -43,9 +46,10 @@ public class SnsServiceTest {
 	private SnsService testObj;
 	
 	@BeforeEach
-	void setup()
-	{
-		lenient().when(appConfig.getBlackListLocation()).thenReturn("c:/temp/blacklist.txt");
+	void setup() throws IOException {
+		File blackListFile = File.createTempFile("blacklist", ".txt", new File(System.getProperty("java.io.tmpdir")));
+
+		lenient().when(appConfig.getBlackListLocation()).thenReturn(blackListFile.getAbsolutePath());
 
 		testObj = new SnsService(appConfig, schedulerApiService, new ObjectMapper(), snsClient);
 	}
@@ -55,13 +59,20 @@ public class SnsServiceTest {
 		final var message = "{\"messageBody\":\"Y\", \"originationNumber\":\"+13475551212\"}";
 		final var sdkHttpResponse = SdkHttpResponse.builder().statusCode(200).build();
 		SdkResponse response = PublishResponse.builder().messageId("12345").sdkHttpResponse(sdkHttpResponse).build();
-
+		var checkIfPhoneNumberIsOptedOutResponse = CheckIfPhoneNumberIsOptedOutResponse
+				.builder()
+				.isOptedOut(false)
+				.sdkHttpResponse(SdkHttpResponse.builder().statusCode(200).build())
+				.build();
 
 		when(this.schedulerApiService.getAppointmentToConfirm(0,0,1))
 				.thenReturn(Lists.list(new Appointment().setApptPhone("(347) 555-1212")));
 
 		when(this.snsClient.publish(Mockito.any(PublishRequest.class)))
 				.thenReturn((PublishResponse) response);
+
+		when(this.snsClient.checkIfPhoneNumberIsOptedOut(any(CheckIfPhoneNumberIsOptedOutRequest.class)))
+				.thenReturn((CheckIfPhoneNumberIsOptedOutResponse) checkIfPhoneNumberIsOptedOutResponse);
 
 		this.testObj.processReply(message);
 	}

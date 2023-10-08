@@ -25,6 +25,8 @@ import com.modern.office.scheduler.repository.ProviderExceptionRepository;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import com.modern.office.scheduler.services.SchedulerApiServiceImpl;
 
+import static org.mockito.Mockito.lenient;
+
 @ExtendWith(MockitoExtension.class)
 public class ScheduleApiServiceTest {
 
@@ -44,8 +46,8 @@ public class ScheduleApiServiceTest {
 
 	@BeforeEach
 	void setup() {
-		Mockito.when(appConfig.getInsurances()).thenReturn(new ArrayList<String>());
-		Mockito.when(appConfig.getProviders()).thenReturn(new ArrayList<Integer>());
+		lenient().when(appConfig.getInsurances()).thenReturn(new ArrayList<String>());
+		lenient().when(appConfig.getProviders()).thenReturn(new ArrayList<Integer>());
 
 		this.testObj = new SchedulerApiServiceImpl(null, null, providerBlockRepo, providerExceptionRepo,
 				appointmentRepo, null, null, null, null, null, null, null, null, appConfig);

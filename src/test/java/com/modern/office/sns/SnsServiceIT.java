@@ -17,11 +17,11 @@ import software.amazon.awssdk.services.sns.SnsClient;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {AppConfig.class, SchedulerApplication.class})
-@WebAppConfiguration
+@WebAppConfiguration()
 public class SnsServiceIT {
     @BeforeEach
     void setUp() {
-        System.setProperty("spring.profiles.activet", "test");
+        System.setProperty("spring.profiles.active", "test");
     }
     @Autowired
     private SchedulerApiService schedulerApiService;
