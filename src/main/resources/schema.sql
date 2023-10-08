@@ -472,3 +472,9 @@ CREATE TABLE insurance_plans(
 	DoNotPopulateBox32 bit NULL,
 	DefaultValueFromVSPAssistant bit NULL
 );
+
+CREATE TABLE patient_preferences(
+	patient_pref_no int NULL,
+	patient_no int NOT NULL,
+	language nvarchar(10) NOT NULL
+);

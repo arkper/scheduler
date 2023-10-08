@@ -4,19 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-import com.modern.office.scheduler.domain.Address;
-import com.modern.office.scheduler.domain.Appointment;
-import com.modern.office.scheduler.domain.Business;
-import com.modern.office.scheduler.domain.Code;
-import com.modern.office.scheduler.domain.Insurance;
-import com.modern.office.scheduler.domain.InsurancePlan;
-import com.modern.office.scheduler.domain.Patient;
-import com.modern.office.scheduler.domain.PatientInsurance;
-import com.modern.office.scheduler.domain.Product;
-import com.modern.office.scheduler.domain.Provider;
-import com.modern.office.scheduler.domain.ProviderBlock;
-import com.modern.office.scheduler.domain.ProviderException;
-import com.modern.office.scheduler.domain.Timeslot;
+import com.modern.office.scheduler.domain.*;
 
 public interface SchedulerApiService {
 	List<Provider> getProviders();
@@ -53,4 +41,8 @@ public interface SchedulerApiService {
 	Set<Timeslot> getTimeslots(int providerNo, LocalDate fromDate, LocalDate toDate);
 	
 	Business getBusiness(int businessNo);
+
+	List<PatientPreferences> getPatientPreferences(int patientNo);
+	PatientPreferences savePatientPreferences(PatientPreferences patientPreferences);
+
 }

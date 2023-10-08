@@ -12,42 +12,20 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import com.modern.office.scheduler.domain.*;
+import com.modern.office.scheduler.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.modern.office.scheduler.AppConfig;
-import com.modern.office.scheduler.domain.Address;
-import com.modern.office.scheduler.domain.Appointment;
-import com.modern.office.scheduler.domain.Business;
-import com.modern.office.scheduler.domain.Code;
-import com.modern.office.scheduler.domain.CodeCategory;
-import com.modern.office.scheduler.domain.Insurance;
-import com.modern.office.scheduler.domain.InsurancePlan;
-import com.modern.office.scheduler.domain.Patient;
-import com.modern.office.scheduler.domain.PatientInsurance;
-import com.modern.office.scheduler.domain.Product;
-import com.modern.office.scheduler.domain.Provider;
-import com.modern.office.scheduler.domain.ProviderBlock;
-import com.modern.office.scheduler.domain.ProviderException;
-import com.modern.office.scheduler.domain.Timeslot;
-import com.modern.office.scheduler.repository.AddressRepository;
-import com.modern.office.scheduler.repository.AppointmentRepository;
-import com.modern.office.scheduler.repository.BusinessRepository;
-import com.modern.office.scheduler.repository.CodeRepository;
-import com.modern.office.scheduler.repository.InsurancePlanRepository;
-import com.modern.office.scheduler.repository.InsuranceRepository;
-import com.modern.office.scheduler.repository.PatientInsuranceRepository;
-import com.modern.office.scheduler.repository.PatientRepository;
-import com.modern.office.scheduler.repository.ProductRepository;
-import com.modern.office.scheduler.repository.ProviderBlockRepository;
-import com.modern.office.scheduler.repository.ProviderExceptionRepository;
-import com.modern.office.scheduler.repository.ProviderRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private static final long DAYS_IN_ADVANCE = 1;
@@ -64,30 +42,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final CodeRepository codeRepo;
 	private final InsurancePlanRepository insurancePlanRepo;
 	private final BusinessRepository businessRepository;
+	private final PatientPreferencesRepository patientPreferencesRepository;
 	private final List<Integer> supportedProviders;
 	private final List<String> supportedInsurances;
-
-	public SchedulerApiServiceImpl(final ProviderRepository providerRepo, final InsuranceRepository insuranceRepo,
-			final ProviderBlockRepository providerBlockRepo, final ProviderExceptionRepository providerExceptionRepo,
-			final AppointmentRepository appointmentRepo, final ProductRepository productRepo,
-			final AddressRepository addressRepo, final PatientInsuranceRepository patientInsuranceRepo,
-			final PatientRepository patientRepo, final InsurancePlanRepository insurancePlanRepo, final BusinessRepository businessRepository,
-			final CodeRepository codeRepo, final AppConfig secConfig) {
-		this.providerRepo = providerRepo;
-		this.insuranceRepo = insuranceRepo;
-		this.providerBlockRepo = providerBlockRepo;
-		this.providerExceptionRepo = providerExceptionRepo;
-		this.appointmentRepo = appointmentRepo;
-		this.productRepo = productRepo;
-		this.addressRepo = addressRepo;
-		this.patientInsuranceRepo = patientInsuranceRepo;
-		this.patientRepo = patientRepo;
-		this.codeRepo = codeRepo;
-		this.insurancePlanRepo = insurancePlanRepo;
-		this.businessRepository = businessRepository;
-		this.supportedProviders = secConfig.getProviders();
-		this.supportedInsurances = secConfig.getInsurances();
-	}
 
 	@Override
 	public List<Provider> getProviders() {
@@ -396,7 +353,17 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		return this.businessRepository.findById(businessNo)
 				.orElse(null);
 	}
-	
+
+	@Override
+	public List<PatientPreferences> getPatientPreferences(int patientNo) {
+		return this.patientPreferencesRepository.findPatientPreferencesByPatientNo(patientNo);
+	}
+
+	@Override
+	public PatientPreferences savePatientPreferences(PatientPreferences patientPreferences) {
+		return this.patientPreferencesRepository.save(patientPreferences);
+	}
+
 	private void updateAppointmentRecord(Appointment appointment)
 	{
 		appointment.setRecordedBy(3);

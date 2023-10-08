@@ -33,7 +33,7 @@ public class AddressMonitor {
                     whatismyip.openStream()));
 
             var ip = in.readLine();
-            log.info("Looked up own IP address: {}", ip);
+            log.debug("Looked up own IP address: {}", ip);
 
             if (Objects.isNull(appConfig.getOriginalIp()))
             {
