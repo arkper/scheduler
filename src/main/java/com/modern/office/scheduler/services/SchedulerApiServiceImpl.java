@@ -43,19 +43,18 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final InsurancePlanRepository insurancePlanRepo;
 	private final BusinessRepository businessRepository;
 	private final PatientPreferencesRepository patientPreferencesRepository;
-	private final List<Integer> supportedProviders;
-	private final List<String> supportedInsurances;
+	private final AppConfig appConfig;
 
 	@Override
 	public List<Provider> getProviders() {
 		Iterable<Provider> it = this.providerRepo.getProviderByIsProviderAndProviderActive(1, true);
 		return StreamSupport.stream(it.spliterator(), false)
-				.filter(p -> this.supportedProviders.contains(p.getProviderNo())).collect(Collectors.toList());
+				.filter(p -> appConfig.getProviders().contains(p.getProviderNo())).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Insurance> getInsurances() {
-		return this.supportedInsurances.stream()
+		return appConfig.getInsurances().stream()
 				.map(s -> Insurance.builder().insuranceNo(Integer.parseInt(StringUtils.substringAfter(s, ",")))
 						.insuranceName(StringUtils.substringBefore(s, ",")).build())
 				.collect(Collectors.toList());
