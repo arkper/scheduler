@@ -53,6 +53,12 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	}
 
 	@Override
+	public List<Provider> getAllProviders() {
+		Iterable<Provider> it = this.providerRepo.findAll();
+		return StreamSupport.stream(it.spliterator(), false).collect(Collectors.toList());
+	}
+
+	@Override
 	public List<Insurance> getInsurances() {
 		return appConfig.getInsurances().stream()
 				.map(s -> Insurance.builder().insuranceNo(Integer.parseInt(StringUtils.substringAfter(s, ",")))

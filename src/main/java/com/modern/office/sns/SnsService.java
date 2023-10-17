@@ -227,12 +227,12 @@ public class SnsService {
                     appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)),
                     appt.getApptStartTime(),
                     this.getProviderName(appt.getProviderNo()),
-                    business.getBusinessName(),
+                    this.appConfig.getOfficeName(),
                     this.getAddress(business));
         } else {
             return String.format(NOTIFICATION_MESSAGE_RU,
                     this.getProviderName(appt.getProviderNo()),
-                    business.getBusinessName(),
+                    this.appConfig.getOfficeName(),
                     appt.getApptStartTime(),
                     appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)),
                     this.getAddress(business));
@@ -244,7 +244,7 @@ public class SnsService {
     }
 
     private String getProviderName(int providerNo) {
-        return this.schedulerApiService.getProviders().stream().filter(p -> p.getProviderNo() == providerNo).findFirst()
+        return this.schedulerApiService.getAllProviders().stream().filter(p -> p.getProviderNo() == providerNo).findFirst()
                 .map(p -> p.getProviderFirstName() + " " + p.getProviderLastName())
                 .orElse("");
     }

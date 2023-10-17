@@ -7,6 +7,7 @@ import java.util.Set;
 import com.modern.office.scheduler.domain.*;
 
 public interface SchedulerApiService {
+	List<Provider> getAllProviders();
 	List<Provider> getProviders();
 	Provider save(Provider provider);
 	Iterable<Insurance> getInsurances();

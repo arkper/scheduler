@@ -34,6 +34,7 @@ public class AppConfig {
 	private String blackListLocation;
 	private String originalIp;
 	private String ipAdminPhone;
+	private String officeName;
 
 	@Bean
 	public SnsClient snsClient(final AppConfig appConfig)
