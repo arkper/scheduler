@@ -8,6 +8,7 @@ import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.StreamSupport;
@@ -76,6 +77,11 @@ public class SnsService {
     }
 
     public void processNotification(String message, Appointment appt) {
+        if (Objects.isNull(appt.getApptPhone()) || appt.getApptPhone().length() < 10)
+        {
+            log.error ("Appointment {} has invalid phone - skipping", appt.getApptNo());
+            return;
+        }
         var phone = this.transform(appt.getApptPhone());
         if (!this.phoneEnabled(phone)) {
             return;
