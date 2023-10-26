@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="release" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="63b8fe34-cef1-4cb4-bf62-0cae18b34f71">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report_Info_DS"/>
+	<import value="org.apache.commons.codec.binary.Base64"/>
+	<queryString language="json">
+		<![CDATA[data]]>
+	</queryString>
+	<field name="lastName" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="lastName"/>
+		<fieldDescription><![CDATA[lastName]]></fieldDescription>
+	</field>
+	<field name="firstName" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="firstName"/>
+		<fieldDescription><![CDATA[firstName]]></fieldDescription>
+	</field>
+	<field name="sex_true" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="sex_true"/>
+		<fieldDescription><![CDATA[sex_true]]></fieldDescription>
+	</field>
+	<field name="sex_false" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="sex_false"/>
+		<fieldDescription><![CDATA[sex_false]]></fieldDescription>
+	</field>
+	<field name="address1" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="address1"/>
+		<fieldDescription><![CDATA[address1]]></fieldDescription>
+	</field>
+	<field name="city" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="city"/>
+		<fieldDescription><![CDATA[city]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="state"/>
+		<fieldDescription><![CDATA[state]]></fieldDescription>
+	</field>
+	<field name="zip" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="zip"/>
+		<fieldDescription><![CDATA[zip]]></fieldDescription>
+	</field>
+	<field name="phone1" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="phone1"/>
+		<fieldDescription><![CDATA[phone1]]></fieldDescription>
+	</field>
+	<field name="dob" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="dob"/>
+		<fieldDescription><![CDATA[dob]]></fieldDescription>
+	</field>
+	<field name="ssn" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ssn"/>
+		<fieldDescription><![CDATA[ssn]]></fieldDescription>
+	</field>
+	<field name="carrier" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="carrier"/>
+		<fieldDescription><![CDATA[carrier]]></fieldDescription>
+	</field>
+	<field name="insured_self" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="insured_self"/>
+		<fieldDescription><![CDATA[insured_self]]></fieldDescription>
+	</field>
+	<field name="insured_spouse" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="insured_spouse"/>
+		<fieldDescription><![CDATA[insured_spouse]]></fieldDescription>
+	</field>
+	<field name="insured_child" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="insured_child"/>
+		<fieldDescription><![CDATA[insured_child]]></fieldDescription>
+	</field>
+	<field name="memberName" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="memberName"/>
+		<fieldDescription><![CDATA[memberName]]></fieldDescription>
+	</field>
+	<field name="memberID" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="memberID"/>
+		<fieldDescription><![CDATA[memberID]]></fieldDescription>
+	</field>
+	<field name="memberDOB" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="memberDOB"/>
+		<fieldDescription><![CDATA[memberDOB]]></fieldDescription>
+	</field>
+	<field name="pcp" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="pcp"/>
+		<fieldDescription><![CDATA[pcp]]></fieldDescription>
+	</field>
+	<field name="ophthalmologist" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="ophthalmologist"/>
+		<fieldDescription><![CDATA[ophthalmologist]]></fieldDescription>
+	</field>
+	<field name="relative_friend" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="relative_friend"/>
+		<fieldDescription><![CDATA[relative_friend]]></fieldDescription>
+	</field>
+	<field name="radio" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="radio"/>
+		<fieldDescription><![CDATA[radio]]></fieldDescription>
+	</field>
+	<field name="internet" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="internet"/>
+		<fieldDescription><![CDATA[internet]]></fieldDescription>
+	</field>
+	<field name="noreferral" class="java.lang.Boolean">
+		<property name="net.sf.jasperreports.json.field.expression" value="noreferral"/>
+		<fieldDescription><![CDATA[noreferral]]></fieldDescription>
+	</field>
+	<field name="signature" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="signature"/>
+		<fieldDescription><![CDATA[signature]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="0" width="148" height="20" uuid="809182d0-7f8d-4bfc-ab92-7cb5366a9b89"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[OPTICAL GALLERY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="20" width="148" height="18" uuid="68315bcd-ecb3-4799-9bbc-195df554cdd7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[446 Myrtle Ave]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="38" width="148" height="18" uuid="8ac217e5-8ff9-47d0-afc8-012c19418354"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Brooklyn, NY 11205]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="56" width="148" height="18" uuid="fa70cd2d-80ee-4a0a-9b65-75233fde95aa"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Telephone: (718) 246-2020]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="614" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="40" width="180" height="30" uuid="b9563bb9-ceb2-4e95-ba6a-f51250cd5318"/>
+				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="30" uuid="a02f861a-cfb7-46f7-aab1-0beafc02db92"/>
+				<text><![CDATA[Last Name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="370" y="40" width="180" height="30" uuid="80990fb0-95ac-4685-bfd1-9c0d1ac42143"/>
+				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="288" y="40" width="82" height="30" uuid="cf69047c-0072-4820-9f9d-6e1863e39e1e"/>
+				<text><![CDATA[First Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="380" width="100" height="30" uuid="9a6319d8-e7d9-426f-a539-cd81958bec2c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="110" y="362" width="270" height="60" uuid="91c06fee-9758-4193-9d5d-816b1e2f01ea"/>
+				<imageExpression><![CDATA[new ByteArrayInputStream(Base64.decodeBase64($F{signature}))]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="100" y="70" width="120" height="30" uuid="78c54bd1-a13b-4852-ab93-15a552bbd969"/>
+				<textFieldExpression><![CDATA[$F{sex_true}? "X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="70" width="100" height="30" uuid="dc88531f-8cb0-4535-a0be-77103e5fbd4a"/>
+				<text><![CDATA[Male]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="370" y="70" width="120" height="30" uuid="528659f1-f490-4832-8c8e-e87d095b1b85"/>
+				<textFieldExpression><![CDATA[$F{sex_false}? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="288" y="70" width="82" height="30" uuid="a93e5fdb-e663-4603-bc5b-d9862c91bbc0"/>
+				<text><![CDATA[Female:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="100" width="180" height="30" uuid="845c168b-6e8e-436f-b239-a73e86dede6e"/>
+				<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="100" width="100" height="30" uuid="3c682a48-46dc-4cf1-84a4-47e921d56ae9"/>
+				<text><![CDATA[Address:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="100" width="82" height="30" uuid="d11b8900-74e2-4a26-96ee-705281b6a4d6"/>
+				<text><![CDATA[City:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="370" y="100" width="180" height="30" uuid="09b909e2-8bb3-44e4-81e7-d7e2b28a5153"/>
+				<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="130" width="100" height="30" uuid="d6c4328f-34b0-4ad8-95f9-97f5e31f880c"/>
+				<text><![CDATA[Telephone:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="130" width="180" height="30" uuid="7760e199-c168-479e-906f-00cbcba7233b"/>
+				<textFieldExpression><![CDATA[$F{phone1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="170" width="180" height="30" uuid="9b1cc1fc-dea4-49f9-ac09-66e50bd7ccdf"/>
+				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="170" width="100" height="30" uuid="69d82a7c-ec4e-44fc-b64c-4fbcbb3f753d"/>
+				<text><![CDATA[Date Of Birth:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="372" y="170" width="180" height="30" uuid="0f42f752-c4f7-4fda-9fbf-b2a978b87e5c"/>
+				<textFieldExpression><![CDATA[$F{ssn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="170" width="82" height="30" uuid="d3ebc59d-a19d-4d4b-8daf-ac3c73f8ab73"/>
+				<text><![CDATA[SSN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="10" width="190" height="20" uuid="1f6a4072-8a0f-4228-9a03-11db88016f71"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Information:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="210" width="190" height="20" uuid="61567cbe-19dd-42a0-b934-443399745388"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Insurance Information:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="230" width="180" height="30" uuid="8d7ee474-ced4-435d-a5c7-cffb91f5f792"/>
+				<textFieldExpression><![CDATA[$F{carrier}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="230" width="100" height="30" uuid="6960024d-c80f-4301-8f02-0395f765fb75"/>
+				<text><![CDATA[Carrier:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="230" width="60" height="30" uuid="a6444d19-4c9d-44a9-9ae7-02abef54a601"/>
+				<text><![CDATA[Insured:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="230" width="30" height="30" uuid="f1502c58-5126-4949-9391-a00738306b55"/>
+				<textFieldExpression><![CDATA[$F{insured_self}?"X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="350" y="230" width="30" height="30" uuid="7d3a5521-498b-4d92-910a-72d1a0eb3349"/>
+				<text><![CDATA[Self]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="230" width="40" height="30" uuid="0959fcb9-bce0-468b-9829-5ab775e5a6a5"/>
+				<text><![CDATA[Spouse]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="230" width="30" height="30" uuid="3c288d87-741d-47d8-b8f5-626dde78604f"/>
+				<textFieldExpression><![CDATA[$F{insured_spouse}?"X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="480" y="230" width="30" height="30" uuid="2450fb3f-a04d-4e3f-a4a3-2d1cd02ee261"/>
+				<text><![CDATA[Child]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="510" y="230" width="30" height="30" uuid="ea6558ff-7b8f-4af5-b2e4-20d38465ea28"/>
+				<textFieldExpression><![CDATA[$F{insured_child}?"X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="260" width="100" height="30" uuid="2ad8ae50-e253-4c89-becc-f475fb443155"/>
+				<text><![CDATA[Member name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="260" width="180" height="30" uuid="4e808136-e7cf-4224-b152-d1c0fd3c2bfd"/>
+				<textFieldExpression><![CDATA[$F{memberName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="260" width="80" height="30" uuid="24db2fb8-1a3a-4b74-a978-37c86a880a75"/>
+				<textFieldExpression><![CDATA[$F{memberID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="260" width="40" height="30" uuid="9f111ef7-8655-4c7c-aeae-c9123e54c146"/>
+				<text><![CDATA[ID#]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="260" width="80" height="30" uuid="6b1cb92d-3f63-4882-81d9-684468be7f0e"/>
+				<textFieldExpression><![CDATA[$F{memberDOB}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="410" y="260" width="50" height="30" uuid="68eed21a-68fc-4adc-8a8b-f5653c4a1ede"/>
+				<text><![CDATA[DOB:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="305" width="540" height="54" uuid="d002c02a-eeea-4d52-b17e-fd0198ea5130"/>
+				<text><![CDATA[- I authorize the release of medical information necessary to process claims for medical benefits.
+- I authorize payment benefits to Modern Optika, INC for services provided.
+- In the event my coverage does not pay; I will be fully responsible for payment of services.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="380" width="50" height="30" uuid="3de4c285-e83f-4920-860e-7577bba7183e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="440" y="380" width="100" height="30" uuid="900852f2-1dea-40b5-9bb2-f3796f9e8496"/>
+				<textFieldExpression><![CDATA[NOW( )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="450" width="100" height="30" uuid="8eb9a6ba-a92b-4cef-a914-b52d972cba3d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referred By:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="470" width="30" height="20" uuid="e16efc2d-76f6-4102-a7c2-498f24fd46ef"/>
+				<textFieldExpression><![CDATA[$F{ophthalmologist}?"X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="450" width="150" height="20" uuid="30a023f1-efbf-4d34-92a9-31aa431491d7"/>
+				<text><![CDATA[Primary Care Physician]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="470" width="150" height="20" uuid="21ecd346-428c-4df9-b6a9-e64232937be2"/>
+				<text><![CDATA[Ophthalmologist]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="490" width="30" height="20" uuid="3095d03a-dbf0-4977-a5f0-1285d9cd4177"/>
+				<textFieldExpression><![CDATA[$F{relative_friend}?"X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="490" width="150" height="20" uuid="803fc032-63ff-4709-9f6c-9d5d9689c436"/>
+				<text><![CDATA[Friend/Relative]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="510" width="30" height="20" uuid="9c426c65-b549-4730-b92a-9e83871a2ced"/>
+				<textFieldExpression><![CDATA[$F{radio}?"X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="510" width="150" height="20" uuid="14d721a9-13d5-4412-bf2c-af0972a0d1f6"/>
+				<text><![CDATA[Radio/Newspaper]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="530" width="30" height="20" uuid="db929c89-4d7a-4b32-8945-f019132d60c7"/>
+				<textFieldExpression><![CDATA[$F{internet}?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="550" width="30" height="20" uuid="171c5792-8efb-4d47-8c9a-d7c7b93fc510"/>
+				<textFieldExpression><![CDATA[$F{noreferral}?"X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="530" width="150" height="20" uuid="3914c24d-61ff-495d-bfde-a45244834197"/>
+				<text><![CDATA[Internet]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="450" width="30" height="20" uuid="43faaad5-213b-462c-afa2-07ea9f4d5195"/>
+				<textFieldExpression><![CDATA[$F{pcp}?"X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="550" width="150" height="20" uuid="4b294f58-98fb-400b-a54a-0dd437dfba79"/>
+				<text><![CDATA[No Referral]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
