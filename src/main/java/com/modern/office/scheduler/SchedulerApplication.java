@@ -24,7 +24,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import lombok.Getter;
 
-@SpringBootApplication(scanBasePackages = { "com.modern.office.scheduler", "com.modern.office.sns" })
+@SpringBootApplication(scanBasePackages = { "com.modern.office" })
 @EnableJpaRepositories
 @EnableConfigurationProperties
 @EnableCaching
