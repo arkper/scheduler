@@ -2,6 +2,8 @@
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="release" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="63b8fe34-cef1-4cb4-bf62-0cae18b34f71">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report_Info_DS"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="164"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="822"/>
 	<import value="org.apache.commons.codec.binary.Base64"/>
 	<queryString language="json">
 		<![CDATA[data]]>
@@ -34,7 +36,7 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="state"/>
 		<fieldDescription><![CDATA[state]]></fieldDescription>
 	</field>
-	<field name="zip" class="java.lang.Integer">
+	<field name="zip" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="zip"/>
 		<fieldDescription><![CDATA[zip]]></fieldDescription>
 	</field>
@@ -70,7 +72,7 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="memberName"/>
 		<fieldDescription><![CDATA[memberName]]></fieldDescription>
 	</field>
-	<field name="memberID" class="java.lang.Integer">
+	<field name="memberID" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="memberID"/>
 		<fieldDescription><![CDATA[memberID]]></fieldDescription>
 	</field>
@@ -297,7 +299,7 @@
 			<staticText>
 				<reportElement x="-1" y="305" width="540" height="54" uuid="d002c02a-eeea-4d52-b17e-fd0198ea5130"/>
 				<text><![CDATA[- I authorize the release of medical information necessary to process claims for medical benefits.
-- I authorize payment benefits to Modern Optika, INC for services provided.
+- I authorize payment benefits to Optical Gallery for services provided.
 - In the event my coverage does not pay; I will be fully responsible for payment of services.]]></text>
 			</staticText>
 			<staticText>
@@ -365,6 +367,14 @@
 			<staticText>
 				<reportElement x="270" y="550" width="150" height="20" uuid="4b294f58-98fb-400b-a54a-0dd437dfba79"/>
 				<text><![CDATA[No Referral]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="370" y="130" width="100" height="30" uuid="345adb64-8f86-4a0a-835a-0a7a6bfdb8bf"/>
+				<textFieldExpression><![CDATA[$F{zip}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="288" y="130" width="82" height="30" uuid="4ecd5820-5c0a-4a5d-abac-c9d9db5b9d58"/>
+				<text><![CDATA[Zip Code:]]></text>
 			</staticText>
 		</band>
 	</detail>
