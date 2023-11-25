@@ -56,16 +56,6 @@ public class SchedulerApplication {
 		return mapper;
 	}
 
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("http://67.81.99.20:9988"));
-		configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", configuration);
-		return source;
-	}
-
 	@Configuration
 	@EnableWebSecurity
 	@EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -73,6 +63,17 @@ public class SchedulerApplication {
 	public class SecurityConfig {
 		@Autowired
 		private CustomIpAuthenticationProvider authenticationProvider;
+
+		@Bean
+		CorsConfigurationSource corsConfigurationSource() {
+			CorsConfiguration configuration = new CorsConfiguration();
+			configuration.setAllowedOrigins(Arrays.asList("http://67.81.99.20:9988"));
+			configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+			configuration.setAllowedHeaders(Arrays.asList("*"));
+			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+			source.registerCorsConfiguration("/**", configuration);
+			return source;
+		}
 
 		@Bean
 		public AuthenticationManager authManager(HttpSecurity http) throws Exception {
@@ -86,7 +87,7 @@ public class SchedulerApplication {
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 			http.authorizeRequests().antMatchers("/reply").permitAll();
 			
-			http.csrf().disable()
+			http.cors().and().csrf().disable()
 			   .authorizeRequests()
 			   .anyRequest().authenticated().and().httpBasic();
 			return http.build();
