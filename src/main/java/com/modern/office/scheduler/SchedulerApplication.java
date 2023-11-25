@@ -70,8 +70,7 @@ public class SchedulerApplication {
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 			http.authorizeRequests().antMatchers("/reply").permitAll();
 			
-			http
-			   .csrf().disable()
+			http.cors().and().csrf().disable()
 			   .authorizeRequests()
 			   .anyRequest().authenticated().and().httpBasic();
 			return http.build();
