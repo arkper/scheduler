@@ -24,6 +24,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import lombok.Getter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 @SpringBootApplication(scanBasePackages = { "com.modern.office" })
 @EnableJpaRepositories
@@ -68,10 +73,20 @@ public class SchedulerApplication {
 		}
 
 		@Bean
+		CorsConfigurationSource corsConfigurationSource() {
+			CorsConfiguration configuration = new CorsConfiguration();
+			configuration.setAllowedOrigins(Arrays.asList("*"));
+			configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+			source.registerCorsConfiguration("/**", configuration);
+			return source;
+		}
+
+		@Bean
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 			http.authorizeRequests().antMatchers("/reply").permitAll();
 			
-			http.cors(AbstractHttpConfigurer::disable).csrf().disable()
+			http.csrf().disable()
 			   .authorizeRequests()
 			   .anyRequest().authenticated().and().httpBasic();
 			return http.build();
