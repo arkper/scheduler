@@ -242,7 +242,7 @@ public class SchedulerApiController {
 	}
 
 	@GetMapping(path = "/patients-by-name/{last-name}/{first-name}", produces = "application/json")
-	@CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "http://67.81.99.20:9988")
 	public ResponseEntity<Iterable<Patient>> getPatientsByName(@PathVariable("last-name") String lastName,
 			@PathVariable("first-name") String firstName) {
 		try {
