@@ -67,7 +67,7 @@ public class SchedulerApplication {
 		@Bean
 		CorsConfigurationSource corsConfigurationSource() {
 			CorsConfiguration configuration = new CorsConfiguration();
-			configuration.setAllowedOrigins(Arrays.asList("http://67.81.99.20:9988"));
+			configuration.setAllowedOrigins(Arrays.asList("*"));
 			configuration.setAllowedMethods(Arrays.asList("GET","POST"));
 			configuration.setAllowedHeaders(Arrays.asList("*"));
 			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
