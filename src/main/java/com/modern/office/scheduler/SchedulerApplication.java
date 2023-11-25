@@ -56,6 +56,16 @@ public class SchedulerApplication {
 		return mapper;
 	}
 
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("http://modernoptical.mywire.org:9988"));
+		configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
+
 	@Configuration
 	@EnableWebSecurity
 	@EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -70,16 +80,6 @@ public class SchedulerApplication {
 					http.getSharedObject(AuthenticationManagerBuilder.class);
 			authenticationManagerBuilder.authenticationProvider(authenticationProvider);
 			return authenticationManagerBuilder.build();
-		}
-
-		@Bean
-		CorsConfigurationSource corsConfigurationSource() {
-			CorsConfiguration configuration = new CorsConfiguration();
-			configuration.setAllowedOrigins(Arrays.asList("*"));
-			configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-			source.registerCorsConfiguration("/**", configuration);
-			return source;
 		}
 
 		@Bean
