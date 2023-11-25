@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -70,7 +71,7 @@ public class SchedulerApplication {
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 			http.authorizeRequests().antMatchers("/reply").permitAll();
 			
-			http.cors().and().csrf().disable()
+			http.cors(AbstractHttpConfigurer::disable).csrf().disable()
 			   .authorizeRequests()
 			   .anyRequest().authenticated().and().httpBasic();
 			return http.build();
