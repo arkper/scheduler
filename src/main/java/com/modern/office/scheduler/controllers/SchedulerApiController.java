@@ -249,7 +249,22 @@ public class SchedulerApiController {
 			return ResponseEntity.ok()
 					.body(this.schedulerApiService.findPatientsByLastNameAndFirstName(lastName, firstName));
 		} catch (Exception e) {
-			log.error("Failed getting patients for lastName {} and firstName with error: {}", lastName, firstName,
+			log.error("Failed getting patients for lastName {} and firstName {} with error: {}", lastName, firstName,
+					e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
+	@GetMapping(path = "/patients-by-name-like/{last-name}/{first-name}", produces = "application/json")
+	@CrossOrigin
+	public ResponseEntity<Iterable<Patient>> getPatientsByNameLike(@PathVariable("last-name") String lastName,
+															   @PathVariable("first-name") String firstName) {
+		try {
+			return ResponseEntity.ok()
+					.body(this.schedulerApiService.findPatientsByLastNameAndFirstNameLike(lastName, firstName));
+		} catch (Exception e) {
+			log.error("Failed getting patients for lastName {} and firstName {} with error: {}", lastName, firstName,
 					e.getMessage(), e);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
 					.build();

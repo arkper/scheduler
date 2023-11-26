@@ -22,6 +22,8 @@ public interface SchedulerApiService {
 	Patient getPatient(int patientNo);
 	Iterable<Patient> findPatientsByLastNameAndBirthDate(String lastName, LocalDate birthDate);
 	Iterable<Patient> findPatientsByLastNameAndFirstName(String lastName, String firstName);
+
+	Iterable<Patient> findPatientsByLastNameAndFirstNameLike(String lastName, String firstName);
 	Patient save(Patient patient);
 	Iterable<ProviderBlock> getByProviderNo(int providerNo);
 	ProviderBlock save(ProviderBlock providerBlock);
