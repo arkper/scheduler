@@ -72,7 +72,7 @@ public class Patient {
 	private int active = 1;
 	
 	@Column(name = "locationid")
-	private int locationId = 2;
+	private Integer locationId = 2;
 	
 	@Column(name = "entry_date")
 	private LocalDate entryDate = LocalDate.now();
