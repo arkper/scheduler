@@ -5,7 +5,9 @@ import com.modern.office.scheduler.domain.HippaDocument;
 import com.modern.office.scheduler.repository.DocumentRepository;
 import com.modern.office.scheduler.repository.HippaDocumentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class DocumentServiceImpl implements DocumentService{
     private final DocumentRepository documentRepository;
