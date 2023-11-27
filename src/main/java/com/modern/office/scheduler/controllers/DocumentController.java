@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/documents")
+@RestController("/")
 @Slf4j
 @RequiredArgsConstructor
 public class DocumentController {
     private final DocumentService documentService;
 
-    @GetMapping(value = "/e-docs/{patient-no}", produces = "application/json")
+    @GetMapping(value = "/documents/e-docs/{patient-no}", produces = "application/json")
     public Iterable<Document> getEDocuments(@PathVariable("patient-no") int patientNo)
     {
         return this.documentService.getEDocuments(patientNo);
     }
 
-    @GetMapping(value = "/hippa-docs/{patient-no}", produces = "application/json")
+    @GetMapping(value = "/documents/hippa-docs/{patient-no}", produces = "application/json")
     public Iterable<HippaDocument> getHippaDocuments(@PathVariable("patient-no") int patientNo)
     {
         return this.documentService.getHippaDocuments(patientNo);
