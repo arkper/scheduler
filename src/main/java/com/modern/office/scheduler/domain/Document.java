@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "eDocuments")
+@Table(name = "edocuments")
 @Data
 @Accessors(chain = true)
 public class Document {
