@@ -23,8 +23,6 @@ public class HippaDocument{
     private String formType;
     @Column(name="notes")
     private String notes;
-    @Column(name="codeid")
-    private String codeId;
     @Column(name="patient_no")
     private Integer patientNo;
 }
