@@ -13,17 +13,17 @@ import javax.persistence.*;
 public class HippaDocument{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="SysID")
+    @Column(name="sysid")
     private String sysId;
-    @Column(name="ExpiresOn")
+    @Column(name="expireson")
     private String expiresOn;
-    @Column(name="RecordedOn")
+    @Column(name="recordedon")
     private String recordedOn;
-    @Column(name="FormType")
+    @Column(name="formtype")
     private String formType;
-    @Column(name="Notes")
+    @Column(name="notes")
     private String notes;
-    @Column(name="CodeId")
+    @Column(name="codeid")
     private String codeId;
     @Column(name="patient_no")
     private Integer patientNo;
