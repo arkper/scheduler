@@ -1,0 +1,76 @@
+	<div class="title">{{ company?.name }}<br />
+	{{ company?.address?.address1 }}<br />
+	{{ company?.address?.city }}, {{ company?.address?.state }} {{ company?.address?.zip }}<br />
+	{{ company?.address?.phone1 }}<br/><br/></div>
+
+	<b>Patient Information:</b>
+	<table width="100%">
+	    <tr>
+	        <td>Last Name:</td><td><input id="lastName" [value] = "patient?.lastName"/></td>
+	        <td>First Name:</td><td><input id="firstName" [value] = "patient?.firstName"/></td>
+	    </tr>
+	    <tr>
+	        <td colspan="4">Sex: Male&nbsp;<input type="checkbox" id="sexMale" [checked] = "patient?.sex === 1"/>
+	                Female&nbsp;<input type="checkbox" id="sexFemale" [checked] = "patient?.sex !== 1" />
+	        </td>
+	    </tr>
+	    <tr>
+	        <td>Address:</td><td><input id="address" [value] = "patient?.address?.address1"/></td>
+	        <td>City:</td><td><input id="city" [value] = "patient?.address?.city"/></td>
+	    </tr>
+	    <tr>
+	        <td>State:</td><td><input id="state" [value] = "getState()"/> </td>
+	        <td>Zip:</td><td><input id="zip" [value] = "patient?.address?.zip"/> </td>
+	    </tr>
+	    <tr>
+	        <td>Telephone:</td><td><input id="phone" [value] = "patient?.address?.phone1"/> </td>
+	    </tr>
+	    <tr>
+	        <td>Date of Birth:</td><td><input id="dob" [value] = "getDob()"/></td>
+	        <td>SSN:</td><td><input id="ssn" [value] = "patient?.ssNo"/></td>
+	    </tr>
+	    <tr>
+	        <td colspan="3"><b>Insurance Information:</b></td>
+	    </tr>
+	    <tr>
+	        <td>Carrier:</td><td><input id="carrier" [value] = "getCarrier()"/></td>
+	        <td>Insured:</td><td>Self<input type="checkbox" id='insuredSelf' [checked] = "getRelationship() === 'Self'"/>
+	                     Spouse<input type="checkbox" id='insuredSpouse' [checked] = "getRelationship() === 'Spouse'"/>
+	                     Child<input type="checkbox" id='insuredChild' [checked] = "getRelationship() === 'Child'"/>
+	        </td>
+	    </tr>
+	    <tr>
+	        <td>Members Name:</td><td><input id="memberName" [value] = "getName()"/></td>
+	        <td>ID#:</td><td><input id="memberID" [value] = "getMemeberId()"/></td>
+	        <td>DOB:</td><td><input id="memberDOB" [value] = "getDob()"/></td>
+	    </tr>
+	</table>
+	<ul>
+        <li><b>I authorize the release of medical information necessary to process claims for medical benefits.</b></li>
+        <li><b>I authorize payment benefits to {{company}} for services provided.</b></li>
+        <li><b>In the event my coverage does not pay; I will be fully responsible for payment of services.</b></li>
+    </ul>
+    <table width="85%">
+        <tr>
+            <td valign="top" width="300px">Signature of Patient/Relative/Guardian: </td>
+            <td valign="top"><app-sig-pad (signed) = "onSigned($event)"></app-sig-pad></td>
+            <td valign="top">Date: <input id="date" size="10" [value]="getDate()"/></td>
+        </tr>
+    </table>
+    <table width="100%">
+        <tr>
+            <td>Referred by:</td>
+            <td><input type="checkbox" id="pcp" [checked] = "pcp" (change) = "pcp = !pcp"/>Primary Care Physician</td>
+            <td><input type="checkbox" id="ophthalmologist" [checked] = "ophthalmologist" (change) = "ophthalmologist = !ophthalmologist" />Ophthalmologist</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="checkbox" id="relativeFriend" [checked] = "relativeFriend" (change) = "relativeFriend = !relativeFriend"/>Friend/Relative</td>
+            <td><input type="checkbox" id="radio" [checked] = "radio" (change) = "radio = !radio"/>Radio/Newspaper</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="checkbox" id="internet" [checked] = "internet" (change) = "internet = !internet"/>Internet</td>
+            <td><input type="checkbox" id="noreferral" [checked] = "noreferral" (change) = "noreferral = !noreferral"/>No Referral</td>
+        </tr>
+    </table>

@@ -1,9 +1,10 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   Component,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -38,5 +39,9 @@ export class AppComponent {
       this.sidenav.open();
       this.isCollapsed = !this.isCollapsed;
     }
+  }
+  clicked()
+  {
+    console.log("Link clicked");
   }
 }

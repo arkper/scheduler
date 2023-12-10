@@ -1,0 +1,13 @@
+<canvas
+  #canvas
+  (touchstart)="startDrawing($event)"
+  (touchmove)="moved($event)"
+  width="500"
+  height="100"
+></canvas>
+<p class="error-message" *ngIf="signatureNeeded">Signature is required</p>
+
+<div class="buttons flex justify-between">
+  <button (click)="clearPad()">Clear</button>
+  <button (click)="savePad()">Submit the document</button>
+</div>

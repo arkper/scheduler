@@ -1,5 +1,5 @@
 {
-  "name": "material-responsive-sidenav",
+  "name": "office-forms-ui",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -20,7 +20,12 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "ag-grid-angular": "^30.2.1",
+    "ag-grid-community": "^30.2.1",
+    "ng2-pdf-viewer": "^10.0.0",
+    "ngx-extended-pdf-viewer": "^19.0.0-alpha.3",
     "rxjs": "~7.8.0",
+    "signature_pad": "^4.1.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

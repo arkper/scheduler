@@ -7,24 +7,60 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
+import { RouterModule, Routes } from '@angular/router';
+import { SigninSheetComponent } from './signin-sheet/signin-sheet.component';
+import { HttpClientModule } from '@angular/common/http'
+import { AgGridModule } from 'ag-grid-angular';
+import { ConsentFormComponent } from './consent-form/consent-form.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { DatePipe } from '@angular/common';
+import { SigPadComponent } from './sig-pad/sig-pad.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ReleaseFormComponent } from './release-form/release-form.component';
+import { DocViewerComponent } from './doc-viewer/doc-viewer.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
+const ROUTES: Routes = [
+  {path: 'patient-list', component: PatientListComponent},
+  {path: 'signin-sheet', component: SigninSheetComponent},
+  {path: 'consent-form', component: ConsentFormComponent},
+  {path: 'release-form', component: ReleaseFormComponent},
+  {path: 'doc-viewer', component: DocViewerComponent},
+  { path: '',
+    redirectTo: '/patient-list',
+    pathMatch: 'full'
+  },
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PatientListComponent,
+    SigninSheetComponent,
+    ConsentFormComponent,
+    SearchBarComponent,
+    SigPadComponent,
+    ReleaseFormComponent,
+    DocViewerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule,
+    AgGridModule,
+    RouterModule.forRoot(ROUTES),
+    MatFormFieldModule,
+    PdfViewerModule
   ],
-  providers: [],
+  providers: [DatePipe, MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

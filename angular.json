@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "material-responsive-sidenav": {
+    "office-forms-ui": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/material-responsive-sidenav",
+            "outputPath": "dist/office-forms-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -27,7 +27,17 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/theme.scss",
@@ -40,8 +50,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -57,7 +67,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -66,10 +82,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "material-responsive-sidenav:build:production"
+              "browserTarget": "office-forms-ui:build:production"
             },
             "development": {
-              "browserTarget": "material-responsive-sidenav:build:development"
+              "browserTarget": "office-forms-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +93,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "material-responsive-sidenav:build"
+            "browserTarget": "office-forms-ui:build"
           }
         },
         "test": {
@@ -102,5 +118,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

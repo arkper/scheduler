@@ -1,0 +1,93 @@
+<!-- Button to clear selection -->
+<div class="container">
+  <div class="header">
+    <label for="lastName">Last Name
+      <input
+        type="text"
+        name="lastName"
+        id="lastName"
+        placeholder="Type starting characters"
+        size="30"
+        (keyup)="externalFilterChanged($event)"
+        [value] = "lastName"
+      />
+    </label>
+    <label for="firstName">First Name
+      <input
+        type="text"
+        name="firstName"
+        id="firstName"
+        placeholder="Type starting characters"
+        size="30"
+        (keyup)="externalFilterChanged($event)"
+        [value] = "firstName"
+      />
+    </label>
+    <label>
+      <button (click)="clearSelection()">Clear Selection</button>
+    </label>
+  </div>
+
+  <ag-grid-angular
+    style="width: 100%; height: 70%"
+    class="ag-theme-balham"
+    [gridOptions]="gridOptions"
+    (gridReady)="onGridReady($event)"
+    [rowData] = "gridData"
+    (cellClicked)="onCellClicked($event)"
+    (rowDataUpdated)="onRowDataUpdated($event)"
+  ></ag-grid-angular>
+
+  <div class="row">
+    <div class="column">
+      <div class="header">
+        <label>E-Documents</label>
+      </div>
+      <ag-grid-angular
+      style="width: 100%; height: 35%"
+      class="ag-theme-balham"
+      [columnDefs]="docColumnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowData]="docRowData$ | async"
+      [rowSelection]="'multiple'"
+      [animateRows]="true"
+      (gridReady)="onGridReady($event)"
+      (cellDoubleClicked)="onDocCellDoubleClicked($event)"
+      (cellClicked)="onDocCellClicked($event)"
+    ></ag-grid-angular> 
+    <div class="header">
+      <button (click)="viewDoc()">View Document</button>
+      <button (click)="addNewEDoc()">Add New E-Document</button>
+      <select id="edocSelect">
+        <option value="consent">Consent To Release</option>
+        <option value="release">Release Of Medical Info</option>
+      </select>
+    </div>     
+    </div>
+    <div class="column">
+      <div class="header">
+        <label>HIPAA Documents</label>
+      </div>
+      <ag-grid-angular
+      style="width: 100%; height: 35%"
+      class="ag-theme-balham"
+      [columnDefs]="docColumnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowData]="hippaRowData$ | async"
+      [rowSelection]="'multiple'"
+      [animateRows]="true"
+      (gridReady)="onGridReady($event)"
+      (cellDoubleClicked)="onDocCellDoubleClicked($event)"
+      (cellClicked)="onDocCellClicked($event)"
+    ></ag-grid-angular>  
+    <div class="header">
+      <button (click)="viewDoc()">View Document</button>
+      <button (click)="addNewHipaaDoc()">Add New HIPAA Document</button>
+      <select id="hipaaDocSelect">
+        <option value="release">Release Of Medical Info</option>
+        <option value="consent">Consent To Release</option>
+      </select>
+    </div>     
+    </div>
+  </div>
+</div>
