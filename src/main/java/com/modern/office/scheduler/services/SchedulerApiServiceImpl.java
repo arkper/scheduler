@@ -158,8 +158,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	public Iterable<Patient> findPatientsByLastNameAndFirstNameLike(String lastName, String firstName) {
 		lastName = "any".equalsIgnoreCase(lastName)? "%" : lastName + "%";
 		firstName = "any".equalsIgnoreCase(firstName)? "%" : firstName + "%";
+		log.info("Searching by lastName {}, firstName {}", lastName, firstName);
 
-		return this.patientRepo.findPatientsByLastNameAndSalutationLike(lastName, "Dear " + firstName + ":");
+		return this.patientRepo.findPatientsByLastNameAndSalutationLike(lastName, "Dear " + firstName);
 	}
 
 	@Override

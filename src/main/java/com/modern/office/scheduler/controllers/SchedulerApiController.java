@@ -322,6 +322,17 @@ public class SchedulerApiController {
 		}
 	}
 
+	@GetMapping(path = "/codes-by-category-no/{category-no}", produces = "application/json")
+	public ResponseEntity<Iterable<Code>> getCodesByCategoryNo(@PathVariable("category-no") int categoryNo) {
+		try {
+			return ResponseEntity.ok().body(this.schedulerApiService.getCodesByCategory(categoryNo));
+		} catch (Exception e) {
+			log.error("Failed getting codes for category {} with error: {}", categoryNo, e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
 	@GetMapping(path = "/timeslots/{provider-no}/{from-date}/{to-date}", produces = "application/json")
 	public ResponseEntity<Iterable<Timeslot>> getTimeslots(@PathVariable("provider-no") int providerNo,
 			@PathVariable("from-date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fromDate,

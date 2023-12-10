@@ -33,7 +33,7 @@ public class Patient {
 	private Address address;
 	
 	@Column(name = "address_no_old")
-	private int addressNoOld;
+	private Integer addressNoOld;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "patientNo", fetch = FetchType.EAGER, orphanRemoval = true)
 	private Set<PatientInsurance> patientInsurances;
@@ -51,7 +51,7 @@ public class Patient {
 	private LocalDate birthDate;
 
 	@Column(name = "source_cd")
-	private int sourceCode = 12;
+	private Integer sourceCode = 12;
 	
 	@Column(name = "mid_name")
 	private String midName = "";
@@ -60,7 +60,7 @@ public class Patient {
 	private String suffix = "";
 	
 	@Column(name = "sex")
-	private int sex = 0;
+	private Integer sex = 0;
 	
 	@Column(name = "ss_no")
 	private String ssNo = "";
@@ -69,7 +69,7 @@ public class Patient {
 	private String title = "";
 
 	@Column(name = "active")
-	private int active = 1;
+	private Integer active = 1;
 	
 	@Column(name = "locationid")
 	private Integer locationId = 2;
@@ -78,5 +78,5 @@ public class Patient {
 	private LocalDate entryDate = LocalDate.now();
 	
 	@Column(name = "provider_cd")
-	private int providerCd = 20;
+	private Integer providerCd = 20;
 }

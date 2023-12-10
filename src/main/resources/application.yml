@@ -13,6 +13,16 @@ spring:
     properties:
       dialect: "org.hibernate.dialect.SQLServer2012Dialect"
 
+office-forms:
+  company: Modern Optical, Inc.
+  company-address: 353 Kings Hwy
+  company-city: Brooklyn
+  company-state: NY
+  company-zip: 11223
+  company-phone: (718) 336-3090
+
+  document-folder: /Users/arkper/projects/documents
+
 scheduler:
   user: user123
   pwd: password123

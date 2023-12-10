@@ -42,10 +42,10 @@ public class PatientInsurance {
 	private int relationToInsuredNo;
 	
 	@Column(name="ppo_hmo")
-	private int ppoHmoNo;
+	private Integer ppoHmoNo;
 	
 	@Column(name="insurance_status")
-	private int insuranceStatus = 0;
+	private Integer insuranceStatus = 0;
 	
 	@Column(name="insured_id")
 	private String insuredId;

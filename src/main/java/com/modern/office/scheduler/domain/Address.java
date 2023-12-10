@@ -2,18 +2,18 @@ package com.modern.office.scheduler.domain;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 @Entity
 @Table(name = "address")
 @Data
+@NoArgsConstructor
+@Accessors(chain = true)
 public class Address
 {
 	@Id
@@ -30,6 +30,9 @@ public class Address
 	@Column(name = "state")
 	private int stateNo;
 
+	@Transient
+	private String state;
+
 	private String zip;
 	
 	private String phone1;
@@ -37,7 +40,7 @@ public class Address
 	private String fax;
 	
 	@Column(name = "wrong_address_flg")
-	private int wrongAddressFlag;
+	private Integer wrongAddressFlag;
 	
 	@Column(name = "update_dt")
 	private LocalDate updateDate;

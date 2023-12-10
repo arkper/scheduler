@@ -29,8 +29,20 @@ values (2,-1,2,2,1,'Vera NOVAKHOVA','(718) 339-1581','1463 east 3 rd street, 6a,
 insert into code(code_category_cd, code, user_code, description) values (32, 56, 'CA', 'California');
 insert into code(code_category_cd, code, user_code, description) values (32, 65, 'NY', 'New York');
 insert into code(code_category_cd, code, user_code, description) values (32, 86, 'NJ', 'New Jersey');
+insert into code(code_category_cd, code, user_code, description) values (5, 2, 'PPO', 'PPO');
+insert into code(code_category_cd, code, user_code, description) values (5, 3, 'VSP', 'VSP');
+insert into code(code_category_cd, code, user_code, description) values (59, 335, '01', 'Self');
+insert into code(code_category_cd, code, user_code, description) values (59, 336, '02', 'Spouse');
+insert into code(code_category_cd, code, user_code, description) values (59, 337, '03', 'Child');
 
 insert into AppSch_Provider_Exception(pro_exception_no, pro_no, LocationID, pro_available_ind, pro_start_time, pro_end_time, pro_exception_date, pro_notes, pro_delete_ind)
 values (1, 8, 2, 1, '13:45', '19:00', '2022-11-28', 'Wednesday, February 16, 2011', 0); 
 insert into AppSch_Provider_Exception(pro_exception_no, pro_no, LocationID, pro_available_ind, pro_start_time, pro_end_time, pro_exception_date, pro_notes, pro_delete_ind)
 values (2, 8, 2, 1, '10:00', '18:00', '2022-11-29', 'Wednesday, February 16, 2011', 0); 
+
+insert into patient(patient_no, last_name, first_name, birth_date, salutation, address_no, sex, ss_no) values(111, 'Perepelyuk', 'Arkady', '1962-09-27', 'Dear Arkady:', 1, 1, '067-80-1212');
+insert into patient(patient_no, last_name, first_name, birth_date, salutation, address_no, sex, ss_no) values(112, 'Perepelyuk', 'Dina', '1962-09-07', 'Dear Dina:', 1, 0, '067-80-4335');
+
+insert into address(address_no, address1, city, state, zip, phone1) values(1, '123 E 12-th St', 'Brooklyn', 65, '11223','(347) 222-3322');
+
+insert into patient_insurances(PatInsID, patient_no, ins_seq, insurance_no, insured_no, relation_to_insured, insured_id, inactive) values(1, 111, 1, 2, 111, 335, 'ABC123456', 0);

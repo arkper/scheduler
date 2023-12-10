@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a91f3aca-8e0c-42c8-ba77-ea56404d24d3">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Consent_Info_DS"/>
+	<import value="org.apache.commons.codec.binary.Base64"/>
+	<queryString language="json">
+		<![CDATA[data]]>
+	</queryString>
+	<field name="patientName" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="patientName"/>
+		<fieldDescription><![CDATA[patientName]]></fieldDescription>
+	</field>
+	<field name="company" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="company"/>
+		<fieldDescription><![CDATA[company]]></fieldDescription>
+	</field>
+	<field name="signature" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="signature"/>
+		<fieldDescription><![CDATA[signature]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="530" height="20" uuid="50fe7a3a-b4de-4989-8b25-a811806724a2"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[CONSENT TO EXAMINATION,TREATMENT AND NOTICE OF PRIVACY PRACTICES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="546" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="10" width="530" height="50" uuid="295e747e-dbf9-485a-b63f-e0133b8c4246"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["I, " +  $F{patientName} + ", am seeking vision care services and voluntarily consent to such care including diagnostic and therapeutic procedures and medical treatment to be provided by the clinical and professional staff of the " + $F{company} + "."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="60" width="530" height="50" uuid="eb525d71-c829-471e-80cd-3c325a2588b5"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["I acknowledge that no guarantees have been made to me as to the results of treatments and examinations In this center. This consent has been fully explained to me and I certify that I understand its contents."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="110" width="530" height="42" uuid="27d1e9a7-e204-49ee-b58d-1035fc1a3c7a"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["I herewith authorize the Optometric Center " + $F{company} + " to retain photographs or other images from the procedure, examination or treatment."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="150" width="531" height="50" uuid="e63152eb-72f4-4bd6-b004-e512ce5bf7f2"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["I understand that, under the Health Insurance Portability & Accountability Act of 1996 (HIPAA), I have certain rights to privacy regarding my protected health information. I understand that this information can and will be used to:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="200" width="521" height="60" uuid="4fd790a9-9e31-46bd-9300-80a374c05980"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[ - Conduct, plan and direct my treatment and follow-up among the multiple healthcare providers who may be involved in that treatment directly and indirectly
+ - Obtain payment from third-party payers
+ - Conduct normal healthcare operations such as quality assessments and physician certifications]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="260" width="531" height="50" uuid="47b24086-3f78-4008-b589-95e8aacc9170"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[By signing this document I acknowledge that you have provided me with a copy of your Notice of Privacy Practices. The Notice of Privacy Practices contains a more complete description of the uses and disclosures of my health information.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="310" width="531" height="120" uuid="b13cdef3-c6dc-4d72-b491-ca9a2df50206"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[I understand that this organization has the right to change its Notice of Privacy Practices from time to time and that I may contact this organization at any time at the address above to obtain a current copy of the Notice of Privacy Practices.
+
+I understand that I may request in writing that you restrict how my private information is used or disclosed to carry out treatment, payment or health care operations. I also understand that you are not required to agree to my requested restrictions, but if you do agree then you are bound by such restrictions.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="440" width="140" height="40" uuid="2d6ea244-8aa3-4006-a1a2-ea038156a7f2"/>
+				<text><![CDATA[Signature of Patient/Relative/Guardian:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="160" y="440" width="280" height="91" uuid="2c68fc89-6751-4dc4-992c-387018ec658c"/>
+				<imageExpression><![CDATA[new ByteArrayInputStream(Base64.decodeBase64($F{signature}))]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="440" y="440" width="111" height="40" uuid="b6e68722-5bac-4cc6-a6af-bf253197d112"/>
+				<textFieldExpression><![CDATA["Date: " + NOW( )]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

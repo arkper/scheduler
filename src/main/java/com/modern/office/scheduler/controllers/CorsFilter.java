@@ -25,7 +25,6 @@ public class CorsFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException, IOException {
-        log.info("Filter CorsFilter invoked");
 
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
@@ -34,6 +33,7 @@ public class CorsFilter implements Filter {
         response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
         response.addHeader("Access-Control-Max-Age", "3600");
         response.addHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, x-customer-header-1, x-customer-header-2");
+        response.addHeader("X-Frame-Options", "ALLOW-FROM localhost:9988");
 
         chain.doFilter(req, res);
     }

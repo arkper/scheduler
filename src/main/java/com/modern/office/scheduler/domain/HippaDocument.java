@@ -14,7 +14,7 @@ public class HippaDocument{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sysid")
-    private String sysId;
+    private Integer sysId;
     @Column(name="expireson")
     private String expiresOn;
     @Column(name="recordedon")
@@ -25,4 +25,6 @@ public class HippaDocument{
     private String notes;
     @Column(name="patient_no")
     private Integer patientNo;
+    @Column(name="doclink")
+    private String docLink;
 }

@@ -5,6 +5,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ReleaseInfoReport {
-    private List<ReleaseInfo> data;
+public class OfficeForm<T> {
+    private List<T> data;
 }

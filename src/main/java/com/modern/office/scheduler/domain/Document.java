@@ -18,7 +18,7 @@ public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sysid")
-    private String sysId;
+    private int sysId;
     @Column(name="expireson")
     private String expiresOn;
     @Column(name="recordedon")
@@ -28,7 +28,9 @@ public class Document {
     @Column(name="notes")
     private String notes;
     @Column(name="codeid")
-    private String codeId;
+    private int codeId;
     @Column(name="patient_no")
-    private Integer patientNo;
+    private int patientNo;
+    @Column(name="doclink")
+    private String docLink;
 }
