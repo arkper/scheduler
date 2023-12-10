@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { AgGridModule } from 'ag-grid-angular';
 import { ConsentFormComponent } from './consent-form/consent-form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { DatePipe } from '@angular/common';
 import { SigPadComponent } from './sig-pad/sig-pad.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -41,7 +40,6 @@ const ROUTES: Routes = [
     PatientListComponent,
     SigninSheetComponent,
     ConsentFormComponent,
-    SearchBarComponent,
     SigPadComponent,
     ReleaseFormComponent,
     DocViewerComponent
