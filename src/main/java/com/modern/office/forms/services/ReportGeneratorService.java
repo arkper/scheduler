@@ -96,8 +96,8 @@ public class ReportGeneratorService {
     private <T> String recordForm(int patientNo, byte[] bytes, Class<T> clazz) throws IOException {
         var fileName = UUID.randomUUID() + ".pdf";
         Path path = Path.of(this.documentFolder + "/" + fileName);
-        Files.deleteIfExists(path);
-        Files.write(Files.createFile(path), bytes);
+        Files.createFile(path);
+        Files.write(path, bytes);
         var docType = FORMS_INFO.get(clazz).getFirst();
 
         if (docType.getFormType() == FormType.EDocs) {
