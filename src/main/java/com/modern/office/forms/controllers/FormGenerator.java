@@ -20,14 +20,14 @@ import java.io.IOException;
 @Slf4j
 public class FormGenerator {
     private final ReportGeneratorService reportGeneratorService;
-    @Value("${office-forms.document-folder}")
-    private String documentFolder;
+    @Value("${office-forms.document-local-folder}")
+    private String documentLocalFolder;
 
     @RequestMapping(value = "/{file-name}", method = RequestMethod.GET, produces = "application/pdf")
     public ResponseEntity<InputStreamResource> downloadPDFFile(@PathVariable("file-name") final String fileName)
             throws IOException {
 
-        File file = new File(this.documentFolder + "/" + fileName);
+        File file = new File(this.documentLocalFolder + fileName);
 
         return ResponseEntity
                 .ok()
