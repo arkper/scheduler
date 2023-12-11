@@ -6,7 +6,11 @@ spring:
     username: sa
     password:
     initialize: true
-    
+
+office-forms:
+  document-folder: /Users/arkper/projects/documents/
+  document-local-folder: /Users/arkper/projects/documents/
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate.ddl-auto: none

@@ -21,7 +21,8 @@ office-forms:
   company-zip: 11223
   company-phone: (718) 336-3090
 
-  document-folder: /Users/arkper/projects/documents
+  document-folder: o:/data/edocuments/
+  document-local-folder: c:/officemate/data/edocuments/
 
 scheduler:
   user: user123

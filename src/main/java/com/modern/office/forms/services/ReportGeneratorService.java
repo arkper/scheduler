@@ -53,6 +53,8 @@ public class ReportGeneratorService {
 
     @Value("${office-forms.document-folder}")
     private String documentFolder;
+    @Value("${office-forms.document-local-folder}")
+    private String documentLocalFolder;
 
     public ReportGeneratorService(final DocumentRepository documentRepository,
                                   final HippaDocumentRepository hippaDocumentRepository) throws IOException {
@@ -94,11 +96,12 @@ public class ReportGeneratorService {
 
     private <T> String recordForm(int patientNo, byte[] bytes, Class<T> clazz) throws IOException {
         var fileName = UUID.randomUUID() + ".pdf";
-        Path path = Path.of(this.documentFolder + File.separator + fileName);
-        log.info("Creating file {}", path.toString());
-        new File(path.toString()).createNewFile();
-        Files.write(path, bytes);
+        var localPath = Path.of(this.documentLocalFolder + File.separator + fileName);
+        log.info("Creating file {}", localPath.toString());
+        new File(localPath.toString()).createNewFile();
+        Files.write(localPath, bytes);
         var docType = FORMS_INFO.get(clazz).getFirst();
+        var remotePath = Path.of(this.documentFolder + fileName);
 
         if (docType.getFormType() == FormType.EDocs) {
             Document eDoc = new Document()
@@ -107,7 +110,7 @@ public class ReportGeneratorService {
                     .setPatientNo(patientNo)
                     .setRecordedOn(LocalDate.now().format(DateTimeFormatter.ISO_DATE))
                     .setExpiresOn(LocalDate.now().plusYears(1).format(DateTimeFormatter.ISO_DATE))
-                    .setDocLink(path.toString());
+                    .setDocLink(remotePath.toString());
             this.documentRepository.save(eDoc);
         }
         else {
@@ -116,7 +119,7 @@ public class ReportGeneratorService {
                     .setPatientNo(patientNo)
                     .setRecordedOn(LocalDate.now().format(DateTimeFormatter.ISO_DATE))
                     .setExpiresOn(LocalDate.now().plusYears(1).format(DateTimeFormatter.ISO_DATE))
-                    .setDocLink(path.toString());
+                    .setDocLink(remotePath.toString());
             this.hippaDocumentRepository.save(doc);
         }
 

@@ -484,7 +484,7 @@ CREATE TABLE EDOCUMENTS(
 	patient_no int NOT NULL,
 	expireson nvarchar(10) NOT NULL,
 	recordedon nvarchar(10) NOT NULL,
-	formtype nvarchar(20) NULL,
+	formtype nvarchar(50) NULL,
 	notes nvarchar(100) NULL,
 	codeid int NULL,
 	edoclink nvarchar(100) null
@@ -495,7 +495,7 @@ CREATE TABLE HIPAAFORMS(
 	patient_no int NOT NULL,
 	expireson nvarchar(10) NOT NULL,
 	recordedon nvarchar(10) NOT NULL,
-	formtype nvarchar(20) NULL,
+	formtype nvarchar(50) NULL,
 	notes nvarchar(100) NULL,
 	codeid int NULL,
 	edoclink nvarchar(100) null
