@@ -97,6 +97,7 @@ public class ReportGeneratorService {
     private <T> String recordForm(int patientNo, byte[] bytes, Class<T> clazz) throws IOException {
         var fileName = UUID.randomUUID() + ".pdf";
         Path path = Path.of(this.documentFolder + File.separator + fileName);
+        log.info("Creating file {}", path.toString());
         new File(path.toString()).createNewFile();
         Files.write(path, bytes);
         var docType = FORMS_INFO.get(clazz).getFirst();
