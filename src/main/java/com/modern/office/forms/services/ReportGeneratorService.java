@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.DateFormatter;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -95,7 +96,7 @@ public class ReportGeneratorService {
 
     private <T> String recordForm(int patientNo, byte[] bytes, Class<T> clazz) throws IOException {
         var fileName = UUID.randomUUID() + ".pdf";
-        Path path = Path.of(this.documentFolder + "/" + fileName);
+        Path path = Path.of(this.documentFolder + File.pathSeparator + fileName);
         Files.createFile(path);
         Files.write(path, bytes);
         var docType = FORMS_INFO.get(clazz).getFirst();
