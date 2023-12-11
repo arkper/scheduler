@@ -31,6 +31,6 @@ public class Document {
     private int codeId;
     @Column(name="patient_no")
     private int patientNo;
-    @Column(name="doclink")
+    @Column(name="edoclink")
     private String docLink;
 }

@@ -103,7 +103,7 @@ public class ReportGeneratorService {
         if (docType.getFormType() == FormType.EDocs) {
             Document eDoc = new Document()
                     .setCodeId(docType.getValue())
-                    .setFormType(docType.name())
+                    .setFormType(docType.getDisplayName())
                     .setPatientNo(patientNo)
                     .setRecordedOn(LocalDate.now().format(DateTimeFormatter.ISO_DATE))
                     .setExpiresOn(LocalDate.now().plusYears(1).format(DateTimeFormatter.ISO_DATE))
@@ -112,7 +112,7 @@ public class ReportGeneratorService {
         }
         else {
             HippaDocument doc = new HippaDocument()
-                    .setFormType(docType.name())
+                    .setFormType(docType.getDisplayName())
                     .setPatientNo(patientNo)
                     .setRecordedOn(LocalDate.now().format(DateTimeFormatter.ISO_DATE))
                     .setExpiresOn(LocalDate.now().plusYears(1).format(DateTimeFormatter.ISO_DATE))
