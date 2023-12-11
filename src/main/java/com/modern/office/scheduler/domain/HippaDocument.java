@@ -25,6 +25,6 @@ public class HippaDocument{
     private String notes;
     @Column(name="patient_no")
     private Integer patientNo;
-    @Column(name="doclink")
+    @Column(name="edoclink")
     private String docLink;
 }

@@ -498,5 +498,5 @@ CREATE TABLE HIPAAFORMS(
 	formtype nvarchar(20) NULL,
 	notes nvarchar(100) NULL,
 	codeid int NULL,
-	doclink nvarchar(100) null
+	edoclink nvarchar(100) null
 );
