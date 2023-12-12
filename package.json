@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@ngrx/store": "^17.0.1",
     "ag-grid-angular": "^30.2.1",
     "ag-grid-community": "^30.2.1",
     "ng2-pdf-viewer": "^10.0.0",

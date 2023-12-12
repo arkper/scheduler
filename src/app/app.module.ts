@@ -13,15 +13,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { SigninSheetComponent } from './signin-sheet/signin-sheet.component';
 import { HttpClientModule } from '@angular/common/http'
 import { AgGridModule } from 'ag-grid-angular';
-import { ConsentFormComponent } from './consent-form/consent-form.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { ConsentFormComponent } from './forms/consent-form/consent-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
 import { SigPadComponent } from './sig-pad/sig-pad.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ReleaseFormComponent } from './release-form/release-form.component';
+import { ReleaseFormComponent } from './forms/release-form/release-form.component';
 import { DocViewerComponent } from './doc-viewer/doc-viewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-
+import { patientReducer } from './store/reducers/patient.reducer';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/reducers';
 const ROUTES: Routes = [
   {path: 'patient-list', component: PatientListComponent},
   {path: 'signin-sheet', component: SigninSheetComponent},
@@ -56,7 +58,8 @@ const ROUTES: Routes = [
     AgGridModule,
     RouterModule.forRoot(ROUTES),
     MatFormFieldModule,
-    PdfViewerModule
+    PdfViewerModule,
+    StoreModule.forRoot(reducers)
   ],
   providers: [DatePipe, MatSnackBar],
   bootstrap: [AppComponent]

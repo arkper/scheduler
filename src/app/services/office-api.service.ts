@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
-import { Address, Code, Company, Document, Patient, PatientInsurance } from './patient-list/patient-model';
+import { Address, Code, Company, Document, Patient, PatientInsurance } from '../store/model/patient.model';
 
 const STATE_CODE_CATEGORY: number = 32;
 const CARRIER_CODE_CATEGORY: number = 5;
@@ -99,6 +99,16 @@ export class OfficeApiService {
       return undefined;
     }
     return OfficeApiService.relationshipCodes.find(c => c.code === relationshipNo)?.description;
+  }
+
+  getDocFile(docLink: string): string {
+    if (docLink.indexOf("\\") >= 0){
+      return docLink.substring(docLink.lastIndexOf("\\") + 1);
+    } else if (docLink.indexOf("/") >= 0) {
+      return docLink.substring(docLink.lastIndexOf("/") + 1);
+    } else {
+      return docLink;
+    }
   }
 
   getCompany(): Observable<Company> {

@@ -2,9 +2,14 @@ import { Component } from '@angular/core';
 import { CellClickedEvent, ColDef, GridApi, GridOptions } from 'ag-grid-community';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { OfficeApiService } from '../office-api.service';
+import { OfficeApiService } from '../services/office-api.service';
 import { settings } from './patient-list.settings';
-import { Patient, Document } from './patient-model';
+import { Patient, Document, EMPTY_DOCUMENT } from '../store/model/patient.model';
+import { Store } from '@ngrx/store';
+import { State } from '../store/model/state.model';
+import { PatientActionType } from '../store/actions/patient.action';
+import { AppState } from '../store/reducers';
+import { DocumentActionType } from '../store/actions/document.action';
 
 
 @Component({
@@ -27,6 +32,11 @@ export class PatientListComponent {
 
   gridData: any[] = [];
   
+  constructor(private apiService: OfficeApiService, private router: Router, private store: Store<AppState>) {
+    this.store.select(state => state.selectedPatient.patients)
+      .subscribe((selectedPatients) => {this.onPatientSelectionChanged(selectedPatients)});
+  }
+
   public defaultColDef: ColDef = {
     sortable: true,
     filter: true,
@@ -38,16 +48,18 @@ export class PatientListComponent {
   gridOptions: GridOptions = settings;
   private gridApi: GridApi | null = null;
 
-  constructor(private apiService: OfficeApiService, private router: Router) {
-    this.patient = this.router.getCurrentNavigation()?.extras.state?.['patient'];
+  onPatientSelectionChanged(currentSelection: Patient[])
+  {
+    let current = currentSelection?.at(0);
+    console.log(current);
 
-    if (this.patient == null) {
-      this.firstName = "";
-      this.lastName = "";
-    }
-    else {
+    if (current !== undefined && current?.patientNo !== 0) {
+      this.patient = current;
       this.firstName = this.patient.firstName;
       this.lastName = this.patient.lastName;
+    } else {
+      this.firstName = "";
+      this.lastName = "";
     }
     this.executeSearch();
   }
@@ -62,7 +74,7 @@ export class PatientListComponent {
       .subscribe({
         next: rows => this.gridData = rows,
         error: err => console.log(err),
-        complete: () => console.log(this.gridData)
+        complete: () => console.log('Loaded rows: ' + this.gridData.length)
       });
   }
 
@@ -78,9 +90,13 @@ export class PatientListComponent {
   }
 
   onCellClicked( e: CellClickedEvent): void {
-    this.patient = e.data;
-    console.log(this.patient);
-    this.refreshPatientDocs();
+    this.store.dispatch({
+      type: PatientActionType.SELECT_PATIENT,
+      payload: e.data
+    });
+    //this.patient = e.data;
+    e.node.setSelected(true);
+    //this.refreshPatientDocs();
   }
 
   refreshPatientDocs()
@@ -120,30 +136,38 @@ export class PatientListComponent {
     // console.log("Current patient:");
     // console.log(this.patient);
   }
-  
-  addNewEDoc()
-  {
+
+  addNewDoc(formType: string) {
     if (this.patient === null)
     {
       alert('Please select a patient first!');
       return;
     }
-    const formType = (document.getElementById("edocSelect") as HTMLSelectElement).value;
+
+    this.store.dispatch({
+      type: PatientActionType.SELECT_PATIENT,
+      payload: this.patient
+    });
+
+    this.store.dispatch({
+      type: DocumentActionType.SELECT_DOCUMENT,
+      payload: EMPTY_DOCUMENT
+    });
+
     console.log("Creating new " + formType);
     this.router.navigateByUrl(`/${formType}-form`, {state: {patient: this.patient}});
   }
 
+  addNewEDoc()
+  {
+    const formType = (document.getElementById("edocSelect") as HTMLSelectElement).value;
+    this.addNewDoc(formType);
+  }
+
   addNewHipaaDoc()
   {
-    if (this.patient === null)
-    {
-      alert('Please select a patient first!');
-      return;
-    }
     const formType = (document.getElementById("hipaaDocSelect") as HTMLSelectElement).value;
-    console.log("Creating new " + formType);
-    console.log(this.patient);
-    this.router.navigateByUrl(`/${formType}-form`, {state: {patient: this.patient}});
+    this.addNewDoc(formType);
   }
 
   viewDoc() {
@@ -151,18 +175,20 @@ export class PatientListComponent {
       return;
     }
 
-    const fileName = this.doc?.docLink.substring(this.doc?.docLink.lastIndexOf("/") + 1);
-    this.router.navigateByUrl('/doc-viewer', {state: {fileName: fileName}});
+    this.router.navigateByUrl('/doc-viewer');
   }
 
   onDocCellClicked( e: CellClickedEvent): void {
     this.doc = e.data;
+    this.store.dispatch(
+      {
+        type: DocumentActionType.SELECT_DOCUMENT,
+        payload: this.doc
+      }
+    )
   }
 
   onDocCellDoubleClicked( e: CellClickedEvent): void {
-    // const docLink: string = e.data.docLink;
-    // const fileName: string = docLink.substring(docLink.lastIndexOf("/"));
-    // this.router.navigateByUrl('/doc-viewer', {state: {fileName: fileName}});
     this.viewDoc();
   }
 }

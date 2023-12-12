@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { OfficeApiService } from '../office-api.service';
-import { Company, Patient, PatientInsurance } from '../patient-list/patient-model';
+import { OfficeApiService } from '../../services/office-api.service';
+import { Company, Document, Patient, PatientInsurance } from '../../store/model/patient.model';
 import { DatePipe } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store/reducers';
+import { DocumentActionType } from '../../store/actions/document.action';
 
 @Component({
   selector: 'app-release-form',
@@ -11,22 +14,11 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./release-form.component.scss']
 })
 export class ReleaseFormComponent {  
-  constructor(
-    private router: Router, 
-    private apiService: OfficeApiService,
-    private snackBar: MatSnackBar,
-    private datepipe: DatePipe) {
-      this.patient = this.router.getCurrentNavigation()?.extras.state?.['patient'];
-      this.apiService.getCompany()
-        .subscribe({next: c => this.company = c});
-    }
-
-  patient: Patient | null = null;
+  patient: Patient | undefined = undefined;
   company: Company | null = null;
   fileName: string = "";
 
   snackBarRef: MatSnackBarRef<TextOnlySnackBar> | null = null;
-  patientNo: number = 111;
 
   pcp: boolean = false;
   ophthalmologist: boolean = false;
@@ -37,8 +29,23 @@ export class ReleaseFormComponent {
 
   signature: string = "";
 
-  getDate(): string {
-    return new Date().toLocaleDateString();
+  constructor(
+    private router: Router, 
+    private apiService: OfficeApiService,
+    private snackBar: MatSnackBar,
+    private datepipe: DatePipe,
+    private store: Store<AppState>) {
+      this.store.select(state => state.selectedPatient.patients)
+        .subscribe((selectedPatients) => {this.onPatientSelected(selectedPatients)});
+
+      this.apiService.getCompany()
+        .subscribe({next: c => this.company = c});
+  }
+
+  onPatientSelected(selected: Patient[]) {
+    if (selected?.length > 0) {
+      this.patient = selected.at(0);
+    }
   }
 
   onSigned(event: any)
@@ -53,7 +60,7 @@ export class ReleaseFormComponent {
         companyState: this.company?.address?.state,
         companyZip: this.company?.address?.zip,
         companyPhone: this.company?.address?.phone1,
-        patientNo: this.patientNo, 
+        patientNo: this.patient?.patientNo, 
         patientName: this.getName(), 
         sexMale: this.patient?.sex,
         signature: this.signature,
@@ -95,6 +102,12 @@ export class ReleaseFormComponent {
   displaySuccess(){
     this.openSnackBar("Success!", "X");
     this.snackBarRef?.afterDismissed().subscribe(() => {
+      this.store.dispatch({
+        type: DocumentActionType.SELECT_DOCUMENT,
+        payload: {
+          docLink: this.fileName
+        }
+      });
       this.router.navigateByUrl('/doc-viewer', {state: {fileName: this.fileName}});
     });
   }
@@ -107,7 +120,7 @@ export class ReleaseFormComponent {
   }
 
   openSnackBar(message: string, type: string) { 
-    this.snackBarRef = this.snackBar.open(message, type, {duration: 3000}); 
+    this.snackBarRef = this.snackBar.open(message, type, {duration: 2000}); 
   }
 
   getName(): string
@@ -137,5 +150,13 @@ export class ReleaseFormComponent {
 
   getMemeberId(): string {
     return this.patient?.patientInsurances?.at(0)?.insuredId ?? "";
+  }
+
+  getDate(): string {
+    return new Date().toLocaleDateString();
+  }
+
+  getCompanyName(): string {
+    return this.company?.name ?? "";
   }
 }

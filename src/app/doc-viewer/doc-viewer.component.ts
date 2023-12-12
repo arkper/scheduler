@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/reducers';
+import { Document } from '../store/model/patient.model';
+import { OfficeApiService } from '../services/office-api.service';
 
 @Component({
   selector: 'app-doc-viewer',
@@ -8,9 +11,18 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
   styleUrls: ['./doc-viewer.component.scss']
 })
 export class DocViewerComponent {
-  constructor(private router: Router){
-    this.srcFile = "/forms/" + this.router.getCurrentNavigation()?.extras.state?.['fileName'];
+  constructor(private router: Router, private store: Store<AppState>, private apiService: OfficeApiService){
+
+    this.store.select(state => state.selectedDocument.document)
+      .subscribe((document) => {this.onDocumentSelected(document)});
   }
 
   srcFile: string = "";
+
+  onDocumentSelected(document: Document) {
+    const docLink = this.apiService.getDocFile(document.docLink);
+
+    console.log("Sending request for: " + docLink);
+    this.srcFile = "/forms/" + docLink;
+  }
 }

@@ -48,3 +48,10 @@ export interface Document {
     expiresOn: string,
     docLink: string
 }
+
+export const EMPTY_DOCUMENT: Document = {
+  formType: '',
+  recordedOn: '',
+  expiresOn: '',
+  docLink: ''
+};
