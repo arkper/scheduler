@@ -1,6 +1,7 @@
 package com.modern.office.forms.controllers;
 
-import com.modern.office.forms.domain.*;
+import com.modern.office.forms.domain.Company;
+import com.modern.office.forms.domain.FormData;
 import com.modern.office.forms.services.ReportGeneratorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,25 +38,19 @@ public class FormGenerator {
                 .body(new InputStreamResource(new FileInputStream(file)));
     }
 
-    @PostMapping(value = "/release/generate", produces = MediaType.TEXT_PLAIN_VALUE, consumes = "application/json")
-    public ResponseEntity<String> generateReleaseReport(@RequestBody OfficeForm<ReleaseRecord> officeForm) {
-        return getResponse(officeForm, ReleaseRecord.class);
-    }
-
-    @PostMapping(value = "/consent/generate", produces = MediaType.TEXT_PLAIN_VALUE, consumes = "application/json")
-    public ResponseEntity<String> generateConsentReport(@RequestBody OfficeForm<ConsentRecord> officeForm) {
-        return getResponse(officeForm, ConsentRecord.class);
+    @PostMapping(value = "/generate", produces = MediaType.TEXT_PLAIN_VALUE, consumes = "application/json")
+    public String generateEyeGlassesForm(@RequestBody FormData formData) throws IOException {
+        return this.reportGeneratorService.generateForm(formData);
     }
 
     @GetMapping(value = "/company")
-    public Company getCompany()
-    {
+    public Company getCompany() {
         return this.reportGeneratorService.getCompany();
     }
 
-    private <T extends ReportRecord> ResponseEntity<String> getResponse(OfficeForm<T> officeForm, Class<T> clazz) {
+    private ResponseEntity<String> getResponse(FormData formData) {
         try {
-            var fileName = this.reportGeneratorService.generateReport(officeForm, clazz);
+            var fileName = this.reportGeneratorService.generateForm(formData);
             return ResponseEntity.ok().body(fileName);
 
         } catch (Exception e) {

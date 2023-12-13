@@ -1,7 +1,10 @@
 package com.modern.office.forms.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.modern.office.forms.domain.*;
+import com.modern.office.forms.domain.Company;
+import com.modern.office.forms.domain.DocType;
+import com.modern.office.forms.domain.FormData;
+import com.modern.office.forms.domain.FormType;
 import com.modern.office.scheduler.domain.Address;
 import com.modern.office.scheduler.domain.Document;
 import com.modern.office.scheduler.domain.HippaDocument;
@@ -10,13 +13,11 @@ import com.modern.office.scheduler.repository.HippaDocumentRepository;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JsonDataSource;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.DateFormatter;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +26,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -47,6 +47,8 @@ public class ReportGeneratorService {
     private String companyPhone;
 
     private static final Map<Class<?>, Pair<DocType, JasperReport>> FORMS_INFO = new HashMap<>();
+    private static final Map<DocType, JasperReport> FORMS_MAP = new HashMap<>();
+
 
     private final DocumentRepository documentRepository;
     private final HippaDocumentRepository hippaDocumentRepository;
@@ -61,8 +63,9 @@ public class ReportGeneratorService {
         this.documentRepository = documentRepository;
         this.hippaDocumentRepository = hippaDocumentRepository;
 
-        FORMS_INFO.put(ConsentRecord.class, Pair.of(DocType.Consent, compileReport(DocType.Consent.getTemplate())));
-        FORMS_INFO.put(ReleaseRecord.class, Pair.of(DocType.ReleaseOfMedicalInfo, compileReport(DocType.ReleaseOfMedicalInfo.getTemplate())));
+        FORMS_MAP.put(DocType.Consent, compileReport(DocType.Consent.getTemplate()));
+        FORMS_MAP.put(DocType.ReleaseOfMedicalInfo, compileReport(DocType.ReleaseOfMedicalInfo.getTemplate()));
+        FORMS_MAP.put(DocType.MedicaidEyeglasses, compileReport(DocType.MedicaidEyeglasses.getTemplate()));
     }
 
     public Company getCompany() {
@@ -76,31 +79,18 @@ public class ReportGeneratorService {
     }
 
     @Transactional
-    public <T extends ReportRecord> String generateReport(OfficeForm<T> officeForm, Class<T> clazz) throws IOException {
-        T reportRecord = (T) getReportRecord(officeForm);
-
-        var bytes = getReportBytes(officeForm, FORMS_INFO.get(clazz).getSecond());
-
-        return this.recordForm(reportRecord.getPatientNo(), bytes, clazz);
+    public String generateForm(FormData formData) throws IOException {
+        var docType = DocType.getByKey(formData.getFormType());
+        var bytes = getReportBytes(formData, FORMS_MAP.get(docType));
+        return this.recordForm(formData.getPatientNo(), bytes, docType);
     }
 
-    private <T extends ReportRecord> ReportRecord getReportRecord(OfficeForm<T> officeForm) {
-        T reportRecord = officeForm.getData().get(0);
-        String signature = reportRecord.getSignature();
-        signature = StringUtils.substringAfter(signature, "data:image/png;base64,");
-        reportRecord.setCompany(this.company);
-        reportRecord.setSignature(signature);
-        officeForm.setData(Collections.singletonList(reportRecord));
-        return reportRecord;
-    }
-
-    private <T> String recordForm(int patientNo, byte[] bytes, Class<T> clazz) throws IOException {
+    private <T> String recordForm(int patientNo, byte[] bytes, DocType docType) throws IOException {
         var fileName = UUID.randomUUID() + ".pdf";
         var localPath = Path.of(this.documentLocalFolder + File.separator + fileName);
         log.info("Creating file {}", localPath.toString());
         new File(localPath.toString()).createNewFile();
         Files.write(localPath, bytes);
-        var docType = FORMS_INFO.get(clazz).getFirst();
         var remotePath = Path.of(this.documentFolder + fileName);
 
         if (docType.getFormType() == FormType.EDocs) {
@@ -112,8 +102,7 @@ public class ReportGeneratorService {
                     .setExpiresOn(LocalDate.now().plusYears(1).format(DateTimeFormatter.ISO_DATE))
                     .setDocLink(remotePath.toString());
             this.documentRepository.save(eDoc);
-        }
-        else {
+        } else {
             HippaDocument doc = new HippaDocument()
                     .setFormType(docType.getDisplayName())
                     .setPatientNo(patientNo)
