@@ -21,14 +21,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReleaseFormComponent } from './forms/release-form/release-form.component';
 import { DocViewerComponent } from './doc-viewer/doc-viewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { patientReducer } from './store/reducers/patient.reducer';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
+import { EyeGlassesFormComponent } from './forms/eye-glasses-form/eye-glasses-form.component';
+import { TransportationFormComponent } from './forms/transportation-form/transportation-form.component';
+import { BaseFormComponent } from './forms/base-form/base-form.component';
+
 const ROUTES: Routes = [
   {path: 'patient-list', component: PatientListComponent},
   {path: 'signin-sheet', component: SigninSheetComponent},
   {path: 'consent-form', component: ConsentFormComponent},
   {path: 'release-form', component: ReleaseFormComponent},
+  {path: 'transportation-form', component: TransportationFormComponent},
+  {path: 'eyeglasses-form', component: EyeGlassesFormComponent},
+  
   {path: 'doc-viewer', component: DocViewerComponent},
   { path: '',
     redirectTo: '/patient-list',
@@ -44,7 +50,10 @@ const ROUTES: Routes = [
     ConsentFormComponent,
     SigPadComponent,
     ReleaseFormComponent,
-    DocViewerComponent
+    DocViewerComponent,
+    EyeGlassesFormComponent,
+    TransportationFormComponent,
+    BaseFormComponent
   ],
   imports: [
     BrowserModule,

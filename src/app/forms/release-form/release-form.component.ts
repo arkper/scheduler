@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { OfficeApiService } from '../../services/office-api.service';
@@ -7,130 +7,55 @@ import { DatePipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/reducers';
 import { DocumentActionType } from '../../store/actions/document.action';
+import { BaseFormComponent } from '../base-form/base-form.component';
 
 @Component({
   selector: 'app-release-form',
   templateUrl: './release-form.component.html',
   styleUrls: ['./release-form.component.scss']
 })
-export class ReleaseFormComponent {  
-  patient: Patient | undefined = undefined;
-  company: Company | null = null;
-  fileName: string = "";
-
-  snackBarRef: MatSnackBarRef<TextOnlySnackBar> | null = null;
-
-  pcp: boolean = false;
-  ophthalmologist: boolean = false;
-  relativeFriend: boolean = false;
-  radio: boolean = false;
-  internet: boolean = false;
-  noreferral: boolean = false;
-
-  signature: string = "";
+export class ReleaseFormComponent extends BaseFormComponent implements OnInit {  
+  company: Company | undefined = this.apiService.getCompany();
 
   constructor(
-    private router: Router, 
-    private apiService: OfficeApiService,
-    private snackBar: MatSnackBar,
-    private datepipe: DatePipe,
-    private store: Store<AppState>) {
-      this.store.select(state => state.selectedPatient.patients)
-        .subscribe((selectedPatients) => {this.onPatientSelected(selectedPatients)});
-
-      this.apiService.getCompany()
-        .subscribe({next: c => this.company = c});
+    override router: Router, 
+    override apiService: OfficeApiService,
+    override snackBar: MatSnackBar,
+    override datepipe: DatePipe,
+    override store: Store<AppState>) {
+      super(router, apiService, snackBar, datepipe, store);
   }
 
-  onPatientSelected(selected: Patient[]) {
-    if (selected?.length > 0) {
-      this.patient = selected.at(0);
-    }
-  }
+  override formType = "release";
 
-  onSigned(event: any)
-  {
-    this.signature = event;
-
-    const data = {data: [
-      {
-        company: this.company?.name,
-        companyAddress: this.company?.address?.address1,
-        companyCity: this.company?.address?.city,
-        companyState: this.company?.address?.state,
-        companyZip: this.company?.address?.zip,
-        companyPhone: this.company?.address?.phone1,
-        patientNo: this.patient?.patientNo, 
-        patientName: this.getName(), 
-        sexMale: this.patient?.sex,
-        signature: this.signature,
-        firstName: this.patient?.firstName,
-        lastName: this.patient?.lastName,
-        address: this.patient?.address?.address1,
-        city: this.patient?.address?.city,
-        state: this.getState(),
-        zip: this.patient?.address?.zip,
-        phone: this.patient?.address?.phone1,
-        dob: this.patient?.birthDate,
-        ssn: this.patient?.ssNo,
-        carrier: this.getCarrier(),
-        insuredSelf: this.getRelationship() === "Self",
-        insuredSpouse: this.getRelationship() === "Spouse",
-        insuredChild: this.getRelationship() === "Child",
-        memberId: this.getMemeberId(),
-        memberName: this.getName(), 
-        memberDob: this.patient?.birthDate,
-        pcp: this.pcp,
-        ophthalmologist: this.ophthalmologist,
-        relativeFriend: this.relativeFriend,
-        radio: this.radio,
-        internet: this.internet,
-        noreferral: this.noreferral
-      }
-    ]};
-
-    console.log(data);
-
-    this.apiService.submitDocument(data, "release")
-      .subscribe({
-        next: (data) => {this.fileName = data},
-        error: (e) => {console.log(e); this.displayFailure()},
-        complete: () => this.displaySuccess()
-      });
-  }
-
-  displaySuccess(){
-    this.openSnackBar("Success!", "X");
-    this.snackBarRef?.afterDismissed().subscribe(() => {
-      this.store.dispatch({
-        type: DocumentActionType.SELECT_DOCUMENT,
-        payload: {
-          docLink: this.fileName
-        }
-      });
-      this.router.navigateByUrl('/doc-viewer', {state: {fileName: this.fileName}});
-    });
-  }
-
-  displayFailure() {
-    this.openSnackBar("Failure!", "X");
-    this.snackBarRef?.afterDismissed().subscribe(() => {
-      this.router.navigateByUrl('/patient-list', {state: {patient: this.patient}});
-    });
-  }
-
-  openSnackBar(message: string, type: string) { 
-    this.snackBarRef = this.snackBar.open(message, type, {duration: 2000}); 
-  }
-
-  getName(): string
-  {
-    return this.patient?.firstName + " " + this.patient?.lastName;
-  }
-
-  getDob(): string
-  {
-    return this.datepipe.transform(this.patient?.birthDate, "MM/dd/yyyy") ?? "";
+  override data = {
+    company: this.company?.name,
+    companyAddress: this.company?.address?.address1,
+    companyCity: this.company?.address?.city,
+    companyState: this.company?.address?.state,
+    companyZip: this.company?.address?.zip,
+    companyPhone: this.company?.address?.phone1,
+    sexMale: this.patient?.sex,
+    address: this.patient?.address?.address1,
+    city: this.patient?.address?.city,
+    state: this.getState(),
+    zip: this.patient?.address?.zip,
+    phone: this.patient?.address?.phone1,
+    dob: this.patient?.birthDate,
+    ssn: this.patient?.ssNo,
+    carrier: this.getCarrier(),
+    insuredSelf: this.getRelationship() === "Self",
+    insuredSpouse: this.getRelationship() === "Spouse",
+    insuredChild: this.getRelationship() === "Child",
+    memberId: this.getMemeberId(),
+    memberName: this.getName(), 
+    memberDob: this.patient?.birthDate,
+    pcp: false,
+    ophthalmologist: false,
+    relativeFriend: false,
+    radio: false,
+    internet: false,
+    noreferral: false
   }
 
   getState(): string {
@@ -150,10 +75,6 @@ export class ReleaseFormComponent {
 
   getMemeberId(): string {
     return this.patient?.patientInsurances?.at(0)?.insuredId ?? "";
-  }
-
-  getDate(): string {
-    return new Date().toLocaleDateString();
   }
 
   getCompanyName(): string {

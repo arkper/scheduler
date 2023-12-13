@@ -60,17 +60,17 @@
     <table width="100%">
         <tr>
             <td>Referred by:</td>
-            <td><input type="checkbox" id="pcp" [checked] = "pcp" (change) = "pcp = !pcp"/>Primary Care Physician</td>
-            <td><input type="checkbox" id="ophthalmologist" [checked] = "ophthalmologist" (change) = "ophthalmologist = !ophthalmologist" />Ophthalmologist</td>
+            <td><input type="checkbox" id="pcp" [checked] = "data['pcp']" (change) = "toggle('pcp')"/>Primary Care Physician</td>
+            <td><input type="checkbox" id="ophthalmologist" [checked] = "data['ophthalmologist']" (change) = "toggle('ophthalmologist')"/>Ophthalmologist</td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="checkbox" id="relativeFriend" [checked] = "relativeFriend" (change) = "relativeFriend = !relativeFriend"/>Friend/Relative</td>
-            <td><input type="checkbox" id="radio" [checked] = "radio" (change) = "radio = !radio"/>Radio/Newspaper</td>
+            <td><input type="checkbox" id="relativeFriend" [checked] = "data['relativeFriend']" (change) = "toggle('relativeFriend')"/>Friend/Relative</td>
+            <td><input type="checkbox" id="radio" [checked] = "data['radio']" (change) = "toggle('radio')"/>Radio/Newspaper</td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="checkbox" id="internet" [checked] = "internet" (change) = "internet = !internet"/>Internet</td>
-            <td><input type="checkbox" id="noreferral" [checked] = "noreferral" (change) = "noreferral = !noreferral"/>No Referral</td>
+            <td><input type="checkbox" id="internet" [checked] = "data['internet']" (change) = "toggle('internet')"/>Internet</td>
+            <td><input type="checkbox" id="noreferral" [checked] = "data['noreferral']" (change) = "toggle('noreferral')"/>No Referral</td>
         </tr>
     </table>

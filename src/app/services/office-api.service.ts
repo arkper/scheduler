@@ -17,6 +17,7 @@ export class OfficeApiService {
   static carrierCodes: Code[] = [];
   static relationshipCodes: Code[] = [];
 
+  company: Company | undefined;
 
   constructor(private http: HttpClient) { 
     this.getCodes(STATE_CODE_CATEGORY)
@@ -24,7 +25,9 @@ export class OfficeApiService {
     this.getCodes(CARRIER_CODE_CATEGORY)
       .subscribe({next: codes => OfficeApiService.carrierCodes = codes});
     this.getCodes(RELATIONSHIP_CODE_CATEGORY)
-      .subscribe({next: codes => OfficeApiService.relationshipCodes = codes});    
+      .subscribe({next: codes => OfficeApiService.relationshipCodes = codes});
+    this.fetchCompany()
+      .subscribe({next: c => this.company = c});    
   }
 
   getPatientsByName(lastName: string, firstName: string): Observable<Patient[]> {
@@ -75,6 +78,11 @@ export class OfficeApiService {
     return httpOptions;
   }
 
+  generateDocument(data: any): Observable<any>
+  {
+    return this.http.post(`/forms/generate`, data, {responseType: 'text'});
+  }
+
   submitDocument(data: any, formType: string): Observable<any>
   {
     return this.http.post(`/forms/${formType}/generate`, data, {responseType: 'text'});
@@ -111,7 +119,7 @@ export class OfficeApiService {
     }
   }
 
-  getCompany(): Observable<Company> {
+  fetchCompany(): Observable<Company> {
     if (environment.production)
     {
       return this.http.get<Company> ("/forms/company", this.getHttpOptions());
@@ -132,6 +140,10 @@ export class OfficeApiService {
         phone2: null
       }
     });
+  }
+
+  getCompany(): Company | undefined {
+    return this.company;
   }
 
   getCodes(category: number): Observable<Code[]> {
