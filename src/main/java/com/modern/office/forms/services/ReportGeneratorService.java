@@ -66,6 +66,7 @@ public class ReportGeneratorService {
         FORMS_MAP.put(DocType.Consent, compileReport(DocType.Consent.getTemplate()));
         FORMS_MAP.put(DocType.ReleaseOfMedicalInfo, compileReport(DocType.ReleaseOfMedicalInfo.getTemplate()));
         FORMS_MAP.put(DocType.MedicaidEyeglasses, compileReport(DocType.MedicaidEyeglasses.getTemplate()));
+        FORMS_MAP.put(DocType.TransportationApproval, compileReport(DocType.TransportationApproval.getTemplate()));
     }
 
     public Company getCompany() {

@@ -40,9 +40,9 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="firstName"/>
 		<fieldDescription><![CDATA[firstName]]></fieldDescription>
 	</field>
-	<field name="sexMale" class="java.lang.Boolean">
-		<property name="net.sf.jasperreports.json.field.expression" value="sexMale"/>
-		<fieldDescription><![CDATA[sexMale]]></fieldDescription>
+	<field name="sex" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="sex"/>
+		<fieldDescription><![CDATA[sex]]></fieldDescription>
 	</field>
 	<field name="address" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="address"/>
@@ -186,7 +186,7 @@
 			</image>
 			<textField>
 				<reportElement x="100" y="70" width="120" height="30" uuid="78c54bd1-a13b-4852-ab93-15a552bbd969"/>
-				<textFieldExpression><![CDATA[$F{sexMale}? "X":""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sex} == 1? "X":""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="70" width="100" height="30" uuid="dc88531f-8cb0-4535-a0be-77103e5fbd4a"/>
@@ -194,7 +194,7 @@
 			</staticText>
 			<textField>
 				<reportElement x="370" y="70" width="120" height="30" uuid="528659f1-f490-4832-8c8e-e87d095b1b85"/>
-				<textFieldExpression><![CDATA[NOT( $F{sexMale})? "X" : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[NOT( $F{sex} == 1)? "X" : ""]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="288" y="70" width="82" height="30" uuid="a93e5fdb-e663-4603-bc5b-d9862c91bbc0"/>
