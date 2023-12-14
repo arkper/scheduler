@@ -1,4 +1,4 @@
-	<body>
+	<div>
         <p><b>MEDICAID EYEGLASSES FORM</b></p>
         <table>
             <tr>
@@ -86,9 +86,10 @@
         </table>
 
         <table width="100%">
-        <tr>
-            <td valign="top" width="300px">Medicaid Client Signature:</td>
-            <td valign="top"><app-sig-pad (signed) = "onSigned($event)"></app-sig-pad></td>
-            <td valign="top">Pickup Date: <input id="date" size="10" [value]="getDate()"/></td>
-        </tr>
-    </table>
+            <tr>
+                 <td valign="top" width="300px">Medicaid Client Signature:</td>
+                 <td valign="top"><app-sig-pad (signed) = "onSigned($event)"></app-sig-pad></td>
+                <td valign="top">Pickup Date: <input id="date" size="10" [value]="getDate()"/></td>
+            </tr>
+        </table>
+    </div>

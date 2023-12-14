@@ -49,12 +49,20 @@ export class BaseFormComponent implements OnInit {
       }
     }
   
-    onSigned(event: any)
-    {
+    onSigned(event: any) {
       this.signature = event;
   
       this.data['firstName'] = this.patient?.firstName;
       this.data['lastName'] = this.patient?.lastName;
+      this.data['address'] = this.patient?.address?.address1;
+      this.data['city'] = this.patient?.address?.city;
+      this.data['state'] = this.getState();
+      this.data['zip'] = this.patient?.address?.zip;
+      this.data['phone'] = this.patient?.address?.phone1;
+      this.data['dob'] = this.getDob();
+      this.data['ssn'] = this.patient?.ssNo;
+      this.data['sex'] = this.patient?.sex,
+ 
       this.data['signature'] = this.signature.substring(this.signature.indexOf(',') + 1);
   
       const formData = {
@@ -72,9 +80,9 @@ export class BaseFormComponent implements OnInit {
           error: (e) => {console.log(e); this.displayFailure()},
           complete: () => this.displaySuccess()
         });
-    }
+    } 
   
-    displaySuccess(){
+    displaySuccess() {
       this.openSnackBar("Success!", "X");
       this.snackBarRef?.afterDismissed().subscribe(() => {
         this.store.dispatch({
@@ -113,5 +121,9 @@ export class BaseFormComponent implements OnInit {
 
     getName(): string {
       return this.patient?.firstName + ' ' + this.patient?.lastName;
-    }  
+    }     
+    
+    getState(): string {
+      return this.apiService.getState(this.patient?.address?.stateNo) ?? "";
+    }
 }

@@ -4,8 +4,6 @@ import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { OfficeApiService } from 'src/app/services/office-api.service';
-import { DocumentActionType } from 'src/app/store/actions/document.action';
-import { Patient } from 'src/app/store/model/patient.model';
 import { AppState } from 'src/app/store/reducers';
 import { BaseFormComponent } from '../base-form/base-form.component';
 

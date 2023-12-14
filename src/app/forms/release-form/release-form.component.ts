@@ -35,14 +35,6 @@ export class ReleaseFormComponent extends BaseFormComponent implements OnInit {
     companyState: this.company?.address?.state,
     companyZip: this.company?.address?.zip,
     companyPhone: this.company?.address?.phone1,
-    sexMale: this.patient?.sex,
-    address: this.patient?.address?.address1,
-    city: this.patient?.address?.city,
-    state: this.getState(),
-    zip: this.patient?.address?.zip,
-    phone: this.patient?.address?.phone1,
-    dob: this.patient?.birthDate,
-    ssn: this.patient?.ssNo,
     carrier: this.getCarrier(),
     insuredSelf: this.getRelationship() === "Self",
     insuredSpouse: this.getRelationship() === "Spouse",
@@ -56,10 +48,6 @@ export class ReleaseFormComponent extends BaseFormComponent implements OnInit {
     radio: false,
     internet: false,
     noreferral: false
-  }
-
-  getState(): string {
-    return this.apiService.getState(this.patient?.address?.stateNo) ?? "";
   }
 
   getCarrier(): string {

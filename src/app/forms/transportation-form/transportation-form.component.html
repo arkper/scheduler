@@ -1,50 +1,44 @@
-<div (onload)="changeDoc()">
-	    
-	    <div><b>LIVERY, AMBULETTE & NON-EMERGENCY AMBULENCE SERVICES<br />
-	            MEDICAID TRANSPORTATION PRIOR APPROVAL FORM</b>
-		</div>
-	    <table>
-	        <tr>
-	            <td>Patient Name: <input id="@name" /> </td>
-	            <td>Date of Birth: <input id="@dob" size="10"/> </td>
-	            <td>Sex: <input type="checkbox" id='@sex_true' />Male
-	                <input type="checkbox" id='@sex_false' />Female
-	            </td>
-	        </tr>
-	        <tr>
-	            <td>Address: <input id="@address1" /></td>
-	            <td><input id="@address2" /></td>
-	            <td><input id="@city" />
-	                <input id="@state" />
-	                <input id="@zip" />
-	            </td>
-	        </tr>
-	        <tr>
-	            <td>Medicaid No.: <input id="@medicaidNO" /> </td>
-	            <td>Social Security Number: <input id="@ssn" /> </td>
-	        </tr>
-        </table>
-        <table border="0">
-	        <tr><td><b>1.</b> (a) List Diagnoses:</td>
-	        </tr>
-	        <tr>
-	            <td width="30%">1)&nbsp;<input id="@diagnosis1" size="40" /></td>
-	            <td width="30%">2)&nbsp;<input id="@diagnosis2" size="40" /></td>
-	            <td width="30%">3)&nbsp;<input id="@diagnosis3" size="40" /></td>
-	        </tr>
-	        <tr>
-	            <td width="30%">4)&nbsp;<input id="@diagnosis4" size="40" /></td>
-	            <td width="30%">5)&nbsp;<input id="@diagnosis5" size="40" /></td>
-	            <td width="30%">6)&nbsp;<input id="@diagnosis6" size="40" /></td>
-	        </tr>
-	        <tr><td colspan="4">
-	            (b) Why do these diagnoses justify transportation other than Public Transportation?
-	            </td>
-	        </tr>
-	        <tr><td colspan="3">
-        	    <input  id="@justification" size="140"/>
-	            </td>
-	        </tr>
+<div>  
+    <div class="title"><b>LIVERY, AMBULETTE & NON-EMERGENCY AMBULENCE SERVICES<br/>
+            MEDICAID TRANSPORTATION PRIOR APPROVAL FORM</b>
+	</div>
+    <table>
+        <tr>
+            <td>Patient Name: <input id="name" [value] = "getName()" /> </td>
+            <td>Date of Birth: <input id="dob" size="10" [value] = "getDob()"/> </td>
+            <td>Sex: <input type="checkbox" id='sexMale' [checked] = "patient?.sex"/>Male
+                <input type="checkbox" id='sexFemale' [checked] = "!patient?.sex"/>Female
+            </td>
+        </tr>
+        <tr>
+            <td>Address: <input id="address1" [value] = "patient?.address?.address1"/></td>
+            <td><input id="city" [value] = "patient?.address?.city"/>
+                <input id="state" [value] = "getState()"/>
+                <input id="zip" [value] = "patient?.address?.zip"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Medicaid No.: <input id="medicaidNO" /> </td>
+            <td>Social Security Number: <input id="ssn" [value] = "patient?.ssNo"/> </td>
+        </tr>
+    </table>
+    <table>
+        <tr><td><b>1.</b> (a) List Diagnoses:</td></tr>
+        <tr>
+            <td width="30%">1)&nbsp;<input id="diagnosis1" size="40" [value]="data['diagnosis1']" (change)="update($event)"/></td>
+            <td width="30%">2)&nbsp;<input id="diagnosis2" size="40" [value]="data['diagnosis2']" (change)="update($event)"/></td>
+            <td width="30%">3)&nbsp;<input id="diagnosis3" size="40" [value]="data['diagnosis3']" (change)="update($event)"/></td>
+        </tr>
+        <tr>
+            <td width="30%">4)&nbsp;<input id="diagnosis4" size="40" [value]="data['diagnosis4']" (change)="update($event)"/></td>
+            <td width="30%">5)&nbsp;<input id="diagnosis5" size="40" [value]="data['diagnosis5']" (change)="update($event)"/></td>
+            <td width="30%">6)&nbsp;<input id="diagnosis6" size="40" [value]="data['diagnosis6']" (change)="update($event)"/></td>
+        </tr>
+        <tr><td colspan="4">(b) Why do these diagnoses justify transportation other than Public Transportation?</td></tr>
+        <tr><td colspan="3">
+        	    <input  id="justification" size="140" [value]="data['justification']" (change)="update($event)"/>
+            </td>
+        </tr>
 	    </table>
 	    <table>
 	        <tr>
@@ -52,39 +46,37 @@
 	        </tr>
 	        <tr>
 	            <td colspan="4">(a) Does the patient use a wheelchair, scooter, or portable oxygen?</td>
-	            <td><input id="@scooter_true" type="checkbox" />Yes<input id="@scooter_false" type="checkbox" />No</td>
+	            <td><input id="scooter" type="checkbox" [checked]="data['scooter']" (change)="toggle('scooter')"/>Yes</td>
 	        </tr>
 	        <tr>
 	            <td colspan="4">(b) Does the patient require personal assistance of another individual to enter or exit a building or vehicle?</td>
-	            <td><input id="@assist_true" type="checkbox" />Yes <input id="@assist_false" type="checkbox" />No</td>
+	            <td><input id="assist" type="checkbox" [checked]="data['assist']" (change)="toggle('assist')"/>Yes</td>
 	        </tr>
 	        <tr>
 	            <td colspan="4">(a) Does the patient have a family member or home attendant traveling with him/her?</td>
-	            <td><input id="@family_true" type="checkbox" />Yes <input id="@family_false" type="checkbox" />No</td>
+	            <td><input id="family" type="checkbox" [checked]="data['family']" (change)="toggle('family')"/>Yes</td>
 	        </tr>
 	    </table>
 	    <table>
     	    <tr><td><b>3. </b></td></tr>
 	        <tr>
-	            <td colspan="4">(a) Is the patient's departure/destination point within his/her CMMA? (see definition under the Certification Statement)</td>
-	        </tr>
-	        <tr>
-	            <td><input id="@cmma_true" type="checkbox" />Yes <input id="@cmma_false" type="checkbox" />No</td>
+	            <td colspan="4">(a) Is the patient's departure/destination point within his/her CMMA? (see definition under the Certification Statement) &nbsp;
+	            <input id="cmma" type="checkbox" [checked]="data['cmma']" (change)="toggle('cmma')"/>Yes</td>
 	        </tr>
 	        <tr>
 	            <td colspan="3">(b) If not, justify travel outside CMMA</td>
 	        </tr>
-	        <tr><td><input id="@cmmajustification" size="140" /></td></tr>
+	        <tr><td><input id="cmma_justification" size="140" [value]="data['cmma_justification']" (change)="update($event)"/></td></tr>
 	        <tr>
 	            <td colspan="3"><b>4. </b>Respond to this question only if <b>Non-Emergency Ambulance </b>is requested.</td>
 	        </tr>    
 	        <tr>
-	            <td colspan="3">(a) Does the patient require life-sustaining equipment during transport?
-	            <input id="@equipment_true" type="checkbox" />Yes <input id="@equipment_false" type="checkbox" />No</td>
+	            <td colspan="3">(a) Does the patient require life-sustaining equipment during transport?</td>
+	            <td><input id="equipment" type="checkbox" [checked]="data['equipment']" (change)="toggle('equipment')"/>Yes</td>
 	        </tr>
 	        <tr>
-	            <td colspan="3">(b) Does the patient require monitoring by a certified emergency medical technician or paramedic during transport?
-	            <input id="@monitoring_true" type="checkbox" />Yes <input id="@monitoring_false" type="checkbox" />No</td>
+	            <td colspan="3">(b) Does the patient require monitoring by a certified emergency medical technician or paramedic during transport?</td>
+	            <td><input id="monitoring" type="checkbox" [checked]="data['monitoring']" (change)="toggle('monitoring')"/>Yes</td>
 	        </tr>
 	    </table>
 	    <table>
@@ -92,14 +84,14 @@
 	            <td colspan="2">(c) Does the patient need to be transported in a reclining position for:</td>
 	        </tr>
 	        <tr>
-	            <td>1) Medical reasons <input id="@medical_true" type="checkbox" />Yes <input id="@medical_false" type="checkbox" />No </td>
+	            <td>1) Medical reasons </td><td><input id="medical_reasons" type="checkbox" [checked]="data['medical_reasons']" (change)="toggle('medical_reasons')"/>Yes</td>
 	        </tr>
 	        <tr>
-	            <td>2) Psychiatric condition <input id="@psychiatric_true" type="checkbox" />Yes <input id="@psychiatric_false" type="checkbox" />No</td>
+	            <td>2) Psychiatric condition </td><td><input id="psychiatric_reasons" type="checkbox" [checked]="data['psychiatric_reasons']" (change)="toggle('psychiatric_reasons')"/>Yes</td>
 	        </tr>
 	         <tr>
 	            <td colspan="2">(d) Does the patient require use of the vehicle's oxygen during transport?</td>
-	            <td><input id="@oxygen_true" type="checkbox" />Yes <input id="@oxygen_false" type="checkbox" />No</td>
+	            <td><input id="oxygen" type="checkbox" [checked]="data['oxygen']" (change)="toggle('oxygen')"/>Yes</td>
 	        </tr>
 	    </table>
 	    <div><b>5. </b>Indicate the location and the mode of transportation ordered pursuant to the filing of this document. Consult the New York State Department of Health ordering guidlines for definition of each mode of travel.</div>
@@ -107,23 +99,23 @@
 	    <table>
 	        <tr>
 	            <td>(a) Location: </td>
-	            <td><input id="@withinCMMA_true" type="checkbox" />Travel is within the CMMA </td>
-	            <td><input id="@withinCMMA_false" type="checkbox" />Travel is outside CMMA</td>
+	            <td><input id="withinCMMA" type="checkbox" [checked]="data['withinCMMA']" (change)="toggle('withinCMMA')"/>Travel is within the CMMA</td>
+	            <td><input id="outsideCMMA" type="checkbox" [checked]="data['outsideCMMA']" (change)="toggle('outsideCMMA')"/>Travel is outside CMMA</td>
 	        </tr>
 	        <tr>
 	            <td>(b) Mode: </td>
-	            <td><input id="@mode_livery" type="checkbox" />LIVERY </td>
-	            <td><input id="@mode_ambulette" type="checkbox" />AMBULETTE</td>
-	            <td><input id="@mode_nonemergency" type="checkbox" />NON-EMERGENCY AMBULANCE </td>
+	            <td><input id="mode_livery" type="checkbox" [checked]="data['mode_livery']" (change)="toggle('mode_livery')"/>LIVERY </td>
+	            <td><input id="mode_ambulette" type="checkbox" [checked]="data['mode_ambulette']" (change)="toggle('mode_ambulette')"/>AMBULETTE</td>
+	            <td><input id="mode_nonemergency" type="checkbox" [checked]="data['mode_nonemergency']" (change)="toggle('mode_nonemergency')"/>NON-EMERGENCY AMBULANCE </td>
 	        </tr>
 	    </table>
 	    <div><b>6. </b>This transportation authorization is from 
-	    <input id="@frommm" size="2" maxlength="2"/>/
-	    <input id="@fromdd" size="2" maxlength="2"/>/
-	    <input id="@fromyyyy" size="2" maxlength="4"/> to &nbsp;
-	    <input id="@tomm" size="2" maxlength="2"/>/
-	    <input id="@todd" size="2" maxlength="2"/>/
-	    <input id="@toyyyy" size="2" maxlength="4"/>. 
+	    <input id="fromMM" size="2" maxlength="2" [value]="data['fromMM']" (change)="update($event)"/>/
+	    <input id="fromDD" size="2" maxlength="2" [value]="data['fromDD']" (change)="update($event)"/>/
+	    <input id="fromYYYY" size="4" maxlength="4" [value]="data['fromYYYY']" (change)="update($event)"/> to &nbsp;
+	    <input id="toMM" size="2" maxlength="2" [value]="data['toMM']" (change)="update($event)"/>/
+	    <input id="toDD" size="2" maxlength="2" [value]="data['toDD']" (change)="update($event)"/>/
+	    <input id="toYYYY" size="4" maxlength="4" [value]="data['toYYYY']" (change)="update($event)"/>. 
 	    <br/>
 	    (NOTE: An authorization may cover a one way trip; a six-month period for patients with acute conditions; or 12 months for patients with chronic conditions.</div>
 	    <br />
@@ -179,38 +171,37 @@
     <table>
         <tr>
             <td width="30%">Physician's Name</td><td>
-                <select id="@physName" onchange="changeDoc()">
+                <select id="physName" (change)="changeDoc()" [value]="data['physName']">
                     <option value="S. Givner, Optometrist">S. Givner, Optometrist</option>
                     <option value="Effie Tatakis">Effie Tatakis</option>
                     <option value="Michelle Cevallos">Michelle Cevallos</option>
                 </select>
             </td>
-	        <td width="30%">Telephone #</td><td><input id="@physPhone" size="15" /></td>
-	        <td width="30%">License #</td><td><input id="@physLicense" size="15" /></td>
+	        <td width="30%">Telephone #</td><td><input id="physPhone" size="15" [value]="data['physPhone']" (change)="update($event)"/></td>
+	        <td width="30%">License #</td><td><input id="physLicense" size="15"  [value]="data['physLicense']" (change)="update($event)"/></td>
 	    </tr>
         <tr>
-            <td width="30%">Facility Name</td><td><input id="@facName" size="30" value="Modern Optical"/></td>
-	        <td width="30%">Address</td><td><input id="@facAddress" size="40" value="453 Kings Hwy, Brooklyn, NY 11223" /></td>
-            <td width="30%">MMIS ID#</td><td><input id="@mmisID" size="15" value="02641" /></td>
+            <td width="30%">Facility Name</td><td><input id="facName" size="30" [value]="data['facName']"/></td>
+	        <td width="30%">Address</td><td><input id="facAddress" size="40" [value]="data['facAddress']" /></td>
+            <td width="30%">MMIS ID#</td><td><input id="mmisID" size="15" [value]="data['mmisID']" (change)="update($event)"/></td>
         </tr>
     </table>
     <br />
-        <table width="100%">
-        <tr>
-            <td valign="top" width="300px">Signature: </td>
-            <td valign="top" align="left"><input id="@signature" style="width:250px;height:75px"/></td>
-            <td valign="top" align="right">Date: </td>
-            <td valign="top" align="left"><input id="@date" size="8"/></td>
-        </tr>
-    </table>
+	<table width="100%">
+		<tr>
+			 <td valign="top" width="300px">Signature:</td>
+			 <td valign="top"><app-sig-pad (signed) = "onSigned($event)"></app-sig-pad></td>
+			<td valign="top">Date: <input id="date" size="10" [value]="getDate()"/></td>
+		</tr>
+	</table>
     <p>
         Indicate name of nurse/social worker/other person assisting incompleting this form.
     </p>
     <table>
         <tr>
-            <td width="30%">Name&nbsp;<input id="@helperName" size="40" /></td>
-	        <td width="30%">Title&nbsp;<input id="@helperTitle" size="40" /></td>
-            <td width="30%">Telephone #&nbsp;<input id="@helperPhone" size="15" /></td>
+            <td width="30%">Name&nbsp;<input id="helperName" size="40" [value]="data['helperName']" (change)="update($event)"/></td>
+	        <td width="30%">Title&nbsp;<input id="helperTitle" size="40" [value]="data['helperTitle']" (change)="update($event)"/></td>
+            <td width="30%">Telephone #&nbsp;<input id="helperPhone" size="15" [value]="data['helperPhone']" (change)="update($event)"/></td>
         </tr>
     </table>
 </div>
