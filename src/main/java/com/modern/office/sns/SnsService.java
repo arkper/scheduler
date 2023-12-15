@@ -208,7 +208,7 @@ public class SnsService {
         return business.getAddress1() + ", " + business.getCity();
     }
 
-    private String getProviderName(int providerNo) {
+    public String getProviderName(int providerNo) {
         return this.schedulerApiService.getAllProviders().stream().filter(p -> p.getProviderNo() == providerNo).findFirst().map(p -> p.getProviderFirstName() + " " + p.getProviderLastName()).orElse("");
     }
 
@@ -221,12 +221,12 @@ public class SnsService {
         }
     }
 
-    private String transform(String originalPhone) {
+    public String transform(String originalPhone) {
         var phone = originalPhone.replaceAll("[^0-9]", "");
         return phone.startsWith("1") ? phone : "1" + phone;
     }
 
-    private String addCountryCode(String originalPhone) {
+    public String addCountryCode(String originalPhone) {
         return originalPhone.startsWith("+") ? originalPhone : "+" + originalPhone;
     }
 

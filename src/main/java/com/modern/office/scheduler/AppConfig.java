@@ -13,7 +13,10 @@ import lombok.Setter;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.connect.ConnectClient;
 import software.amazon.awssdk.services.sns.SnsClient;
+
+import javax.annotation.PostConstruct;
 
 @Configuration
 @ConfigurationProperties(prefix = "scheduler")
@@ -36,18 +39,32 @@ public class AppConfig {
 	private String ipAdminPhone;
 	private String officeName;
 
-	@Bean
-	public SnsClient snsClient(final AppConfig appConfig)
-	{
-		AwsBasicCredentials awsCreds = AwsBasicCredentials.create(
-				appConfig.getAccessKey(),
-				appConfig.getAccessSecret());
+	private AwsBasicCredentials awsCredentials = null;
 
+	@PostConstruct
+	void setupCredentials()
+	{
+		awsCredentials = AwsBasicCredentials.create(
+				this.getAccessKey(),
+				this.getAccessSecret());
+	}
+
+	@Bean
+	public SnsClient snsClient()
+	{
 		var snsClient = SnsClient.builder()
 				.region(Region.US_EAST_1)
-				.credentialsProvider(StaticCredentialsProvider.create(awsCreds))
+				.credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
 				.build();
 		log.info("Initialized SNS client");
 		return snsClient;
+	}
+
+	@Bean
+	public ConnectClient connectClient() {
+		return ConnectClient.builder()
+				.region(Region.US_EAST_1)
+				.credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
+				.build();
 	}
 }

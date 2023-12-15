@@ -15,7 +15,7 @@ spring:
 
 office-forms:
   company: Modern Optical, Inc.
-  company-address: 353 Kings Hwy
+  company-address: 353 Kings Highway
   company-city: Brooklyn
   company-state: NY
   company-zip: 11223
@@ -72,6 +72,9 @@ scheduler:
   allowed-phones: 
  
   topic-incoming: arn:aws:sns:us-east-1:622853243487:topic1
-  
-    
- 
+
+aws:
+  connect:
+    instanceId: fe126881-6f74-4414-b589-a7e8400c1d55
+    contactFlowId: 23b2f56c-edde-4273-9058-4f4f617830db
+    queueId: a3a2d0e9-90cd-48ff-b82b-714b09fa3721
