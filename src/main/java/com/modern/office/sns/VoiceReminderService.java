@@ -126,7 +126,10 @@ public class VoiceReminderService {
 
     @Scheduled(fixedDelay = 60000, initialDelay = 60000)
     public void pollResponses() {
-        this.notificationQueue.forEach(this::handleNotification);
+        Notification notification;
+        while ((notification = this.notificationQueue.poll()) != null) {
+            this.handleNotification(notification);
+        }
     }
 
     private void handleNotification(Notification notification) {
