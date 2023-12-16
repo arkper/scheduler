@@ -15,6 +15,7 @@ import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.connect.ConnectClient;
 import software.amazon.awssdk.services.sns.SnsClient;
+import software.amazon.awssdk.services.sqs.SqsClient;
 
 import javax.annotation.PostConstruct;
 
@@ -67,4 +68,13 @@ public class AppConfig {
 				.credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
 				.build();
 	}
+
+	@Bean
+	public SqsClient sqsClient() {
+		return SqsClient.builder()
+				.region(Region.US_EAST_1)
+				.credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
+				.build();
+	}
+
 }

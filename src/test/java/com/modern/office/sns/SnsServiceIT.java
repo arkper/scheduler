@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import software.amazon.awssdk.services.sns.SnsClient;
+import software.amazon.awssdk.services.sqs.SqsClient;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {AppConfig.class, SchedulerApplication.class})
@@ -30,6 +30,9 @@ public class SnsServiceIT {
     private SnsClient snsClient;
 
     @Autowired
+    private SqsClient sqsClient;
+
+    @Autowired
     private AppConfig appConfig;
 
     @Autowired
@@ -39,7 +42,7 @@ public class SnsServiceIT {
     @Test
     void testOptedOutCall()
     {
-        this.testObj = new SnsService(appConfig, schedulerApiService, objectMapper, snsClient);
+        this.testObj = new SnsService(appConfig, schedulerApiService, objectMapper, snsClient, sqsClient);
 
         boolean phoneOptedOut = this.testObj.isPhoneOptedOut("+13474435562");
 

@@ -8,12 +8,16 @@ import com.modern.office.scheduler.domain.Business;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import software.amazon.awssdk.http.SdkHttpResponse;
 import software.amazon.awssdk.services.sns.SnsClient;
 import software.amazon.awssdk.services.sns.model.*;
+import software.amazon.awssdk.services.sqs.SqsClient;
+import software.amazon.awssdk.services.sqs.model.DeleteMessageRequest;
+import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 
 import java.io.IOException;
 import java.net.URI;
@@ -43,13 +47,18 @@ public class SnsService {
 
 
     private final SnsClient snsClient;
+    private final SqsClient sqsClient;
     private final String topicIncoming;
     private final SchedulerApiService schedulerApiService;
     private final ObjectMapper objectMapper;
     private final AppConfig appConfig;
 
-    public SnsService(final AppConfig appConfig, final SchedulerApiService schedulerApiService, final ObjectMapper objectMapper, final SnsClient snsClient) {
+    @Value("${aws.sqs.reply-queue-url}")
+    private String replyQueueUrl;
+
+    public SnsService(final AppConfig appConfig, final SchedulerApiService schedulerApiService, final ObjectMapper objectMapper, final SnsClient snsClient, SqsClient sqsClient) {
         this.topicIncoming = appConfig.getTopicIncoming();
+        this.sqsClient = sqsClient;
         log.info("Incoming SNS topic {}", this.topicIncoming);
 
         this.schedulerApiService = schedulerApiService;
@@ -65,6 +74,10 @@ public class SnsService {
 
     @Scheduled(cron = "0 0 10 * * *", zone = "America/New_York")
     public void processNotifications() {
+        if (!StringUtils.isEmpty(this.replyQueueUrl)) {
+            return;
+        }
+
         log.info("Starting notification processing job");
         StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0).spliterator(), false).filter(appt -> appt.getApptPhone() != null).forEach(appt -> this.processNotification(getNotificationMessage(appt), appt));
         log.info("Finished notification processing job");
@@ -137,27 +150,65 @@ public class SnsService {
         }
     }
 
-    public void processReply(final String replyMessage) throws JsonProcessingException {
+    @Scheduled(fixedDelay = 30000, initialDelay = 10000)
+    public void getReplies() {
+        if (StringUtils.isEmpty(this.replyQueueUrl)) {
+            return;
+        }
+
+        var req = ReceiveMessageRequest
+                .builder()
+                .queueUrl(this.replyQueueUrl)
+                .waitTimeSeconds(10)
+                .maxNumberOfMessages(10)
+                .build();
+
+        var receiveMessageResponse = this.sqsClient.receiveMessage(req);
+        receiveMessageResponse.messages().forEach(message -> {
+            try {
+                if (this.processReply(message.body()) != 0) {
+                    this.sqsClient.deleteMessage(DeleteMessageRequest
+                            .builder()
+                            .queueUrl(this.replyQueueUrl)
+                            .receiptHandle(message.receiptHandle())
+                            .build());
+                }
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    public int processReply(final String replyMessage) throws JsonProcessingException {
         @SuppressWarnings("rawtypes") LinkedHashMap data = this.objectMapper.readValue(replyMessage, LinkedHashMap.class);
 
         if (data.containsKey("SubscribeURL")) {
             log.info("Please visit url {}", data.get("SubscribeURL"));
-            return;
+            return 0;
         }
 
         final var message = (String) data.get("messageBody");
         final var phoneNumber = (String) data.get("originationNumber");
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
         if (this.phoneEnabled(phoneNumber)) {
-            StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false).filter(a -> matchPhone(a.getApptPhone(), phoneNumber)).findAny().ifPresent(appointment -> this.updateAppointment(appointment, message, phoneNumber));
+            var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
+                    .filter(a -> matchPhone(a.getApptPhone(), phoneNumber)).findAny();
+
+            if (appointment.isPresent()) {
+                this.updateAppointment(appointment.get(), message, phoneNumber);
+                return 1;
+            } else {
+                return 0;
+            }
         }
+        return -1;
     }
 
     private boolean phoneEnabled(String phone) {
         phone = phone.replaceAll("[^0-9]", "");
         Set<String> blackList;
         try {
-            blackList = new TreeSet<>(Files.readAllLines(Paths.get(URI.create("file:///" + this.appConfig.getBlackListLocation()))));
+            blackList = new TreeSet<>(Files.readAllLines(Paths.get(URI.create("file://" + this.appConfig.getBlackListLocation()))));
         } catch (IOException e) {
             log.error("Failed getting blacklist {}", this.appConfig.getBlackListLocation(), e);
             throw new RuntimeException(e);

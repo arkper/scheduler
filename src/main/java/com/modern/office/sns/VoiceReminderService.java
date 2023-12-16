@@ -80,9 +80,19 @@ public class VoiceReminderService {
         var promptEn = this.finalizePrompt(MESSAGE_EN, appt, false);
         var phone = this.snsService.addCountryCode(this.snsService.transform(appt.getApptPhone()));
 
+        var contactId = this.sendNotification(phone, new String[]{promptRu, promptEn});
+
+        this.notificationQueue.add(new Notification(
+                contactId,
+                appt.getApptNo(),
+                LocalDateTime.now().plusSeconds(45),
+                LocalDateTime.now().plusMinutes(3)));
+    }
+
+    public String sendNotification(String phone, String[] messages) {
         Map<String, String> attributes = Map.of(
-                "messageRu", promptRu,
-                "messageEn", promptEn,
+                "messageRu", messages[0],
+                "messageEn", messages[1],
                 "finalMessageRu", FINAL_PROMPT_RU,
                 "finalMessageEn", FINAL_PROMPT_EN,
                 "languageSelectionPrompt", LANGUAGE_SELECTION_RU);
@@ -97,13 +107,9 @@ public class VoiceReminderService {
 
         StartOutboundVoiceContactResponse response = this.connectClient.startOutboundVoiceContact(request);
 
-        log.info("Received response: {}", response.toString());
+        log.info("Received response from AWS Connect: {}", response.toString());
 
-        this.notificationQueue.add(new Notification(
-                response.contactId(),
-                appt.getApptNo(),
-                LocalDateTime.now().plusSeconds(45),
-                LocalDateTime.now().plusMinutes(3)));
+        return response.contactId();
     }
 
     private String finalizePrompt(String msgTemplate, Appointment appt, boolean translate) {

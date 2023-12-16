@@ -74,6 +74,9 @@ scheduler:
   topic-incoming: arn:aws:sns:us-east-1:622853243487:topic1
 
 aws:
+  sqs:
+    reply-queue-url: https://sqs.us-east-1.amazonaws.com/622853243487/sns-reply-queue
+    # reply-queue-url:
   connect:
     instanceId: fe126881-6f74-4414-b589-a7e8400c1d55
     contactFlowId: 23b2f56c-edde-4273-9058-4f4f617830db

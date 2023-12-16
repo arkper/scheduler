@@ -28,6 +28,7 @@ import software.amazon.awssdk.services.sns.model.CheckIfPhoneNumberIsOptedOutReq
 import software.amazon.awssdk.services.sns.model.CheckIfPhoneNumberIsOptedOutResponse;
 import software.amazon.awssdk.services.sns.model.PublishRequest;
 import software.amazon.awssdk.services.sns.model.PublishResponse;
+import software.amazon.awssdk.services.sqs.SqsClient;
 
 import static org.mockito.Mockito.*;
 
@@ -39,7 +40,10 @@ public class SnsServiceTest {
 
 	@Mock
 	private SnsClient snsClient;
-	
+
+	@Mock
+	private SqsClient sqsClient;
+
 	@Mock
 	private AppConfig appConfig;
 	
@@ -51,7 +55,7 @@ public class SnsServiceTest {
 
 		lenient().when(appConfig.getBlackListLocation()).thenReturn(blackListFile.getAbsolutePath());
 
-		testObj = new SnsService(appConfig, schedulerApiService, new ObjectMapper(), snsClient);
+		testObj = new SnsService(appConfig, schedulerApiService, new ObjectMapper(), snsClient, sqsClient);
 	}
 
 	@Test
