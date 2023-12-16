@@ -116,7 +116,7 @@ public class VoiceReminderService {
 
     private String finalizePrompt(String msgTemplate, Appointment appt, boolean translate) {
         var doctor = this.snsService.getProviderName(appt.getProviderNo());
-        var date = appt.getApptDate().format(DateTimeFormatter.ofPattern("MMMMM,dd"));
+        var date = appt.getApptDate().format(DateTimeFormatter.ofPattern("MMMM,dd"));
         var month = date.split(",")[0];
         var day = date.split(",")[1];
 
