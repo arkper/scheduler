@@ -75,10 +75,6 @@ public class SnsService {
 
     @Scheduled(cron = "0 0 10 * * *", zone = "America/New_York")
     public void processNotifications() {
-        if (!StringUtils.isEmpty(this.replyQueueUrl)) {
-            return;
-        }
-
         log.info("Starting notification processing job");
         StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0).spliterator(), false).filter(appt -> appt.getApptPhone() != null).forEach(appt -> this.processNotification(getNotificationMessage(appt), appt));
         log.info("Finished notification processing job");
@@ -153,7 +149,9 @@ public class SnsService {
 
     @Scheduled(fixedDelay = 60000, initialDelay = 10000)
     public void getReplies() {
+        log.info("Running scheduled job to process inbound reply messages from queue sns-reply-queue");
         if (StringUtils.isEmpty(this.replyQueueUrl)) {
+            log.info("Processing from queue sns-reply-queue is disabled - exiting");
             return;
         }
 
@@ -166,18 +164,6 @@ public class SnsService {
 
         var receiveMessageResponse = this.sqsClient.receiveMessage(req);
         receiveMessageResponse.messages().forEach(this::processReply);
-    }
-
-    private void deleteMessage(Message message, String phone) {
-        this.sqsClient.deleteMessage(DeleteMessageRequest
-                .builder()
-                .queueUrl(this.replyQueueUrl)
-                .receiptHandle(message.receiptHandle())
-                .build());
-
-        if (Objects.nonNull(phone)) {
-            this.tryCounter.remove(phone);
-        }
     }
 
     public void processReply(final Message replyMessage) {
@@ -228,6 +214,18 @@ public class SnsService {
         }
     }
 
+    private void deleteMessage(Message message, String phone) {
+        this.sqsClient.deleteMessage(DeleteMessageRequest
+                .builder()
+                .queueUrl(this.replyQueueUrl)
+                .receiptHandle(message.receiptHandle())
+                .build());
+
+        if (Objects.nonNull(phone)) {
+            this.tryCounter.remove(phone);
+        }
+    }
+
     /**
      * @deprecated - remove after completing testing of SQS messaging
      * @param replyMessage
@@ -235,6 +233,10 @@ public class SnsService {
      */
     @Deprecated
     public void processReply(final String replyMessage) throws JsonProcessingException {
+        if (!StringUtils.isEmpty(this.replyQueueUrl)) {
+            return;
+        }
+
         @SuppressWarnings("rawtypes") LinkedHashMap data = this.objectMapper.readValue(replyMessage, LinkedHashMap.class);
 
         if (data.containsKey("SubscribeURL")) {

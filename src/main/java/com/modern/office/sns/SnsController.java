@@ -40,7 +40,7 @@ public class SnsController {
 		try
 		{
 			snsService.processNotifications();
-			return ResponseEntity.ok("Finished processings");
+			return ResponseEntity.ok("Finished processing");
 		}
 		catch (Exception e)
 		{
