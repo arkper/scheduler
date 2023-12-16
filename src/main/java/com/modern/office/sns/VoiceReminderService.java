@@ -17,7 +17,7 @@ import software.amazon.awssdk.services.connect.model.StartOutboundVoiceContactRe
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -55,7 +55,7 @@ public class VoiceReminderService {
     private final SchedulerApiService schedulerApiService;
     private final ConnectClient connectClient;
     private final SnsService snsService;
-    private final PriorityQueue<Notification> notificationQueue = new PriorityQueue<>();
+    private final ConcurrentLinkedQueue<Notification> notificationQueue = new ConcurrentLinkedQueue<>();
 
     @Value("${aws.connect.instanceId}")
     private String instanceId;

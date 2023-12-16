@@ -313,9 +313,9 @@ public class SnsService {
         var business = this.schedulerApiService.getBusiness(1);
 
         if ("EN".equals(this.getLang(appt))) {
-            return String.format(NOTIFICATION_MESSAGE, appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)), StringUtils.substringBeforeLast(appt.getApptStartTime(), ":"), this.getProviderName(appt.getProviderNo()), this.appConfig.getOfficeName(), this.getAddress(business));
+            return String.format(NOTIFICATION_MESSAGE, appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)), appt.getApptStartTime(), this.getProviderName(appt.getProviderNo()), this.appConfig.getOfficeName(), this.getAddress(business));
         } else {
-            return String.format(NOTIFICATION_MESSAGE_RU, this.getProviderName(appt.getProviderNo()), this.appConfig.getOfficeName(), StringUtils.substringBeforeLast(appt.getApptStartTime(), ":"), appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)), this.getAddress(business));
+            return String.format(NOTIFICATION_MESSAGE_RU, this.getProviderName(appt.getProviderNo()), this.appConfig.getOfficeName(), appt.getApptStartTime(), appt.getApptDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)), this.getAddress(business));
         }
     }
 
