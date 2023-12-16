@@ -30,7 +30,8 @@ public interface SchedulerApiService {
 	
 	Iterable<ProviderException> getExceptionsByProviderNo(int providerNo);
 	Iterable<ProviderException> getExceptionsByProviderNoAndExceptionDate(int providerNo, LocalDate fromDate, LocalDate toDate);
-	
+
+	Iterable<Appointment> getAppointmentByApptDate(LocalDate apptDate);
 	Iterable<Appointment> getAppointmentByApptDateBetween(LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByPatientNoAndApptDateBetween(int patientNo, LocalDate startDate, LocalDate endDate);

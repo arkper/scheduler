@@ -3,6 +3,7 @@ package com.modern.office.scheduler.services;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -69,6 +70,11 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	@Override
 	public Iterable<ProviderBlock> getByProviderNo(int providerNo) {
 		return this.providerBlockRepo.findAllByProviderNo(providerNo);
+	}
+
+	@Override
+	public Iterable<Appointment> getAppointmentByApptDate(LocalDate apptDate) {
+		return this.appointmentRepo.getAppointmentByApptDate(apptDate);
 	}
 
 	@Override
@@ -330,7 +336,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	
 	@Override
 	public Iterable<Appointment> getAppointmentToConfirm(int confirmInd, int showInd, int leftMsgInd) {
-		var appts = this.getAppointmentByApptDateBetween(LocalDate.now().plusDays(DAYS_IN_ADVANCE), LocalDate.now().plusDays(DAYS_IN_ADVANCE));
+		var appts = this.getAppointmentByApptDate(LocalDate.now().plusDays(DAYS_IN_ADVANCE));
 		
 		return StreamSupport.stream(appts.spliterator(), false)
 				.filter(a -> checkIndicator(a.getApptConfirmedInd(), confirmInd) && checkIndicator(a.getApptShowInd(), showInd) && checkIndicator(a.getApptLeftMsgInd(), leftMsgInd))
