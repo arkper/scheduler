@@ -268,21 +268,22 @@ public class SnsService {
     }
 
     private boolean phoneEnabled(String phone) {
-        phone = phone.replaceAll("[^0-9]", "");
-        Set<String> blackList;
-        try {
-            blackList = new TreeSet<>(Files.readAllLines(Paths.get(URI.create("file://" + this.appConfig.getBlackListLocation()))));
-        } catch (IOException e) {
-            log.error("Failed getting blacklist {}", this.appConfig.getBlackListLocation(), e);
-            throw new RuntimeException(e);
-        }
-        if ((CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone)) && !blackList.contains(phone)) {
-            log.debug("Phone {} is enabled", phone);
-            return true;
-        }
-
-        log.info("Phone {} is not enabled", phone);
-        return false;
+        return true;
+//        phone = phone.replaceAll("[^0-9]", "");
+//        Set<String> blackList;
+//        try {
+//            blackList = new TreeSet<>(Files.readAllLines(Paths.get(URI.create("file://" + this.appConfig.getBlackListLocation()))));
+//        } catch (IOException e) {
+//            log.error("Failed getting blacklist {}", this.appConfig.getBlackListLocation(), e);
+//            throw new RuntimeException(e);
+//        }
+//        if ((CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone)) && !blackList.contains(phone)) {
+//            log.debug("Phone {} is enabled", phone);
+//            return true;
+//        }
+//
+//        log.info("Phone {} is not enabled", phone);
+//        return false;
     }
 
     private void updateAppointment(Appointment appointment, String message, String phoneNumber) {
