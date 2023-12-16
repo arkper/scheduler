@@ -150,7 +150,7 @@ public class SnsService {
         }
     }
 
-    @Scheduled(fixedDelay = 30000, initialDelay = 10000)
+    @Scheduled(fixedDelay = 60000, initialDelay = 10000)
     public void getReplies() {
         if (StringUtils.isEmpty(this.replyQueueUrl)) {
             return;
