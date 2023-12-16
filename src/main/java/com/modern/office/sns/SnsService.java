@@ -7,6 +7,7 @@ import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Business;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.map.SingletonMap;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,6 +18,7 @@ import software.amazon.awssdk.services.sns.SnsClient;
 import software.amazon.awssdk.services.sns.model.*;
 import software.amazon.awssdk.services.sqs.SqsClient;
 import software.amazon.awssdk.services.sqs.model.DeleteMessageRequest;
+import software.amazon.awssdk.services.sqs.model.Message;
 import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 
 import java.io.IOException;
@@ -26,10 +28,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.LinkedHashMap;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -52,6 +51,8 @@ public class SnsService {
     private final SchedulerApiService schedulerApiService;
     private final ObjectMapper objectMapper;
     private final AppConfig appConfig;
+
+    private Map<String, Integer> tryCounter = new TreeMap<>();
 
     @Value("${aws.sqs.reply-queue-url}")
     private String replyQueueUrl;
@@ -164,27 +165,81 @@ public class SnsService {
                 .build();
 
         var receiveMessageResponse = this.sqsClient.receiveMessage(req);
-        receiveMessageResponse.messages().forEach(message -> {
-            try {
-                if (this.processReply(message.body()) != 0) {
-                    this.sqsClient.deleteMessage(DeleteMessageRequest
-                            .builder()
-                            .queueUrl(this.replyQueueUrl)
-                            .receiptHandle(message.receiptHandle())
-                            .build());
-                }
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        receiveMessageResponse.messages().forEach(this::processReply);
     }
 
-    public int processReply(final String replyMessage) throws JsonProcessingException {
+    private void deleteMessage(Message message, String phone) {
+        this.sqsClient.deleteMessage(DeleteMessageRequest
+                .builder()
+                .queueUrl(this.replyQueueUrl)
+                .receiptHandle(message.receiptHandle())
+                .build());
+
+        if (Objects.nonNull(phone)) {
+            this.tryCounter.remove(phone);
+        }
+    }
+
+    public void processReply(final Message replyMessage) {
+        @SuppressWarnings("rawtypes") LinkedHashMap data = null;
+        try {
+            data = this.objectMapper.readValue(replyMessage.body(), LinkedHashMap.class);
+        } catch (JsonProcessingException e) {
+            log.error("Un-parsable message received", e);
+            this.deleteMessage(replyMessage, null);
+            return;
+        }
+
+        if (data.containsKey("SubscribeURL")) {
+            log.info("Please visit url {}", data.get("SubscribeURL"));
+            this.deleteMessage(replyMessage, null);
+            return;
+        }
+
+        final var message = (String) data.get("messageBody");
+        final var phoneNumber = (String) data.get("originationNumber");
+
+        if (this.tryCounter.getOrDefault(phoneNumber, 0) >= 3) {
+            log.warn("Message {} has exceeded max retry count - deleting", replyMessage);
+            this.deleteMessage(replyMessage, phoneNumber);
+            return;
+        }
+
+        log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
+        try {
+            if (this.phoneEnabled(phoneNumber)) {
+                var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
+                        .filter(a -> matchPhone(a.getApptPhone(), phoneNumber)).findAny();
+
+                if (appointment.isPresent() ) {
+                    this.updateAppointment(appointment.get(), message, phoneNumber);
+                    this.deleteMessage(replyMessage, phoneNumber);
+                } else {
+                    log.error("Unable locate the appointment for message {}", data);
+                    this.incrementAttemptCount(phoneNumber);
+                }
+            } else {
+                log.error("Phone {} is disabled for mobile communications - deleting message", phoneNumber);
+                this.deleteMessage(replyMessage, phoneNumber);
+            }
+        } catch(Exception e) {
+            log.error("Failed processing message reply {}", data);
+            this.incrementAttemptCount(phoneNumber);
+        }
+    }
+
+    /**
+     * @deprecated - remove after completing testing of SQS messaging
+     * @param replyMessage
+     * @throws JsonProcessingException
+     */
+    @Deprecated
+    public void processReply(final String replyMessage) throws JsonProcessingException {
         @SuppressWarnings("rawtypes") LinkedHashMap data = this.objectMapper.readValue(replyMessage, LinkedHashMap.class);
 
         if (data.containsKey("SubscribeURL")) {
             log.info("Please visit url {}", data.get("SubscribeURL"));
-            return 0;
+            return;
         }
 
         final var message = (String) data.get("messageBody");
@@ -196,12 +251,18 @@ public class SnsService {
 
             if (appointment.isPresent()) {
                 this.updateAppointment(appointment.get(), message, phoneNumber);
-                return 1;
+                this.tryCounter.remove(phoneNumber);
             } else {
-                return 0;
+                this.incrementAttemptCount(phoneNumber);
             }
+            return;
         }
-        return -1;
+        this.incrementAttemptCount(phoneNumber);
+    }
+
+    private void incrementAttemptCount(String phoneNumber) {
+        var currentCount = this.tryCounter.getOrDefault(phoneNumber, 0);
+        this.tryCounter.put(phoneNumber, ++currentCount);
     }
 
     private boolean phoneEnabled(String phone) {
