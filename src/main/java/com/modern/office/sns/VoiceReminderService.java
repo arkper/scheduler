@@ -26,9 +26,9 @@ import java.util.stream.StreamSupport;
 @Slf4j
 public class VoiceReminderService {
     private static final Map<String, String> DICTIONARY = Map.ofEntries(
-            new DefaultMapEntry("Lachovitsky", "Лаховитская"),
-            new DefaultMapEntry("Givner", "Гивнер"),
-            new DefaultMapEntry("Modern Optical", "Модерн Оптика"),
+            new DefaultMapEntry("Lakovitsky", "Лаковицкой"),
+            new DefaultMapEntry("Givner", "Гивнером"),
+            new DefaultMapEntry("Modern Optikal", "Модерн Оптика"),
             new DefaultMapEntry("January", "Января"),
             new DefaultMapEntry("February", "Февраля"),
             new DefaultMapEntry("March", "Марта"),
@@ -41,7 +41,8 @@ public class VoiceReminderService {
             new DefaultMapEntry("October", "Октября"),
             new DefaultMapEntry("November", "Ноября"),
             new DefaultMapEntry("December", "Декабря"),
-            new DefaultMapEntry("Optical Gallery", "Оптикал Гелери")
+            new DefaultMapEntry("Optical Gallery", "Оптикал Гелери"),
+            new DefaultMapEntry("Kings Highway", "Кингс Найвей")
     );
 
     private static final String MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Нажмите 1 чтобы подтвердить, или 2 чтобы отменить визит. Нажмите 3 чтобы перенести ваш визит на другой день.";
