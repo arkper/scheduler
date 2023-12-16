@@ -330,7 +330,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	
 	@Override
 	public Iterable<Appointment> getAppointmentToConfirm(int confirmInd, int showInd, int leftMsgInd) {
-		var appts = this.getAppointmentByApptDateBetween(LocalDate.now(), LocalDate.now().plusDays(DAYS_IN_ADVANCE));
+		var appts = this.getAppointmentByApptDateBetween(LocalDate.now().plusDays(DAYS_IN_ADVANCE), LocalDate.now().plusDays(DAYS_IN_ADVANCE));
 		
 		return StreamSupport.stream(appts.spliterator(), false)
 				.filter(a -> checkIndicator(a.getApptConfirmedInd(), confirmInd) && checkIndicator(a.getApptShowInd(), showInd) && checkIndicator(a.getApptLeftMsgInd(), leftMsgInd))

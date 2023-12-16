@@ -16,6 +16,7 @@ import software.amazon.awssdk.services.connect.model.StartOutboundVoiceContactRe
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.StreamSupport;
@@ -133,9 +134,12 @@ public class VoiceReminderService {
     @Scheduled(fixedDelay = 60000, initialDelay = 60000)
     public void pollResponses() {
         Notification notification;
-        while ((notification = this.notificationQueue.poll()) != null) {
-            this.handleNotification(notification);
+        var batch = new ArrayList<Notification>();
+        while ((notification = this.notificationQueue.poll() ) != null) {
+            batch.add(notification);
         }
+        log.info("Got {} notifications to get replies for", batch.size());
+        batch.forEach(this::handleNotification);
     }
 
     private void handleNotification(Notification notification) {
