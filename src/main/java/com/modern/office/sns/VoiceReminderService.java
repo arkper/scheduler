@@ -28,7 +28,8 @@ public class VoiceReminderService {
     private static final Map<String, String> DICTIONARY = Map.ofEntries(
             new DefaultMapEntry("Diana Lakovitsky", "Дианой Лаковицкой"),
             new DefaultMapEntry("Steven Givner", "Стивеном Гивнером"),
-            new DefaultMapEntry("Modern Optikal", "Модерн Оптика"),
+            new DefaultMapEntry("Modern Optical", "Модерн Оптика"),
+            new DefaultMapEntry("Optical Gallery", "Оптикал Гелери"),
             new DefaultMapEntry("January", "Января"),
             new DefaultMapEntry("February", "Февраля"),
             new DefaultMapEntry("March", "Марта"),
@@ -41,8 +42,7 @@ public class VoiceReminderService {
             new DefaultMapEntry("October", "Октября"),
             new DefaultMapEntry("November", "Ноября"),
             new DefaultMapEntry("December", "Декабря"),
-            new DefaultMapEntry("Optical Gallery", "Оптикал Гелери"),
-            new DefaultMapEntry("353 Kings Highway", "353 Кингс Хайвей")
+            new DefaultMapEntry("453 Kings Highway", "353 Кингс Хайвей")
     );
 
     private static final String MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Нажмите 1 чтобы подтвердить, или 2 чтобы отменить визит. Нажмите 3 чтобы перенести ваш визит на другой день.";

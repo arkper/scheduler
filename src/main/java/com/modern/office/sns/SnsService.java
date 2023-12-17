@@ -7,7 +7,6 @@ import com.modern.office.scheduler.domain.Appointment;
 import com.modern.office.scheduler.domain.Business;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.map.SingletonMap;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,13 +21,15 @@ import software.amazon.awssdk.services.sqs.model.Message;
 import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.TreeMap;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -86,9 +87,6 @@ public class SnsService {
             return;
         }
         var phone = this.transform(appt.getApptPhone());
-        if (!this.phoneEnabled(phone)) {
-            return;
-        }
 
         this.sendSMS(message, phone);
         this.schedulerApiService.setLeftMsgInd(appt.getApptNo(), 1);
@@ -193,22 +191,17 @@ public class SnsService {
 
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
         try {
-            if (this.phoneEnabled(phoneNumber)) {
-                var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
-                        .filter(a -> matchPhone(a.getApptPhone(), phoneNumber)).findAny();
+            var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
+                    .filter(a -> matchPhone(a.getApptPhone(), phoneNumber)).findAny();
 
-                if (appointment.isPresent() ) {
-                    this.updateAppointment(appointment.get(), message, phoneNumber);
-                    this.deleteMessage(replyMessage, phoneNumber);
-                } else {
-                    log.error("Unable locate the appointment for message {}", data);
-                    this.incrementAttemptCount(phoneNumber);
-                }
-            } else {
-                log.error("Phone {} is disabled for mobile communications - deleting message", phoneNumber);
+            if (appointment.isPresent()) {
+                this.updateAppointment(appointment.get(), message, phoneNumber);
                 this.deleteMessage(replyMessage, phoneNumber);
+            } else {
+                log.error("Unable locate the appointment for message {}", data);
+                this.incrementAttemptCount(phoneNumber);
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             log.error("Failed processing message reply {}", data);
             this.incrementAttemptCount(phoneNumber);
         }
@@ -227,9 +220,9 @@ public class SnsService {
     }
 
     /**
-     * @deprecated - remove after completing testing of SQS messaging
      * @param replyMessage
      * @throws JsonProcessingException
+     * @deprecated - remove after completing testing of SQS messaging
      */
     @Deprecated
     public void processReply(final String replyMessage) throws JsonProcessingException {
@@ -247,19 +240,15 @@ public class SnsService {
         final var message = (String) data.get("messageBody");
         final var phoneNumber = (String) data.get("originationNumber");
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
-        if (this.phoneEnabled(phoneNumber)) {
-            var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
-                    .filter(a -> matchPhone(a.getApptPhone(), phoneNumber)).findAny();
+        var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
+                .filter(a -> matchPhone(a.getApptPhone(), phoneNumber)).findAny();
 
-            if (appointment.isPresent()) {
-                this.updateAppointment(appointment.get(), message, phoneNumber);
-                this.tryCounter.remove(phoneNumber);
-            } else {
-                this.incrementAttemptCount(phoneNumber);
-            }
-            return;
+        if (appointment.isPresent()) {
+            this.updateAppointment(appointment.get(), message, phoneNumber);
+            this.tryCounter.remove(phoneNumber);
+        } else {
+            this.incrementAttemptCount(phoneNumber);
         }
-        this.incrementAttemptCount(phoneNumber);
     }
 
     private void incrementAttemptCount(String phoneNumber) {
@@ -267,31 +256,11 @@ public class SnsService {
         this.tryCounter.put(phoneNumber, ++currentCount);
     }
 
-    private boolean phoneEnabled(String phone) {
-        return true;
-//        phone = phone.replaceAll("[^0-9]", "");
-//        Set<String> blackList;
-//        try {
-//            blackList = new TreeSet<>(Files.readAllLines(Paths.get(URI.create("file://" + this.appConfig.getBlackListLocation()))));
-//        } catch (IOException e) {
-//            log.error("Failed getting blacklist {}", this.appConfig.getBlackListLocation(), e);
-//            throw new RuntimeException(e);
-//        }
-//        if ((CollectionUtils.isEmpty(this.appConfig.getAllowedPhones()) || this.appConfig.getAllowedPhones().contains(phone)) && !blackList.contains(phone)) {
-//            log.debug("Phone {} is enabled", phone);
-//            return true;
-//        }
-//
-//        log.info("Phone {} is not enabled", phone);
-//        return false;
-    }
-
     private void updateAppointment(Appointment appointment, String message, String phoneNumber) {
         var lang = this.getLang(appointment);
         switch (message.toUpperCase()) {
             case "Y", "YES", "ДА", "DA", "OK" -> this.schedulerApiService.confirm(appointment.getApptNo());
-            case "STOP" -> this.blackListPhone(phoneNumber);
-            case "N", "NO", "НЕТ", "NET" -> this.schedulerApiService.cancel(appointment.getApptNo());
+            case "STOP", "N", "NO", "НЕТ", "NET" -> this.schedulerApiService.cancel(appointment.getApptNo());
             default -> {
                 if ("EN".equals(lang)) {
                     this.sendSMS(NACK_MESSAGE, phoneNumber);
@@ -325,15 +294,6 @@ public class SnsService {
 
     public String getProviderName(int providerNo) {
         return this.schedulerApiService.getAllProviders().stream().filter(p -> p.getProviderNo() == providerNo).findFirst().map(p -> p.getProviderFirstName() + " " + p.getProviderLastName()).orElse("");
-    }
-
-    private void blackListPhone(String phone) {
-        try {
-            Files.write(Paths.get(this.appConfig.getBlackListLocation()), this.transform(phone + "\n").getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            log.error("Failed to blacklist phone {}", phone);
-            throw new RuntimeException(e);
-        }
     }
 
     public String transform(String originalPhone) {

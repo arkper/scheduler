@@ -14,8 +14,8 @@ spring:
       dialect: "org.hibernate.dialect.SQLServer2012Dialect"
 
 office-forms:
-  company: Modern Optikal
-  company-address: 353 Kings Highway
+  company: Modern Optical
+  company-address: 453 Kings Highway
   company-city: Brooklyn
   company-state: NY
   company-zip: 11223
