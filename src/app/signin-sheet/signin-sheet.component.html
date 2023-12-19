@@ -1,1 +1,56 @@
-<p>signin-sheet works!</p>
+<div>
+    <mat-label>Who's coming in?</mat-label>
+    <mat-radio-group aria-label="Select an option">
+        <mat-radio-button checked [value]="isPatient" (change) = "switchMode()">Existing Patient</mat-radio-button>
+        <mat-radio-button [value]="!isPatient" (change) = "switchMode()">New Walk-in Patient</mat-radio-button>
+    </mat-radio-group>
+    <div>
+        <mat-label>{{ isPatient? "Let's find the existing patient" : "Let's meet the new patient" }}</mat-label>
+        <form>
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput name="lastName" id="lastName" placeholder="Type starting characters" [value]="lastName" (keyup)="lastNameChanged($event)">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput name="firstName" id="firstName" placeholder="Type starting characters" [value]="firstName" (keyup)="frstNameChanged($event)">
+            </mat-form-field>  
+            <mat-form-field>
+                <mat-label>To Be Seen By:</mat-label>
+                <select matNativeControl [value] = "provider" (change)="onProviderChange($event)">
+                  <option *ngFor="let p of providers"  [value]="p.providerName">{{ p.providerName }}</option>
+                </select>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="clearSelection()">Clear Selection</button>
+        </form>
+    </div>
+    <div *ngIf="isPatient">
+        <ag-grid-angular id="patientGrid"
+          style="width: 100%; height: 150px"
+          class="ag-theme-alpine"
+          [gridOptions]="gridOptions"
+          (gridReady)="onGridReady($event)"
+          [rowData] = "gridData"
+          (cellClicked)="onCellClicked($event)"
+        ></ag-grid-angular>
+        <br/>
+        <mat-label>Let's see if there's a proper appoinment to update:</mat-label>
+        <ag-grid-angular id='appointmentGrid'
+          style="width: 100%; height: 150px"
+          class="ag-theme-alpine"
+          [gridOptions]="gridOptions1"
+          (gridReady)="onGridReady($event)"
+          [rowData] = "gridData1"
+          (cellClicked)="onAppointmentCellClicked($event)"
+        ></ag-grid-angular>
+    </div>
+    <table width="100%">
+        <tr>
+            <td valign="top" width="300px">Signature of Patient/Relative/Guardian: </td>
+            <td valign="center"><app-sig-pad [reset] = "resetRequest" (signed) = "onSigned($event)"></app-sig-pad></td>
+            <td valign="top">Date: </td>
+            <td valign="top">{{ date }}</td>
+        </tr>
+    </table>
+</div>

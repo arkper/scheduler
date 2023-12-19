@@ -49,9 +49,33 @@ export interface Document {
     docLink: string
 }
 
+export interface Appointment {
+  apptNo: number,
+  apptName: string,
+  apptDate: string,
+  apptTime: string,
+  provider: string
+}
+
+export interface SigninRecord {
+  id: number | null,
+  visitorName: string,
+  dateTimeIn: string | null,
+  dateTimeOut: string | null,
+  signinImage: string,
+  toBeSeenBy: string
+}
+
 export const EMPTY_DOCUMENT: Document = {
   formType: '',
   recordedOn: '',
   expiresOn: '',
   docLink: ''
 };
+
+export interface Provider {
+  providerNo: number,
+  providerFirstName: string,
+  providerLastName: string,
+  providerName: string
+}

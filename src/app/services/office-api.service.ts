@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
-import { Address, Code, Company, Document, Patient, PatientInsurance } from '../store/model/patient.model';
+import { Address, Appointment, Code, Company, Document, Patient, PatientInsurance, Provider, SigninRecord } from '../store/model/patient.model';
+import { DatePipe } from '@angular/common';
 
 const STATE_CODE_CATEGORY: number = 32;
 const CARRIER_CODE_CATEGORY: number = 5;
@@ -17,9 +18,11 @@ export class OfficeApiService {
   static carrierCodes: Code[] = [];
   static relationshipCodes: Code[] = [];
 
-  company: Company | undefined;
+  company!: Company;
 
-  constructor(private http: HttpClient) { 
+  providers!: Provider[];
+
+  constructor(private http: HttpClient, private datepipe: DatePipe) { 
     this.getCodes(STATE_CODE_CATEGORY)
       .subscribe({next: codes => OfficeApiService.stateCodes = codes});
     this.getCodes(CARRIER_CODE_CATEGORY)
@@ -27,7 +30,9 @@ export class OfficeApiService {
     this.getCodes(RELATIONSHIP_CODE_CATEGORY)
       .subscribe({next: codes => OfficeApiService.relationshipCodes = codes});
     this.fetchCompany()
-      .subscribe({next: c => this.company = c});    
+      .subscribe({next: c => this.company = c}); 
+    this.getProviders()
+      .subscribe({next: data => this.providers = data});   
   }
 
   getPatientsByName(lastName: string, firstName: string): Observable<Patient[]> {
@@ -64,6 +69,52 @@ export class OfficeApiService {
       return this.http.get<any[]>('/documents/hippa-docs/' + patientNo, this.getHttpOptions());
     } else {
       return of([{formType: 'Consent', recordedOn: '2023-12-12', expiresOn: '2023-12-31'}]);
+    }
+  }
+
+  getPatientAppts(patientNo: number): Observable<any[]> {
+    let endDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+    let startDate = this.datepipe.transform(new Date().setDate(new Date().getDate() - 7), 'yyyy-MM-dd'); 
+    if (environment.production) {
+      return this.http.get<any[]>(`/patient-appointments/${patientNo}/${startDate}/${endDate}`, this.getHttpOptions());
+    } else {
+      return of([{apptNo: 1, apptName: "Arkady Perepelyuk", apptDate: "2023-12-17", apptTime: "13:30", provider: "Steven Givner"}]);
+    }
+  }
+
+  saveSigninRecord(record: any): Observable<any> {
+    if (environment.production) {
+      return this.http.post('/signin', record, this.getHttpOptions());
+    } else {
+      record.id = 1;
+      return of(record);
+    }
+
+  }
+
+  getSigninRecords(): Observable<any> {
+    let date = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+    if (environment.production) {
+      return this.http.get(`/signin/${date}`, this.getHttpOptions());
+    } else {
+      return of([{visitorName: "Arkady Perepelyuk", dateTimeIn: "2023-12-17T12:00:00", toBeSeenBy: "Steven Givner", signinImage: null}]);
+    }
+  }
+
+  getProviders(): Observable<any> {
+    if (environment.production) {
+      return this.http.get('/providers', this.getHttpOptions());
+    } else {
+      return of([{providerNo: 20, providerFirstName: "Diana", providerLastName: "Lakovitsky", providerName: "Diana Lakovitsky"},
+                 {providerNo: 3, providerFirstName: "Steven", providerLastName: "Givner", providerName: "Steven Givner"}]);
+    }
+  }
+
+  updateAppointment(appt: Appointment): Observable<any> {
+    if (environment.production) {    
+      return this.http.post(`/appointment/${appt.apptNo}/show`, null, this.getHttpOptions());
+    } else {
+      return of({apptNo: 1, apptName: "Arkady Perepelyuk", apptDate: "2023-12-17", apptTime: "13:30", provider: "Steven Givner"});
     }
   }
 

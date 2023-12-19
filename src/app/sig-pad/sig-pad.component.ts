@@ -1,4 +1,5 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
 import SignaturePad from 'signature_pad';
 
 @Component({
@@ -6,17 +7,21 @@ import SignaturePad from 'signature_pad';
   templateUrl: './sig-pad.component.html',
   styleUrls: ['./sig-pad.component.scss']
 })
-export class SigPadComponent {
+export class SigPadComponent implements OnInit{
   signatureNeeded!: boolean;
   signaturePad!: SignaturePad;
   @ViewChild('canvas') canvasEl!: ElementRef;
   signatureImg!: string;
+
   constructor() { }
 
   @Output() signed: EventEmitter<string> = new EventEmitter<string>();
+  @Input() reset: Subject<boolean> = new Subject();
 
   ngOnInit(): void {
+    this.reset.subscribe(_ => this.clearPad());
   }
+  
   ngAfterViewInit() {
     this.signaturePad = new SignaturePad(this.canvasEl.nativeElement);
   }

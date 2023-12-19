@@ -6,7 +6,6 @@ import { OfficeApiService } from '../services/office-api.service';
 import { settings } from './patient-list.settings';
 import { Patient, Document, EMPTY_DOCUMENT } from '../store/model/patient.model';
 import { Store } from '@ngrx/store';
-import { State } from '../store/model/state.model';
 import { PatientActionType } from '../store/actions/patient.action';
 import { AppState } from '../store/reducers';
 import { DocumentActionType } from '../store/actions/document.action';

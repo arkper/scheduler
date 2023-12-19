@@ -13,10 +13,16 @@
           <span *ngIf="!isCollapsed">Patient List</span>
         </span>
       </a>
-      <a mat-list-item routerLink="/consent-form" routerLinkActive="active">
+      <a mat-list-item routerLink="/signin" routerLinkActive="active">
         <span class="entry">
-          <mat-icon>fact_check</mat-icon>
-          <span *ngIf="!isCollapsed">Form To Sign</span>
+          <mat-icon>exit_to_app</mat-icon>
+          <span *ngIf="!isCollapsed">Sign-in</span>
+        </span>
+      </a>
+      <a mat-list-item routerLink="/signin-sheet-view" routerLinkActive="active">
+        <span class="entry">
+          <mat-icon>assessment</mat-icon>
+          <span *ngIf="!isCollapsed">Sign-in</span>
         </span>
       </a>
       <a mat-list-item routerLink="/doc-viewer" routerLinkActive="active">

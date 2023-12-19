@@ -1,0 +1,7 @@
+<ag-grid-angular id="patientGrid"
+style="width: 100%; height: 750px"
+class="ag-theme-alpine"
+[gridOptions]="gridOptions"
+(gridReady)="onGridReady($event)"
+[rowData] = "gridData"
+></ag-grid-angular>

@@ -8,6 +8,6 @@
 <p class="error-message" *ngIf="signatureNeeded">Signature is required</p>
 
 <div class="buttons flex justify-between">
-  <button (click)="clearPad()">Clear</button>
-  <button (click)="savePad()">Submit the document</button>
+  <button mat-raised-button color="primary" (click)="clearPad()">Clear</button>
+  <button mat-raised-button color="primary" (click)="savePad()">Sign and Save</button>
 </div>

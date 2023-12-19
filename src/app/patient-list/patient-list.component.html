@@ -1,31 +1,16 @@
-<!-- Button to clear selection -->
 <div class="container">
   <div class="header">
-    <label for="lastName">Last Name
-      <input
-        type="text"
-        name="lastName"
-        id="lastName"
-        placeholder="Type starting characters"
-        size="30"
-        (keyup)="externalFilterChanged($event)"
-        [value] = "lastName"
-      />
-    </label>
-    <label for="firstName">First Name
-      <input
-        type="text"
-        name="firstName"
-        id="firstName"
-        placeholder="Type starting characters"
-        size="30"
-        (keyup)="externalFilterChanged($event)"
-        [value] = "firstName"
-      />
-    </label>
-    <label>
-      <button (click)="clearSelection()">Clear Selection</button>
-    </label>
+    <form>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput id="lastName" placeholder="Type starting characters" (keyup)="externalFilterChanged($event)" [value] = "lastName"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput id="firstName" placeholder="Type starting characters" (keyup)="externalFilterChanged($event)" [value] = "firstName"/>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="clearSelection()">Clear Selection</button>
+    </form>
   </div>
 
   <ag-grid-angular
@@ -56,13 +41,17 @@
       (cellClicked)="onDocCellClicked($event)"
     ></ag-grid-angular> 
     <div class="header">
-      <button (click)="viewDoc()">View Document</button>
-      <button (click)="addNewEDoc()">Add New E-Document</button>
-      <select id="edocSelect">
-        <option value="release">Release Of Medical Info</option>
-        <option value="transportation">Transportation Approval</option>
-        <option value="eyeglasses">Medicaid Eyeglasses</option>
-      </select>
+      <form>
+        <button matNativeControl mat-raised-button color="primary" (click)="viewDoc()">View Document</button>
+        <button mat-raised-button color="primary" (click)="addNewEDoc()">Add New E-Document</button>
+        <mat-form-field>
+          <select matNativeControl id="edocSelect">
+            <option value="release">Release Of Medical Info</option>
+            <option value="transportation">Transportation Approval</option>
+            <option value="eyeglasses">Medicaid Eyeglasses</option>
+          </select>
+        </mat-form-field>
+      </form>
     </div>     
     </div>
     <div class="column">
@@ -82,11 +71,15 @@
       (cellClicked)="onDocCellClicked($event)"
     ></ag-grid-angular>  
     <div class="header">
-      <button (click)="viewDoc()">View Document</button>
-      <button (click)="addNewHipaaDoc()">Add New HIPAA Document</button>
-      <select id="hipaaDocSelect">
-        <option value="consent">Consent To Examination</option>
-      </select>
+      <form>
+        <button mat-raised-button color="primary" (click)="viewDoc()">View Document</button>
+        <button mat-raised-button color="primary" (click)="addNewHipaaDoc()">Add New HIPAA Document</button>
+          <mat-form-field>
+          <select matNativeControl id="hipaaDocSelect">
+            <option value="consent">Consent To Examination</option>
+          </select>
+        </mat-form-field>
+      </form>
     </div>     
     </div>
   </div>

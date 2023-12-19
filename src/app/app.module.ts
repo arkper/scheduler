@@ -6,6 +6,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { AppComponent } from './app.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
@@ -15,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { AgGridModule } from 'ag-grid-angular';
 import { ConsentFormComponent } from './forms/consent-form/consent-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 import { DatePipe } from '@angular/common';
 import { SigPadComponent } from './sig-pad/sig-pad.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -26,6 +29,7 @@ import { reducers } from './store/reducers';
 import { EyeGlassesFormComponent } from './forms/eye-glasses-form/eye-glasses-form.component';
 import { TransportationFormComponent } from './forms/transportation-form/transportation-form.component';
 import { BaseFormComponent } from './forms/base-form/base-form.component';
+import { SigninSheetViewComponent } from './signin-sheet-view/signin-sheet-view.component';
 
 const ROUTES: Routes = [
   {path: 'patient-list', component: PatientListComponent},
@@ -33,6 +37,8 @@ const ROUTES: Routes = [
   {path: 'consent-form', component: ConsentFormComponent},
   {path: 'release-form', component: ReleaseFormComponent},
   {path: 'transportation-form', component: TransportationFormComponent},
+  {path: 'signin', component: SigninSheetComponent},
+  {path: 'signin-sheet-view', component: SigninSheetViewComponent},
   {path: 'eyeglasses-form', component: EyeGlassesFormComponent},
   
   {path: 'doc-viewer', component: DocViewerComponent},
@@ -53,7 +59,8 @@ const ROUTES: Routes = [
     DocViewerComponent,
     EyeGlassesFormComponent,
     TransportationFormComponent,
-    BaseFormComponent
+    BaseFormComponent,
+    SigninSheetViewComponent
   ],
   imports: [
     BrowserModule,
@@ -63,11 +70,14 @@ const ROUTES: Routes = [
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
     HttpClientModule,
     AgGridModule,
     RouterModule.forRoot(ROUTES),
-    MatFormFieldModule,
     PdfViewerModule,
+    MatRadioModule,
     StoreModule.forRoot(reducers)
   ],
   providers: [DatePipe, MatSnackBar],

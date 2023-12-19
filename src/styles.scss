@@ -10,3 +10,21 @@ html, body {
     -webkit-overflow-scrolling: touch;
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button, mat-form-field {
+    font-size: 16px;
+    margin: 5px;
+  }
+  
+.ag-theme-alpine {
+    --ag-foreground-color: blue;
+    --ag-background-color: rgb(249, 245, 227);
+    --ag-header-foreground-color: rgb(204, 245, 172);
+    --ag-header-background-color: blue;
+    --ag-odd-row-background-color: rgb(0, 0, 0, 0.03);
+    --ag-header-column-resize-handle-color: blue;
+    --ag-row-selected-color: blue;
+  
+    --ag-font-size: 18px;
+    --ag-font-family: monospace;
+  }
