@@ -3,7 +3,6 @@ package com.modern.office.sns;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.assertj.core.util.Lists;
@@ -17,10 +16,10 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.modern.office.scheduler.AppConfig;
-import com.modern.office.scheduler.domain.Appointment;
-import com.modern.office.scheduler.domain.Business;
-import com.modern.office.scheduler.domain.Provider;
+import com.modern.office.config.AppConfig;
+import com.modern.office.domain.Appointment;
+import com.modern.office.domain.Business;
+import com.modern.office.domain.Provider;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import software.amazon.awssdk.core.SdkResponse;
 import software.amazon.awssdk.http.SdkHttpResponse;

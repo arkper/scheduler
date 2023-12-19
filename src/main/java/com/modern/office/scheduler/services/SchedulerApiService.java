@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-import com.modern.office.scheduler.domain.*;
+import com.modern.office.domain.*;
 
 public interface SchedulerApiService {
 	List<Provider> getAllProviders();
@@ -38,6 +38,7 @@ public interface SchedulerApiService {
 	Iterable<Appointment> getAppointmentToConfirm(int confirmInd, int canceInd, int noAnswerInd);
 	
 	Appointment save(Appointment appointment);
+	Appointment setShowInd(int apptNo, int state);
 	Appointment cancel(int apptNo);
 	Appointment confirm(int apptNo);
 	Appointment setLeftMsgInd(int apptNo, int state);

@@ -1,5 +1,6 @@
 package com.modern.office.scheduler.domain;
 
+import com.modern.office.domain.Provider;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

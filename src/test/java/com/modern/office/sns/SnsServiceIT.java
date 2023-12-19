@@ -1,8 +1,8 @@
 package com.modern.office.sns;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.modern.office.scheduler.AppConfig;
-import com.modern.office.scheduler.SchedulerApplication;
+import com.modern.office.config.AppConfig;
+import com.modern.office.OfficeFormsApplication;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +16,7 @@ import software.amazon.awssdk.services.sns.SnsClient;
 import software.amazon.awssdk.services.sqs.SqsClient;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {AppConfig.class, SchedulerApplication.class})
+@ContextConfiguration(classes = {AppConfig.class, OfficeFormsApplication.class})
 @WebAppConfiguration()
 public class SnsServiceIT {
     @BeforeEach

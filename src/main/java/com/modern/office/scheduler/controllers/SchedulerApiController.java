@@ -8,21 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.modern.office.scheduler.domain.Address;
-import com.modern.office.scheduler.domain.Appointment;
-import com.modern.office.scheduler.domain.Code;
-import com.modern.office.scheduler.domain.CodeCategory;
-import com.modern.office.scheduler.domain.Insurance;
-import com.modern.office.scheduler.domain.InsurancePlan;
-import com.modern.office.scheduler.domain.Patient;
-import com.modern.office.scheduler.domain.PatientInsurance;
-import com.modern.office.scheduler.domain.Product;
-import com.modern.office.scheduler.domain.Provider;
-import com.modern.office.scheduler.domain.ProviderBlock;
-import com.modern.office.scheduler.domain.ProviderException;
-import com.modern.office.scheduler.domain.Timeslot;
+import com.modern.office.domain.Address;
+import com.modern.office.domain.Appointment;
+import com.modern.office.domain.Code;
+import com.modern.office.domain.CodeCategory;
+import com.modern.office.domain.Insurance;
+import com.modern.office.domain.InsurancePlan;
+import com.modern.office.domain.Patient;
+import com.modern.office.domain.PatientInsurance;
+import com.modern.office.domain.Product;
+import com.modern.office.domain.Provider;
+import com.modern.office.domain.ProviderBlock;
+import com.modern.office.domain.ProviderException;
+import com.modern.office.domain.Timeslot;
 import com.modern.office.scheduler.services.SchedulerApiService;
-import com.modern.office.sns.SnsService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -187,6 +186,17 @@ public class SchedulerApiController {
 			return ResponseEntity.ok().body(this.schedulerApiService.cancel(apptNo));
 		} catch (Exception e) {
 			log.error("Failed cancelling appointment with error: {}", e.getMessage(), e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+					.build();
+		}
+	}
+
+	@PostMapping(path = "/appointment/{appt-no}/show", produces = "application/json")
+	public ResponseEntity<Appointment> show(@PathVariable("appt-no") int apptNo) {
+		try {
+			return ResponseEntity.ok().body(this.schedulerApiService.setShowInd(apptNo, 1));
+		} catch (Exception e) {
+			log.error("Failed updating appointment with error: {}", e.getMessage(), e);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
 					.build();
 		}

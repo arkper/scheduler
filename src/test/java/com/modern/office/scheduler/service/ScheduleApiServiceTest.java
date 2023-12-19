@@ -14,14 +14,14 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.modern.office.scheduler.AppConfig;
-import com.modern.office.scheduler.domain.Appointment;
-import com.modern.office.scheduler.domain.ProviderBlock;
-import com.modern.office.scheduler.domain.ProviderException;
-import com.modern.office.scheduler.domain.Timeslot;
-import com.modern.office.scheduler.repository.AppointmentRepository;
-import com.modern.office.scheduler.repository.ProviderBlockRepository;
-import com.modern.office.scheduler.repository.ProviderExceptionRepository;
+import com.modern.office.config.AppConfig;
+import com.modern.office.domain.Appointment;
+import com.modern.office.domain.ProviderBlock;
+import com.modern.office.domain.ProviderException;
+import com.modern.office.domain.Timeslot;
+import com.modern.office.repository.AppointmentRepository;
+import com.modern.office.repository.ProviderBlockRepository;
+import com.modern.office.repository.ProviderExceptionRepository;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import com.modern.office.scheduler.services.SchedulerApiServiceImpl;
 

@@ -3,27 +3,24 @@ package com.modern.office.scheduler.services;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import com.modern.office.scheduler.domain.*;
-import com.modern.office.scheduler.repository.*;
+import com.modern.office.domain.*;
+import com.modern.office.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.modern.office.scheduler.AppConfig;
+import com.modern.office.config.AppConfig;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.CollectionUtils;
 
 @Service
 @RequiredArgsConstructor
@@ -45,6 +42,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	private final BusinessRepository businessRepository;
 	private final PatientPreferencesRepository patientPreferencesRepository;
 	private final AppConfig appConfig;
+
+	private TreeMap<Integer, String> providerMap = new TreeMap<>();
 
 	@Override
 	public List<Provider> getProviders() {
@@ -105,7 +104,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	@Override
 	public Iterable<Appointment> getAppointmentByPatientNoAndApptDateBetween(int patientNo, LocalDate startDate,
 			LocalDate endDate) {
-		return appointmentRepo.getAppointmentByPatientNoAndApptDateBetween(patientNo, startDate, endDate);
+		var appointments = appointmentRepo.getAppointmentByPatientNoAndApptDateBetween(patientNo, startDate, endDate);
+		appointments.forEach(each -> each.setProvider(this.getProvider(each.getProviderNo())));
+		return appointments;
 	}
 
 	@Override
@@ -215,16 +216,22 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
 	@Override
 	@Transactional
-	public Appointment cancel(int apptNo) {
+	public Appointment setShowInd(int apptNo, int state) {
 		final Appointment appointment = this.appointmentRepo.findById(apptNo).orElse(null);
 
 		if (appointment != null) {
-			log.info("Cancelling appointment (no show) {}", appointment);
-			appointment.setApptShowInd(2);
+			log.info("Updating show indicator for appointment {} to {}", appointment, state);
+			appointment.setApptShowInd(state);
 			appointment.setApptLeftMsgInd(0);
 			this.updateAppointmentRecord(appointment);
 		}
 		return appointment;
+	}
+
+	@Override
+	@Transactional
+	public Appointment cancel(int apptNo) {
+		return this.setShowInd(apptNo, 2);
 	}
 
 	@Override
@@ -389,5 +396,13 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 		appointment.setRecordedBy(3);
 		appointment.setRecordedDateTime(LocalDateTime.now());
 		appointment.setRecordedByComputer("MANAGER_PC");
+	}
+	private String getProvider(Integer providerNo)
+	{
+		if (CollectionUtils.isEmpty(this.providerMap))
+		{
+			this.getProviders().forEach(each -> this.providerMap.put(each.getProviderNo(), each.getProviderFirstName() + " " + each.getProviderLastName()));
+		}
+		return this.providerMap.getOrDefault(providerNo, "");
 	}
 }

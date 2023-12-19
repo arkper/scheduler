@@ -5,11 +5,11 @@ import com.modern.office.forms.domain.Company;
 import com.modern.office.forms.domain.DocType;
 import com.modern.office.forms.domain.FormData;
 import com.modern.office.forms.domain.FormType;
-import com.modern.office.scheduler.domain.Address;
-import com.modern.office.scheduler.domain.Document;
-import com.modern.office.scheduler.domain.HippaDocument;
-import com.modern.office.scheduler.repository.DocumentRepository;
-import com.modern.office.scheduler.repository.HippaDocumentRepository;
+import com.modern.office.domain.Address;
+import com.modern.office.domain.Document;
+import com.modern.office.domain.HippaDocument;
+import com.modern.office.repository.DocumentRepository;
+import com.modern.office.repository.HippaDocumentRepository;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JsonDataSource;
@@ -48,7 +48,6 @@ public class ReportGeneratorService {
 
     private static final Map<Class<?>, Pair<DocType, JasperReport>> FORMS_INFO = new HashMap<>();
     private static final Map<DocType, JasperReport> FORMS_MAP = new HashMap<>();
-
 
     private final DocumentRepository documentRepository;
     private final HippaDocumentRepository hippaDocumentRepository;

@@ -1,6 +1,6 @@
 package com.modern.office.sns;
 
-import com.modern.office.scheduler.domain.Appointment;
+import com.modern.office.domain.Appointment;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

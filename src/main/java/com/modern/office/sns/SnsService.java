@@ -2,9 +2,9 @@ package com.modern.office.sns;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.modern.office.scheduler.AppConfig;
-import com.modern.office.scheduler.domain.Appointment;
-import com.modern.office.scheduler.domain.Business;
+import com.modern.office.config.AppConfig;
+import com.modern.office.domain.Appointment;
+import com.modern.office.domain.Business;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -20,10 +20,6 @@ import software.amazon.awssdk.services.sqs.model.DeleteMessageRequest;
 import software.amazon.awssdk.services.sqs.model.Message;
 import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.LinkedHashMap;
@@ -145,7 +141,7 @@ public class SnsService {
         }
     }
 
-    @Scheduled(fixedDelay = 60000, initialDelay = 10000)
+    @Scheduled(cron = "0 * 10-14 * * *")
     public void getReplies() {
         log.info("Running scheduled job to process inbound reply messages from queue sns-reply-queue");
         if (StringUtils.isEmpty(this.replyQueueUrl)) {

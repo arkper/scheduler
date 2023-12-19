@@ -1,16 +1,13 @@
 package com.modern.office.sns;
 
-import com.modern.office.scheduler.AppConfig;
+import com.modern.office.config.AppConfig;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.URL;
 import java.util.Objects;
 
