@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -70,7 +71,7 @@ public class CorrespondenceReportService {
         if (request.fromRecallDate() != null) {
             sql.append(" and patient_recalls.recall_dt between :fromRecallDate and :toRecallDate");
         }
-        if (!StringUtils.isEmpty(request.insurances())) {
+        if (!CollectionUtils.isEmpty(request.insurances())) {
             sql.append(" and patient_insurances.insurance_no IN (")
                     .append(request.insurances())
                     .append(")");

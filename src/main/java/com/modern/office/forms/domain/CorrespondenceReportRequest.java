@@ -1,6 +1,7 @@
 package com.modern.office.forms.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public record CorrespondenceReportRequest(
     LocalDate fromLastExamDate,
@@ -9,5 +10,5 @@ public record CorrespondenceReportRequest(
     LocalDate toBirthDate,
     LocalDate fromRecallDate,
     LocalDate toRecallDate,
-    String insurances,
+    List<Integer> insurances,
     Integer recallType) {}
