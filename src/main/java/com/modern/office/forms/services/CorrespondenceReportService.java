@@ -12,6 +12,7 @@ import org.springframework.util.CollectionUtils;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -73,7 +74,7 @@ public class CorrespondenceReportService {
         }
         if (!CollectionUtils.isEmpty(request.insurances())) {
             sql.append(" and patient_insurances.insurance_no IN (")
-                    .append(request.insurances())
+                    .append(request.insurances().stream().map(String::valueOf).collect(Collectors.joining(",")))
                     .append(")");
         }
         if (request.recallType() != null && request.recallType() != 0) {
