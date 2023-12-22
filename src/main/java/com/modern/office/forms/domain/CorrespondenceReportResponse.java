@@ -17,6 +17,8 @@ public record CorrespondenceReportResponse(
         String eMail,
         Date lastExamDate,
         Date birthDate,
+
+        Integer age,
         String insuranceName
 
 ) {

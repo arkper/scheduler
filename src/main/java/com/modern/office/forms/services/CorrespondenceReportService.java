@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.sql.DataSource;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CorrespondenceReportService {
     private static final String SQL = "SELECT distinct patient.patient_no, patient.last_name, patient.first_name, address.address1, address.address2, address.city, code.description AS state, address.zip, " +
-            "address.phone1, address.phone2, patient.eMail_address, patient.last_exam_date, patient.birth_date, insurance_name " +
+            "address.phone1, address.phone2, patient.eMail_address, patient.last_exam_date, patient.birth_date, insurance_name, datediff(year, patient.birth_date, SYSDATETIME()) as age " +
             "FROM (((((address INNER JOIN " +
             "patient ON address.address_no = patient.address_no) INNER JOIN " +
             "patient_insurances ON patient.patient_no = patient_insurances.patient_no) INNER JOIN " +
@@ -51,6 +52,7 @@ public class CorrespondenceReportService {
                             rs.getString("eMail_address"),
                             rs.getDate("last_exam_date"),
                             rs.getDate("birth_date"),
+                            rs.getInt("age"),
                             rs.getString("insurance_name")
                     )
             );
