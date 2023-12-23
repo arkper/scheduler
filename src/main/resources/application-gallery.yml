@@ -36,42 +36,55 @@ scheduler:
   - 127.0.0.1
   - 0:0:0:0:0:0:0:1
 
-  providers: 8,20
+  providers: 3,26
   insurances:
-    - AETNA,48
-    - AFFINITY,43
-    - ALLIED,74
-    - ANTHEM,86
-    - CIGNA,54
-    - DC 37,18
-    - ELDERSERVE,60 
-    - EMPIRE BLUE CROSS BLUE SHIELD,30
-    - EMPIRE BLUE CROSS HEALTH PLUS,46
-    - EYEMED,50
-    - CENTER PLAN FOR HEALTHY LEAVING,81
-    - FIDELIS,52
-    - HEALTH FIRST,91
-    - HEALTHCARE PARTNERS,41
-    - HIP HELATH PLAN OF GREATER NEW YORK NEW YORK,4
-    - HORIZON,92
-    - GEHA-ASA,79
-    - GHI,11
-    - INTEGRA,93
-    - LOCAL 1199,6
-    - MAGNACARE,61
-    - MEDICAID,2
-    - METLIFE,94
-    - METROPLUS,47
-    - MEDICARE,1
-    - OXFORD HEALTH PLAN,80
-    - SENIOR WHOLE HEALTH,70
-    - UFT,31 
-    - UNITED HEALTHCARE,63
-    - VNS CHOICE,45
-    - VSP,32
-    - WELLCARE,33
-  
-  allowed-phones: 
+    - Aetna,83
+    - Affinity,99
+    - Amerigroup Community Plan,82
+    - Avesis Vision,112
+    - BLOCK VISION,106
+    - Cigna,103
+    - CIGNA HEALTH AND LIFE INSURANCE,92
+    - CPS OPTICAL,107
+    - CSA Welfare Fund,101
+    - DAVISVISION,94
+    - DAVISVISION 32BJ,87
+    - Empire Blue Cross Blue Shield,81
+    - EMPIRE BLUECROSS BLUESHIELD,89
+    - EyeMed,96
+    - FIDELIS CARE,85
+    - GHI - NY (Group Health, Inc.) ,80
+    - HEALTH FIRST,108
+    - HEALTH FIRST/ MEDICARE,84
+    - HEALTH FIRST/Davis Vision ,93
+    - HealthCare Partners, IPA,102
+    - HEALTHPLUS/ AMERIGROUP,91
+    - Hip - Health Plan Of New York,79
+    - HUMANA,111
+    - Local 1199,1
+    - LOCAL1180 CWA,65
+    - LOCAL1199 GREATER NY FUND,67
+    - LOCAL1199 NATIONAL BENEFIT FUND,66
+    - LOCAL237 teamsters active/retire,31
+    - LOCAL3487-S,38
+    - LOCAL371 SOCIAL SERVICE ,41
+    - LOCAL389 DISTRICT COUNCIL,42
+    - MAGNACARE,105
+    - Metroplus Health Plan,78
+    - National Government Services,77
+    - NATIONAL VISION ADMINISTRATORS,104
+    - New York Medicaid,98
+    - Oxford Helath Plans,76
+    - SELF PAY,110
+    - Spectera,100
+    - UFT,97
+    - United Healthcare,75
+    - VISION BENEFITS OF AMERICA,109
+    - VSP ,95
+    - VSP /GUARDIAN ANYTIME.COM,86
+    - WellCare Health Plans, Inc,90
+
+  allowed-phones:
  
   topic-incoming: arn:aws:sns:us-east-1:622853243487:topic1
 
