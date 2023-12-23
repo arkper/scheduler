@@ -1,2 +1,10 @@
-package com.modern.office.forms.domain;public class ReleaseInfoReport {
+package com.modern.office.forms.domain;
+
+import lombok.Data;
+
+import java.util.List;
+
+@Data
+public class ReleaseInfoReport {
+    private List<ReleaseInfo> data;
 }

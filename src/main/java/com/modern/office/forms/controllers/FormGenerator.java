@@ -2,6 +2,7 @@ package com.modern.office.forms.controllers;
 
 import com.modern.office.forms.domain.Company;
 import com.modern.office.forms.domain.FormData;
+import com.modern.office.forms.domain.ReleaseInfoReport;
 import com.modern.office.forms.services.ReportGeneratorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,10 @@ public class FormGenerator {
     @Value("${office-forms.document-local-folder}")
     private String documentLocalFolder;
 
+    @PostMapping("/release-report/generate")
+    public byte[] generateReleaseLegacyReport(@RequestBody ReleaseInfoReport releaseInfoReport) {
+        return this.reportGeneratorService.generateReleaseInfoReportLegacy(releaseInfoReport);
+    }
     @RequestMapping(value = "/{file-name}", method = RequestMethod.GET, produces = "application/pdf")
     public ResponseEntity<InputStreamResource> downloadPDFFile(@PathVariable("file-name") final String fileName)
             throws IOException {

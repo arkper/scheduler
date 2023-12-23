@@ -42,7 +42,9 @@ public class VoiceReminderService {
             new DefaultMapEntry("October", "Октября"),
             new DefaultMapEntry("November", "Ноября"),
             new DefaultMapEntry("December", "Декабря"),
-            new DefaultMapEntry("453 Kings Highway", "353 Кингс Хайвей")
+            new DefaultMapEntry("453 Kings Highway", "353 Кингс Хайвей"),
+            new DefaultMapEntry("446 Myrtle Ave", "446 Мёртл Авеню")
+
     );
 
     private static final String MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Нажмите 1 чтобы подтвердить, или 2 чтобы отменить визит. Нажмите 3 чтобы перенести ваш визит на другой день.";
@@ -53,6 +55,8 @@ public class VoiceReminderService {
     private static final String FINAL_PROMPT_EN = "Thank you very much!";
 
     private static final String LANGUAGE_SELECTION_RU = "Пожалуйста, нажмите 1 чтобы продолжить на русском или 2 для английского";
+
+    private static final String LANGUAGE_SELECTION_EN = "Please press 1 to continue in English or 2 to switch to Russian";
 
     private final SchedulerApiService schedulerApiService;
     private final ConnectClient connectClient;
@@ -69,6 +73,9 @@ public class VoiceReminderService {
     private String company;
     @Value("${office-forms.company-address}")
     private String address;
+
+    @Value("${office-forms.entry-prompt:RU}")
+    private String entryPrompt;
 
     @Scheduled(cron = "0 0 14 * * *", zone = "America/New_York")
     public void processNotifications() {
@@ -97,7 +104,7 @@ public class VoiceReminderService {
                 "messageEn", messages[1],
                 "finalMessageRu", FINAL_PROMPT_RU,
                 "finalMessageEn", FINAL_PROMPT_EN,
-                "languageSelectionPrompt", LANGUAGE_SELECTION_RU);
+                "languageSelectionPrompt", this.entryPrompt.equals("RU") ? LANGUAGE_SELECTION_RU : LANGUAGE_SELECTION_EN);
 
         StartOutboundVoiceContactRequest request = StartOutboundVoiceContactRequest.builder()
                 .instanceId(this.instanceId)

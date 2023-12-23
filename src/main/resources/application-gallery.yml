@@ -14,14 +14,16 @@ spring:
       dialect: "org.hibernate.dialect.SQLServer2012Dialect"
 
 office-forms:
-  company: Modern Optical
-  company-address: 453 Kings Highway
+  company: Optical Gallery
+  company-address: 446 Myrtle Ave
   company-city: Brooklyn
   company-state: NY
-  company-zip: 11223
-  company-phone: (718) 336-3090
+  company-zip: 11205
+  company-phone: (718) 246-2020
+  office-forms:
+  entry-prompt: EN
 
-  document-folder: o:/data/edocuments/
+  document-folder: o:/edocuments/
   document-local-folder: c:/officemate/data/edocuments/
 
 scheduler:
@@ -79,5 +81,5 @@ aws:
     # reply-queue-url:
   connect:
     instanceId: fe126881-6f74-4414-b589-a7e8400c1d55
-    contactFlowId: 23b2f56c-edde-4273-9058-4f4f617830db
+    contactFlowId: 2b2722d4-59b7-4271-8c19-e4f48f520375
     queueId: a3a2d0e9-90cd-48ff-b82b-714b09fa3721

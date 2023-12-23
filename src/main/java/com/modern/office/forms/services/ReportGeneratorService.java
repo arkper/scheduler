@@ -1,18 +1,16 @@
 package com.modern.office.forms.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.modern.office.forms.domain.Company;
-import com.modern.office.forms.domain.DocType;
-import com.modern.office.forms.domain.FormData;
-import com.modern.office.forms.domain.FormType;
 import com.modern.office.domain.Address;
 import com.modern.office.domain.Document;
 import com.modern.office.domain.HippaDocument;
+import com.modern.office.forms.domain.*;
 import com.modern.office.repository.DocumentRepository;
 import com.modern.office.repository.HippaDocumentRepository;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JsonDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
@@ -33,6 +31,10 @@ import java.util.UUID;
 @Service
 @Slf4j
 public class ReportGeneratorService {
+    private static final Map<Class<?>, Pair<DocType, JasperReport>> FORMS_INFO = new HashMap<>();
+    private static final Map<DocType, JasperReport> FORMS_MAP = new HashMap<>();
+    private final DocumentRepository documentRepository;
+    private final HippaDocumentRepository hippaDocumentRepository;
     @Value("${office-forms.company}")
     private String company;
     @Value("${office-forms.company-address}")
@@ -45,13 +47,6 @@ public class ReportGeneratorService {
     private String companyZip;
     @Value("${office-forms.company-phone}")
     private String companyPhone;
-
-    private static final Map<Class<?>, Pair<DocType, JasperReport>> FORMS_INFO = new HashMap<>();
-    private static final Map<DocType, JasperReport> FORMS_MAP = new HashMap<>();
-
-    private final DocumentRepository documentRepository;
-    private final HippaDocumentRepository hippaDocumentRepository;
-
     @Value("${office-forms.document-folder}")
     private String documentFolder;
     @Value("${office-forms.document-local-folder}")
@@ -66,6 +61,30 @@ public class ReportGeneratorService {
         FORMS_MAP.put(DocType.ReleaseOfMedicalInfo, compileReport(DocType.ReleaseOfMedicalInfo.getTemplate()));
         FORMS_MAP.put(DocType.MedicaidEyeglasses, compileReport(DocType.MedicaidEyeglasses.getTemplate()));
         FORMS_MAP.put(DocType.TransportationApproval, compileReport(DocType.TransportationApproval.getTemplate()));
+        compileReport("/reports/release-legacy.jrxml");
+    }
+
+    private static JasperReport compileReport(String reportTemplatePath) {
+        final JasperReport report;
+        try (InputStream reportTemplateStream = ReportGeneratorService.class.getResourceAsStream(reportTemplatePath)) {
+            report = JasperCompileManager.compileReport(reportTemplateStream);
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+        return report;
+    }
+
+    public byte[] generateReleaseInfoReportLegacy(ReleaseInfoReport releaseInfoReport) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try (InputStream reportTemplateStream = this.getClass().getResourceAsStream("/reports/release-legacy.jasper");
+             ByteArrayInputStream reportContentStream = new ByteArrayInputStream(objectMapper.writeValueAsBytes(releaseInfoReport))) {
+            JasperReport report = (JasperReport) JRLoader.loadObject(reportTemplateStream);
+            JsonDataSource jsonDataSource = new JsonDataSource(reportContentStream, "data");
+            JasperPrint jasperPrint = JasperFillManager.fillReport(report, null, jsonDataSource);
+            return JasperExportManager.exportReportToPdf(jasperPrint);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Company getCompany() {
@@ -126,15 +145,5 @@ public class ReportGeneratorService {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private static JasperReport compileReport(String reportTemplatePath) {
-        final JasperReport report;
-        try (InputStream reportTemplateStream = ReportGeneratorService.class.getResourceAsStream(reportTemplatePath)) {
-            report = JasperCompileManager.compileReport(reportTemplateStream);
-        } catch (JRException | IOException e) {
-            throw new RuntimeException(e);
-        }
-        return report;
     }
 }
