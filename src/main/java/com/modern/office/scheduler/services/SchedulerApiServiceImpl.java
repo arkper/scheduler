@@ -61,8 +61,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 	@Override
 	public List<Insurance> getInsurances() {
 		return appConfig.getInsurances().stream()
-				.map(s -> Insurance.builder().insuranceNo(Integer.parseInt(StringUtils.substringAfter(s, ",")))
-						.insuranceName(StringUtils.substringBefore(s, ",")).build())
+				.map(s -> Insurance.builder().insuranceNo(Integer.parseInt(StringUtils.substringAfterLast(s, ",")))
+						.insuranceName(StringUtils.substringBeforeLast(s, ",")).build())
 				.collect(Collectors.toList());
 	}
 
