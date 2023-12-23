@@ -28,7 +28,7 @@ public class Address
 	private String city;
 	
 	@Column(name = "state")
-	private int stateNo;
+	private Integer stateNo;
 
 	@Transient
 	private String state;
