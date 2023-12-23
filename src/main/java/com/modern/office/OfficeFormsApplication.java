@@ -51,6 +51,7 @@ public class OfficeFormsApplication {
 
 		// Write times as a String instead of a Long so its human readable.
 		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 		mapper.registerModule(new JavaTimeModule());
 
 		return mapper;

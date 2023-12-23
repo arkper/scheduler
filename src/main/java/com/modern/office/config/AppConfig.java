@@ -78,13 +78,4 @@ public class AppConfig {
 				.credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
 				.build();
 	}
-
-	@Bean
-	public ObjectMapper objectMapper()
-	{
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-		return mapper;
-	}
-
 }
