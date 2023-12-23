@@ -43,18 +43,18 @@ export class SigninSheetComponent {
   gridOptions: GridOptions = {
     rowHeight: 40,
     columnDefs : [
-        { field: "patientNo", flex: 25},
-        { field: 'lastName', flex: 50},
-        { field: 'firstName', flex: 50},
-        { field: 'birthDate', flex: 50, cellRenderer: (value: any) => this.datepipe.transform(value.data['birthDate'])}        
+        { field: "patientNo", flex: 25, sortable: true, filter: 'agNumberColumnFilter'},
+        { field: 'lastName', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
+        { field: 'firstName', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
+        { field: 'birthDate', flex: 50, sortable: true, filter: 'agDateColumnFilter', cellRenderer: (value: any) => this.datepipe.transform(value.data['birthDate'])}        
     ]};
     gridOptions1: GridOptions = {
       rowHeight: 40,
       columnDefs : [
-          { field: "apptName", flex: 100},
-          { field: 'apptDate', flex: 100, cellRenderer: (value: any) => this.datepipe.transform(value.data['apptDate'])},
-          { field: 'apptStartTime', flex: 50},
-          { field: 'provider', flex: 100}        
+          { field: "apptName", flex: 100, sortable: true, filter: 'agTextColumnFilter'},
+          { field: 'apptDate', flex: 100, sortable: true, filter: 'agDateColumnFilter', cellRenderer: (value: any) => this.datepipe.transform(value.data['apptDate'])},
+          { field: 'apptStartTime', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
+          { field: 'provider', flex: 100, sortable: true, filter: 'agTextColumnFilter'}        
       ]};
   
   clearSelection() {

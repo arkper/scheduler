@@ -3,7 +3,6 @@ import { CellClickedEvent, ColDef, GridApi, GridOptions } from 'ag-grid-communit
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { OfficeApiService } from '../services/office-api.service';
-import { settings } from './patient-list.settings';
 import { Patient, Document, EMPTY_DOCUMENT } from '../store/model/patient.model';
 import { Store } from '@ngrx/store';
 import { PatientActionType } from '../store/actions/patient.action';
@@ -38,17 +37,17 @@ export class PatientListComponent {
   gridOptions: GridOptions = {
     rowHeight: 30,
     columnDefs : [
-        { field: "patientNo", flex: 25},
-        { field: 'lastName', flex: 50},
-        { field: 'firstName', flex: 50},
-        { field: 'birthDate', flex: 50, cellRenderer: (value: any) => this.datepipe.transform(value.data['birthDate'])}        
+        { field: "patientNo", flex: 25, sortable: true, filter: 'agNumberColumnFilter'},
+        { field: 'lastName', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
+        { field: 'firstName', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
+        { field: 'birthDate', flex: 50, sortable: true, filter: 'agDateColumnFilter', cellRenderer: (value: any) => this.datepipe.transform(value.data['birthDate'])}        
     ]
   }
 
   docColumnDefs: ColDef[] = [
-    { field: 'formType', flex: 50},
-    { field: 'recordedOn', flex: 50, cellRenderer: (value: any) => this.datepipe.transform(value.data['recordedOn'])},
-    { field: 'expiresOn', flex: 50, cellRenderer: (value: any) => this.datepipe.transform(value.data['expiresOn'])}
+    { field: 'formType', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
+    { field: 'recordedOn', flex: 50, sortable: true, filter: 'agDateColumnFilter', cellRenderer: (value: any) => this.datepipe.transform(value.data['recordedOn'])},
+    { field: 'expiresOn', flex: 50, sortable: true, filter: 'agDateColumnFilter', cellRenderer: (value: any) => this.datepipe.transform(value.data['expiresOn'])}
   ];
 
   public defaultColDef: ColDef = {
