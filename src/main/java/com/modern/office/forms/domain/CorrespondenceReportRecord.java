@@ -1,9 +1,8 @@
 package com.modern.office.forms.domain;
 
-import java.time.LocalDate;
 import java.util.Date;
 
-public record CorrespondenceReportResponse(
+public record CorrespondenceReportRecord(
         Integer patientNo,
         String lastName,
         String firstName,

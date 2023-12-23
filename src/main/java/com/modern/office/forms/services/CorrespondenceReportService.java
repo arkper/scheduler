@@ -2,16 +2,14 @@ package com.modern.office.forms.services;
 
 import com.modern.office.config.AppConfig;
 import com.modern.office.forms.domain.CorrespondenceReportRequest;
-import com.modern.office.forms.domain.CorrespondenceReportResponse;
+import com.modern.office.forms.domain.CorrespondenceReportRecord;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.sql.DataSource;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +28,7 @@ public class CorrespondenceReportService {
     private final DataSource dataSource;
     private final AppConfig appConfig;
 
-    public List<CorrespondenceReportResponse> getReportData(CorrespondenceReportRequest request) {
+    public List<CorrespondenceReportRecord> getReportData(CorrespondenceReportRequest request) {
         try {
             var jdbcTemplate = new NamedParameterJdbcTemplate(this.dataSource);
             var paramSource = new MapSqlParameterSource();
@@ -38,7 +36,7 @@ public class CorrespondenceReportService {
             this.parameterize(request, paramSource);
 
             return jdbcTemplate.query(this.getSql(request), paramSource,
-                    (rs, rowNum) -> new CorrespondenceReportResponse(
+                    (rs, rowNum) -> new CorrespondenceReportRecord(
                             rs.getInt("patient_no"),
                             rs.getString("last_name"),
                             rs.getString("first_name"),
