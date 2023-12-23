@@ -1,0 +1,83 @@
+server:
+  port: 9988
+
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost;databaseName=OMSQLDB;encrypt=false
+    username: OM_USER
+    password: OMSQL@2004
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    show-sql: false
+    hibernate.ddl-auto: none
+    properties:
+      dialect: "org.hibernate.dialect.SQLServer2012Dialect"
+
+office-forms:
+  company: Modern Optical
+  company-address: 453 Kings Highway
+  company-city: Brooklyn
+  company-state: NY
+  company-zip: 11223
+  company-phone: (718) 336-3090
+
+  document-folder: o:/data/edocuments/
+  document-local-folder: c:/officemate/data/edocuments/
+
+scheduler:
+  user: user123
+  pwd: password123
+  white-list: 
+  - 18.189.210.54
+  - 185.183.92.88
+  - 67.81.99.20
+  - 127.0.0.1
+  - 0:0:0:0:0:0:0:1
+
+  providers: 8,20
+  insurances:
+    - AETNA,48
+    - AFFINITY,43
+    - ALLIED,74
+    - ANTHEM,86
+    - CIGNA,54
+    - DC 37,18
+    - ELDERSERVE,60 
+    - EMPIRE BLUE CROSS BLUE SHIELD,30
+    - EMPIRE BLUE CROSS HEALTH PLUS,46
+    - EYEMED,50
+    - CENTER PLAN FOR HEALTHY LEAVING,81
+    - FIDELIS,52
+    - HEALTH FIRST,91
+    - HEALTHCARE PARTNERS,41
+    - HIP HELATH PLAN OF GREATER NEW YORK NEW YORK,4
+    - HORIZON,92
+    - GEHA-ASA,79
+    - GHI,11
+    - INTEGRA,93
+    - LOCAL 1199,6
+    - MAGNACARE,61
+    - MEDICAID,2
+    - METLIFE,94
+    - METROPLUS,47
+    - MEDICARE,1
+    - OXFORD HEALTH PLAN,80
+    - SENIOR WHOLE HEALTH,70
+    - UFT,31 
+    - UNITED HEALTHCARE,63
+    - VNS CHOICE,45
+    - VSP,32
+    - WELLCARE,33
+  
+  allowed-phones: 
+ 
+  topic-incoming: arn:aws:sns:us-east-1:622853243487:topic1
+
+aws:
+  sqs:
+    reply-queue-url: https://sqs.us-east-1.amazonaws.com/622853243487/sns-reply-queue
+    # reply-queue-url:
+  connect:
+    instanceId: fe126881-6f74-4414-b589-a7e8400c1d55
+    contactFlowId: 23b2f56c-edde-4273-9058-4f4f617830db
+    queueId: a3a2d0e9-90cd-48ff-b82b-714b09fa3721
