@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { PatientActionType } from '../store/actions/patient.action';
 import { AppState } from '../store/reducers';
 import { DocumentActionType } from '../store/actions/document.action';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -17,12 +18,6 @@ import { DocumentActionType } from '../store/actions/document.action';
   styleUrls: ['./patient-list.component.scss']
 })
 export class PatientListComponent {
-  public docColumnDefs: ColDef[] = [
-    { field: 'formType', flex: 50},
-    { field: 'recordedOn', flex: 50},
-    { field: 'expiresOn', flex: 50}
-  ];
-
   patient: Patient | null = null;
   doc: Document | null = null;
 
@@ -31,10 +26,30 @@ export class PatientListComponent {
 
   gridData: any[] = [];
   
-  constructor(private apiService: OfficeApiService, private router: Router, private store: Store<AppState>) {
+  constructor(
+    private apiService: OfficeApiService, 
+    private router: Router, 
+    private store: Store<AppState>,
+    private datepipe: DatePipe) {
     this.store.select(state => state.selectedPatient.patients)
       .subscribe((selectedPatients) => {this.onPatientSelectionChanged(selectedPatients)});
   }
+
+  gridOptions: GridOptions = {
+    rowHeight: 30,
+    columnDefs : [
+        { field: "patientNo", flex: 25},
+        { field: 'lastName', flex: 50},
+        { field: 'firstName', flex: 50},
+        { field: 'birthDate', flex: 50, cellRenderer: (value: any) => this.datepipe.transform(value.data['birthDate'])}        
+    ]
+  }
+
+  docColumnDefs: ColDef[] = [
+    { field: 'formType', flex: 50},
+    { field: 'recordedOn', flex: 50, cellRenderer: (value: any) => this.datepipe.transform(value.data['recordedOn'])},
+    { field: 'expiresOn', flex: 50, cellRenderer: (value: any) => this.datepipe.transform(value.data['expiresOn'])}
+  ];
 
   public defaultColDef: ColDef = {
     sortable: true,
@@ -43,8 +58,7 @@ export class PatientListComponent {
 
   public docRowData$!: Observable<Document[]>;
   public hippaRowData$!: Observable<Document[]>;
-
-  gridOptions: GridOptions = settings;
+  
   private gridApi: GridApi | null = null;
 
   onPatientSelectionChanged(currentSelection: Patient[])

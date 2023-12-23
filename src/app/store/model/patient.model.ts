@@ -53,7 +53,7 @@ export interface Appointment {
   apptNo: number,
   apptName: string,
   apptDate: string,
-  apptTime: string,
+  apptStartTime: string,
   provider: string
 }
 
@@ -78,4 +78,15 @@ export interface Provider {
   providerFirstName: string,
   providerLastName: string,
   providerName: string
+};
+
+export interface CorrespondenceReportRequest {
+  fromBirthDate: string,
+  toBirthDate: string,
+  fromLastExamDate: string,
+  toLastExamDate: string,
+  fromRecallDate: string | null,
+  toRecallDate: string | null,
+  insurances: number[] | null,
+  recallType: number
 }

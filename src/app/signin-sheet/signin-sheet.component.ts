@@ -5,6 +5,7 @@ import { Appointment, Patient, Provider } from '../store/model/patient.model';
 import { SigPadComponent } from '../sig-pad/sig-pad.component';
 import { Subject } from 'rxjs';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-signin-sheet',
@@ -22,7 +23,10 @@ export class SigninSheetComponent {
   providers!: Provider[];
   provider!: string;
 
-  constructor(private apiService: OfficeApiService, private snackBar: MatSnackBar){
+  constructor(
+    private apiService: OfficeApiService, 
+    private snackBar: MatSnackBar,
+    private datepipe: DatePipe){
     this.providers = apiService.providers;
     this.provider = this.providers.at(0)?.providerName ?? "";
   }
@@ -42,13 +46,13 @@ export class SigninSheetComponent {
         { field: "patientNo", flex: 25},
         { field: 'lastName', flex: 50},
         { field: 'firstName', flex: 50},
-        { field: 'birthDate', flex: 50 }        
+        { field: 'birthDate', flex: 50, cellRenderer: (value: any) => this.datepipe.transform(value.data['birthDate'])}        
     ]};
     gridOptions1: GridOptions = {
       rowHeight: 40,
       columnDefs : [
           { field: "apptName", flex: 100},
-          { field: 'apptDate', flex: 100},
+          { field: 'apptDate', flex: 100, cellRenderer: (value: any) => this.datepipe.transform(value.data['apptDate'])},
           { field: 'apptStartTime', flex: 50},
           { field: 'provider', flex: 100}        
       ]};

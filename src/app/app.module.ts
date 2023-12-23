@@ -16,6 +16,10 @@ import { HttpClientModule } from '@angular/common/http'
 import { AgGridModule } from 'ag-grid-angular';
 import { ConsentFormComponent } from './forms/consent-form/consent-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { DatePipe } from '@angular/common';
@@ -30,6 +34,8 @@ import { EyeGlassesFormComponent } from './forms/eye-glasses-form/eye-glasses-fo
 import { TransportationFormComponent } from './forms/transportation-form/transportation-form.component';
 import { BaseFormComponent } from './forms/base-form/base-form.component';
 import { SigninSheetViewComponent } from './signin-sheet-view/signin-sheet-view.component';
+import { CorListComponent } from './cor-list/cor-list.component';
+import { FileSaverModule } from 'ngx-filesaver';
 
 const ROUTES: Routes = [
   {path: 'patient-list', component: PatientListComponent},
@@ -40,7 +46,7 @@ const ROUTES: Routes = [
   {path: 'signin', component: SigninSheetComponent},
   {path: 'signin-sheet-view', component: SigninSheetViewComponent},
   {path: 'eyeglasses-form', component: EyeGlassesFormComponent},
-  
+  {path: 'cor-list', component: CorListComponent},
   {path: 'doc-viewer', component: DocViewerComponent},
   { path: '',
     redirectTo: '/patient-list',
@@ -60,7 +66,8 @@ const ROUTES: Routes = [
     EyeGlassesFormComponent,
     TransportationFormComponent,
     BaseFormComponent,
-    SigninSheetViewComponent
+    SigninSheetViewComponent,
+    CorListComponent
   ],
   imports: [
     BrowserModule,
@@ -71,14 +78,20 @@ const ROUTES: Routes = [
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
+    MatOptionModule,
+    MatChipsModule,
+    MatSelectModule,
     FormsModule,
     MatInputModule,
+    MatDatepickerModule, 
+    MatNativeDateModule, 
     HttpClientModule,
     AgGridModule,
     RouterModule.forRoot(ROUTES),
     PdfViewerModule,
     MatRadioModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    FileSaverModule
   ],
   providers: [DatePipe, MatSnackBar],
   bootstrap: [AppComponent]

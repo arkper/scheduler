@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
-import { Address, Appointment, Code, Company, Document, Patient, PatientInsurance, Provider, SigninRecord } from '../store/model/patient.model';
+import { Address, Appointment, Code, Company, CorrespondenceReportRequest, Document, Patient, PatientInsurance, Provider, SigninRecord } from '../store/model/patient.model';
 import { DatePipe } from '@angular/common';
 
 const STATE_CODE_CATEGORY: number = 32;
@@ -22,6 +22,8 @@ export class OfficeApiService {
 
   providers!: Provider[];
 
+  insurances!: {insuranceNo: number, insuranceName: string};
+
   constructor(private http: HttpClient, private datepipe: DatePipe) { 
     this.getCodes(STATE_CODE_CATEGORY)
       .subscribe({next: codes => OfficeApiService.stateCodes = codes});
@@ -32,7 +34,9 @@ export class OfficeApiService {
     this.fetchCompany()
       .subscribe({next: c => this.company = c}); 
     this.getProviders()
-      .subscribe({next: data => this.providers = data});   
+      .subscribe({next: data => this.providers = data});
+    this.getInsurances()
+      .subscribe({next: data => this.insurances = data});   
   }
 
   getPatientsByName(lastName: string, firstName: string): Observable<Patient[]> {
@@ -78,7 +82,7 @@ export class OfficeApiService {
     if (environment.production) {
       return this.http.get<any[]>(`/patient-appointments/${patientNo}/${startDate}/${endDate}`, this.getHttpOptions());
     } else {
-      return of([{apptNo: 1, apptName: "Arkady Perepelyuk", apptDate: "2023-12-17", apptTime: "13:30", provider: "Steven Givner"}]);
+      return of([{apptNo: 1, apptName: "Arkady Perepelyuk", apptDate: "2023-12-17", apptStartTime: "13:30", provider: "Steven Givner"}]);
     }
   }
 
@@ -118,17 +122,6 @@ export class OfficeApiService {
     }
   }
 
-  getHttpOptions() {
-    var headers_object = new HttpHeaders();
-    headers_object.append('Content-Type', 'application/json');
-    headers_object.append("Authorization", "Basic " + btoa("user123:password123"));
-    headers_object.append("Access-Control-Allow-Origin", '*');
-    const httpOptions = {
-      headers: headers_object
-    };
-    return httpOptions;
-  }
-
   generateDocument(data: any): Observable<any>
   {
     return this.http.post(`/forms/generate`, data, {responseType: 'text'});
@@ -137,6 +130,30 @@ export class OfficeApiService {
   submitDocument(data: any, formType: string): Observable<any>
   {
     return this.http.post(`/forms/${formType}/generate`, data, {responseType: 'text'});
+  }
+
+  getCorrespondenceReport(request: CorrespondenceReportRequest): Observable<any> {
+    if (environment.production) {    
+      return this.http.post('/correspondence', request, this.getHttpOptions());
+    } else {
+      return of([{patientNo: 1, lastName: "Perepelyuk", firstName: 'Arkady', birthDate: "1962-12-17", lastExamDate: "2022-12-09"}]);
+    }   
+  }
+
+  downloadReport(request: CorrespondenceReportRequest): Observable<any> {
+    if (environment.production) {    
+      return this.http.post('/correspondence/download', request, {responseType: 'blob'});
+    } else {
+      return of([{patientNo: 1, lastName: "Perepelyuk", firstName: 'Arkady', birthDate: "1962-12-17", lastExamDate: "2022-12-09"}]);
+    }   
+  }
+
+  getInsurances(): Observable<any> {
+    if (environment.production) {    
+      return this.http.get('/insurances', this.getHttpOptions());
+    } else {
+      return of([{insuranceNo: 1, insuranceName: 'Aetna'}, {insuranceNo: 2, insuranceName: "Signa"}, {insuranceNo: 3, insuranceName: 'VSP'}]);
+    }
   }
 
   getState(stateNo: number | undefined): string | undefined{
@@ -241,5 +258,27 @@ export class OfficeApiService {
       description: "Spouse"
     },
   ]);
+  }
+
+  getHttpOptions() {
+    var headers_object = new HttpHeaders();
+    headers_object.append('Content-Type', 'application/json');
+    headers_object.append("Authorization", "Basic " + btoa("user123:password123"));
+    headers_object.append("Access-Control-Allow-Origin", '*');
+    const httpOptions = {
+      headers: headers_object
+    };
+    return httpOptions;
+  }
+
+  getHttpOptionsFor(contentType: string) {
+    var headers_object = new HttpHeaders();
+    headers_object.append('Content-Type', contentType);
+    headers_object.append("Authorization", "Basic " + btoa("user123:password123"));
+    headers_object.append("Access-Control-Allow-Origin", '*');
+    const httpOptions = {
+      headers: headers_object
+    };
+    return httpOptions;
   }
 }

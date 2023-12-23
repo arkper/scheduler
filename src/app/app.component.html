@@ -2,7 +2,7 @@
   <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1>Office Forms</h1>
+  <h1><a href="/index.html">Office Forms</a></h1>
 </mat-toolbar>
 <mat-sidenav-container autosize="true">
   <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? 'false' : 'true'">
@@ -22,13 +22,19 @@
       <a mat-list-item routerLink="/signin-sheet-view" routerLinkActive="active">
         <span class="entry">
           <mat-icon>assessment</mat-icon>
-          <span *ngIf="!isCollapsed">Sign-in</span>
+          <span *ngIf="!isCollapsed">Sign-in Sheet</span>
         </span>
       </a>
       <a mat-list-item routerLink="/doc-viewer" routerLinkActive="active">
         <span class="entry">
           <mat-icon>manage_search</mat-icon>
           <span *ngIf="!isCollapsed">View Signed Form</span>
+        </span>
+      </a>
+      <a mat-list-item routerLink="/cor-list" routerLinkActive="active">
+        <span class="entry">
+          <mat-icon>list</mat-icon>
+          <span *ngIf="!isCollapsed">Correspondence List</span>
         </span>
       </a>
     </mat-nav-list>

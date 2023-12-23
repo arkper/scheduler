@@ -13,74 +13,76 @@
     </form>
   </div>
 
-  <ag-grid-angular
-    style="width: 100%; height: 70%"
-    class="ag-theme-alpine"
-    [gridOptions]="gridOptions"
-    (gridReady)="onGridReady($event)"
-    [rowData] = "gridData"
-    (cellClicked)="onCellClicked($event)"
-    (rowDataUpdated)="onRowDataUpdated($event)"
-  ></ag-grid-angular>
+  <div style="height: 300px; width: auto">
+    <ag-grid-angular
+      style="width: 100%; height: 100%"
+      class="ag-theme-alpine"
+      [gridOptions]="gridOptions"
+      (gridReady)="onGridReady($event)"
+      [rowData] = "gridData"
+      (cellClicked)="onCellClicked($event)"
+      (rowDataUpdated)="onRowDataUpdated($event)"
+    ></ag-grid-angular>
+  </div>
 
   <div class="row">
     <div class="column">
-      <div class="header">
+      <div class="header" style="height: 30px">
         <label>E-Documents</label>
       </div>
       <ag-grid-angular
-      style="width: 100%; height: 35%"
-      class="ag-theme-alpine"
-      [columnDefs]="docColumnDefs"
-      [defaultColDef]="defaultColDef"
-      [rowData]="docRowData$ | async"
-      [rowSelection]="'multiple'"
-      [animateRows]="true"
-      (gridReady)="onGridReady($event)"
-      (cellDoubleClicked)="onDocCellDoubleClicked($event)"
-      (cellClicked)="onDocCellClicked($event)"
-    ></ag-grid-angular> 
-    <div class="header">
-      <form>
-        <button matNativeControl mat-raised-button color="primary" (click)="viewDoc()">View Document</button>
-        <button mat-raised-button color="primary" (click)="addNewEDoc()">Add New E-Document</button>
-        <mat-form-field>
-          <select matNativeControl id="edocSelect">
-            <option value="release">Release Of Medical Info</option>
-            <option value="transportation">Transportation Approval</option>
-            <option value="eyeglasses">Medicaid Eyeglasses</option>
-          </select>
-        </mat-form-field>
-      </form>
-    </div>     
+        style="width: 100%; height: 35%"
+        class="ag-theme-alpine"
+        [columnDefs]="docColumnDefs"
+        [defaultColDef]="defaultColDef"
+        [rowData]="docRowData$ | async"
+        [rowSelection]="'multiple'"
+        [animateRows]="true"
+        (gridReady)="onGridReady($event)"
+        (cellDoubleClicked)="onDocCellDoubleClicked($event)"
+        (cellClicked)="onDocCellClicked($event)"
+      ></ag-grid-angular> 
+      <div class="header">
+        <form>
+          <button matNativeControl mat-raised-button color="primary" (click)="viewDoc()">View Document</button>
+          <button mat-raised-button color="primary" (click)="addNewEDoc()">Add New E-Document</button>
+          <mat-form-field>
+            <select matNativeControl id="edocSelect">
+              <option value="release">Release Of Medical Info</option>
+              <option value="transportation">Transportation Approval</option>
+              <option value="eyeglasses">Medicaid Eyeglasses</option>
+            </select>
+          </mat-form-field>
+        </form>
+      </div>     
     </div>
     <div class="column">
-      <div class="header">
+      <div class="header" style="height: 30px">
         <label>HIPAA Documents</label>
       </div>
       <ag-grid-angular
-      style="width: 100%; height: 35%"
-      class="ag-theme-alpine"
-      [columnDefs]="docColumnDefs"
-      [defaultColDef]="defaultColDef"
-      [rowData]="hippaRowData$ | async"
-      [rowSelection]="'multiple'"
-      [animateRows]="true"
-      (gridReady)="onGridReady($event)"
-      (cellDoubleClicked)="onDocCellDoubleClicked($event)"
-      (cellClicked)="onDocCellClicked($event)"
-    ></ag-grid-angular>  
-    <div class="header">
-      <form>
-        <button mat-raised-button color="primary" (click)="viewDoc()">View Document</button>
-        <button mat-raised-button color="primary" (click)="addNewHipaaDoc()">Add New HIPAA Document</button>
+        style="width: 100%; height: 35%"
+        class="ag-theme-alpine"
+        [columnDefs]="docColumnDefs"
+        [defaultColDef]="defaultColDef"
+        [rowData]="hippaRowData$ | async"
+        [rowSelection]="'multiple'"
+        [animateRows]="true"
+        (gridReady)="onGridReady($event)"
+        (cellDoubleClicked)="onDocCellDoubleClicked($event)"
+        (cellClicked)="onDocCellClicked($event)"
+      ></ag-grid-angular>  
+      <div class="header">
+        <form>
+          <button mat-raised-button color="primary" (click)="viewDoc()">View Document</button>
+          <button mat-raised-button color="primary" (click)="addNewHipaaDoc()">Add New HIPAA Document</button>
           <mat-form-field>
-          <select matNativeControl id="hipaaDocSelect">
-            <option value="consent">Consent To Examination</option>
-          </select>
-        </mat-form-field>
-      </form>
-    </div>     
+            <select matNativeControl id="hipaaDocSelect">
+              <option value="consent">Consent To Examination</option>
+            </select>
+          </mat-form-field>
+        </form>
+      </div>     
     </div>
   </div>
 </div>

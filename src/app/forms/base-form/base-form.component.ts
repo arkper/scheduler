@@ -19,7 +19,19 @@ export class BaseFormComponent implements OnInit {
 
   fileName: string = "";
 
-  data: {[k: string]: any} = {};
+  data: {[k: string]: any} = {
+    firstName: this.patient?.firstName,
+    lastName: this.patient?.lastName,
+    address: this.patient?.address?.address1,
+    city: this.patient?.address?.city,
+    state: this.getState(),
+    zip: this.patient?.address?.zip,
+    phone: this.patient?.address?.phone1,
+    dob: this.getDob(),
+    ssn: this.patient?.ssNo,
+    sex: this.patient?.sex,
+    company: this.apiService.company.name
+  };
 
   date: string | null;
 
@@ -52,17 +64,6 @@ export class BaseFormComponent implements OnInit {
     onSigned(event: any) {
       this.signature = event;
   
-      this.data['firstName'] = this.patient?.firstName;
-      this.data['lastName'] = this.patient?.lastName;
-      this.data['address'] = this.patient?.address?.address1;
-      this.data['city'] = this.patient?.address?.city;
-      this.data['state'] = this.getState();
-      this.data['zip'] = this.patient?.address?.zip;
-      this.data['phone'] = this.patient?.address?.phone1;
-      this.data['dob'] = this.getDob();
-      this.data['ssn'] = this.patient?.ssNo;
-      this.data['sex'] = this.patient?.sex,
- 
       this.data['signature'] = this.signature.substring(this.signature.indexOf(',') + 1);
   
       const formData = {

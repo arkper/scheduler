@@ -1,0 +1,74 @@
+<div width="100%" height="50px">
+    <form>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="fill"> 
+                    <mat-label>Enter a birth date range</mat-label> 
+                    <mat-date-range-input [rangePicker]="picker1"> 
+                        <input matStartDate placeholder="Start date" [(ngModel)] = "fromBirthDate" [ngModelOptions]="{standalone: true}"> 
+                        <input matEndDate placeholder="End date" [(ngModel)] = "toBirthDate" [ngModelOptions]="{standalone: true}"> 
+                    </mat-date-range-input> 
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> 
+                    <mat-datepicker-toggle matSuffix [for]="picker1"/> 
+                    <mat-date-range-picker #picker1/> 
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="fill"> 
+                    <mat-label>Enter a last exam date range</mat-label> 
+                    <mat-date-range-input [rangePicker]="picker2"> 
+                        <input matStartDate placeholder="Start date" [(ngModel)] = "fromLastExamDate" [ngModelOptions]="{standalone: true}"> 
+                        <input matEndDate placeholder="End date" [(ngModel)] = "toLastExamDate" [ngModelOptions]="{standalone: true}"> 
+                    </mat-date-range-input> 
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> 
+                    <mat-datepicker-toggle matSuffix [for]="picker2"/> 
+                    <mat-date-range-picker #picker2/> 
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="fill"> 
+                    <mat-label>Enter recall date range</mat-label> 
+                    <mat-date-range-input [rangePicker]="picker3"> 
+                        <input matStartDate placeholder="Start date" [(ngModel)] = "fromRecallDate" [ngModelOptions]="{standalone: true}"> 
+                        <input matEndDate placeholder="End date" [(ngModel)] = "toRecallDate" [ngModelOptions]="{standalone: true}"> 
+                    </mat-date-range-input> 
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> 
+                    <mat-datepicker-toggle matSuffix [for]="picker3"/> 
+                    <mat-date-range-picker #picker3/> 
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <mat-form-field>
+                    <mat-label>Insurances</mat-label>
+                    <mat-select multiple [(value)] = "selectedInsurances">
+                        <mat-option *ngFor="let i of insurances"  [value]="i.insuranceNo">{{ i.insuranceName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>    
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Recall Type:</mat-label>
+                    <mat-select [(value)] = "recallType">
+                      <mat-option *ngFor="let rt of recallTypes"  [value]="rt['id']">{{ rt['desc'] }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="run()">Get Report</button>
+                <button mat-raised-button color="primary" (click)="download()">Download</button>
+            </div>
+        </div>
+    </form>
+</div>
+<mat-label>Row count : {{ rowCount }}</mat-label>
+<div style="height: 500px; width: auto">
+    <ag-grid-angular
+      style="width: 100%; height: 100%"
+      class="ag-theme-alpine"
+      [gridOptions]="gridOptions"
+      [rowData] = "gridData"
+      [suppressMenuHide] = "true"
+      (rowDataUpdated)="onRowDataUpdated($event)"
+    ></ag-grid-angular>
+</div>
