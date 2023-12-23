@@ -17,10 +17,10 @@ public class Patient {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="patient_no")
 	private int patientNo;
-	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "address_no", referencedColumnName = "address_no")
-	private Address address;
+	private Address address = null;
 	
 	@Column(name = "address_no_old")
 	private Integer addressNoOld;
