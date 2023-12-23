@@ -1,6 +1,7 @@
 package com.modern.office.forms.services;
 
 import com.modern.office.forms.domain.CorrespondenceReportRecord;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.eclipse.collections.impl.factory.Lists;
@@ -10,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 @Component
+@Slf4j
 public class ExcelExporter {
     public byte[] createExcelReport(Iterable<CorrespondenceReportRecord> records) throws IOException {
         Workbook workbook = new XSSFWorkbook();
@@ -44,8 +46,14 @@ public class ExcelExporter {
         );
 
         var out = new ByteArrayOutputStream();
+
         workbook.write(out);
-        return out.toByteArray();
+
+        var report = out.toByteArray();
+
+        log.info("Returning report bytes {}",  report.length);
+
+        return report;
     }
 
     private void createCell(Row row, int index, Object value, CellStyle style)
