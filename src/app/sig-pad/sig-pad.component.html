@@ -1,13 +1,15 @@
-<canvas
-  #canvas
-  (touchstart)="startDrawing($event)"
-  (touchmove)="moved($event)"
-  width="500"
-  height="100"
-></canvas>
-<p class="error-message" *ngIf="signatureNeeded">Signature is required</p>
+<div scrollable>
+  <canvas
+    #canvas
+    (touchstart)="startDrawing($event)"
+    (touchmove)="moved($event)"
+    width="500"
+    height="100"
+  ></canvas>
+  <p class="error-message" *ngIf="signatureNeeded">Signature is required</p>
 
-<div class="buttons flex justify-between">
-  <button mat-raised-button color="primary" (click)="clearPad()">Clear</button>
-  <button mat-raised-button color="primary" (click)="savePad()">Sign and Save</button>
+  <div class="buttons flex justify-between">
+    <button mat-raised-button color="primary" (click)="clearPad()">Clear</button>
+    <button mat-raised-button color="primary" (click)="savePad()">Sign and Save</button>
+  </div>
 </div>

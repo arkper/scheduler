@@ -1,4 +1,4 @@
-<div> 
+<div scrollable style = "border: 1px solid black; min-width: 800px;"> 
   <b><u>CONSENT TO EXAMINATION,TREATMENT AND<br />
       Notice of Privacy Practices</u></b>
   <p>
@@ -60,9 +60,8 @@
   <table width="100%">
       <tr>
           <td valign="top" width="300px">Signature of Patient/Relative/Guardian: </td>
-          <td valign="center"><app-sig-pad (signed) = "onSigned($event)"></app-sig-pad></td>
-          <td valign="top">Date: </td>
-          <td valign="top">{{ date }}</td>
+          <td valign="center"><div style = "border: 1px solid black"><app-sig-pad (signed) = "onSigned($event)"></app-sig-pad></div></td>
+          <td valign="top">Date: {{ date }}</td>
       </tr>
   </table>
 </div>

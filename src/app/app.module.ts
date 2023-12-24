@@ -87,12 +87,12 @@ const ROUTES: Routes = [
     MatNativeDateModule, 
     HttpClientModule,
     AgGridModule,
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, {useHash: true}),
     PdfViewerModule,
     MatRadioModule,
     StoreModule.forRoot(reducers),
     FileSaverModule
-  ],
+  ],  
   providers: [DatePipe, MatSnackBar],
   bootstrap: [AppComponent]
 })

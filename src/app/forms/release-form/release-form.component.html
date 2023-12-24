@@ -1,8 +1,9 @@
-	<div class="title">{{ company?.name }}<br />
-	{{ company?.address?.address1 }}<br />
-	{{ company?.address?.city }}, {{ company?.address?.state }} {{ company?.address?.zip }}<br />
-	{{ company?.address?.phone1 }}<br/><br/></div>
-
+<div class="scrollable">
+    <div class="title">{{ company?.name }}<br />
+	  {{ company?.address?.address1 }}<br />
+	  {{ company?.address?.city }}, {{ company?.address?.state }} {{ company?.address?.zip }}<br />
+	  {{ company?.address?.phone1 }}<br/><br/>
+    </div>
 	<b>Patient Information:</b>
 	<table width="100%">
 	    <tr>
@@ -57,7 +58,7 @@
             <td valign="top">Date: <input id="date" size="10" [value]="getDate()"/></td>
         </tr>
     </table>
-    <table width="100%">
+    <table width="85%">
         <tr>
             <td>Referred by:</td>
             <td><input type="checkbox" id="pcp" [checked] = "data['pcp']" (change) = "toggle('pcp')"/>Primary Care Physician</td>
@@ -74,3 +75,4 @@
             <td><input type="checkbox" id="noreferral" [checked] = "data['noreferral']" (change) = "toggle('noreferral')"/>No Referral</td>
         </tr>
     </table>
+</div>
