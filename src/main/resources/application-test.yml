@@ -7,9 +7,30 @@ spring:
     password:
     initialize: true
 
-office-forms:
+office-forms-ru:
+  company: Modern Optical
+  company-address: 453 Kings Highway
+  company-city: Brooklyn
+  company-state: NY
+  company-zip: 11223
+  company-phone: (718) 336-3090
+  entry-prompt: RU
   document-folder: /Users/arkper/projects/documents/
   document-local-folder: /Users/arkper/projects/documents/
+
+office-forms:
+  company: Optical Gallery
+  company-address: 446 Myrtle Ave
+  company-city: Brooklyn
+  company-state: NY
+  company-zip: 11205
+  company-phone: (718) 246-2020
+  office-forms:
+  entry-prompt: EN
+
+  document-folder: /Users/arkper/projects/documents/
+  document-local-folder: /Users/arkper/projects/documents/
+
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -27,3 +48,14 @@ logging:
         SQL: DEBUG
       springframework:
         web: INFO
+
+aws:
+  sqs:
+    # reply-queue-url: https://sqs.us-east-1.amazonaws.com/622853243487/sns-reply-queue
+    reply-queue-url:
+  connect:
+    instanceId: fe126881-6f74-4414-b589-a7e8400c1d55
+    queueId: a3a2d0e9-90cd-48ff-b82b-714b09fa3721
+
+    contactFlowId: 2b2722d4-59b7-4271-8c19-e4f48f520375 # for Optical Gallery
+    #contactFlowId: 23b2f56c-edde-4273-9058-4f4f617830db # for Modern Optica

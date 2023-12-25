@@ -4,7 +4,9 @@ import com.modern.office.domain.Appointment;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.keyvalue.DefaultMapEntry;
+import org.eclipse.collections.api.factory.Maps;
+import org.eclipse.collections.api.tuple.Pair;
+import org.eclipse.collections.impl.tuple.Tuples;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -25,38 +27,36 @@ import java.util.stream.StreamSupport;
 @RequiredArgsConstructor
 @Slf4j
 public class VoiceReminderService {
-    private static final Map<String, String> DICTIONARY = Map.ofEntries(
-            new DefaultMapEntry("Diana Lakovitsky", "Дианой Лаковицкой"),
-            new DefaultMapEntry("Steven Givner", "Стивеном Гивнером"),
-            new DefaultMapEntry("Modern Optical", "Модерн Оптика"),
-            new DefaultMapEntry("Optical Gallery", "Оптикал Гелери"),
-            new DefaultMapEntry("January", "Января"),
-            new DefaultMapEntry("February", "Февраля"),
-            new DefaultMapEntry("March", "Марта"),
-            new DefaultMapEntry("April", "Апреля"),
-            new DefaultMapEntry("May", "Мая"),
-            new DefaultMapEntry("June", "Июня"),
-            new DefaultMapEntry("July", "Июля"),
-            new DefaultMapEntry("August", "Августа"),
-            new DefaultMapEntry("September", "Сентября"),
-            new DefaultMapEntry("October", "Октября"),
-            new DefaultMapEntry("November", "Ноября"),
-            new DefaultMapEntry("December", "Декабря"),
-            new DefaultMapEntry("453 Kings Highway", "353 Кингс Хайвей"),
-            new DefaultMapEntry("446 Myrtle Ave", "446 Мёртл Авеню")
-
-    );
+    private static final Map<String, Pair<String, String>> DICTIONARY = Maps.mutable.<String, Pair<String, String>>empty()
+            .withKeyValue("Diana Lakovitsky", Tuples.pair("Дианой Лаковицкой", "Diana Lakovitsky"))
+            .withKeyValue("Steven Givner", Tuples.pair("Стивеном Гивнером", "Steven Givner"))
+            .withKeyValue("Modern Optical", Tuples.pair("Модерн Оптика", "Óptica Moderna"))
+            .withKeyValue("Optical Gallery", Tuples.pair("Оптикал Гелери", "Galería Óptica"))
+            .withKeyValue("January", Tuples.pair("Января", "Enero"))
+            .withKeyValue("February", Tuples.pair("Февраля", "Febrero"))
+            .withKeyValue("March", Tuples.pair("Марта", "Marzo"))
+            .withKeyValue("April", Tuples.pair("Апреля", "Abril"))
+            .withKeyValue("May", Tuples.pair("Мая", "Puede"))
+            .withKeyValue("June", Tuples.pair("Июня", "Junio"))
+            .withKeyValue("July", Tuples.pair("Июля", "Julio"))
+            .withKeyValue("August", Tuples.pair("Августа", "Agosto"))
+            .withKeyValue("September", Tuples.pair("Сентября", "Septiembre"))
+            .withKeyValue("October", Tuples.pair("Октября", "Octubre"))
+            .withKeyValue("November", Tuples.pair("November", "Noviembre"))
+            .withKeyValue("December", Tuples.pair("Декабря", "Diciembre"))
+            .withKeyValue("453 Kings Highway", Tuples.pair("353 Кингс Хайвей", ""))
+            .withKeyValue("446 Myrtle Avenue", Tuples.pair("446 Мёртл Авеню", ""));
 
     private static final String MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Нажмите 1 чтобы подтвердить, или 2 чтобы отменить визит. Нажмите 3 чтобы перенести ваш визит на другой день.";
-    private static final String MESSAGE_EN = "Please confirm your appointment with Dr. %s at the office of %s at %s on %s at %s. Press 1 to confirm, 2 to cancel or 3 to reschedule";
-
+    private static final String MESSAGE_EN = "Please confirm your appointment with Dr. %s at the office of %s at %s on %s of %s. Press 1 to confirm, 2 to cancel or 3 to reschedule";
+    private static final String MESSAGE_ES = "Confirme su cita con el Dr. %s en la oficina de %s a las $s el %s de %s en %s. Presione 1 para confirmar, 2 para cancelar o 3 para reprogramar.";
     private static final String FINAL_PROMPT_RU = "Спасибо большое!";
-
     private static final String FINAL_PROMPT_EN = "Thank you very much!";
+    private static final String FINAL_PROMPT_ES = "¡Muchas gracias!";
 
     private static final String LANGUAGE_SELECTION_RU = "Пожалуйста, нажмите 1 чтобы продолжить на русском или 2 для английского";
 
-    private static final String LANGUAGE_SELECTION_EN = "Please press 1 to continue in English or 2 to switch to Russian";
+    private static final String LANGUAGE_SELECTION_EN = "Please press 1 to switch to Spanish or 2 to continue in English";
 
     private final SchedulerApiService schedulerApiService;
     private final ConnectClient connectClient;
@@ -87,9 +87,11 @@ public class VoiceReminderService {
     private void processNotification(Appointment appt) {
         var promptRu = this.finalizePrompt(MESSAGE_RU, appt, true);
         var promptEn = this.finalizePrompt(MESSAGE_EN, appt, false);
+        var promptEs = this.finalizePrompt(MESSAGE_ES, appt, true);
+
         var phone = this.snsService.addCountryCode(this.snsService.transform(appt.getApptPhone()));
 
-        var contactId = this.sendNotification(phone, new String[]{promptRu, promptEn});
+        var contactId = this.sendNotification(phone, new String[]{promptRu, promptEn, promptEs});
 
         this.notificationQueue.add(new Notification(
                 contactId,
@@ -102,9 +104,13 @@ public class VoiceReminderService {
         Map<String, String> attributes = Map.of(
                 "messageRu", messages[0],
                 "messageEn", messages[1],
+                "messageEs", messages[2],
                 "finalMessageRu", FINAL_PROMPT_RU,
                 "finalMessageEn", FINAL_PROMPT_EN,
+                "finalMessageEs", FINAL_PROMPT_ES,
                 "languageSelectionPrompt", this.entryPrompt.equals("RU") ? LANGUAGE_SELECTION_RU : LANGUAGE_SELECTION_EN);
+
+        log.info("Sending request to AES Connect with attributes: {}", attributes);
 
         StartOutboundVoiceContactRequest request = StartOutboundVoiceContactRequest.builder()
                 .instanceId(this.instanceId)
@@ -136,7 +142,9 @@ public class VoiceReminderService {
     }
 
     private String translate(String source) {
-        return DICTIONARY.getOrDefault(source, source);
+        return "RU".equals(this.entryPrompt)
+                ? DICTIONARY.getOrDefault(source, Tuples.pair(source, source)).getOne()
+                : DICTIONARY.getOrDefault(source, Tuples.pair(source, source)).getTwo();
     }
 
     @Scheduled(fixedDelay = 60000, initialDelay = 60000)

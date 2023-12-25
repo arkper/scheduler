@@ -23,9 +23,9 @@ public class VoiceRemindingController {
     @PostMapping(path = "/remind")
     String remind(@RequestBody RemindRequest request) {
         return this.voiceReminderService.sendNotification(
-                request.phone(), new String[]{request.messageRu, request.messageEn});
+                request.phone(), new String[]{request.messageRu, request.messageEn, request.messageEs});
     }
 
-    public static record RemindRequest(String phone, String messageRu, String messageEn) {
+    public static record RemindRequest(String phone, String messageRu, String messageEn, String messageEs) {
     }
 }
