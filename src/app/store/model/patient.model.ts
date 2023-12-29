@@ -90,3 +90,8 @@ export interface CorrespondenceReportRequest {
   insurances: number[] | null,
   recallType: number
 }
+
+export interface DocType {
+  id: string,
+  desc: string
+}

@@ -6,7 +6,6 @@ import { Company, Document, Patient, PatientInsurance } from '../../store/model/
 import { DatePipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/reducers';
-import { DocumentActionType } from '../../store/actions/document.action';
 import { BaseFormComponent } from '../base-form/base-form.component';
 
 @Component({
@@ -15,8 +14,6 @@ import { BaseFormComponent } from '../base-form/base-form.component';
   styleUrls: ['./release-form.component.scss']
 })
 export class ReleaseFormComponent extends BaseFormComponent implements OnInit {  
-  company: Company | undefined = this.apiService.getCompany();
-
   constructor(
     override router: Router, 
     override apiService: OfficeApiService,
@@ -29,6 +26,16 @@ export class ReleaseFormComponent extends BaseFormComponent implements OnInit {
   override formType = "release";
 
   override data = {
+    firstName: this.patient?.firstName,
+    lastName: this.patient?.lastName,
+    address: this.patient?.address?.address1,
+    city: this.patient?.address?.city,
+    state: this.getState(),
+    zip: this.patient?.address?.zip,
+    phone: this.patient?.address?.phone1,
+    dob: this.getDob(),
+    ssn: this.patient?.ssNo,
+    sex: this.patient?.sex,  
     company: this.company?.name,
     companyAddress: this.company?.address?.address1,
     companyCity: this.company?.address?.city,

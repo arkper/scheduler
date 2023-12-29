@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { OfficeApiService } from 'src/app/services/office-api.service';
 import { DocumentActionType } from 'src/app/store/actions/document.action';
-import { Patient } from 'src/app/store/model/patient.model';
+import { Company, Patient } from 'src/app/store/model/patient.model';
 import { AppState } from 'src/app/store/reducers';
 
 @Component({
@@ -13,25 +13,14 @@ import { AppState } from 'src/app/store/reducers';
   template: `<router-outlet></router-outlet>`
 })
 export class BaseFormComponent implements OnInit {
+  company: Company | undefined = this.apiService.getCompany();
   patient: Patient | undefined = undefined;
 
   signature: string = "";
 
   fileName: string = "";
 
-  data: {[k: string]: any} = {
-    firstName: this.patient?.firstName,
-    lastName: this.patient?.lastName,
-    address: this.patient?.address?.address1,
-    city: this.patient?.address?.city,
-    state: this.getState(),
-    zip: this.patient?.address?.zip,
-    phone: this.patient?.address?.phone1,
-    dob: this.getDob(),
-    ssn: this.patient?.ssNo,
-    sex: this.patient?.sex,
-    company: this.apiService.company.name
-  };
+  data: {[k: string]: any} = {};
 
   date: string | null;
 

@@ -25,6 +25,16 @@ export class TransportationFormComponent extends BaseFormComponent implements On
   override formType: string = "transportation";
   
   override data: {[k: string]: any} = {
+    firstName: this.patient?.firstName,
+    lastName: this.patient?.lastName,
+    address1: this.patient?.address?.address1,
+    city: this.patient?.address?.city,
+    state: this.getState(),
+    zip: this.patient?.address?.zip,
+    phone1: this.patient?.address?.phone1,
+    dob: this.getDob(),
+    ssn: this.patient?.ssNo,
+    sex: this.patient?.sex,  
     date: this.getDate(),
     diagnosis1: "",
     diagnosis2: "",

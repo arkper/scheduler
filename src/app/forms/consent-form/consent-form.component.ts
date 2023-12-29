@@ -24,4 +24,23 @@ export class ConsentFormComponent extends BaseFormComponent implements OnInit {
       super(router, apiService, snackBar, datepipe, store);
   }
   override formType = "consent";
+  override data = {
+    firstName: this.patient?.firstName,
+    lastName: this.patient?.lastName,
+    address: this.patient?.address?.address1,
+    city: this.patient?.address?.city,
+    state: this.getState(),
+    zip: this.patient?.address?.zip,
+    phone: this.patient?.address?.phone1,
+    dob: this.getDob(),
+    ssn: this.patient?.ssNo,
+    sex: this.patient?.sex,  
+    company: this.company?.name,
+    companyAddress: this.company?.address?.address1,
+    companyCity: this.company?.address?.city,
+    companyState: this.company?.address?.state,
+    companyZip: this.company?.address?.zip,
+    companyPhone: this.company?.address?.phone1,
+    patientName: this.patient?.firstName + " " + this.patient?.lastName
+  }
 }

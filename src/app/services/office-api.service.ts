@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
-import { Address, Appointment, Code, Company, CorrespondenceReportRequest, Document, Patient, PatientInsurance, Provider, SigninRecord } from '../store/model/patient.model';
+import { Address, Appointment, Code, Company, CorrespondenceReportRequest, DocType, Document, Patient, PatientInsurance, Provider, SigninRecord } from '../store/model/patient.model';
 import { DatePipe } from '@angular/common';
 
 const STATE_CODE_CATEGORY: number = 32;
@@ -39,6 +39,14 @@ export class OfficeApiService {
       .subscribe({next: data => this.insurances = data});   
   }
 
+  getDocTypes(category: string): DocType[]{
+    return category === 'EDoc'
+      ? [{id: "release", desc: "Release Of Medical Info"},
+         {id: "transportation", desc: "Transportation Approval"},
+         {id: "eyeglasses", desc: "Medicaid Eyeglasses"}]
+      : [{id: "consent", desc: "Consent To Examination"}];
+  }
+
   getPatientsByName(lastName: string, firstName: string): Observable<Patient[]> {
     if (environment.production) {
       return this.http
@@ -58,6 +66,10 @@ export class OfficeApiService {
         return of([]);
       }
     }
+  }
+
+  getDocs(patientNo: number, type: string): Observable<Document[]> {
+    return type === 'EDoc'? this.getEdocs(patientNo) : this.getHipaaDocs(patientNo);
   }
 
   getEdocs(patientNo: number): Observable<Document[]> {

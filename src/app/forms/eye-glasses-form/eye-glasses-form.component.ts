@@ -25,6 +25,8 @@ export class EyeGlassesFormComponent extends BaseFormComponent implements OnInit
   override formType: string = "eyeglasses";
 
   override data: {[k: string]: any} = {
+    firstName: this.patient?.firstName,
+    lastName: this.patient?.lastName,
     dob: this.getDob(),
     ssn: this.patient?.ssNo,
     headaches: false,

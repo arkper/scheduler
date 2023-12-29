@@ -36,6 +36,7 @@ import { BaseFormComponent } from './forms/base-form/base-form.component';
 import { SigninSheetViewComponent } from './signin-sheet-view/signin-sheet-view.component';
 import { CorListComponent } from './cor-list/cor-list.component';
 import { FileSaverModule } from 'ngx-filesaver';
+import { PatientDocComponent } from './patient-doc/patient-doc.component';
 
 const ROUTES: Routes = [
   {path: 'patient-list', component: PatientListComponent},
@@ -58,6 +59,7 @@ const ROUTES: Routes = [
   declarations: [
     AppComponent,
     PatientListComponent,
+    PatientDocComponent,
     SigninSheetComponent,
     ConsentFormComponent,
     SigPadComponent,
