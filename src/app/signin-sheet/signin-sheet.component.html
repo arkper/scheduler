@@ -45,12 +45,6 @@
           (cellClicked)="onAppointmentCellClicked($event)"
         ></ag-grid-angular>
     </div>
-    <table width="100%">
-        <tr>
-            <td valign="top" width="300px">Signature of Patient/Relative/Guardian: </td>
-            <td valign="center"><app-sig-pad [reset] = "resetRequest" (signed) = "onSigned($event)"></app-sig-pad></td>
-            <td valign="top">Date: </td>
-            <td valign="top">{{ date }}</td>
-        </tr>
-    </table>
+    <br/>
+    <app-sig-pad [reset]="resetRequest" (signed) = "onSigned($event)"></app-sig-pad>
 </div>
