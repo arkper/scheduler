@@ -1,15 +1,27 @@
-<div scrollable>
-  <canvas
-    #canvas
-    (touchstart)="startDrawing($event)"
-    (touchmove)="moved($event)"
-    width="500"
-    height="100"
-  ></canvas>
-  <p class="error-message" *ngIf="signatureNeeded">Signature is required</p>
+<br/>
+<table width="100%">
+  <tr>
+      <td valign="top"><label>Signature of</label><br/>
+           <label>Patient/Relative/Guardian:</label><br/>
+           <label>Date: {{ date }}</label></td>
+      <td valign="center">
+        <div scrollable>
+          <canvas
+            #canvas
+            (touchstart)="startDrawing($event)"
+            (touchmove)="moved($event)"
+            width="500"
+            height="100"
+          ></canvas>
+          <p class="error-message" *ngIf="signatureNeeded">Signature is required</p>
+        
+          <div class="buttons flex justify-between">
+            <button mat-raised-button color="primary" (click)="clearPad()">Clear</button>
+            <button mat-raised-button color="primary" (click)="savePad()">Sign and Save</button>
+          </div>
+        </div>
+      </td>
+  </tr>
+</table>
 
-  <div class="buttons flex justify-between">
-    <button mat-raised-button color="primary" (click)="clearPad()">Clear</button>
-    <button mat-raised-button color="primary" (click)="savePad()">Sign and Save</button>
-  </div>
-</div>
+

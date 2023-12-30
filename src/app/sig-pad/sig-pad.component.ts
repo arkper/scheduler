@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import SignaturePad from 'signature_pad';
@@ -12,8 +13,11 @@ export class SigPadComponent implements OnInit{
   signaturePad!: SignaturePad;
   @ViewChild('canvas') canvasEl!: ElementRef;
   signatureImg!: string;
+  date!: string | null;
 
-  constructor() { }
+  constructor(private datepipe: DatePipe) {
+    this.date = this.datepipe.transform(new Date(), 'MM/dd/yyyy');
+   }
 
   @Output() signed: EventEmitter<string> = new EventEmitter<string>();
   @Input() reset: Subject<boolean> = new Subject();

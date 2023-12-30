@@ -1,95 +1,113 @@
-	<div>
-        <p><b>MEDICAID EYEGLASSES FORM</b></p>
-        <table>
-            <tr>
-                <td>Last Name:</td><td><input id="lastName" [value] = "patient?.lastName"/></td>
-                <td>First Name:</td><td><input id="firstName"  [value] = "patient?.firstName"/></td>
-                <td>DOB:</td><td><input id="dob" [value] = "getDob()" /></td>
-                <td>SSN:</td><td><input id="ssn" [value] = "patient?.ssNo" /></td>
-            </tr>
-            <tr>
-                <td colspan="8"><b>Patient refused to wear bifocals requesting separate distance and reading eyeglasses.</b></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Reasons:</td>
-                <td colspan="3"><input id="headaches" type="checkbox" [checked] = "data['headaches']" (change) = "toggle('headaches')"/>Headaches</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td colspan="3"><input id="dizziness" type="checkbox" [checked] = "data['dizziness']" (change) = "toggle('dizziness')"/>Dizziness</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td colspan="2"><input id="inability" type="checkbox" [checked] = "data['bifocals']" (change) = "toggle('bifocals')"/>Unable to get used to bifocals</td>
-            </tr>
-            <tr>
-                <td colspan="8"><b>Replacing New Lenses</b></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Reasons:</td>
-                <td colspan="2"><input id="rxchange" type="checkbox"  [checked] = "data['rxchange']" (change) = "toggle('rxchange')"/>Rx Changed</td>
-            </tr>
-            <tr>
-                <td colspan="8"><b>Replacing Frames And Lenses</b></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Reasons:</td>
-                <td colspan="3"><input id="loss" type="checkbox" [checked] = "data['loss']" (change) = "toggle('loss')"/>Due To Loss</td>
-            </tr>
-            <tr>
-                <td></td><td></td>
-                <td colspan="3"><input id="breakage" type="checkbox" [checked] = "data['breakage']" (change) = "toggle('breakage')"/>Due To Breakage</td>
-            </tr>
-            <tr>
-                <td></td><td></td>
-                <td colspan="3"><input id="theft" type="checkbox" [checked] = "data['theft']" (change) = "toggle('theft')"/>Due To Theft</td>
-            </tr>
-            <tr>
-                <td></td><td></td>
-                <td colspan="3"><input id="newrx" type="checkbox" [checked] = "data['newrx']" (change) = "toggle('newrx')"/>New Rx requires new frame</td>
-            </tr>
-            <tr>
-                <td></td><td></td>
-                <td colspan="3"><input id="allergic" type="checkbox" [checked] = "data['allergic']" (change) = "toggle('allergic')"/>Allergic reaction to a frame</td>
-            </tr>
-            <tr>
-                <td colspan="8"><input id="willpay" type="checkbox" [checked] = "data['willpay']" (change) = "toggle('willpay')"/>
-                I was offerred a selection of serviceable glasses at no cost to me, but I desired a type or style of eyeware beyond Medicaid program benefits.
+<div>
+    <p><b>MEDICAID EYEGLASSES FORM</b></p>
+    <table>
+        <tr>
+            <td>Last Name:</td>
+            <td><input id="lastName" [value]="patient?.lastName" /></td>
+            <td>First Name:</td>
+            <td><input id="firstName" [value]="patient?.firstName" /></td>
+            <td>DOB:</td>
+            <td><input id="dob" [value]="getDob()" /></td>
+            <td>SSN:</td>
+            <td><input id="ssn" [value]="patient?.ssNo" /></td>
+        </tr>
+        <tr>
+            <td colspan="8"><b>Patient refused to wear bifocals requesting separate distance and reading eyeglasses.</b>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Reasons:</td>
+            <td colspan="3"><input id="headaches" type="checkbox" [checked]="data['headaches']"
+                    (change)="toggle('headaches')" />Headaches</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="3"><input id="dizziness" type="checkbox" [checked]="data['dizziness']"
+                    (change)="toggle('dizziness')" />Dizziness</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="2"><input id="inability" type="checkbox" [checked]="data['bifocals']"
+                    (change)="toggle('bifocals')" />Unable to get used to bifocals</td>
+        </tr>
+        <tr>
+            <td colspan="8"><b>Replacing New Lenses</b></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Reasons:</td>
+            <td colspan="2"><input id="rxchange" type="checkbox" [checked]="data['rxchange']"
+                    (change)="toggle('rxchange')" />Rx Changed</td>
+        </tr>
+        <tr>
+            <td colspan="8"><b>Replacing Frames And Lenses</b></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Reasons:</td>
+            <td colspan="3"><input id="loss" type="checkbox" [checked]="data['loss']" (change)="toggle('loss')" />Due To
+                Loss</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="3"><input id="breakage" type="checkbox" [checked]="data['breakage']"
+                    (change)="toggle('breakage')" />Due To Breakage</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="3"><input id="theft" type="checkbox" [checked]="data['theft']" (change)="toggle('theft')" />Due
+                To Theft</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="3"><input id="newrx" type="checkbox" [checked]="data['newrx']" (change)="toggle('newrx')" />New
+                Rx requires new frame</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="3"><input id="allergic" type="checkbox" [checked]="data['allergic']"
+                    (change)="toggle('allergic')" />Allergic reaction to a frame</td>
+        </tr>
+        <tr>
+            <td colspan="8"><input id="willpay" type="checkbox" [checked]="data['willpay']"
+                    (change)="toggle('willpay')" />
+                I was offerred a selection of serviceable glasses at no cost to me, but I desired a type or style of
+                eyeware beyond Medicaid program benefits.
                 <b>I will be responsible for any balance for ewyeware beyond Medicaid program benefits</b>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="8"><input id="preadjusted" type="checkbox" [checked] = "data['preadjusted']" (change) = "toggle('preadjusted')" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8"><input id="preadjusted" type="checkbox" [checked]="data['preadjusted']"
+                    (change)="toggle('preadjusted')" />
                 Eye glasses were preadjusted on a patient at the date of service
-                </td>
-            </tr>
-            <tr>
-                <td colspan="8"><input id="dispensed" type="checkbox" [checked] = "data['dispensed']" (change) = "toggle('dispensed')"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8"><input id="dispensed" type="checkbox" [checked]="data['dispensed']"
+                    (change)="toggle('dispensed')" />
                 Eye glasses were dispensed
-                </td>
-            </tr>
-            <tr>
-                <td colspan="8"><input id="unintentionalloss" type="checkbox" [checked] = "data['unintentionalloss']" (change) = "toggle('unintentionalloss')"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8"><input id="unintentionalloss" type="checkbox" [checked]="data['unintentionalloss']"
+                    (change)="toggle('unintentionalloss')" />
                 The glasses that are being replaced were unintentionally lost or destroyed
-                </td>
-            </tr>
-            <tr>
-                <td colspan="8"><input id="pickedup" type="checkbox" [checked] = "data['pickedup']" (change) = "toggle('pickedup')"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8"><input id="pickedup" type="checkbox" [checked]="data['pickedup']"
+                    (change)="toggle('pickedup')" />
                 I picked up/received the eyewear.
-                </td>
-            </tr>
-        </table>
+            </td>
+        </tr>
+    </table>
 
-        <table width="100%">
-            <tr>
-                 <td valign="top" width="300px">Medicaid Client Signature:</td>
-                 <td valign="top"><app-sig-pad (signed) = "onSigned($event)"></app-sig-pad></td>
-                <td valign="top">Pickup Date: <input id="date" size="10" [value]="getDate()"/></td>
-            </tr>
-        </table>
-    </div>
+    <app-sig-pad (signed)="onSigned($event)"></app-sig-pad>
+</div>

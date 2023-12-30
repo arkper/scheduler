@@ -51,13 +51,9 @@
         <li><b>I authorize payment benefits to {{ getCompanyName() }} for services provided.</b></li>
         <li><b>In the event my coverage does not pay; I will be fully responsible for payment of services.</b></li>
     </ul>
-    <table width="85%">
-        <tr>
-            <td valign="top" width="300px">Signature of Patient/Relative/Guardian: </td>
-            <td valign="top"><app-sig-pad (signed) = "onSigned($event)"></app-sig-pad></td>
-            <td valign="top">Date: <input id="date" size="10" [value]="getDate()"/></td>
-        </tr>
-    </table>
+
+	<app-sig-pad (signed) = "onSigned($event)"></app-sig-pad>
+
     <table width="85%">
         <tr>
             <td>Referred by:</td>

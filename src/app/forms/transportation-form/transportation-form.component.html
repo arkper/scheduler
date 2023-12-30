@@ -1,207 +1,244 @@
-<div>  
-    <div class="title"><b>LIVERY, AMBULETTE & NON-EMERGENCY AMBULENCE SERVICES<br/>
+<div>
+    <div class="title"><b>LIVERY, AMBULETTE & NON-EMERGENCY AMBULENCE SERVICES<br />
             MEDICAID TRANSPORTATION PRIOR APPROVAL FORM</b>
-	</div>
+    </div>
     <table>
         <tr>
-            <td>Patient Name: <input id="name" [value] = "getName()" /> </td>
-            <td>Date of Birth: <input id="dob" size="10" [value] = "getDob()"/> </td>
-            <td>Sex: <input type="checkbox" id='sexMale' [checked] = "patient?.sex"/>Male
-                <input type="checkbox" id='sexFemale' [checked] = "!patient?.sex"/>Female
+            <td>Patient Name: <input id="name" [value]="getName()" /> </td>
+            <td>Date of Birth: <input id="dob" size="10" [value]="getDob()" /> </td>
+            <td>Sex: <input type="checkbox" id='sexMale' [checked]="patient?.sex" />Male
+                <input type="checkbox" id='sexFemale' [checked]="!patient?.sex" />Female
             </td>
         </tr>
         <tr>
-            <td>Address: <input id="address1" [value] = "patient?.address?.address1"/></td>
-            <td><input id="city" [value] = "patient?.address?.city"/>
-                <input id="state" [value] = "getState()"/>
-                <input id="zip" [value] = "patient?.address?.zip"/>
+            <td>Address: <input id="address1" [value]="patient?.address?.address1" /></td>
+            <td><input id="city" [value]="patient?.address?.city" />
+                <input id="state" [value]="getState()" />
+                <input id="zip" [value]="patient?.address?.zip" />
             </td>
         </tr>
         <tr>
             <td>Medicaid No.: <input id="medicaidNO" /> </td>
-            <td>Social Security Number: <input id="ssn" [value] = "patient?.ssNo"/> </td>
+            <td>Social Security Number: <input id="ssn" [value]="patient?.ssNo" /> </td>
         </tr>
     </table>
     <table>
-        <tr><td><b>1.</b> (a) List Diagnoses:</td></tr>
         <tr>
-            <td width="30%">1)&nbsp;<input id="diagnosis1" size="40" [value]="data['diagnosis1']" (change)="update($event)"/></td>
-            <td width="30%">2)&nbsp;<input id="diagnosis2" size="40" [value]="data['diagnosis2']" (change)="update($event)"/></td>
-            <td width="30%">3)&nbsp;<input id="diagnosis3" size="40" [value]="data['diagnosis3']" (change)="update($event)"/></td>
+            <td><b>1.</b> (a) List Diagnoses:</td>
         </tr>
         <tr>
-            <td width="30%">4)&nbsp;<input id="diagnosis4" size="40" [value]="data['diagnosis4']" (change)="update($event)"/></td>
-            <td width="30%">5)&nbsp;<input id="diagnosis5" size="40" [value]="data['diagnosis5']" (change)="update($event)"/></td>
-            <td width="30%">6)&nbsp;<input id="diagnosis6" size="40" [value]="data['diagnosis6']" (change)="update($event)"/></td>
+            <td width="30%">1)&nbsp;<input id="diagnosis1" size="40" [value]="data['diagnosis1']"
+                    (change)="update($event)" /></td>
+            <td width="30%">2)&nbsp;<input id="diagnosis2" size="40" [value]="data['diagnosis2']"
+                    (change)="update($event)" /></td>
+            <td width="30%">3)&nbsp;<input id="diagnosis3" size="40" [value]="data['diagnosis3']"
+                    (change)="update($event)" /></td>
         </tr>
-        <tr><td colspan="4">(b) Why do these diagnoses justify transportation other than Public Transportation?</td></tr>
-        <tr><td colspan="3">
-        	    <input  id="justification" size="140" [value]="data['justification']" (change)="update($event)"/>
+        <tr>
+            <td width="30%">4)&nbsp;<input id="diagnosis4" size="40" [value]="data['diagnosis4']"
+                    (change)="update($event)" /></td>
+            <td width="30%">5)&nbsp;<input id="diagnosis5" size="40" [value]="data['diagnosis5']"
+                    (change)="update($event)" /></td>
+            <td width="30%">6)&nbsp;<input id="diagnosis6" size="40" [value]="data['diagnosis6']"
+                    (change)="update($event)" /></td>
+        </tr>
+        <tr>
+            <td colspan="4">(b) Why do these diagnoses justify transportation other than Public Transportation?</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <input id="justification" size="140" [value]="data['justification']" (change)="update($event)" />
             </td>
         </tr>
-	    </table>
-	    <table>
-	        <tr>
-	            <td><b>2. </b></td>
-	        </tr>
-	        <tr>
-	            <td colspan="4">(a) Does the patient use a wheelchair, scooter, or portable oxygen?</td>
-	            <td><input id="scooter" type="checkbox" [checked]="data['scooter']" (change)="toggle('scooter')"/>Yes</td>
-	        </tr>
-	        <tr>
-	            <td colspan="4">(b) Does the patient require personal assistance of another individual to enter or exit a building or vehicle?</td>
-	            <td><input id="assist" type="checkbox" [checked]="data['assist']" (change)="toggle('assist')"/>Yes</td>
-	        </tr>
-	        <tr>
-	            <td colspan="4">(a) Does the patient have a family member or home attendant traveling with him/her?</td>
-	            <td><input id="family" type="checkbox" [checked]="data['family']" (change)="toggle('family')"/>Yes</td>
-	        </tr>
-	    </table>
-	    <table>
-    	    <tr><td><b>3. </b></td></tr>
-	        <tr>
-	            <td colspan="4">(a) Is the patient's departure/destination point within his/her CMMA? (see definition under the Certification Statement) &nbsp;
-	            <input id="cmma" type="checkbox" [checked]="data['cmma']" (change)="toggle('cmma')"/>Yes</td>
-	        </tr>
-	        <tr>
-	            <td colspan="3">(b) If not, justify travel outside CMMA</td>
-	        </tr>
-	        <tr><td><input id="cmma_justification" size="140" [value]="data['cmma_justification']" (change)="update($event)"/></td></tr>
-	        <tr>
-	            <td colspan="3"><b>4. </b>Respond to this question only if <b>Non-Emergency Ambulance </b>is requested.</td>
-	        </tr>    
-	        <tr>
-	            <td colspan="3">(a) Does the patient require life-sustaining equipment during transport?</td>
-	            <td><input id="equipment" type="checkbox" [checked]="data['equipment']" (change)="toggle('equipment')"/>Yes</td>
-	        </tr>
-	        <tr>
-	            <td colspan="3">(b) Does the patient require monitoring by a certified emergency medical technician or paramedic during transport?</td>
-	            <td><input id="monitoring" type="checkbox" [checked]="data['monitoring']" (change)="toggle('monitoring')"/>Yes</td>
-	        </tr>
-	    </table>
-	    <table>
-	        <tr>
-	            <td colspan="2">(c) Does the patient need to be transported in a reclining position for:</td>
-	        </tr>
-	        <tr>
-	            <td>1) Medical reasons </td><td><input id="medical_reasons" type="checkbox" [checked]="data['medical_reasons']" (change)="toggle('medical_reasons')"/>Yes</td>
-	        </tr>
-	        <tr>
-	            <td>2) Psychiatric condition </td><td><input id="psychiatric_reasons" type="checkbox" [checked]="data['psychiatric_reasons']" (change)="toggle('psychiatric_reasons')"/>Yes</td>
-	        </tr>
-	         <tr>
-	            <td colspan="2">(d) Does the patient require use of the vehicle's oxygen during transport?</td>
-	            <td><input id="oxygen" type="checkbox" [checked]="data['oxygen']" (change)="toggle('oxygen')"/>Yes</td>
-	        </tr>
-	    </table>
-	    <div><b>5. </b>Indicate the location and the mode of transportation ordered pursuant to the filing of this document. Consult the New York State Department of Health ordering guidlines for definition of each mode of travel.</div>
-	    <br />
-	    <table>
-	        <tr>
-	            <td>(a) Location: </td>
-	            <td><input id="withinCMMA" type="checkbox" [checked]="data['withinCMMA']" (change)="toggle('withinCMMA')"/>Travel is within the CMMA</td>
-	            <td><input id="outsideCMMA" type="checkbox" [checked]="data['outsideCMMA']" (change)="toggle('outsideCMMA')"/>Travel is outside CMMA</td>
-	        </tr>
-	        <tr>
-	            <td>(b) Mode: </td>
-	            <td><input id="mode_livery" type="checkbox" [checked]="data['mode_livery']" (change)="toggle('mode_livery')"/>LIVERY </td>
-	            <td><input id="mode_ambulette" type="checkbox" [checked]="data['mode_ambulette']" (change)="toggle('mode_ambulette')"/>AMBULETTE</td>
-	            <td><input id="mode_nonemergency" type="checkbox" [checked]="data['mode_nonemergency']" (change)="toggle('mode_nonemergency')"/>NON-EMERGENCY AMBULANCE </td>
-	        </tr>
-	    </table>
-	    <div><b>6. </b>This transportation authorization is from 
-	    <input id="fromMM" size="2" maxlength="2" [value]="data['fromMM']" (change)="update($event)"/>/
-	    <input id="fromDD" size="2" maxlength="2" [value]="data['fromDD']" (change)="update($event)"/>/
-	    <input id="fromYYYY" size="4" maxlength="4" [value]="data['fromYYYY']" (change)="update($event)"/> to &nbsp;
-	    <input id="toMM" size="2" maxlength="2" [value]="data['toMM']" (change)="update($event)"/>/
-	    <input id="toDD" size="2" maxlength="2" [value]="data['toDD']" (change)="update($event)"/>/
-	    <input id="toYYYY" size="4" maxlength="4" [value]="data['toYYYY']" (change)="update($event)"/>. 
-	    <br/>
-	    (NOTE: An authorization may cover a one way trip; a six-month period for patients with acute conditions; or 12 months for patients with chronic conditions.</div>
-	    <br />
-        
+    </table>
+    <table>
+        <tr>
+            <td><b>2. </b></td>
+        </tr>
+        <tr>
+            <td colspan="4">(a) Does the patient use a wheelchair, scooter, or portable oxygen?</td>
+            <td><input id="scooter" type="checkbox" [checked]="data['scooter']" (change)="toggle('scooter')" />Yes</td>
+        </tr>
+        <tr>
+            <td colspan="4">(b) Does the patient require personal assistance of another individual to enter or exit a
+                building or vehicle?</td>
+            <td><input id="assist" type="checkbox" [checked]="data['assist']" (change)="toggle('assist')" />Yes</td>
+        </tr>
+        <tr>
+            <td colspan="4">(a) Does the patient have a family member or home attendant traveling with him/her?</td>
+            <td><input id="family" type="checkbox" [checked]="data['family']" (change)="toggle('family')" />Yes</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td><b>3. </b></td>
+        </tr>
+        <tr>
+            <td colspan="4">(a) Is the patient's departure/destination point within his/her CMMA? (see definition under
+                the Certification Statement) &nbsp;
+                <input id="cmma" type="checkbox" [checked]="data['cmma']" (change)="toggle('cmma')" />Yes
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">(b) If not, justify travel outside CMMA</td>
+        </tr>
+        <tr>
+            <td><input id="cmma_justification" size="140" [value]="data['cmma_justification']"
+                    (change)="update($event)" /></td>
+        </tr>
+        <tr>
+            <td colspan="3"><b>4. </b>Respond to this question only if <b>Non-Emergency Ambulance </b>is requested.</td>
+        </tr>
+        <tr>
+            <td colspan="3">(a) Does the patient require life-sustaining equipment during transport?</td>
+            <td><input id="equipment" type="checkbox" [checked]="data['equipment']" (change)="toggle('equipment')" />Yes
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">(b) Does the patient require monitoring by a certified emergency medical technician or
+                paramedic during transport?</td>
+            <td><input id="monitoring" type="checkbox" [checked]="data['monitoring']"
+                    (change)="toggle('monitoring')" />Yes</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td colspan="2">(c) Does the patient need to be transported in a reclining position for:</td>
+        </tr>
+        <tr>
+            <td>1) Medical reasons </td>
+            <td><input id="medical_reasons" type="checkbox" [checked]="data['medical_reasons']"
+                    (change)="toggle('medical_reasons')" />Yes</td>
+        </tr>
+        <tr>
+            <td>2) Psychiatric condition </td>
+            <td><input id="psychiatric_reasons" type="checkbox" [checked]="data['psychiatric_reasons']"
+                    (change)="toggle('psychiatric_reasons')" />Yes</td>
+        </tr>
+        <tr>
+            <td colspan="2">(d) Does the patient require use of the vehicle's oxygen during transport?</td>
+            <td><input id="oxygen" type="checkbox" [checked]="data['oxygen']" (change)="toggle('oxygen')" />Yes</td>
+        </tr>
+    </table>
+    <div><b>5. </b>Indicate the location and the mode of transportation ordered pursuant to the filing of this document.
+        Consult the New York State Department of Health ordering guidlines for definition of each mode of travel.</div>
+    <br />
+    <table>
+        <tr>
+            <td>(a) Location: </td>
+            <td><input id="withinCMMA" type="checkbox" [checked]="data['withinCMMA']"
+                    (change)="toggle('withinCMMA')" />Travel is within the CMMA</td>
+            <td><input id="outsideCMMA" type="checkbox" [checked]="data['outsideCMMA']"
+                    (change)="toggle('outsideCMMA')" />Travel is outside CMMA</td>
+        </tr>
+        <tr>
+            <td>(b) Mode: </td>
+            <td><input id="mode_livery" type="checkbox" [checked]="data['mode_livery']"
+                    (change)="toggle('mode_livery')" />LIVERY </td>
+            <td><input id="mode_ambulette" type="checkbox" [checked]="data['mode_ambulette']"
+                    (change)="toggle('mode_ambulette')" />AMBULETTE</td>
+            <td><input id="mode_nonemergency" type="checkbox" [checked]="data['mode_nonemergency']"
+                    (change)="toggle('mode_nonemergency')" />NON-EMERGENCY AMBULANCE </td>
+        </tr>
+    </table>
+    <div><b>6. </b>This transportation authorization is from
+        <input id="fromMM" size="2" maxlength="2" [value]="data['fromMM']" (change)="update($event)" />/
+        <input id="fromDD" size="2" maxlength="2" [value]="data['fromDD']" (change)="update($event)" />/
+        <input id="fromYYYY" size="4" maxlength="4" [value]="data['fromYYYY']" (change)="update($event)" /> to &nbsp;
+        <input id="toMM" size="2" maxlength="2" [value]="data['toMM']" (change)="update($event)" />/
+        <input id="toDD" size="2" maxlength="2" [value]="data['toDD']" (change)="update($event)" />/
+        <input id="toYYYY" size="4" maxlength="4" [value]="data['toYYYY']" (change)="update($event)" />.
+        <br />
+        (NOTE: An authorization may cover a one way trip; a six-month period for patients with acute conditions; or 12
+        months for patients with chronic conditions.
+    </div>
+    <br />
+
     <div><b><u>INSTRUCTIONS</u></b></div><br />
     <div>
-        Updated form is required when authorization period expires or when change in patient's 
-        condition results in a higher level of transportation. Form must be retained in medical 
+        Updated form is required when authorization period expires or when change in patient's
+        condition results in a higher level of transportation. Form must be retained in medical
         practitioner's place of business readily retrievable for audit purposes.
     </div><br />
-    
+
     <div><b><u>CERTIFICATION STATEMENT</u></b></div><br />
     <div>
         <p>
-        I (or the entity) understand that orders for Medicaid-fundedtravel may result from the 
-        completion of this form. I (or the entity) understand and agree to be subject to and 
-        bound by all rules, regulations, policies, standards and procedures of the New York 
-        State Department of Health, as set forth in Title 18 of the Official Compilation of 
-        Rules and Regulations of New York State and other publications of the Department, 
-        including Regulation 504.8(2) which requires providers to pay restitution for any 
-        direct or indirect monetary damage to the program resulting from improperly or 
-        inappropriately ordering services. I (or the entity) certify that the statements made 
-        hereon are true, accuratre and complete to the best of my knowledge; no material fact 
-        has been omitted from this form.
+            I (or the entity) understand that orders for Medicaid-fundedtravel may result from the
+            completion of this form. I (or the entity) understand and agree to be subject to and
+            bound by all rules, regulations, policies, standards and procedures of the New York
+            State Department of Health, as set forth in Title 18 of the Official Compilation of
+            Rules and Regulations of New York State and other publications of the Department,
+            including Regulation 504.8(2) which requires providers to pay restitution for any
+            direct or indirect monetary damage to the program resulting from improperly or
+            inappropriately ordering services. I (or the entity) certify that the statements made
+            hereon are true, accuratre and complete to the best of my knowledge; no material fact
+            has been omitted from this form.
         </p>
         <p>
-        I (or the entity) understand that the Common Medical Market Area (CMMA), as defined my 
-        New York State Social Service Regulation 505.10(b)(5), means the geographic area from 
-        which a community customarily obtains its medical care and services. This area lies 
-        within a five-mile radius of the recipient's residence.
+            I (or the entity) understand that the Common Medical Market Area (CMMA), as defined my
+            New York State Social Service Regulation 505.10(b)(5), means the geographic area from
+            which a community customarily obtains its medical care and services. This area lies
+            within a five-mile radius of the recipient's residence.
         </p>
         <p>
-        HRA does not intend to limit a recipient's freedom to choose any Medicaid practitioner 
-        in the New York City region. Recipients are allowed to recieve care and services from 
-        any practitioner willing to provide care. However, HRA is not required to pay the 
-        transportation expenses of a recipient to accomodate one's free choice when the same 
-        medical service is available closer to one's residence. Internal medicine, general and 
-        family practice, OB/GYN, pediatric and psychiatric servicesare considered by HRA to be 
-        typically available to Medicaid recipients/patients within the CMMA. This listing is 
-        not deemed all-inclusive.
+            HRA does not intend to limit a recipient's freedom to choose any Medicaid practitioner
+            in the New York City region. Recipients are allowed to recieve care and services from
+            any practitioner willing to provide care. However, HRA is not required to pay the
+            transportation expenses of a recipient to accomodate one's free choice when the same
+            medical service is available closer to one's residence. Internal medicine, general and
+            family practice, OB/GYN, pediatric and psychiatric servicesare considered by HRA to be
+            typically available to Medicaid recipients/patients within the CMMA. This listing is
+            not deemed all-inclusive.
         </p>
         <p>
-        By ordering transportation services for Medicaid recipients/patients traveling outside 
-        the CMMA, I (or the entity) certify that the Medicaid recipient/patient requires 
-        specialized care not available within the recipient/patient's CMMA, or that failure to 
-        maintain the continuity of services with a particular medical provider, although other 
-        appropriate care is available to the recipient/patient within the CMMA, is essential to 
-        the recipient/patient's physical and mental health, or there is an imminent need to 
-        initiate ongoing medical services that may be available within the CMMA but for which 
-        there exists a waiting list to recieve care.
+            By ordering transportation services for Medicaid recipients/patients traveling outside
+            the CMMA, I (or the entity) certify that the Medicaid recipient/patient requires
+            specialized care not available within the recipient/patient's CMMA, or that failure to
+            maintain the continuity of services with a particular medical provider, although other
+            appropriate care is available to the recipient/patient within the CMMA, is essential to
+            the recipient/patient's physical and mental health, or there is an imminent need to
+            initiate ongoing medical services that may be available within the CMMA but for which
+            there exists a waiting list to recieve care.
         </p>
     </div><br /><br />
     <table>
         <tr>
-            <td width="30%">Physician's Name</td><td>
+            <td width="30%">Physician's Name</td>
+            <td>
                 <select id="physName" (change)="changeDoc()" [value]="data['physName']">
                     <option value="S. Givner, Optometrist">S. Givner, Optometrist</option>
                     <option value="Effie Tatakis">Effie Tatakis</option>
                     <option value="Michelle Cevallos">Michelle Cevallos</option>
                 </select>
             </td>
-	        <td width="30%">Telephone #</td><td><input id="physPhone" size="15" [value]="data['physPhone']" (change)="update($event)"/></td>
-	        <td width="30%">License #</td><td><input id="physLicense" size="15"  [value]="data['physLicense']" (change)="update($event)"/></td>
-	    </tr>
+            <td width="30%">Telephone #</td>
+            <td><input id="physPhone" size="15" [value]="data['physPhone']" (change)="update($event)" /></td>
+            <td width="30%">License #</td>
+            <td><input id="physLicense" size="15" [value]="data['physLicense']" (change)="update($event)" /></td>
+        </tr>
         <tr>
-            <td width="30%">Facility Name</td><td><input id="facName" size="30" [value]="data['facName']"/></td>
-	        <td width="30%">Address</td><td><input id="facAddress" size="40" [value]="data['facAddress']" /></td>
-            <td width="30%">MMIS ID#</td><td><input id="mmisID" size="15" [value]="data['mmisID']" (change)="update($event)"/></td>
+            <td width="30%">Facility Name</td>
+            <td><input id="facName" size="30" [value]="data['facName']" /></td>
+            <td width="30%">Address</td>
+            <td><input id="facAddress" size="40" [value]="data['facAddress']" /></td>
+            <td width="30%">MMIS ID#</td>
+            <td><input id="mmisID" size="15" [value]="data['mmisID']" (change)="update($event)" /></td>
         </tr>
     </table>
     <br />
-	<table width="100%">
-		<tr>
-			 <td valign="top" width="300px">Signature:</td>
-			 <td valign="top"><app-sig-pad (signed) = "onSigned($event)"></app-sig-pad></td>
-			<td valign="top">Date: <input id="date" size="10" [value]="getDate()"/></td>
-		</tr>
-	</table>
+    <app-sig-pad (signed)="onSigned($event)"></app-sig-pad>
     <p>
         Indicate name of nurse/social worker/other person assisting incompleting this form.
     </p>
     <table>
         <tr>
-            <td width="30%">Name&nbsp;<input id="helperName" size="40" [value]="data['helperName']" (change)="update($event)"/></td>
-	        <td width="30%">Title&nbsp;<input id="helperTitle" size="40" [value]="data['helperTitle']" (change)="update($event)"/></td>
-            <td width="30%">Telephone #&nbsp;<input id="helperPhone" size="15" [value]="data['helperPhone']" (change)="update($event)"/></td>
+            <td width="30%">Name&nbsp;<input id="helperName" size="40" [value]="data['helperName']"
+                    (change)="update($event)" /></td>
+            <td width="30%">Title&nbsp;<input id="helperTitle" size="40" [value]="data['helperTitle']"
+                    (change)="update($event)" /></td>
+            <td width="30%">Telephone #&nbsp;<input id="helperPhone" size="15" [value]="data['helperPhone']"
+                    (change)="update($event)" /></td>
         </tr>
     </table>
 </div>
