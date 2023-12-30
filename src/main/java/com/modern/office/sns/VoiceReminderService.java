@@ -49,7 +49,7 @@ public class VoiceReminderService {
 
     private static final String MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Нажмите 1 чтобы подтвердить, или 2 чтобы отменить визит. Нажмите 3 чтобы перенести ваш визит на другой день.";
     private static final String MESSAGE_EN = "Please confirm your appointment with Dr. %s at the office of %s at %s on %s of %s. Press 1 to confirm, 2 to cancel or 3 to reschedule";
-    private static final String MESSAGE_ES = "Confirme su cita con el Dr. %s en la oficina de %s a las $s el %s de %s en %s. Presione 1 para confirmar, 2 para cancelar o 3 para reprogramar.";
+    private static final String MESSAGE_ES = "Confirme su cita con el Dr. %s en la oficina de %s a las %s el %s de %s en %s. Presione 1 para confirmar, 2 para cancelar o 3 para reprogramar.";
     private static final String FINAL_PROMPT_RU = "Спасибо большое!";
     private static final String FINAL_PROMPT_EN = "Thank you very much!";
     private static final String FINAL_PROMPT_ES = "¡Muchas gracias!";
