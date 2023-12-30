@@ -144,27 +144,27 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="mode_nonemergency"/>
 		<fieldDescription><![CDATA[mode_nonemergency]]></fieldDescription>
 	</field>
-	<field name="fromMM" class="java.lang.Integer">
+	<field name="fromMM" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="fromMM"/>
 		<fieldDescription><![CDATA[fromMM]]></fieldDescription>
 	</field>
-	<field name="fromDD" class="java.lang.Integer">
+	<field name="fromDD" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="fromDD"/>
 		<fieldDescription><![CDATA[fromDD]]></fieldDescription>
 	</field>
-	<field name="fromYYYY" class="java.lang.Integer">
+	<field name="fromYYYY" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="fromYYYY"/>
 		<fieldDescription><![CDATA[fromYYYY]]></fieldDescription>
 	</field>
-	<field name="toMM" class="java.lang.Integer">
+	<field name="toMM" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="toMM"/>
 		<fieldDescription><![CDATA[toMM]]></fieldDescription>
 	</field>
-	<field name="toDD" class="java.lang.Integer">
+	<field name="toDD" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="toDD"/>
 		<fieldDescription><![CDATA[toDD]]></fieldDescription>
 	</field>
-	<field name="toYYYY" class="java.lang.Integer">
+	<field name="toYYYY" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="toYYYY"/>
 		<fieldDescription><![CDATA[toYYYY]]></fieldDescription>
 	</field>
