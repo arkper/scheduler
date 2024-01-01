@@ -31,7 +31,8 @@ public class CustomIpAuthenticationProvider implements AuthenticationProvider
         WebAuthenticationDetails details = (WebAuthenticationDetails) auth.getDetails();
         String userIp = details.getRemoteAddress();
         log.info("Remote IP address: " + userIp);
-        if (!userIp.startsWith("192.168") && !this.securityConfig.getWhiteList().contains(userIp))
+        if (!userIp.startsWith("192.168") && !userIp.startsWith("localhost")
+                && !this.securityConfig.getWhiteList().contains(userIp))
         {
             throw new BadCredentialsException("Invalid IP Address");
         }
