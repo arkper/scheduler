@@ -192,6 +192,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
     @Override
     public Patient getPatient(int patientNo) {
+        log.info("Getting patient info for id {}", patientNo);
         return this.patientRepo.findById(patientNo).orElse(null);
     }
 
