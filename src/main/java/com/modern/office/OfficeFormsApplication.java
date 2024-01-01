@@ -98,7 +98,10 @@ public class OfficeFormsApplication {
 
 		@Bean
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-			http.authorizeRequests().antMatchers("/**").permitAll();
+			http.cors().disable()
+					.authorizeRequests()
+					.antMatchers("/**")
+					.permitAll();
 			
 //			http.cors().and().csrf().disable()
 //			   .authorizeRequests()
