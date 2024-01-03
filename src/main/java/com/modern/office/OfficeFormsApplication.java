@@ -27,7 +27,6 @@ import lombok.Getter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 
@@ -66,31 +65,20 @@ public class OfficeFormsApplication {
 		@Autowired
 		private CustomIpAuthenticationProvider authenticationProvider;
 
-//		@Bean
-//		CorsConfigurationSource corsConfigurationSource() {
-//			CorsConfiguration configuration = new CorsConfiguration();
-//			configuration.setAllowedOrigins(Arrays.asList("*"));
-//			configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-//			configuration.setAllowedHeaders(Arrays.asList("*"));
-//			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//			source.registerCorsConfiguration("/**", configuration);
-//			return source;
-//		}
-
 		@Bean
-		public CorsFilter corsFilter() {
-			final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-			final CorsConfiguration config = new CorsConfiguration();
-			config.addAllowedOrigin("*");
-			config.addAllowedHeader("*");
-			config.addAllowedMethod("*");
-			source.registerCorsConfiguration("/**", config);
-			return new CorsFilter(source);
+		CorsConfigurationSource corsConfigurationSource() {
+			CorsConfiguration configuration = new CorsConfiguration();
+			configuration.setAllowedOrigins(Arrays.asList("*"));
+			configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+			configuration.setAllowedHeaders(Arrays.asList("*"));
+			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+			source.registerCorsConfiguration("/**", configuration);
+			return source;
 		}
 
 		@Bean
 		public AuthenticationManager authManager(HttpSecurity http) throws Exception {
-			AuthenticationManagerBuilder authenticationManagerBuilder = 
+			AuthenticationManagerBuilder authenticationManagerBuilder =
 					http.getSharedObject(AuthenticationManagerBuilder.class);
 			authenticationManagerBuilder.authenticationProvider(authenticationProvider);
 			return authenticationManagerBuilder.build();
@@ -98,14 +86,11 @@ public class OfficeFormsApplication {
 
 		@Bean
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-			http.cors().disable()
+			http.authorizeRequests().antMatchers("/reply").permitAll();
+
+			http.cors().disable().csrf().disable()
 					.authorizeRequests()
-					.antMatchers("/**")
-					.permitAll();
-			
-//			http.cors().and().csrf().disable()
-//			   .authorizeRequests()
-//			   .anyRequest().authenticated().and().httpBasic();
+					.anyRequest().authenticated().and().httpBasic();
 			return http.build();
 		}
 	}
