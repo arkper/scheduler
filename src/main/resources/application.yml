@@ -1,6 +1,12 @@
 server:
-  port: 9988
-
+  ssl:
+    key-store: classpath:modern.p12
+    key-store-password: password123
+    key-store-type: pkcs12
+    key-alias: modern
+    key-password: password123
+  port: 8443
+  http-port: 9988
 spring:
   datasource:
     url: jdbc:sqlserver://localhost;databaseName=OMSQLDB;encrypt=false

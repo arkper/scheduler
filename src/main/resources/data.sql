@@ -40,7 +40,7 @@ values (1, 8, 2, 1, '13:45', '19:00', '2022-11-28', 'Wednesday, February 16, 201
 insert into AppSch_Provider_Exception(pro_exception_no, pro_no, LocationID, pro_available_ind, pro_start_time, pro_end_time, pro_exception_date, pro_notes, pro_delete_ind)
 values (2, 8, 2, 1, '10:00', '18:00', '2022-11-29', 'Wednesday, February 16, 2011', 0); 
 
-insert into patient(patient_no, last_name, first_name, birth_date, salutation, address_no, sex, ss_no) values(111, 'Perepelyuk', 'Arkady', '1962-09-27', 'Dear Arkady:', 1, 1, '067-80-1212');
+insert into patient(patient_no, last_name, first_name, birth_date, salutation, address_no, sex, ss_no) values(8641, 'Perepelyuk', 'Arkady', '1962-09-27', 'Dear Arkady:', 1, 1, '067-80-1212');
 insert into patient(patient_no, last_name, first_name, birth_date, salutation, address_no, sex, ss_no) values(112, 'Perepelyuk', 'Dina', '1962-09-07', 'Dear Dina:', 1, 0, '067-80-4335');
 
 insert into address(address_no, address1, city, state, zip, phone1) values(1, '123 E 12-th St', 'Brooklyn', 65, '11223','(347) 222-3322');
