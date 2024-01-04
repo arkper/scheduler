@@ -1,6 +1,6 @@
 server:
   ssl:
-    key-store: classpath:modern.p12
+#    key-store: classpath:modern.p12
     key-store-password: password123
     key-store-type: pkcs12
     key-alias: modern
