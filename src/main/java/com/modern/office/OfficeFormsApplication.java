@@ -86,11 +86,12 @@ public class OfficeFormsApplication {
 
 		@Bean
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-			http.authorizeRequests().antMatchers("/reply").permitAll();
+			//http.authorizeRequests().antMatchers("/reply").permitAll();
+			http.authorizeRequests().anyRequest().permitAll();
 
-			http.cors().disable().csrf().disable()
-					.authorizeRequests()
-					.anyRequest().authenticated().and().httpBasic();
+			//http.cors().disable().csrf().disable()
+			//		.authorizeRequests()
+			//		.anyRequest().authenticated().and().httpBasic();
 			return http.build();
 		}
 	}
