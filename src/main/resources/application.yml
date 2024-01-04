@@ -1,10 +1,12 @@
 server:
   ssl:
+    certificate-private-key: classpath:PrivateKey.pem
+    certificate: classpath:modernoptical.mywire.org_2024.crt
 #    key-store: classpath:modern.p12
-    key-store-password: password123
-    key-store-type: pkcs12
-    key-alias: modern-prod
-    key-password: password123
+#    key-store-password: password123
+#    key-store-type: pkcs12
+#    key-alias: modern-prod
+#    key-password: password123
   port: 9988
   http-port: 9989
 spring:
