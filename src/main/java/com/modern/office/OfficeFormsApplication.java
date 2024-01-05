@@ -1,6 +1,7 @@
 package com.modern.office;
 
 import com.modern.office.config.CustomIpAuthenticationProvider;
+import com.modern.office.forms.controllers.MyCorsFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import lombok.Getter;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -66,15 +68,15 @@ public class OfficeFormsApplication {
 		private CustomIpAuthenticationProvider authenticationProvider;
 
 		// @Bean
-		CorsConfigurationSource corsConfigurationSource() {
-			CorsConfiguration configuration = new CorsConfiguration();
-			configuration.setAllowedOrigins(Arrays.asList("*"));
-			configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-			configuration.setAllowedHeaders(Arrays.asList("*"));
-			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-			source.registerCorsConfiguration("/**", configuration);
-			return source;
-		}
+//		CorsConfigurationSource corsConfigurationSource() {
+//			CorsConfiguration configuration = new CorsConfiguration();
+//			configuration.setAllowedOrigins(Arrays.asList("*"));
+//			configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+//			configuration.setAllowedHeaders(Arrays.asList("*"));
+//			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//			source.registerCorsConfiguration("/**", configuration);
+//			return source;
+//		}
 
 		@Bean
 		public AuthenticationManager authManager(HttpSecurity http) throws Exception {
@@ -87,7 +89,8 @@ public class OfficeFormsApplication {
 		@Bean
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //			http.authorizeRequests().antMatchers("/reply").permitAll();
-			http.cors().disable()
+			http.addFilterBefore(new MyCorsFilter(), ChannelProcessingFilter.class)
+					.cors().and().csrf().disable()
 					.authorizeRequests()
 					.antMatchers("/**").permitAll();
 
