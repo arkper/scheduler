@@ -65,7 +65,7 @@ public class OfficeFormsApplication {
 		@Autowired
 		private CustomIpAuthenticationProvider authenticationProvider;
 
-		@Bean
+		// @Bean
 		CorsConfigurationSource corsConfigurationSource() {
 			CorsConfiguration configuration = new CorsConfiguration();
 			configuration.setAllowedOrigins(Arrays.asList("*"));
