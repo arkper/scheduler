@@ -90,7 +90,7 @@ public class OfficeFormsApplication {
 		public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //			http.authorizeRequests().antMatchers("/reply").permitAll();
 			http.addFilterBefore(new MyCorsFilter(), ChannelProcessingFilter.class)
-					.cors().and().csrf().disable()
+					.cors().and()
 					.authorizeRequests()
 					.antMatchers("/**").permitAll();
 
