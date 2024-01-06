@@ -3,7 +3,7 @@ package com.modern.office.domain;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
     @Table(name="patient_preferences")

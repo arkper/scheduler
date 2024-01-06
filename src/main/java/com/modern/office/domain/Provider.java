@@ -1,6 +1,6 @@
 package com.modern.office.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

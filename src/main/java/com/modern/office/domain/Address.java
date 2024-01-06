@@ -2,7 +2,7 @@ package com.modern.office.domain;
 
 import java.time.LocalDate;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import lombok.Builder;
 import lombok.Data;

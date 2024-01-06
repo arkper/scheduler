@@ -48,6 +48,7 @@ public class FormGenerator {
         return this.reportGeneratorService.generateForm(formData);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping(value = "/company")
     public Company getCompany() {
         return this.reportGeneratorService.getCompany();

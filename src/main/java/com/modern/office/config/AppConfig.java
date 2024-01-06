@@ -19,7 +19,7 @@ import software.amazon.awssdk.services.connect.ConnectClient;
 import software.amazon.awssdk.services.sns.SnsClient;
 import software.amazon.awssdk.services.sqs.SqsClient;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 @Configuration
 @ConfigurationProperties(prefix = "scheduler")
