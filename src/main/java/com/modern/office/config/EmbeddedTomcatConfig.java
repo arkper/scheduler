@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Slf4j
-@Configuration
+// @Configuration
 public class EmbeddedTomcatConfig {
     @Value("${server.http-port:9988}")
     private Integer serverHttpPort;

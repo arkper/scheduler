@@ -75,9 +75,8 @@ public class OfficeFormsApplication {
                     .csrf(AbstractHttpConfigurer::disable)
                     .authorizeHttpRequests(auth -> auth
                             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                            .requestMatchers("/reply").permitAll()
-                            .anyRequest().authenticated()
-                    ).httpBasic(Customizer.withDefaults());
+                            .requestMatchers("/**").permitAll()
+                    );
 
             return http.build();
         }
