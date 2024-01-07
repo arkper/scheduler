@@ -45,6 +45,7 @@ public class FormGenerator {
 
     @PostMapping(value = "/generate", produces = MediaType.TEXT_PLAIN_VALUE, consumes = "application/json")
     public String generateEyeGlassesForm(@RequestBody FormData formData) throws IOException {
+        log.info("Generating form {}", formData);
         return this.reportGeneratorService.generateForm(formData);
     }
 
