@@ -22,7 +22,6 @@
                   <option *ngFor="let p of providers"  [value]="p.providerName">{{ p.providerName }}</option>
                 </select>
             </mat-form-field>
-            <button mat-raised-button color="primary" (click)="clearSelection()">Clear Selection</button>
         </form>
     </div>
     <div *ngIf="isPatient">
@@ -46,6 +45,7 @@
         ></ag-grid-angular>
     </div>
     <br/>
+    <button mat-raised-button color="danger" (click)="clearSelection()">Clear Selection</button>
     <button mat-raised-button color="primary" (click) = "requestSignature()">Request Signature</button>
     <!-- <app-sig-pad [reset]="resetRequest" (signed) = "onSigned($event)"></app-sig-pad> -->
 </div>
