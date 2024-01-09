@@ -111,14 +111,15 @@ export class SigninSheetComponent {
         doctor: this.provider,
         apptNo: this.appointment?.apptNo ?? null
       }
-    }
-    else {
+    } else if (this.firstName && this.lastName) {
       requestData = {
         docType: "signin",
         visitor: this.firstName + ' ' + this.lastName,
         doctor: this.provider,
         apptNo: null
       }
+    } else {
+      return;
     }
 
     this.apiService.requestSignature(requestData)
