@@ -85,9 +85,9 @@ public class VoiceReminderService {
     }
 
     private void processNotification(Appointment appt) {
-        var promptRu = this.finalizePrompt(MESSAGE_RU, appt, true);
-        var promptEn = this.finalizePrompt(MESSAGE_EN, appt, false);
-        var promptEs = this.finalizePrompt(MESSAGE_ES, appt, true);
+        var promptRu = this.finalizePrompt(MESSAGE_RU, appt, true, "RU");
+        var promptEn = this.finalizePrompt(MESSAGE_EN, appt, false, "EN");
+        var promptEs = this.finalizePrompt(MESSAGE_ES, appt, true, "ES");
 
         var phone = this.snsService.addCountryCode(this.snsService.transform(appt.getApptPhone()));
 
@@ -127,22 +127,22 @@ public class VoiceReminderService {
         return response.contactId();
     }
 
-    private String finalizePrompt(String msgTemplate, Appointment appt, boolean translate) {
+    private String finalizePrompt(String msgTemplate, Appointment appt, boolean translate, String target) {
         var doctor = this.snsService.getProviderName(appt.getProviderNo());
         var date = appt.getApptDate().format(DateTimeFormatter.ofPattern("MMMM,dd"));
         var month = date.split(",")[0];
         var day = date.split(",")[1];
 
         return String.format(msgTemplate,
-                translate ? this.translate(doctor) : doctor,
-                translate ? this.translate(this.company) : this.company,
+                translate ? this.translate(doctor, target) : doctor,
+                translate ? this.translate(this.company, target) : this.company,
                 appt.getApptStartTime(),
-                day + (translate ? " " + this.translate(month) : " of " + month),
-                translate ? this.translate(this.address) : this.address);
+                day + (translate ? " " + this.translate(month, target) : " of " + month),
+                translate ? this.translate(this.address, target) : this.address);
     }
 
-    private String translate(String source) {
-        return "RU".equals(this.entryPrompt)
+    private String translate(String source, String target) {
+        return "RU".equals(target)
                 ? DICTIONARY.getOrDefault(source, Tuples.pair(source, source)).getOne()
                 : DICTIONARY.getOrDefault(source, Tuples.pair(source, source)).getTwo();
     }
