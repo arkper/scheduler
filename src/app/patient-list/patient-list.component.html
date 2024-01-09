@@ -9,6 +9,7 @@
         <input matInput id="firstName" placeholder="Type starting characters" (keyup)="externalFilterChanged($event)" [value] = "firstName"/>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="clearSelection()">Clear Selection</button>
+      <button mat-raised-button color="primary" (click)="refresh(patient)">Refresh</button>
     </form>
   </div>
 

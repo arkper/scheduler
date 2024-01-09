@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { OfficeApiService } from '../../services/office-api.service';
-import { Company, Document, Patient, PatientInsurance } from '../../store/model/patient.model';
 import { DatePipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/reducers';

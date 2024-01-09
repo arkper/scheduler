@@ -3,10 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OfficeApiService } from '../../services/office-api.service';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
-import { Document, Patient } from '../../store/model/patient.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/reducers';
-import { DocumentActionType } from 'src/app/store/actions/document.action';
 import { BaseFormComponent } from '../base-form/base-form.component';
 
 @Component({

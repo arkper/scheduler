@@ -46,5 +46,6 @@
         ></ag-grid-angular>
     </div>
     <br/>
-    <app-sig-pad [reset]="resetRequest" (signed) = "onSigned($event)"></app-sig-pad>
+    <button mat-raised-button color="primary" (click) = "requestSignature()">Request Signature</button>
+    <!-- <app-sig-pad [reset]="resetRequest" (signed) = "onSigned($event)"></app-sig-pad> -->
 </div>

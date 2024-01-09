@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/reducers';
 import { Document } from '../store/model/patient.model';
@@ -11,7 +10,7 @@ import { OfficeApiService } from '../services/office-api.service';
   styleUrls: ['./doc-viewer.component.scss']
 })
 export class DocViewerComponent {
-  constructor(private router: Router, private store: Store<AppState>, private apiService: OfficeApiService){
+  constructor(private store: Store<AppState>, private apiService: OfficeApiService){
 
     this.store.select(state => state.selectedDocument.document)
       .subscribe((document) => {this.onDocumentSelected(document)});

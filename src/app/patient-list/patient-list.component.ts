@@ -92,12 +92,16 @@ export class PatientListComponent {
   }
 
   onCellClicked( e: CellClickedEvent): void {
-    this.store.dispatch({
-      type: PatientActionType.SELECT_PATIENT,
-      payload: e.data
-    });
+    this.refresh(e.data);
     //this.patient = e.data;
     e.node.setSelected(true);
+  }
+
+  refresh(patient: Patient | null){
+    this.store.dispatch({
+      type: PatientActionType.SELECT_PATIENT,
+      payload: patient == null? this.patient : patient
+    });
   }
 
   clearSelection(): void {

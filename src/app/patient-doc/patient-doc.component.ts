@@ -9,6 +9,7 @@ import { PatientActionType } from '../store/actions/patient.action';
 import { AppState } from '../store/reducers';
 import { DocumentActionType } from '../store/actions/document.action';
 import { DatePipe } from '@angular/common';
+import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-patient-doc',
@@ -23,7 +24,8 @@ export class PatientDocComponent  implements OnInit {
 
   constructor(
     private apiService: OfficeApiService,
-    private datepipe: DatePipe,     
+    private datepipe: DatePipe,
+    private snackBar: MatSnackBar,     
     private store: Store<AppState>,
     private router: Router) {
       this.store.select(state => state.selectedPatient.patients)
@@ -105,6 +107,31 @@ export class PatientDocComponent  implements OnInit {
     });
 
     console.log("Creating new " + this.selectedDocType.desc);
-    this.router.navigateByUrl(`/${this.selectedDocType.id}-form`, {state: {patient: this.patient}});
+   
+    const requestData = {
+      patientNo: this.patient.patientNo,
+      docType: this.selectedDocType.id
+    };
+
+    this.apiService.requestSignature(requestData)
+    .subscribe({
+      next: data => {console.log(data)},
+      error: e => {console.log(e); this.displayFailure()},
+      complete: () => this.displaySuccess()
+    });
+
+    // this.router.navigateByUrl(`/${this.selectedDocType.id}-form`, {state: {patient: this.patient}});
+  }
+
+  displaySuccess() {
+    this.openSnackBar("Success!", "X");
+  }
+
+  displayFailure() {
+    this.openSnackBar("Failure!", "X");
+  }
+
+  openSnackBar(message: string, type: string) { 
+    this.snackBar.open(message, type, {duration: 2000}); 
   }
 }

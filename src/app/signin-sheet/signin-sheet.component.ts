@@ -101,6 +101,32 @@ export class SigninSheetComponent {
     .subscribe({next: data => this.gridData1 = data});
   }
 
+  requestSignature(){
+    let requestData = {};
+
+    if (this.isPatient && this.patient != null) {
+      requestData = {
+        visitor: this.patient.firstName + ' ' + this.patient.lastName,
+        doctor: this.provider,
+        apptNo: this.appointment?.apptNo
+      }
+    }
+    else {
+      requestData = {
+        visitor: this.firstName + ' ' + this.lastName,
+        doctor: this.provider,
+        apptNo: 0
+      }
+    }
+
+    this.apiService.requestSignature(requestData)
+    .subscribe({
+      next: data => {console.log(data); this.clearSelection()},
+      error: e => {console.log(e); this.displayFailure()},
+      complete: () => this.displaySuccess()
+    });
+  }
+
   onSigned(event: any) {
     this.signature = event;
     console.log(this.isPatient)
