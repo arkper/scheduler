@@ -171,12 +171,12 @@ export class OfficeApiService {
   requestSignature(data: any): Observable<any>
   {
     console.log("Requesting sifnature for: ", data);
-    return this.http.post('/sign-requests', data, {responseType: 'text'});
+    return this.http.post('/forms/sign-requests', data, {responseType: 'text'});
   }
 
   getRequest(): Observable<any>
   {
-    return this.http.get('/sign-requests', this.getHttpOptions());
+    return this.http.get('/forms/sign-requests', this.getHttpOptions());
   }
 
   getState(stateNo: number | undefined): string | undefined{
