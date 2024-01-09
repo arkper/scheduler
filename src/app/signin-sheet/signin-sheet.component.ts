@@ -106,16 +106,18 @@ export class SigninSheetComponent {
 
     if (this.isPatient && this.patient != null) {
       requestData = {
+        docType: "signin",
         visitor: this.patient.firstName + ' ' + this.patient.lastName,
         doctor: this.provider,
-        apptNo: this.appointment?.apptNo
+        apptNo: this.appointment?.apptNo ?? null
       }
     }
     else {
       requestData = {
+        docType: "signin",
         visitor: this.firstName + ' ' + this.lastName,
         doctor: this.provider,
-        apptNo: 0
+        apptNo: null
       }
     }
 
