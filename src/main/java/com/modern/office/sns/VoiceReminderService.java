@@ -32,24 +32,24 @@ public class VoiceReminderService {
             .withKeyValue("Steven Givner", Tuples.pair("Стивеном Гивнером", "Steven Givner"))
             .withKeyValue("Modern Optical", Tuples.pair("Модерн Оптика", "Óptica Moderna"))
             .withKeyValue("Optical Gallery", Tuples.pair("Оптикал Гелери", "Galería Óptica"))
-            .withKeyValue("January", Tuples.pair("Января", "Enero"))
-            .withKeyValue("February", Tuples.pair("Февраля", "Febrero"))
-            .withKeyValue("March", Tuples.pair("Марта", "Marzo"))
-            .withKeyValue("April", Tuples.pair("Апреля", "Abril"))
-            .withKeyValue("May", Tuples.pair("Мая", "Puede"))
-            .withKeyValue("June", Tuples.pair("Июня", "Junio"))
-            .withKeyValue("July", Tuples.pair("Июля", "Julio"))
-            .withKeyValue("August", Tuples.pair("Августа", "Agosto"))
-            .withKeyValue("September", Tuples.pair("Сентября", "Septiembre"))
-            .withKeyValue("October", Tuples.pair("Октября", "Octubre"))
-            .withKeyValue("November", Tuples.pair("November", "Noviembre"))
-            .withKeyValue("December", Tuples.pair("Декабря", "Diciembre"))
+            .withKeyValue("January", Tuples.pair("Января", "de Enero"))
+            .withKeyValue("February", Tuples.pair("Февраля", "de Febrero"))
+            .withKeyValue("March", Tuples.pair("Марта", "de Marzo"))
+            .withKeyValue("April", Tuples.pair("Апреля", "de Abril"))
+            .withKeyValue("May", Tuples.pair("Мая", "de Puede"))
+            .withKeyValue("June", Tuples.pair("Июня", "de Junio"))
+            .withKeyValue("July", Tuples.pair("Июля", "de Julio"))
+            .withKeyValue("August", Tuples.pair("Августа", "de Agosto"))
+            .withKeyValue("September", Tuples.pair("Сентября", "de Septiembre"))
+            .withKeyValue("October", Tuples.pair("Октября", "de Octubre"))
+            .withKeyValue("November", Tuples.pair("November", "de Noviembre"))
+            .withKeyValue("December", Tuples.pair("Декабря", "de Diciembre"))
             .withKeyValue("453 Kings Highway", Tuples.pair("353 Кингс Хайвей", ""))
             .withKeyValue("446 Myrtle Avenue", Tuples.pair("446 Мёртл Авеню", ""));
 
     private static final String MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Нажмите 1 чтобы подтвердить, или 2 чтобы отменить визит. Нажмите 3 чтобы перенести ваш визит на другой день.";
     private static final String MESSAGE_EN = "Please confirm your appointment with Dr. %s at the office of %s at %s on %s at %s. Press 1 to confirm, 2 to cancel or 3 to reschedule";
-    private static final String MESSAGE_ES = "Confirme su cita con el Dr. %s en la oficina de %s a las %s el %s de %s en %s. Presione 1 para confirmar, 2 para cancelar o 3 para reprogramar.";
+    private static final String MESSAGE_ES = "Confirme su cita con el Dr. %s en la oficina de %s a las %s el %s en %s. Presione 1 para confirmar, 2 para cancelar o 3 para reprogramar.";
     private static final String FINAL_PROMPT_RU = "Спасибо большое!";
     private static final String FINAL_PROMPT_EN = "Thank you very much!";
     private static final String FINAL_PROMPT_ES = "¡Muchas gracias!";
