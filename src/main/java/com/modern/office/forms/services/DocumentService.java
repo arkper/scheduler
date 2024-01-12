@@ -23,6 +23,6 @@ public class DocumentService {
     public Iterable<HippaDocument> getHippaDocuments(int patientNo) {
         return Lists.mutable.withAll(
                         this.hippaDocumentRepository.findHippaDocumentsByPatientNo(patientNo))
-                .sortThisBy(Document::getSysId).reverseThis();
+                .sortThisBy(HippaDocument::getSysId).reverseThis();
     }
 }
