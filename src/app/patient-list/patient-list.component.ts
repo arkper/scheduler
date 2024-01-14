@@ -26,7 +26,8 @@ export class PatientListComponent {
     private store: Store<AppState>,
     private datepipe: DatePipe) {
 
-    this.apiService.register();
+    this.apiService.register()
+      .subscribe({next: data => console.log(data)});
 
     this.store.select(state => state.selectedPatient.patients)
       .subscribe((selectedPatients) => {this.onPatientSelectionChanged(selectedPatients)});
