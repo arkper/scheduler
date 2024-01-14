@@ -3,6 +3,7 @@ package com.modern.office.scheduler.services;
 import com.modern.office.config.AppConfig;
 import com.modern.office.domain.*;
 import com.modern.office.repository.*;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
