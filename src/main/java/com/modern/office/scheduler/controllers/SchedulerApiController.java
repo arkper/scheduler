@@ -40,8 +40,6 @@ public class SchedulerApiController {
 
 	private final SchedulerApiService schedulerApiService;
 
-	private final ClientMappings clientMappings;
-
 	@GetMapping(value = "/addresses/{address-no}", produces = "application/json")
 	public ResponseEntity<Address> getAddress(@PathVariable("address-no") int addressNo) {
 		try {
@@ -273,44 +271,6 @@ public class SchedulerApiController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
 					.build();
 		}
-	}
-
-	@PostMapping(path="/register")
-	public boolean registerOfficeFormsClient(HttpServletRequest request){
-		String referer = request.getHeader("referer");
-		if (Objects.nonNull(referer))
-		{
-			log.info("Registering Office Forms client at {}", referer);
-			String clientIp = StringUtils.substringBetween(referer, "//", ":");
-			if (!this.clientMappings.getMappings().containsKey(clientIp)){
-				this.clientMappings.getMappings().put(clientIp, null);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@PostMapping(path="/link/{client}")
-	public boolean registerOfficeFormsSignerClient(HttpServletRequest request,
-												@PathVariable(value = "client", required = false) final String clientIp){
-		String referer = request.getHeader("referer");
-		if (Objects.isNull(referer)) {
-			return false;
-		}
-		var signerIp = StringUtils.substringBetween(referer, "//", ":");
-
-		var officeFormsClientIp =  Objects.isNull(clientIp)
-			? Maps.adapt(this.clientMappings.getMappings()).detectOptional((k, v) -> Objects.isNull(v))
-					.map(Pair::getOne).orElse(null)
-			: Maps.adapt(this.clientMappings.getMappings()).detectOptional((k, v) -> clientIp.equals(k))
-				.map(Pair::getOne).orElse(null);
-
-		if (officeFormsClientIp != null){
-			this.clientMappings.getMappings().put(officeFormsClientIp, signerIp);
-			return true;
-		}
-
-		return false;
 	}
 
 	@GetMapping(path = "/patients-by-name-like/{last-name}/{first-name}", produces = "application/json")
