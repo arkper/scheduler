@@ -47,7 +47,7 @@ export class OfficeApiService {
     return category === 'EDoc'
       ? [{id: "release", desc: "Release Of Medical Info"},
          {id: "transportation", desc: "Transportation Approval"},
-         {id: "eyeglasses", desc: "Medicaid Eyeglasses"}]
+         {id: "eye-glasses", desc: "Medicaid Eyeglasses"}]
       : [{id: "consent", desc: "Consent To Examination"}];
   }
 
