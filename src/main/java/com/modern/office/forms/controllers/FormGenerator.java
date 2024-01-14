@@ -146,10 +146,6 @@ public class FormGenerator {
 
     private String getRequestorAddress(final HttpServletRequest request)
     {
-        String referer = request.getRemoteAddr();
-        if (Objects.isNull(referer)) {
-            return null;
-        }
-        return StringUtils.substringBetween(referer, "//", ":");
+        return request.getRemoteAddr();
     }
 }
