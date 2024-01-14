@@ -73,6 +73,11 @@ public class FormGenerator {
         return false;
     }
 
+    @GetMapping(value = "/mappings", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ClientMappings getMappings(){
+        return this.clientMappings;
+    }
+
     @PostMapping("/release-report/generate")
     public byte[] generateReleaseLegacyReport(@RequestBody ReleaseInfoReport releaseInfoReport) {
         return this.reportGeneratorService.generateReleaseInfoReportLegacy(releaseInfoReport);
