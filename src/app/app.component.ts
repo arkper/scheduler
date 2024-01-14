@@ -21,7 +21,6 @@ export class AppComponent {
 
 
   constructor(private observer: BreakpointObserver, private apiService: OfficeApiService) {
-    this.apiService.register();
   }
 
   ngOnInit() {
