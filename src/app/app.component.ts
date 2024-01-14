@@ -21,6 +21,8 @@ export class AppComponent {
 
 
   constructor(private observer: BreakpointObserver, private apiService: OfficeApiService) {
+    this.apiService.register()
+      .subscribe({next: data => console.log(data)});
   }
 
   ngOnInit() {
