@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { PatientActionType } from '../store/actions/patient.action';
 import { AppState } from '../store/reducers';
 import { DatePipe } from '@angular/common';
+import { _isNumberValue } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-patient-list',
@@ -15,6 +16,7 @@ import { DatePipe } from '@angular/common';
 export class PatientListComponent {
   patient: Patient | null = null;
   doc: Document | null = null;
+  patientNo: string = "";
 
   firstName: string = "";
   lastName: string = "";
@@ -57,6 +59,7 @@ export class PatientListComponent {
 
     if (current !== undefined && current?.patientNo !== 0) {
       this.patient = current;
+      this.patientNo = this.patient.patientNo.toString();
       this.firstName = this.patient.firstName;
       this.lastName = this.patient.lastName;
     } else {
@@ -72,6 +75,15 @@ export class PatientListComponent {
     const firstNamePattern = this.firstName === ''? 'any' : this.firstName;
 
     this.gridData = [];
+    if (this.patientNo && _isNumberValue(this.patientNo)){
+      this.apiService.getPatientsById(this.patientNo)
+      .subscribe({
+        next: data => this.gridData = [data],
+        error: err => console.log(err),
+        complete: () => console.log('Loaded patient: ' + this.gridData.length)
+      });
+      return;
+    }
     this.apiService.getPatientsByName(lastNamePattern, firstNamePattern)
       .subscribe({
         next: rows => this.gridData = rows,
@@ -106,12 +118,14 @@ export class PatientListComponent {
 
   clearSelection(): void {
     this.gridApi?.deselectAll();
+    this.patientNo = "";
     this.lastName = "";
     this.firstName = "";
     this.executeSearch();
   }
 
   externalFilterChanged(event: any){
+    this.patientNo = (document.getElementById("patientId") as HTMLInputElement).value; 
     this.lastName = (document.getElementById("lastName") as HTMLInputElement).value;
     this.firstName = (document.getElementById("firstName") as HTMLInputElement).value;
     this.executeSearch();

@@ -72,6 +72,17 @@ export class OfficeApiService {
     }
   }
 
+  getPatientsById(patientNo: string): Observable<Patient> {
+    if (environment.production) {
+      return this.http
+        .get<Patient>(`/patients/${ patientNo }`, this.getHttpOptions());
+    } else {
+      const address: Address = {addressNo: 1, address1: "123 East 12th St", address2: null, city: "Brooklyn", stateNo: 65, state: null, zip: "11223", phone1: "(718) 123-45678", phone2: null};
+      const insurance: PatientInsurance = {patientInsuranceNo: 1, insuranceNo: 2, insuredId: "A12345", insuredNo: 111, relationToInsuredNo: 335}
+      return of({patientNo: 111, lastName: 'Perepelyuk', firstName: 'Arkady', address: address, salutation: null, birthDate: '1962-09-27', sex: 1, ssNo: '123456', patientInsurances: [insurance]});
+    }
+  }
+
   getDocs(patientNo: number, type: string): Observable<Document[]> {
     return type === 'EDoc'? this.getEdocs(patientNo) : this.getHipaaDocs(patientNo);
   }
