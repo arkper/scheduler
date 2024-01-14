@@ -62,11 +62,15 @@ public class FormGenerator {
             return false;
         }
 
+        log.info("Linking up subscriber {}", subscriber);
+
         var publisher =  Objects.isNull(publisherIp)
                 ? Maps.adapt(this.clientMappings.getMappings()).detectOptional((k, v) -> Objects.isNull(v))
                   .map(Pair::getOne).orElse(null)
                 : Maps.adapt(this.clientMappings.getMappings()).detectOptional((k, v) -> publisherIp.equals(k))
                   .map(Pair::getOne).orElse(null);
+
+        log.info("Linking up subscriber {} to publisher {}", subscriber, publisher);
 
         if (publisher != null){
             this.clientMappings.getMappings().put(publisher, subscriber);
