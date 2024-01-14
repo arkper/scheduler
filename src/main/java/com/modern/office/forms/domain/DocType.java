@@ -16,7 +16,7 @@ public enum DocType {
     LabResults(1164, "lab", null, FormType.EDocs, "Lab Results"),
     ReleaseOfMedicalInfo(1279, "release", "/reports/release.jrxml", FormType.EDocs, "Release Of Medical Info"),
     TransportationApproval(1280, "transportation", "/reports/transportation.jrxml", FormType.EDocs, "Transportation Approval"),
-    MedicaidEyeglasses(1281, "eyeglasses", "/reports/eyeglasses.jrxml", FormType.EDocs, "Medicaid Eyeglasses"),
+    MedicaidEyeglasses(1281, "eye-glasses", "/reports/eyeglasses.jrxml", FormType.EDocs, "Medicaid Eyeglasses"),
     Privacy(1106, "privacy", null, FormType.HIPAA, "Privacy"),
     Consent(1107, "consent", "/reports/consent.jrxml", FormType.HIPAA, "Consent"),
     Complaint(1108, "complaint", null, FormType.HIPAA, "Complaint"),
