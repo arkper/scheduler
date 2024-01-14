@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
+import { OfficeApiService } from './services/office-api.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,9 @@ export class AppComponent {
   isCollapsed = true;
 
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(private observer: BreakpointObserver, private apiService: OfficeApiService) {
+    this.apiService.register();
+  }
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -39,9 +42,5 @@ export class AppComponent {
       this.sidenav.open();
       this.isCollapsed = !this.isCollapsed;
     }
-  }
-  clicked()
-  {
-    console.log("Link clicked");
   }
 }

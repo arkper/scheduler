@@ -39,6 +39,10 @@ export class OfficeApiService {
       .subscribe({next: data => this.insurances = data});   
   }
 
+  register(): Observable<any>{
+    return this.http.post("/register", null, this.getHttpOptions());
+  }
+
   getDocTypes(category: string): DocType[]{
     return category === 'EDoc'
       ? [{id: "release", desc: "Release Of Medical Info"},
