@@ -9,5 +9,9 @@ import java.util.Map;
 @Component
 @Data
 public class ClientMappings {
-    private Map<String, String> mappings = Maps.mutable.empty();
+    private Map<String, String> mappings;
+
+    public ClientMappings(){
+        mappings = Maps.mutable.empty();
+    }
 }

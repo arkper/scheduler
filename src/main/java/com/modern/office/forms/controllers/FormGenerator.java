@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.factory.Maps;
+import org.eclipse.collections.impl.tuple.Tuples;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -38,7 +39,7 @@ public class FormGenerator {
     private String documentLocalFolder;
 
     @PostMapping(path="/register")
-    public ClientMappings registerOfficeFormsClient(HttpServletRequest request){
+    public List<Pair<String, String>> registerOfficeFormsClient(HttpServletRequest request){
         var publisher = this.getRequestorAddress(request);
         if (Objects.nonNull(publisher))
         {
@@ -47,7 +48,10 @@ public class FormGenerator {
                 this.clientMappings.getMappings().put(publisher, null);
             }
         }
-        return this.clientMappings;
+        return this.clientMappings.getMappings().entrySet()
+                .stream()
+                .map(entry -> Tuples.pair(entry.getKey(), entry.getValue()))
+                .toList();
     }
 
     @PostMapping(path="/link/{publisher-ip}")
@@ -73,8 +77,11 @@ public class FormGenerator {
     }
 
     @GetMapping(value = "/mappings", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ClientMappings getMappings(){
-        return this.clientMappings;
+    public List<Pair<String, String>> getMappings(){
+        return this.clientMappings.getMappings().entrySet()
+                .stream()
+                .map(entry -> Tuples.pair(entry.getKey(), entry.getValue()))
+                .toList();
     }
 
     @PostMapping("/release-report/generate")
