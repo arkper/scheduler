@@ -38,17 +38,16 @@ public class FormGenerator {
     private String documentLocalFolder;
 
     @PostMapping(path="/register")
-    public boolean registerOfficeFormsClient(HttpServletRequest request){
+    public ClientMappings registerOfficeFormsClient(HttpServletRequest request){
         var publisher = this.getRequestorAddress(request);
         if (Objects.nonNull(publisher))
         {
             log.info("Registering Office Forms client at {}", publisher);
             if (!this.clientMappings.getMappings().containsKey(publisher)){
                 this.clientMappings.getMappings().put(publisher, null);
-                return true;
             }
         }
-        return false;
+        return this.clientMappings;
     }
 
     @PostMapping(path="/link/{publisher-ip}")
