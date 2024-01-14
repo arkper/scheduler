@@ -280,6 +280,7 @@ public class SchedulerApiController {
 		String referer = request.getHeader("referer");
 		if (Objects.nonNull(referer))
 		{
+			log.info("Registering Office Forms client at {}", referer);
 			String clientIp = StringUtils.substringBetween(referer, "//", ":");
 			if (!this.clientMappings.getMappings().containsKey(clientIp)){
 				this.clientMappings.getMappings().put(clientIp, null);
