@@ -22,7 +22,7 @@ export class EyeGlassesFormComponent extends BaseFormComponent implements OnInit
       super(router, apiService, snackBar, datepipe, store);
   }
 
-  override formType: string = "eyeglasses";
+  override formType: string = "eye-glasses";
 
   override data: {[k: string]: any} = {
     firstName: this.patient?.firstName,
