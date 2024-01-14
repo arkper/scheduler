@@ -54,7 +54,7 @@ public class FormGenerator {
                 .toList();
     }
 
-    @PostMapping(path="/link/{publisher-ip}")
+    @PostMapping(path={"/link/{publisher-ip}", "/link"})
     public boolean registerOfficeFormsSignerClient(HttpServletRequest request,
                                                    @PathVariable(value = "publisher-ip", required = false) final String publisherIp){
         var subscriber = this.getRequestorAddress(request);
