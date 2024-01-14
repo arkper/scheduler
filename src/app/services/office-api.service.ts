@@ -40,7 +40,7 @@ export class OfficeApiService {
   }
 
   register(): Observable<any>{
-    return this.http.post("/register", null, this.getHttpOptions());
+    return this.http.post("/forms/register", null, this.getHttpOptions());
   }
 
   getDocTypes(category: string): DocType[]{
@@ -174,7 +174,7 @@ export class OfficeApiService {
 
   requestSignature(data: any): Observable<any>
   {
-    console.log("Requesting sifnature for: ", data);
+    console.log("Requesting signature for: ", data);
     return this.http.post('/forms/sign-requests', data, {responseType: 'text'});
   }
 

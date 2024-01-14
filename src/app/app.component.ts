@@ -22,7 +22,9 @@ export class AppComponent {
 
   constructor(private observer: BreakpointObserver, private apiService: OfficeApiService) {
     this.apiService.register()
-      .subscribe({next: data => console.log(data)});
+      .subscribe({
+        next: data => console.log(data),
+        error: err => console.log("Failed to register: ", err)});
   }
 
   ngOnInit() {
