@@ -859,6 +859,30 @@ By ordering transportation services for Medicaid recipients/patients traveling o
 				<reportElement x="391" y="490" width="100" height="30" uuid="9d86aef1-765a-496c-9f34-0587a937c608"/>
 				<textFieldExpression><![CDATA["Date: " + $F{date}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="2" y="550" width="100" height="20" uuid="adfa3167-3778-4f5b-a11a-ad5c3d773236"/>
+				<text><![CDATA[Helper's Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="262" y="550" width="90" height="20" uuid="5515b342-484d-476f-87d6-e70514dddcce"/>
+				<textFieldExpression><![CDATA[$F{helperTitle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="208" y="550" width="54" height="20" uuid="d542e862-ee5c-423e-ac46-66646e05506e"/>
+				<text><![CDATA[Title:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="550" width="76" height="20" uuid="0095dd4d-b206-461a-a2c7-c6c45ed91a93"/>
+				<text><![CDATA[Phone:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="432" y="550" width="100" height="19" uuid="4b501285-c58c-4e40-a8e8-f389861e1b1a"/>
+				<textFieldExpression><![CDATA[$F{helperPhone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="550" width="100" height="20" uuid="1394081a-dda7-4651-b81b-47aa3f179db6"/>
+				<textFieldExpression><![CDATA[$F{helperName}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
