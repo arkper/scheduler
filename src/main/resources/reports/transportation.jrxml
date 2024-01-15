@@ -20,9 +20,9 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="sex"/>
 		<fieldDescription><![CDATA[sex]]></fieldDescription>
 	</field>
-	<field name="address1" class="java.lang.String">
-		<property name="net.sf.jasperreports.json.field.expression" value="address1"/>
-		<fieldDescription><![CDATA[address1]]></fieldDescription>
+	<field name="address" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="address"/>
+		<fieldDescription><![CDATA[address]]></fieldDescription>
 	</field>
 	<field name="city" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="city"/>
@@ -36,9 +36,9 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="zip"/>
 		<fieldDescription><![CDATA[zip]]></fieldDescription>
 	</field>
-	<field name="phone1" class="java.lang.String">
-		<property name="net.sf.jasperreports.json.field.expression" value="phone1"/>
-		<fieldDescription><![CDATA[phone1]]></fieldDescription>
+	<field name="phone" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="phone"/>
+		<fieldDescription><![CDATA[phone]]></fieldDescription>
 	</field>
 	<field name="signature" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="signature"/>
@@ -312,7 +312,7 @@
 			</textField>
 			<textField>
 				<reportElement x="97" y="34" width="130" height="20" uuid="949cd78a-4c3a-4db9-96fd-6f125535a69b"/>
-				<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="34" width="100" height="20" uuid="de0da388-4fa3-4645-b417-5e704ecfbde2"/>
