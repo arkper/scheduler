@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { OfficeApiService } from '../services/office-api.service';
 import { Patient, Document, EMPTY_DOCUMENT, DocType } from '../store/model/patient.model';
 import { Store } from '@ngrx/store';
-import { PatientActionType } from '../store/actions/patient.action';
 import { AppState } from '../store/reducers';
 import { DocumentActionType } from '../store/actions/document.action';
 import { DatePipe } from '@angular/common';

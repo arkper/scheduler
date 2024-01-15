@@ -14,8 +14,8 @@
       <button matNativeControl mat-raised-button color="primary" (click)="viewDoc()">View</button>
       <button mat-raised-button color="primary" (click)="addNewDoc()">Add New</button>
       <mat-form-field>
-        <mat-select [(value)] = "selectedDocType.id">
-          <mat-option *ngFor="let docType of docTypes"  [value]="docType.id">{{ docType.desc }}</mat-option>
+        <mat-select name="selectedDocumentType" [(ngModel)] = "selectedDocType">
+          <mat-option *ngFor="let docType of docTypes" [value]="docType">{{ docType.desc }}</mat-option>
         </mat-select>
       </mat-form-field>
     </form>
