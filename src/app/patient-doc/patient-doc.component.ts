@@ -79,7 +79,9 @@ export class PatientDocComponent  implements OnInit {
   }
 
   handlePatient(patient: Patient){
-    this.patient = patient;
+    if (patient != null){
+      this.patient = patient;
+    }
     this.refreshPatientDocs();
   }
 

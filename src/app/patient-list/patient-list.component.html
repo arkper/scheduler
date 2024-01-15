@@ -12,8 +12,8 @@
         <mat-label>Patient ID</mat-label>
         <input matInput id="patientId" placeholder="Type numeric characters" (keyup)="externalFilterChanged($event)" [value] = "patientNo"/>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="clearSelection()">Clear Selection</button>
-      <button mat-raised-button color="primary" (click)="refresh(patient)">Refresh</button>
+      <button mat-fab extended color="accent" (click)="clearSelection()"><mat-icon>clear</mat-icon>Clear Selection</button>
+      <button mat-fab extended color="primary" (click)="refresh(patient)"><mat-icon>refresh</mat-icon>Refresh</button>
     </form>
   </div>
 

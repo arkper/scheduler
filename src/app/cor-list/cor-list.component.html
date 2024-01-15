@@ -55,8 +55,8 @@
                       <mat-option *ngFor="let rt of recallTypes"  [value]="rt['id']">{{ rt['desc'] }}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="run()">Get Report</button>
-                <button mat-raised-button color="primary" (click)="download()">Download</button>
+                <button mat-fab extended color="primary" (click)="run()"><mat-icon>pageview</mat-icon>View</button>
+                <button mat-fab extended color="primary" (click)="download()"><mat-icon>get_app</mat-icon>Download</button>
             </div>
         </div>
     </form>
