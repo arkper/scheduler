@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.modern.office.config.AppConfig;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,19 +37,19 @@ public class CustomIpAuthenticationProvider implements AuthenticationProvider
         {
             throw new BadCredentialsException("Invalid IP Address");
         }
-        final String name = auth.getName();
-        final String secret = auth.getCredentials().toString();
+        // final String name = auth.getName();
+        // final String secret = auth.getCredentials().toString();
         
-        if (name.equals(this.securityConfig.getUser()) && secret.equals(this.securityConfig.getPwd())) 
-        {
+        //if (name.equals(this.securityConfig.getUser()) && secret.equals(this.securityConfig.getPwd()))
+        else {
             final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
             authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-            return new UsernamePasswordAuthenticationToken(name, secret, authorities);
+            return new UsernamePasswordAuthenticationToken(this.securityConfig.getUser(), this.securityConfig.getPwd(), authorities);
         }
-        else
-        {
-            throw new BadCredentialsException("Invalid username or password");
-        }
+        // else
+        // {
+        //    throw new BadCredentialsException("Invalid username or password");
+        // }
     }
 
     public boolean supports(Class<?> authentication) 
