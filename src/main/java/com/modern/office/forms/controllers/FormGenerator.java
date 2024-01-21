@@ -119,13 +119,19 @@ public class FormGenerator {
         return "no subscriber";
     }
 
-    @PostMapping("/subscribers/{subscriber}/{state}")
+    @PostMapping("/subscriber/{state}")
     public String setSubscriberState(
-            @PathVariable("subscriber") final String subscriber,
+            final HttpServletRequest request,
             @PathVariable("state") final Boolean state)
     {
-        this.signRequestService.setSubscriberState(subscriber, state);
+        this.signRequestService.setSubscriberState(request.getRemoteAddr(), state);
         return "ok";
+    }
+
+    @GetMapping("/subscribers")
+    public List<Pair<String, Boolean>> getSubscriberState()
+    {
+        return this.signRequestService.getSubscriberState();
     }
 
     @GetMapping("/sign-requests")

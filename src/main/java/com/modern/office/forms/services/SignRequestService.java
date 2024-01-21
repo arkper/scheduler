@@ -3,11 +3,14 @@ package com.modern.office.forms.services;
 import com.modern.office.config.ClientMappings;
 import lombok.RequiredArgsConstructor;
 import org.eclipse.collections.api.factory.Maps;
+import org.eclipse.collections.api.tuple.Pair;
+import org.eclipse.collections.impl.tuple.Tuples;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -42,5 +45,13 @@ public class SignRequestService {
 
     public void setSubscriberState(final String subscriber, Boolean state){
         this.subscriberState.put(subscriber, state);
+    }
+
+    public List<Pair<String, Boolean>> getSubscriberState(){
+        return this.subscriberState
+                .entrySet()
+                .stream()
+                .map(e -> Tuples.pair(e.getKey(), e.getValue()))
+                .collect(Collectors.toList());
     }
 }
