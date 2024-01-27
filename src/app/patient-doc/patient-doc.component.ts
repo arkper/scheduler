@@ -116,12 +116,18 @@ export class PatientDocComponent  implements OnInit {
 
     this.apiService.requestSignature(requestData)
       .subscribe({
-        next: data => {console.log(data)},
-        error: e => {console.log(e); this.displayFailure()},
-        complete: () => this.displaySuccess()
+        next: data => {this.handleResponse(data)},
+        error: e => {console.log(e); this.displayFailure()}
       });
 
     // this.router.navigateByUrl(`/${this.selectedDocType.id}-form`, {state: {patient: this.patient}});
+  }
+
+  handleResponse(response: string){
+    if (response == 'ok'){
+      this.openSnackBar("Success!", "X");
+    }
+    this.openSnackBar("Failure - " + response, "X");
   }
 
   displaySuccess() {
