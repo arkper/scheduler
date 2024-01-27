@@ -127,6 +127,7 @@ export class PatientDocComponent  implements OnInit {
     if (response === "ok"){
       // display success
       this.openSnackBar("Success!", "X");
+      return;
     }
     this.openSnackBar("Failure - " + response, "X");
   }
