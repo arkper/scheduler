@@ -69,4 +69,9 @@ public class Patient {
 	
 	@Column(name = "provider_cd")
 	private Integer providerCd = 20;
+
+	public Patient transform(){
+		this.setSex(this.getSex() == 0 ? 1 : 0);
+		return this;
+	}
 }

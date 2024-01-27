@@ -192,8 +192,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
         return Lists.mutable.withAll(
                         this.patientRepo.findPatientsByLastNameAndSalutationLike(lastName, "Dear " + firstName))
-                .reject(p -> StringUtils.isEmpty(p.getLastName()));
-
+                .reject(p -> StringUtils.isEmpty(p.getLastName()))
+                .collect(Patient::transform);
     }
 
     @Override
@@ -219,7 +219,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     public Patient getPatient(int patientNo) {
         log.info("Getting patient info for id {}", patientNo);
 
-        return this.patientRepo.findById(patientNo).orElse(null);
+        return this.patientRepo.findById(patientNo)
+                .map(Patient::transform)
+                .orElse(null);
     }
 
     @Override
