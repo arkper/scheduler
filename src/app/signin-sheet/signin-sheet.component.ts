@@ -124,10 +124,18 @@ export class SigninSheetComponent {
 
     this.apiService.requestSignature(requestData)
     .subscribe({
-      next: data => {console.log(data); this.clearSelection()},
-      error: e => {console.log(e); this.displayFailure()},
-      complete: () => this.displaySuccess()
+      next: data => {this.hanldeResponse(data)},
+      error: e => {console.log(e); this.displayFailure(e.message)}
     });
+  }
+
+  hanldeResponse(response: string){
+    if (response === "ok"){
+      this.clearSelection();
+      this.displaySuccess();
+      return;
+    }
+    this.displayFailure(response);
   }
 
   onSigned(event: any) {
@@ -144,7 +152,7 @@ export class SigninSheetComponent {
         signinImage: this.signature
       }).subscribe({
         next: data => console.log(data),
-        error: err => this.displayFailure(),
+        error: err => this.displayFailure(err.message),
         complete: () => this.updateAppt()})
       } else {
         this.apiService.saveSigninRecord({
@@ -156,7 +164,7 @@ export class SigninSheetComponent {
           signinImage: this.signature
       }).subscribe({
         next: data => console.log(data),
-        error: err => this.displayFailure(),
+        error: err => this.displayFailure(err.message),
         complete: () => this.displaySuccess()})
     }
   }
@@ -167,7 +175,7 @@ export class SigninSheetComponent {
       this.apiService.updateAppointment(this.appointment)
         .subscribe({
           next: appt => console.log(appt),
-          error: err => this.displayFailure(),
+          error: err => this.displayFailure(err.message),
           complete: () => this.displaySuccess()});
       return;
     }
@@ -208,8 +216,8 @@ export class SigninSheetComponent {
     this.resetRequest.next(true);
   }
 
-  displayFailure() {
-    this.openSnackBar("Failure!", "X");
+  displayFailure(reason: string) {
+    this.openSnackBar(`Failure: ${reason}`, "X");
   }
 
   openSnackBar(message: string, type: string) { 
