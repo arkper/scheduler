@@ -5,28 +5,17 @@ import java.util.List;
 import java.util.Objects;
 
 import com.modern.office.config.ClientMappings;
+import com.modern.office.domain.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.factory.Maps;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.modern.office.domain.Address;
-import com.modern.office.domain.Appointment;
-import com.modern.office.domain.Code;
-import com.modern.office.domain.CodeCategory;
-import com.modern.office.domain.Insurance;
-import com.modern.office.domain.InsurancePlan;
-import com.modern.office.domain.Patient;
-import com.modern.office.domain.PatientInsurance;
-import com.modern.office.domain.Product;
-import com.modern.office.domain.Provider;
-import com.modern.office.domain.ProviderBlock;
-import com.modern.office.domain.ProviderException;
-import com.modern.office.domain.Timeslot;
 import com.modern.office.scheduler.services.SchedulerApiService;
 
 import lombok.RequiredArgsConstructor;
@@ -362,5 +351,17 @@ public class SchedulerApiController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
 					.build();
 		}
+	}
+
+	@GetMapping(path="/rx-orders-to-notify", produces = "application/json")
+	public ResponseEntity<Iterable<FrameRxOrder>> getOrdersToNotify(){
+		return ResponseEntity.ok().body(
+				this.schedulerApiService.getRxOrdersToNotify(LocalDate.now().minusDays(1)));
+	}
+
+	@PostMapping(path="/rx-order", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<FrameRxOrder>updateRxOrder(@RequestBody final FrameRxOrder order){
+		return ResponseEntity.ok().body(
+				this.schedulerApiService.updateRxOrder(order));
 	}
 }

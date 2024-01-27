@@ -31,15 +31,15 @@ public class SignRequestService {
     }
 
     public Map<String, String> getBySubscriber(final String subscriber) {
-//        if (this.subscriberState.getOrDefault(subscriber, false)) {
-//            return null;
-//        }
+        if (this.subscriberState.getOrDefault(subscriber, false)) {
+            return null;
+        }
         return this.requestQueue
                 .stream().filter(r -> subscriber.equals(r.get("subscriber")))
                 .findFirst()
                 .map(it -> {
                     this.requestQueue.remove(it);
-                    // this.subscriberState.put(subscriber, true);
+                    this.subscriberState.put(subscriber, true);
                     return it;
                 })
                 .orElse(null);

@@ -41,6 +41,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     private final InsurancePlanRepository insurancePlanRepo;
     private final BusinessRepository businessRepository;
     private final PatientPreferencesRepository patientPreferencesRepository;
+    private final FrameRxRepository frameRxRepository;
     private final AppConfig appConfig;
 
     private TreeMap<Integer, String> providerMap = new TreeMap<>();
@@ -50,6 +51,29 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
         Iterable<Provider> it = this.providerRepo.getProviderByIsProviderAndProviderActive(1, true);
         return StreamSupport.stream(it.spliterator(), false)
                 .filter(p -> appConfig.getProviders().contains(p.getProviderNo())).collect(Collectors.toList());
+    }
+
+    @Override
+    public Iterable<FrameRxOrder> getRxOrdersToNotify(LocalDate sinceDate) {
+        return Lists.mutable.withAll(this.frameRxRepository.getFrameRxOrderByRcvdDateAfter(sinceDate))
+                .select(o -> Objects.isNull(o.getNotifiedDate()))
+                .collect(this::updateOrder);
+    }
+
+    private FrameRxOrder updateOrder(FrameRxOrder order){
+        Optional.ofNullable(
+            this.appointmentRepo.getAppointmentByPatientNoAndApptDate(order.getPatientId(), order.getDispensedDate()))
+                .map(a -> order.setPhone(a.getApptPhone()));
+
+        return order;
+    }
+
+    @Override
+    @Transactional
+    public FrameRxOrder updateRxOrder(FrameRxOrder order) {
+        order.setNotifiedBy(7);
+        order.setNotifiedDate(LocalDate.now());
+        return this.frameRxRepository.save(order);
     }
 
     @Override

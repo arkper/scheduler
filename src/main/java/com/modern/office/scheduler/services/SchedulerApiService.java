@@ -7,6 +7,8 @@ import java.util.Set;
 import com.modern.office.domain.*;
 
 public interface SchedulerApiService {
+	Iterable<FrameRxOrder> getRxOrdersToNotify(LocalDate sinceDate);
+	FrameRxOrder updateRxOrder(FrameRxOrder order);
 	List<Provider> getAllProviders();
 	List<Provider> getProviders();
 	Provider save(Provider provider);

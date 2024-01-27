@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.modern.office.repository.FrameRxRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,8 @@ public class ScheduleApiServiceTest {
 
 	@Mock
 	private AppointmentRepository appointmentRepo;
+	@Mock
+	private FrameRxRepository frameRxRepository;
 
 	@Mock
 	private AppConfig appConfig;
@@ -50,7 +53,8 @@ public class ScheduleApiServiceTest {
 		lenient().when(appConfig.getProviders()).thenReturn(new ArrayList<Integer>());
 
 		this.testObj = new SchedulerApiServiceImpl(null, null, providerBlockRepo, providerExceptionRepo,
-				appointmentRepo, null, null, null, null, null, null, null, null, appConfig);
+				appointmentRepo, null, null, null, null, null, null,
+				null, null, frameRxRepository, appConfig);
 	}
 	
 	@Test
