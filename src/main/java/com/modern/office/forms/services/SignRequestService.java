@@ -23,7 +23,7 @@ public class SignRequestService {
         var subscriber = requestData.get("subscriber");
         if (Objects.nonNull(subscriber) && !this.subscriberState.get(subscriber)){
             this.requestQueue.add(requestData);
-            this.subscriberState.put(subscriber, true);
+            // this.subscriberState.put(subscriber, true);
             return true;
         }
         return false;
