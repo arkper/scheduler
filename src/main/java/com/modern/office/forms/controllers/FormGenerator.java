@@ -81,6 +81,14 @@ public class FormGenerator {
         return false;
     }
 
+    @PostMapping(path="/link/{publisher-ip}/{subscriber-ip}")
+    public void linkPubSub(@PathVariable(value = "publisher-ip") final String publisherIp,
+                           @PathVariable(value = "subscriber-ip") final String subscriberIp)
+    {
+        log.info("Linking up subscriber {} to publisher {}", subscriberIp, publisherIp);
+        this.clientMappings.getMappings().put(publisherIp, subscriberIp);
+    }
+
     @GetMapping(value = "/mappings", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Pair<String, String>> getMappings(){
         return this.clientMappings.getMappings().entrySet()
