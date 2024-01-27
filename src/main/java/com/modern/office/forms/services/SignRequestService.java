@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,14 @@ public class SignRequestService {
     private final ConcurrentLinkedQueue<Map<String, String>> requestQueue = new ConcurrentLinkedQueue<>();
     private final Map<String, Boolean> subscriberState = Maps.mutable.empty();
 
-    public void put(final Map<String, String> requestData) {
-        this.requestQueue.add(requestData);
+    public boolean put(final Map<String, String> requestData) {
+        var subscriber = requestData.get("subscriber");
+        if (Objects.nonNull(subscriber) && !this.subscriberState.get(subscriber)){
+            this.requestQueue.add(requestData);
+            this.subscriberState.put(subscriber, true);
+            return true;
+        }
+        return false;
     }
 
     public Map<String, String> get() {

@@ -74,6 +74,7 @@ public class FormGenerator {
 
         if (publisher != null){
             this.clientMappings.getMappings().put(publisher, subscriber);
+            this.signRequestService.setSubscriberState(subscriber, false);
             return true;
         }
 
@@ -113,8 +114,7 @@ public class FormGenerator {
         if (Objects.nonNull(subscriber))
         {
             requestData.put("subscriber", subscriber);
-            this.signRequestService.put(requestData);
-            return "ok";
+            return this.signRequestService.put(requestData)? "ok" : "busy";
         }
         return "no subscriber";
     }
