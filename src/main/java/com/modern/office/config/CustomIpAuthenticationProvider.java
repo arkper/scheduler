@@ -31,7 +31,7 @@ public class CustomIpAuthenticationProvider implements AuthenticationProvider
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
         WebAuthenticationDetails details = (WebAuthenticationDetails) auth.getDetails();
         String userIp = details.getRemoteAddress();
-        log.info("Remote IP address: " + userIp);
+        log.debug("Remote IP address: " + userIp);
         if (!userIp.startsWith("192.168") && !userIp.startsWith("localhost")
                 && !this.securityConfig.getWhiteList().contains(userIp))
         {

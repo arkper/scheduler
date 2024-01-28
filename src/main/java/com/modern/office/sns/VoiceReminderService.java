@@ -154,7 +154,7 @@ public class VoiceReminderService {
         while ((notification = this.notificationQueue.poll() ) != null) {
             batch.add(notification);
         }
-        log.info("Got {} notifications to get replies for", batch.size());
+        log.debug("Got {} notifications to get replies for", batch.size());
         batch.forEach(this::handleNotification);
     }
 
