@@ -43,7 +43,7 @@ public class FormGenerator {
         var publisher = this.getRequestorAddress(request);
         if (Objects.nonNull(publisher))
         {
-            log.info("Registering Office Forms client at {}", publisher);
+            log.info("Registering Office Forms publisher at {}", publisher);
             if (!this.clientMappings.getMappings().containsKey(publisher)){
                 this.clientMappings.getMappings().put(publisher, null);
             }
@@ -62,12 +62,19 @@ public class FormGenerator {
             return false;
         }
 
+        var currentMappings = Maps.adapt(this.clientMappings.getMappings());
+
+        if (currentMappings.detectOptional((k, v) -> subscriber.equals(v))
+                .isPresent()){
+            return false;
+        }
+
         log.info("Linking up subscriber {}", subscriber);
 
         var publisher =  Objects.isNull(publisherIp)
-                ? Maps.adapt(this.clientMappings.getMappings()).detectOptional((k, v) -> Objects.isNull(v))
+                ? currentMappings.detectOptional((k, v) -> Objects.isNull(v))
                   .map(Pair::getOne).orElse(null)
-                : Maps.adapt(this.clientMappings.getMappings()).detectOptional((k, v) -> publisherIp.equals(k))
+                : currentMappings.detectOptional((k, v) -> publisherIp.equals(k))
                   .map(Pair::getOne).orElse(null);
 
         log.info("Linking up subscriber {} to publisher {}", subscriber, publisher);
