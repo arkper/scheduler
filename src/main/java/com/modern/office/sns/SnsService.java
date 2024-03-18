@@ -60,6 +60,9 @@ public class SnsService {
     @Value("${aws.sqs.reply-queue-url}")
     private String replyQueueUrl;
 
+    @Value("${rx-notification-enabled}")
+    private boolean rxNotificationEnabled;
+
     public SnsService(final AppConfig appConfig, final SchedulerApiService schedulerApiService, final ObjectMapper objectMapper, final SnsClient snsClient, SqsClient sqsClient) {
         this.topicIncoming = appConfig.getTopicIncoming();
         this.sqsClient = sqsClient;
@@ -85,10 +88,12 @@ public class SnsService {
 
         log.info("Finished notification processing job");
 
-        Lists.mutable.withAll(this.schedulerApiService.getRxOrdersToNotify(LocalDate.now().minusDays(3)))
-                .forEach(this::processRxNotification);
+        if (rxNotificationEnabled) {
+            Lists.mutable.withAll(this.schedulerApiService.getRxOrdersToNotify(LocalDate.now().minusDays(3)))
+                    .forEach(this::processRxNotification);
 
-        log.info("Finished RX notification processing job");
+            log.info("Finished RX notification processing job");
+        }
     }
 
     public void processRxNotification(FrameRxOrder rx) {

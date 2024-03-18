@@ -44,7 +44,8 @@ scheduler:
   - 0:0:0:0:0:0:0:1
 
   providers: 8,20
-  notifier-id: 7
+  rx-notifier-id: 7
+  rx-notification-enabled: false
   insurances:
     - AETNA,48
     - AFFINITY,43

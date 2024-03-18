@@ -3,7 +3,6 @@ package com.modern.office.scheduler.services;
 import com.modern.office.config.AppConfig;
 import com.modern.office.domain.*;
 import com.modern.office.repository.*;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -45,8 +44,8 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     private final FrameRxRepository frameRxRepository;
     private final AppConfig appConfig;
 
-    @Value("${scheduler.notifier-id}")
-    private int notifierId;
+    @Value("${scheduler.rx-notifier-id}")
+    private int rxNotifierId;
 
     private TreeMap<Integer, String> providerMap = new TreeMap<>();
 
@@ -75,7 +74,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     @Override
     @Transactional
     public FrameRxOrder updateRxOrder(FrameRxOrder order) {
-        order.setNotifiedBy(this.notifierId);
+        order.setNotifiedBy(this.rxNotifierId);
         order.setNotifiedDate(LocalDate.now());
         return this.frameRxRepository.save(order);
     }
