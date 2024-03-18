@@ -63,11 +63,12 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
                 .collect(this::updateOrder);
     }
 
-    private FrameRxOrder updateOrder(FrameRxOrder order){
-        Optional.ofNullable(
-            this.appointmentRepo.getAppointmentByPatientNoAndApptDate(order.getPatientId(), order.getDispensedDate()))
+    private FrameRxOrder updateOrder(FrameRxOrder order) {
+        Lists.mutable.withAll(
+                        this.appointmentRepo.getAppointmentByPatientNoAndApptDate(
+                                order.getPatientId(), order.getDispensedDate()))
+                .stream().findAny()
                 .map(a -> order.setPhone(a.getApptPhone()));
-
         return order;
     }
 
