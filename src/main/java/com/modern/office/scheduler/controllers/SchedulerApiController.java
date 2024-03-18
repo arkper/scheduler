@@ -354,7 +354,7 @@ public class SchedulerApiController {
 	}
 
 	@GetMapping(path="/rx-orders-to-notify", produces = "application/json")
-	public ResponseEntity<Iterable<FrameRxOrder>> getOrdersToNotify(@PathVariable("daysBack") int daysBack){
+	public ResponseEntity<Iterable<FrameRxOrder>> getOrdersToNotify(@RequestParam("daysBack") int daysBack){
 		return ResponseEntity.ok().body(
 				this.schedulerApiService.getRxOrdersToNotify(LocalDate.now().minusDays(daysBack)));
 	}
