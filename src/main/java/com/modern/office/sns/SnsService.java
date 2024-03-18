@@ -39,7 +39,7 @@ public class SnsService {
     private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Нажмите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 
     private static final String RX_NOTIFICATION_MESSAGE = "Your prescription eye glasses are ready for pickup. Please reply Y to acknowledge this notification and your readiness to take the delivery. Reply STOP to opt out of our appointment notification messages going forward.";
-    private static final String RX_NOTIFICATION_MESSAGE_RU = "Ваши очки по рецепту готовы. Пожалуйста, ответьте Y, чтобы подтвердить это уведомление и вашу готовность получить очки. Нажмите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
+    private static final String RX_NOTIFICATION_MESSAGE_RU = "Ваши очки по рецепту готовы. Пожалуйста, ответьте Y, чтобы подтвердить это уведомление и вашу готовность получить очки. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 
     private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
     private static final String ACKNOWLEDGMENT_MESSAGE_RU = "Спасибо - мы вас услышали";
