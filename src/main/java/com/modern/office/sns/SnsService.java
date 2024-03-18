@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.modern.office.config.AppConfig;
 import com.modern.office.domain.Appointment;
 import com.modern.office.domain.Business;
+import com.modern.office.domain.FrameRxOrder;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.eclipse.collections.api.factory.Lists;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ import software.amazon.awssdk.services.sqs.model.DeleteMessageRequest;
 import software.amazon.awssdk.services.sqs.model.Message;
 import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.LinkedHashMap;
@@ -35,10 +38,13 @@ public class SnsService {
 
     private static final String NOTIFICATION_MESSAGE_RU = "Пожалуйста, подтвердите ваш визит с доктором %s в офисе %s в %s %s по адресу %s. Нажмите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 
+    private static final String RX_NOTIFICATION_MESSAGE = "Your prescription eye glasses are ready for pickup. Please reply Y to acknowledge this notification and your readiness to take the delivery. Reply STOP to opt out of our appointment notification messages going forward.";
+    private static final String RX_NOTIFICATION_MESSAGE_RU = "Ваши очки по рецепту готовы. Пожалуйста, ответьте Y, чтобы подтвердить это уведомление и вашу готовность получить очки. Нажмите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
+
     private static final String ACKNOWLEDGMENT_MESSAGE = "Thanks, your response has been accepted.";
     private static final String ACKNOWLEDGMENT_MESSAGE_RU = "Спасибо - мы вас услышали";
 
-    private static final String NACK_MESSAGE = "Your reponse is invalid. Reply Y to confirm or N to cancel. Reply STOP to opt out of our appointment notification messages going forward.";
+    private static final String NACK_MESSAGE = "Your response is invalid. Reply Y to confirm or N to cancel. Reply STOP to opt out of our appointment notification messages going forward.";
     private static final String NACK_MESSAGE_RU = "Ваш ответ не верен. Нажмите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 
 
@@ -72,9 +78,28 @@ public class SnsService {
 
     @Scheduled(cron = "0 0 10 * * *", zone = "America/New_York")
     public void processNotifications() {
-        log.info("Starting notification processing job");
-        StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0).spliterator(), false).filter(appt -> appt.getApptPhone() != null).forEach(appt -> this.processNotification(getNotificationMessage(appt), appt));
+        log.info("Starting notification processing jobs");
+        Lists.mutable.withAll(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0))
+                .select(it -> Objects.nonNull(it.getApptPhone()))
+                .forEach(it -> this.processNotification(getNotificationMessage(it), it));
+
         log.info("Finished notification processing job");
+
+        Lists.mutable.withAll(this.schedulerApiService.getRxOrdersToNotify(LocalDate.now().minusDays(3)))
+                .forEach(this::processRxNotification);
+
+        log.info("Finished RX notification processing job");
+    }
+
+    public void processRxNotification(FrameRxOrder rx) {
+        var phone = this.transform(rx.getPhone());
+        if ("EN".equals(this.getLang(rx.getPatientId()))) {
+            this.sendSMS(RX_NOTIFICATION_MESSAGE, phone);
+        } else {
+            this.sendSMS(RX_NOTIFICATION_MESSAGE_RU, phone);
+        }
+        log.info("Updating RX order {}", rx.getRxId());
+        this.schedulerApiService.updateRxOrder(rx);
     }
 
     public void processNotification(String message, Appointment appt) {
@@ -302,9 +327,13 @@ public class SnsService {
     }
 
     private String getLang(Appointment appt) {
+        return this.getLang(appt.getPatientNo());
+    }
+
+    private String getLang(int patientNo) {
         var lang = "EN";
 
-        var patientPrefs = this.schedulerApiService.getPatientPreferences(appt.getPatientNo());
+        var patientPrefs = this.schedulerApiService.getPatientPreferences(patientNo);
 
         if (!CollectionUtils.isEmpty(patientPrefs)) {
             lang = patientPrefs.get(0).getLanguage();

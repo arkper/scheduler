@@ -51,5 +51,4 @@ public interface SchedulerApiService {
 
 	List<PatientPreferences> getPatientPreferences(int patientNo);
 	PatientPreferences savePatientPreferences(PatientPreferences patientPreferences);
-
 }

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.collections.api.factory.Lists;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,6 +45,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     private final FrameRxRepository frameRxRepository;
     private final AppConfig appConfig;
 
+    @Value("${scheduler.notifier-id}")
+    private int notifierId;
+
     private TreeMap<Integer, String> providerMap = new TreeMap<>();
 
     @Override
@@ -71,7 +75,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     @Override
     @Transactional
     public FrameRxOrder updateRxOrder(FrameRxOrder order) {
-        order.setNotifiedBy(7);
+        order.setNotifiedBy(this.notifierId);
         order.setNotifiedDate(LocalDate.now());
         return this.frameRxRepository.save(order);
     }
