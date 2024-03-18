@@ -47,7 +47,6 @@ public class SnsService {
     private static final String NACK_MESSAGE = "Your response is invalid. Reply Y to confirm or N to cancel. Reply STOP to opt out of our appointment notification messages going forward.";
     private static final String NACK_MESSAGE_RU = "Ваш ответ не верен. Нажмите Y чтобы подтвердить, или N чтобы отменить визит. Введите STOP чтобы больше не получать наших мобильных сообщений.";
 
-
     private final SnsClient snsClient;
     private final SqsClient sqsClient;
     private final String topicIncoming;
