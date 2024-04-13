@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { CellClickedEvent, GridApi, GridOptions } from 'ag-grid-community';
+import { CellClickedEvent, GridApi, GridOptions, RowDataUpdatedEvent } from 'ag-grid-community';
 import { OfficeApiService } from '../services/office-api.service';
 import { Appointment, Patient, Provider } from '../store/model/patient.model';
-import { SigPadComponent } from '../sig-pad/sig-pad.component';
 import { Subject } from 'rxjs';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { DatePipe } from '@angular/common';
@@ -60,6 +59,8 @@ export class SigninSheetComponent {
   clearSelection() {
     this.lastName = '';
     this.firstName = '';
+    this.gridData = [];
+    this.gridData1 = [];
   }
 
   switchMode() {
@@ -78,6 +79,16 @@ export class SigninSheetComponent {
     this.gridApi.sizeColumnsToFit({
       defaultMinWidth: 30
     })
+  }
+
+  onRowDataUpdated(event: RowDataUpdatedEvent<Patient>) {
+    // console.log("Patient Row Data Updated");
+    this.selectFirstPatient();
+  }
+
+  onRowDataUpdatedAppts(event: RowDataUpdatedEvent<Appointment>) {
+    // console.log("Appointment Row Data Updated");
+    this.selectFirstAppt();
   }
 
   onCellClicked( e: CellClickedEvent): void {
@@ -99,6 +110,29 @@ export class SigninSheetComponent {
   refreshPatientAppts() {
     this.apiService.getPatientAppts(this.patient!!.patientNo)
     .subscribe({next: data => this.gridData1 = data});
+  }
+
+  selectFirstAppt() {
+    let node = this.gridOptions1.api?. getDisplayedRowAtIndex(0);
+    if (node){
+      this.appointment = node.data;
+      console.log('Appointment:', this.appointment);
+      node.setSelected(true);
+      if (this.appointment?.provider)
+      {
+        this.provider = this.appointment?.provider;
+      }
+    }
+  }
+
+  selectFirstPatient() {
+    let node = this.gridOptions.api?. getDisplayedRowAtIndex(0);
+    if (node){
+      this.patient = node.data;
+      console.log('Patient:', this.patient);
+      node.setSelected(true);
+      this.refreshPatientAppts();
+    }
   }
 
   requestSignature(){
@@ -189,12 +223,16 @@ export class SigninSheetComponent {
 
   lastNameChanged(event: any) {
     this.lastName = event.target.value;
-    this.executeSearch();
+    if (this.isPatient){
+      this.executeSearch();
+    }
   }
 
   frstNameChanged(event: any) {
     this.firstName = event.target.value;
-    this.executeSearch();
+    if (this.isPatient){
+      this.executeSearch();
+    }
   }
 
   executeSearch()

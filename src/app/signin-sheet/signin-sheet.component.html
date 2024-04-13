@@ -32,6 +32,7 @@
           (gridReady)="onGridReady($event)"
           [rowData] = "gridData"
           (cellClicked)="onCellClicked($event)"
+          (rowDataUpdated)="onRowDataUpdated($event)"
         ></ag-grid-angular>
         <br/>
         <mat-label>Let's see if there's a proper appoinment to update:</mat-label>
@@ -42,6 +43,7 @@
           (gridReady)="onGridReady($event)"
           [rowData] = "gridData1"
           (cellClicked)="onAppointmentCellClicked($event)"
+          (rowDataUpdated)="onRowDataUpdatedAppts($event)"
         ></ag-grid-angular>
     </div>
     <br/>
