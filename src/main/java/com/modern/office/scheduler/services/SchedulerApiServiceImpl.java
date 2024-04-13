@@ -131,7 +131,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     @Override
     public Iterable<Appointment> getAppointmentByPatientNoAndApptDateBetween(int patientNo, LocalDate startDate,
                                                                              LocalDate endDate) {
-        var appointments = appointmentRepo.getAppointmentByPatientNoAndApptDateBetween(patientNo, startDate, endDate);
+        var appointments = appointmentRepo.getAppointmentByPatientNoAndApptDateBetweenOrderByApptDateDesc(patientNo, startDate, endDate);
         appointments.forEach(each -> each.setProvider(this.getProvider(each.getProviderNo())));
         return appointments;
     }

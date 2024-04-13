@@ -10,6 +10,6 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Integ
 	Iterable<Appointment> getAppointmentByApptDate(LocalDate apptDate);
 	Iterable<Appointment> getAppointmentByApptDateBetween(LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByProviderNoAndApptDateBetween(int providerNo, LocalDate startDate, LocalDate endDate);
-	Iterable<Appointment> getAppointmentByPatientNoAndApptDateBetween(int patientNo, LocalDate startDate, LocalDate endDate);
+	Iterable<Appointment> getAppointmentByPatientNoAndApptDateBetweenOrderByApptDateDesc(int patientNo, LocalDate startDate, LocalDate endDate);
 	Iterable<Appointment> getAppointmentByPatientNoAndApptDate(int patientNo, LocalDate startDate);
 }
