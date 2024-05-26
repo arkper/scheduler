@@ -3,12 +3,14 @@ package com.modern.office.scheduler.controllers;
 import com.modern.office.sns.VoiceReminderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/voice")
 @Slf4j
+@Profile("sns")
 @RequiredArgsConstructor
 public class VoiceRemindingController {
     private final VoiceReminderService voiceReminderService;
