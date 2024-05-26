@@ -8,6 +8,7 @@ import org.eclipse.collections.api.factory.Maps;
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.tuple.Tuples;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.connect.ConnectClient;
@@ -26,6 +27,7 @@ import java.util.stream.StreamSupport;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Profile("sns")
 public class VoiceReminderService {
     private static final Map<String, Pair<String, String>> DICTIONARY = Maps.mutable.<String, Pair<String, String>>empty()
             .withKeyValue("Diana Lakovitsky", Tuples.pair("Дианой Лаковицкой", "Diana Lakovitsky"))

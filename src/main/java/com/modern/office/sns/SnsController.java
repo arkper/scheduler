@@ -16,6 +16,7 @@ import software.amazon.awssdk.http.SdkHttpResponse;
 
 @RestController("/sns")
 @Slf4j
+@Profile("sns")
 @RequiredArgsConstructor
 public class SnsController {
 	private final SnsService snsService;
