@@ -108,30 +108,33 @@ public class ReportGeneratorService {
         var fileName = UUID.randomUUID() + ".pdf";
         var localPath = Path.of(this.documentLocalFolder + File.separator + fileName);
         log.info("Creating file {}", localPath.toString());
-        new File(localPath.toString()).createNewFile();
-        Files.write(localPath, bytes);
-        var remotePath = Path.of(this.documentFolder + fileName);
+        if (new File(localPath.toString()).createNewFile()) {
+            Files.write(localPath, bytes);
+            var remotePath = Path.of(this.documentFolder + fileName);
 
-        if (docType.getFormType() == FormType.EDocs) {
-            Document eDoc = new Document()
-                    .setCodeId(docType.getValue())
-                    .setFormType(docType.getDisplayName())
-                    .setPatientNo(patientNo)
-                    .setRecordedOn(LocalDate.now().format(DateTimeFormatter.ISO_DATE))
-                    .setExpiresOn(LocalDate.now().plusYears(1).format(DateTimeFormatter.ISO_DATE))
-                    .setDocLink(remotePath.toString());
-            this.documentRepository.save(eDoc);
+            if (docType.getFormType() == FormType.EDocs) {
+                Document eDoc = new Document()
+                        .setCodeId(docType.getValue())
+                        .setFormType(docType.getDisplayName())
+                        .setPatientNo(patientNo)
+                        .setRecordedOn(LocalDate.now().format(DateTimeFormatter.ISO_DATE))
+                        .setExpiresOn(LocalDate.now().plusYears(1).format(DateTimeFormatter.ISO_DATE))
+                        .setDocLink(remotePath.toString());
+                this.documentRepository.save(eDoc);
+            } else {
+                HippaDocument doc = new HippaDocument()
+                        .setFormType(docType.getDisplayName())
+                        .setPatientNo(patientNo)
+                        .setRecordedOn(LocalDate.now().format(DateTimeFormatter.ISO_DATE))
+                        .setExpiresOn(LocalDate.now().plusYears(1).format(DateTimeFormatter.ISO_DATE))
+                        .setDocLink(remotePath.toString());
+                this.hippaDocumentRepository.save(doc);
+            }
+
+            return fileName;
         } else {
-            HippaDocument doc = new HippaDocument()
-                    .setFormType(docType.getDisplayName())
-                    .setPatientNo(patientNo)
-                    .setRecordedOn(LocalDate.now().format(DateTimeFormatter.ISO_DATE))
-                    .setExpiresOn(LocalDate.now().plusYears(1).format(DateTimeFormatter.ISO_DATE))
-                    .setDocLink(remotePath.toString());
-            this.hippaDocumentRepository.save(doc);
+            throw new RuntimeException("Failed to create form file at " + localPath.toString());
         }
-
-        return fileName;
     }
 
     private byte[] getReportBytes(Object reportData, JasperReport report) {
