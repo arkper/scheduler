@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.modern.office.repository.FrameRxRepository;
+import com.modern.office.repository.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,9 +20,6 @@ import com.modern.office.domain.Appointment;
 import com.modern.office.domain.ProviderBlock;
 import com.modern.office.domain.ProviderException;
 import com.modern.office.domain.Timeslot;
-import com.modern.office.repository.AppointmentRepository;
-import com.modern.office.repository.ProviderBlockRepository;
-import com.modern.office.repository.ProviderExceptionRepository;
 import com.modern.office.scheduler.services.SchedulerApiService;
 import com.modern.office.scheduler.services.SchedulerApiServiceImpl;
 
@@ -43,6 +40,9 @@ public class ScheduleApiServiceTest {
 	private FrameRxRepository frameRxRepository;
 
 	@Mock
+	private PaymentComissionRepository paymentComissionRepository;
+
+	@Mock
 	private AppConfig appConfig;
 
 	private SchedulerApiService testObj;
@@ -54,7 +54,7 @@ public class ScheduleApiServiceTest {
 
 		this.testObj = new SchedulerApiServiceImpl(null, null, providerBlockRepo, providerExceptionRepo,
 				appointmentRepo, null, null, null, null, null, null,
-				null, null, frameRxRepository, appConfig);
+				null, null, frameRxRepository, paymentComissionRepository, appConfig);
 	}
 	
 	@Test
