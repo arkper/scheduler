@@ -52,7 +52,7 @@ public interface SchedulerApiService {
 	List<PatientPreferences> getPatientPreferences(int patientNo);
 	PatientPreferences savePatientPreferences(PatientPreferences patientPreferences);
 
-	Iterable<PaymentComission> getPayments(String provider, String insurance[], LocalDate fromDate, LocalDate toDate);
+	Iterable<PaymentComission> getPayments(String provider, List<String> insurance, LocalDate fromDate, LocalDate toDate);
 
 	PaymentComission savePayment(PaymentComission paymentComission);
 
