@@ -42,6 +42,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     private final BusinessRepository businessRepository;
     private final PatientPreferencesRepository patientPreferencesRepository;
     private final FrameRxRepository frameRxRepository;
+    private final PaymentComissionRepository paymentComissionRepository;
     private final AppConfig appConfig;
 
     @Value("${scheduler.rx-notifier-id}")
@@ -418,6 +419,24 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     @Override
     public PatientPreferences savePatientPreferences(PatientPreferences patientPreferences) {
         return this.patientPreferencesRepository.save(patientPreferences);
+    }
+
+    @Override
+    public Iterable<PaymentComission> getPayments(String provider, String[] insurances, LocalDate fromDate, LocalDate toDate) {
+        if (CollectionUtils.isEmpty(insurance)) {
+            return this.paymentComissionRepository.findByProviderAndPaymentDate(provider, fromDate, toDate);
+        }
+        return this.paymentComissionRepository.findByProviderInsuranceAndPaymentDate(provider, insurances, fromDate, toDate);
+    }
+
+    @Override
+    public PaymentComission savePayment(PaymentComission paymentComission) {
+        return this.paymentComissionRepository.save(paymentComission);
+    }
+
+    @Override
+    public void deletePayment(int id) {
+        this.paymentComissionRepository.deleteById(id);
     }
 
     private void updateAppointmentRecord(Appointment appointment) {

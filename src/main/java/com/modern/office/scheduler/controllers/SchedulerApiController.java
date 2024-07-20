@@ -364,4 +364,12 @@ public class SchedulerApiController {
 		return ResponseEntity.ok().body(
 				this.schedulerApiService.updateRxOrder(order));
 	}
+
+	@PostMapping(path="/payment-comissions", produces = "application/json")
+	public ResponseEntity<Iterable<PaymentComission>> getPaymentComissions(@RequestBody PaymentComissionsRequest request){
+		return ResponseEntity.ok().body(
+				this.schedulerApiService.getPayments(request.provider, request.insurances, request.fromPaymentPeriod, request.toPaymentPeriod);
+	}
+
+	public record PaymentComissionsRequest(LocalDate fromPaymentPeriod, LocalDate toPaymentPeriod, String[] insurances, String provider)
 }
