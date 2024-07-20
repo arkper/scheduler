@@ -23,10 +23,10 @@ export class PaymentComissionsComponent {
 
   fromPaymentPeriod: Date = this.subtractMonths(new Date(), 1);
   toPaymentPeriod: Date = this.subtractMonths(new Date(), 0);
-  selectedInsurances: number[] = [];
+  selectedInsurances: string[] = [];
   insurances!: [{insuranceNo: number, insuranceName: string}];
 
-  selectedProvider: number = 0;
+  selectedProvider: string = "";
   providers!: Provider[];
 
   gridData: any[] = [];

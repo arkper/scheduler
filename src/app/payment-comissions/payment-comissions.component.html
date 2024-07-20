@@ -17,7 +17,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Insurances</mat-label>
                     <mat-select multiple [(value)] = "selectedInsurances">
-                        <mat-option *ngFor="let i of insurances"  [value]="i.insuranceNo">{{ i.insuranceName }}</mat-option>
+                        <mat-option *ngFor="let i of insurances"  [value]="i.insuranceName">{{ i.insuranceName }}</mat-option>
                     </mat-select>
                 </mat-form-field>    
             </div>
@@ -25,7 +25,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Providers</mat-label>
                     <mat-select [(value)] = "selectedProvider">
-                        <mat-option *ngFor="let p of providers"  [value]="p.providerNo">{{ p.providerName }}</mat-option>
+                        <mat-option *ngFor="let p of providers"  [value]="p.providerName">{{ p.providerName }}</mat-option>
                     </mat-select>
                 </mat-form-field>   
             </div>
