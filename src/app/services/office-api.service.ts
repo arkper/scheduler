@@ -292,7 +292,7 @@ export class OfficeApiService {
   deletePayment(id: number): Observable<any> {
     if (environment.production)
       {
-        return this.http.delete (`/payment-comission/${id}`, this.getHttpOptions());
+        return this.http.delete (`/payment-comission/${id}`, {responseType: 'text'});
       }
   
       return of("ok");
