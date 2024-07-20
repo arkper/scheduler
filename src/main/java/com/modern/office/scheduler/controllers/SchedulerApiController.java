@@ -371,5 +371,17 @@ public class SchedulerApiController {
 				this.schedulerApiService.getPayments(request.provider, request.insurances, request.fromPaymentPeriod, request.toPaymentPeriod));
 	}
 
+	@PostMapping(path="/payment-comission", produces = "application/json")
+	public ResponseEntity<PaymentComission> savePaymentComission(@RequestBody PaymentComission paymentComission){
+		return ResponseEntity.ok().body(
+				this.schedulerApiService.savePayment(paymentComission);
+	}
+
+	@DeleteMapping(path="/payment-comission/{id}", produces = "application/json")
+	public ResponseEntity<String> deletePaymentComission(@PathVariable("id") String id){
+		return ResponseEntity.ok().body(
+				this.schedulerApiService.deletePayment(id);
+	}
+
 	public record PaymentComissionsRequest(LocalDate fromPaymentPeriod, LocalDate toPaymentPeriod, List<String> insurances, String provider){}
 }
