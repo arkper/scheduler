@@ -378,9 +378,9 @@ public class SchedulerApiController {
 	}
 
 	@DeleteMapping(path="/payment-comission/{id}", produces = "application/json")
-	public ResponseEntity<String> deletePaymentComission(@PathVariable("id") String id){
+	public ResponseEntity<String> deletePaymentComission(@PathVariable("id") int id){
 		return ResponseEntity.ok().body(
-				this.schedulerApiService.deletePayment(id);
+				this.schedulerApiService.deletePayment(id));
 	}
 
 	public record PaymentComissionsRequest(LocalDate fromPaymentPeriod, LocalDate toPaymentPeriod, List<String> insurances, String provider){}

@@ -435,8 +435,9 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     }
 
     @Override
-    public void deletePayment(int id) {
+    public String deletePayment(int id) {
         this.paymentComissionRepository.deleteById(id);
+        return "ok";
     }
 
     private void updateAppointmentRecord(Appointment appointment) {

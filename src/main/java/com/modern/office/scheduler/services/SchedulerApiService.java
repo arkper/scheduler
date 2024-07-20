@@ -56,5 +56,5 @@ public interface SchedulerApiService {
 
 	PaymentComission savePayment(PaymentComission paymentComission);
 
-	void deletePayment(int id);
+	String deletePayment(int id);
 }
