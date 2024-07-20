@@ -371,5 +371,5 @@ public class SchedulerApiController {
 				this.schedulerApiService.getPayments(request.provider, request.insurances, request.fromPaymentPeriod, request.toPaymentPeriod));
 	}
 
-	public record PaymentComissionsRequest(LocalDate fromPaymentPeriod, LocalDate toPaymentPeriod, String[] insurances, String provider){}
+	public record PaymentComissionsRequest(LocalDate fromPaymentPeriod, LocalDate toPaymentPeriod, List<String> insurances, String provider){}
 }
