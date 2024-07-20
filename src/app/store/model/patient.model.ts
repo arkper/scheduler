@@ -94,8 +94,8 @@ export interface CorrespondenceReportRequest {
 export interface PaymentComissionsReportRequest {
   fromPaymentPeriod: string,
   toPaymentPeriod: string,
-  insurances: number[] | null,
-  provider: number,
+  insurances: string[] | null,
+  provider: string,
 }
 
 export interface DocType {
