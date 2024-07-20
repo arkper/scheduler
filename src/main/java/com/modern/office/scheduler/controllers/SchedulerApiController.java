@@ -374,7 +374,7 @@ public class SchedulerApiController {
 	@PostMapping(path="/payment-comission", produces = "application/json")
 	public ResponseEntity<PaymentComission> savePaymentComission(@RequestBody PaymentComission paymentComission){
 		return ResponseEntity.ok().body(
-				this.schedulerApiService.savePayment(paymentComission);
+				this.schedulerApiService.savePayment(paymentComission));
 	}
 
 	@DeleteMapping(path="/payment-comission/{id}", produces = "application/json")
