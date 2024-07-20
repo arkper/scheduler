@@ -1,0 +1,106 @@
+<div width="100%" height="50px">
+    <form>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="fill"> 
+                    <mat-label>Enter a payment date range</mat-label> 
+                    <mat-date-range-input [rangePicker]="picker1"> 
+                        <input matStartDate placeholder="Start date" [(ngModel)] = "fromPaymentPeriod" [ngModelOptions]="{standalone: true}"> 
+                        <input matEndDate placeholder="End date" [(ngModel)] = "toPaymentPeriod" [ngModelOptions]="{standalone: true}"> 
+                    </mat-date-range-input> 
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> 
+                    <mat-datepicker-toggle matSuffix [for]="picker1"/> 
+                    <mat-date-range-picker #picker1/> 
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="fill">
+                    <mat-label>Insurances</mat-label>
+                    <mat-select multiple [(value)] = "selectedInsurances">
+                        <mat-option *ngFor="let i of insurances"  [value]="i.insuranceNo">{{ i.insuranceName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>    
+            </div>
+            <div class="col">
+                <mat-form-field appearance="fill">
+                    <mat-label>Providers</mat-label>
+                    <mat-select [(value)] = "selectedProvider">
+                        <mat-option *ngFor="let p of providers"  [value]="p.providerNo">{{ p.providerName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>   
+            </div>
+            <div class="col-auto">
+                <button mat-fab extended color="primary" (click)="run()"><mat-icon>pageview</mat-icon>View</button> 
+            </div>
+        </div>      
+    </form>
+</div>
+<div class="row">
+    <div class="col">
+        <mat-label>Row count : {{ rowCount }}</mat-label>
+    </div>
+    <div class="col-auto">
+        <mat-icon color="primary" (click)="add()">add_circle</mat-icon>
+        <mat-icon color="primary" (click)="download()">get_app</mat-icon>
+    </div>
+</div>
+<div style="height: 300px; width: auto">
+    <ag-grid-angular
+      style="width: 100%; height: 100%"
+      class="ag-theme-alpine"
+      [gridOptions]="gridOptions"
+      [rowData] = "gridData"
+      (cellClicked)="onCellClicked($event)"
+      [suppressMenuHide] = "true"
+      (rowDataUpdated)="onRowDataUpdated($event)"
+    ></ag-grid-angular>
+</div>
+<br/>
+<div width="100%" height="50px">
+  <form>
+    <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Payment Date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="payment.paymentDate" [ngModelOptions]="{standalone: true}">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Payment Amount</mat-label>
+                <input matInput [(ngModel)]="payment.paymentAmount" [ngModelOptions]="{standalone: true}"/>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field>
+              <mat-label>Insurance</mat-label>
+              <mat-select [(ngModel)]="payment.insurance" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let i of insurances"  [value]="i.insuranceName">{{ i.insuranceName }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Provider</mat-label>
+                <mat-select [(ngModel)]="payment.provider" [ngModelOptions]="{standalone: true}">
+                  <mat-option *ngFor="let i of providers"  [value]="i.providerName">{{ i.providerName }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <button mat-fab extended color="primary" (click)="save()"><mat-icon>save</mat-icon>Save</button> 
+        </div>
+        <div class="col-auto">
+            <button mat-fab extended color="primary" (click)="cancel()"><mat-icon>cancel</mat-icon>Cancel</button> 
+        </div>
+        <div class="col-auto">
+            <button mat-fab extended color="primary" (click)="delete()"><mat-icon>delete</mat-icon>Delete</button> 
+        </div>
+    </div>
+  </form>
+</div>

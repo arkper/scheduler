@@ -37,6 +37,7 @@ import { SigninSheetViewComponent } from './signin-sheet-view/signin-sheet-view.
 import { CorListComponent } from './cor-list/cor-list.component';
 import { FileSaverModule } from 'ngx-filesaver';
 import { PatientDocComponent } from './patient-doc/patient-doc.component';
+import { PaymentComissionsComponent } from './payment-comissions/payment-comissions.component';
 
 const ROUTES: Routes = [
   {path: 'patient-list', component: PatientListComponent},
@@ -49,6 +50,7 @@ const ROUTES: Routes = [
   {path: 'eyeglasses-form', component: EyeGlassesFormComponent},
   {path: 'cor-list', component: CorListComponent},
   {path: 'doc-viewer', component: DocViewerComponent},
+  {path: 'payment-comissions', component: PaymentComissionsComponent},
   { path: '',
     redirectTo: '/patient-list',
     pathMatch: 'full'
@@ -69,7 +71,8 @@ const ROUTES: Routes = [
     TransportationFormComponent,
     BaseFormComponent,
     SigninSheetViewComponent,
-    CorListComponent
+    CorListComponent,
+    PaymentComissionsComponent
   ],
   imports: [
     BrowserModule,

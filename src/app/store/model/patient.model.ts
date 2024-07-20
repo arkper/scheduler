@@ -91,7 +91,22 @@ export interface CorrespondenceReportRequest {
   recallType: number
 }
 
+export interface PaymentComissionsReportRequest {
+  fromPaymentPeriod: string,
+  toPaymentPeriod: string,
+  insurances: number[] | null,
+  provider: number,
+}
+
 export interface DocType {
   id: string,
   desc: string
+}
+
+export interface PaymentCommision {
+  id: number,
+  paymentDate: Date,
+  paymentAmount: number,
+  insurance: string,
+  provider: string, 
 }

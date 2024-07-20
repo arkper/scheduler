@@ -1,0 +1,44 @@
+div {
+    padding: 10 px;
+}
+
+.row {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+.col {
+  -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 60%;
+    mat-form-field {
+        width:100%;
+    }
+}
+.col, col-auto {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col {
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  max-width: 100%;
+}
+.border {
+  border: 1px solid;
+}
+.text-center {
+  text-align: center;
+}
+.my-auto {
+  margin-bottom: auto;
+  margin-top: auto;
+}
+.w-100 {
+  width: 100%
+}

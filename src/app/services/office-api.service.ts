@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
-import { Address, Appointment, Code, Company, CorrespondenceReportRequest, DocType, Document, Patient, PatientInsurance, Provider, SigninRecord } from '../store/model/patient.model';
+import { Address, Appointment, Code, Company, CorrespondenceReportRequest, DocType, Document, Patient, PatientInsurance, PaymentComissionsReportRequest, PaymentCommision, Provider, SigninRecord } from '../store/model/patient.model';
 import { DatePipe } from '@angular/common';
 
 const STATE_CODE_CATEGORY: number = 32;
@@ -175,6 +175,14 @@ export class OfficeApiService {
     }   
   }
 
+  downloadComissionsReport(request: PaymentComissionsReportRequest): Observable<any> {
+    if (environment.production) {    
+      return this.http.post('/comissions/download', request, {responseType: 'blob'});
+    } else {
+      return of([{patientNo: 1, lastName: "Perepelyuk", firstName: 'Arkady', birthDate: "1962-12-17", lastExamDate: "2022-12-09"}]);
+    }   
+  }
+
   getInsurances(): Observable<any> {
     if (environment.production) {    
       return this.http.get('/insurances', this.getHttpOptions());
@@ -250,6 +258,44 @@ export class OfficeApiService {
 
   getCompany(): Company | undefined {
     return this.company;
+  }
+
+  getPaymentComissions(request: PaymentComissionsReportRequest): Observable<any> {
+    if (environment.production)
+      {
+        return this.http.post (`/payment-comissions`, request, this.getHttpOptions());
+      }
+  
+      return of([
+      {
+        id: 56,
+        paymentDate: '2024-07-19',
+        paymentAmount: "127.23",
+        insurance: "Aetna",
+        provider: 'Steven Givner'
+      },]);
+  }
+
+  savePayment(payment: PaymentCommision): Observable<any> {
+    if (environment.production)
+      {
+        return this.http.post<PaymentCommision> (`/payment-comission`, payment, this.getHttpOptions());
+      }
+  
+      return of(
+      {
+        ... payment,
+        id: 57,
+      });
+  }
+
+  deletePayment(id: number): Observable<string> {
+    if (environment.production)
+      {
+        return this.http.delete<string> (`/payment-comission/${id}`, this.getHttpOptions());
+      }
+  
+      return of("ok");
   }
 
   getCodes(category: number): Observable<Code[]> {
