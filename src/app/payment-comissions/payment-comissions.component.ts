@@ -91,10 +91,12 @@ export class PaymentComissionsComponent {
 
   displaySuccess() {
     this.openSnackBar("Success!", "X");
+    this.run();
   }
 
   displayFailure() {
     this.openSnackBar("Failure!", "X");
+    this.run();
   }
 
   openSnackBar(message: string, type: string) { 
@@ -128,9 +130,7 @@ export class PaymentComissionsComponent {
     .subscribe({
       next: _ => this.displaySuccess(),
       complete: () => this.displaySuccess(),
-      error: _ => this.displayFailure()
+      error: e => {console.log('Error', e); this.displayFailure();}
     });
-
-    this.run();
   }
 }
