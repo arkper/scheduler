@@ -424,8 +424,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     @Override
     public Iterable<PaymentComission> getPayments(String provider, List<String> insurances, LocalDate fromDate, LocalDate toDate) {
         if (CollectionUtils.isEmpty(insurances)) {
-        //    return this.paymentComissionRepository.findByProviderAndPaymentDate(provider, fromDate, toDate);
-            return this.paymentComissionRepository.findAll();
+            return this.paymentComissionRepository.findByProviderAndPaymentDate(provider, fromDate, toDate);
         }
         return this.paymentComissionRepository.findByProviderInsuranceAndPaymentDate(provider, insurances, fromDate, toDate);
     }
