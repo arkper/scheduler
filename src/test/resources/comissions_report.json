@@ -1,0 +1,30 @@
+[
+  {
+    "id": 6,
+    "paymentDate": "2024-07-21",
+    "paymentAmount": 12341,
+    "insurance": "AFFINITY",
+    "provider": "Steven Givner"
+  },
+  {
+    "id": 7,
+    "paymentDate": "2024-07-21",
+    "paymentAmount": 1000,
+    "insurance": "AETNA",
+    "provider": "Steven Givner"
+  },
+  {
+    "id": 8,
+    "paymentDate": "2024-07-21",
+    "paymentAmount": 322.23,
+    "insurance": "AFFINITY",
+    "provider": "Steven Givner"
+  },
+  {
+    "id": 9,
+    "paymentDate": "2024-07-21",
+    "paymentAmount": 432.45,
+    "insurance": "AETNA",
+    "provider": "Steven Givner"
+  }
+]

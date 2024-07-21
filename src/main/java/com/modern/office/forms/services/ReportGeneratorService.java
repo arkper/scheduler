@@ -7,10 +7,13 @@ import com.modern.office.domain.HippaDocument;
 import com.modern.office.forms.domain.*;
 import com.modern.office.repository.DocumentRepository;
 import com.modern.office.repository.HippaDocumentRepository;
+import com.modern.office.scheduler.controllers.SchedulerApiController;
+import com.modern.office.scheduler.services.SchedulerApiService;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JsonDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
+import org.eclipse.collections.api.factory.Maps;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
@@ -47,20 +50,29 @@ public class ReportGeneratorService {
     private String companyZip;
     @Value("${office-forms.company-phone}")
     private String companyPhone;
+
+    @Value("${office-forms.commission-rate:15}")
+    private float commissionRate;
+
     @Value("${office-forms.document-folder}")
     private String documentFolder;
     @Value("${office-forms.document-local-folder}")
     private String documentLocalFolder;
 
+    private final SchedulerApiService schedulerApiService;
+
     public ReportGeneratorService(final DocumentRepository documentRepository,
-                                  final HippaDocumentRepository hippaDocumentRepository) throws IOException {
+                                  final HippaDocumentRepository hippaDocumentRepository, SchedulerApiService schedulerApiService) throws IOException {
         this.documentRepository = documentRepository;
         this.hippaDocumentRepository = hippaDocumentRepository;
+        this.schedulerApiService = schedulerApiService;
 
         FORMS_MAP.put(DocType.Consent, compileReport(DocType.Consent.getTemplate()));
         FORMS_MAP.put(DocType.ReleaseOfMedicalInfo, compileReport(DocType.ReleaseOfMedicalInfo.getTemplate()));
         FORMS_MAP.put(DocType.MedicaidEyeglasses, compileReport(DocType.MedicaidEyeglasses.getTemplate()));
         FORMS_MAP.put(DocType.TransportationApproval, compileReport(DocType.TransportationApproval.getTemplate()));
+        FORMS_MAP.put(DocType.Commissions, compileReport(DocType.Commissions.getTemplate()));
+
         compileReport("/reports/release-legacy.jrxml");
     }
 
@@ -142,6 +154,30 @@ public class ReportGeneratorService {
         try (ByteArrayInputStream reportContentStream = new ByteArrayInputStream(objectMapper.writeValueAsBytes(reportData))) {
             JsonDataSource jsonDataSource = new JsonDataSource(reportContentStream, "data");
             JasperPrint jasperPrint = JasperFillManager.fillReport(report, new HashMap<>(), jsonDataSource);
+            byte[] bytes = JasperExportManager.exportReportToPdf(jasperPrint);
+            log.info("Returning report content {} bytes", bytes.length);
+            return bytes;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public byte[] generateCommissions(SchedulerApiController.PaymentComissionsRequest request) {
+        var reportData = this.schedulerApiService.getPayments(request.provider(), request.insurances(), request.fromPaymentPeriod(), request.toPaymentPeriod());
+        var objectMapper = new ObjectMapper();
+        var report = FORMS_MAP.get(DocType.Commissions);
+        try (ByteArrayInputStream reportContentStream = new ByteArrayInputStream(objectMapper.writeValueAsBytes(reportData))) {
+            JsonDataSource jsonDataSource = new JsonDataSource(reportContentStream, "");
+            var parameters = Maps.mutable.<String, Object>empty()
+                    .withKeyValue("rate", this.commissionRate)
+                    .withKeyValue("company", this.company)
+                    .withKeyValue("companyAddress", this.companyAddress)
+                    .withKeyValue("companyCity", this.companyCity)
+                    .withKeyValue("companyState", this.companyState)
+                    .withKeyValue("companyZip", this.companyZip)
+                    .withKeyValue("companyPhone", this.companyPhone);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, jsonDataSource);
             byte[] bytes = JasperExportManager.exportReportToPdf(jasperPrint);
             log.info("Returning report content {} bytes", bytes.length);
             return bytes;

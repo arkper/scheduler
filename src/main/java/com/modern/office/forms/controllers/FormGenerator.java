@@ -2,10 +2,12 @@ package com.modern.office.forms.controllers;
 
 import com.modern.office.config.ClientMappings;
 import com.modern.office.forms.domain.Company;
+import com.modern.office.forms.domain.CorrespondenceReportRequest;
 import com.modern.office.forms.domain.FormData;
 import com.modern.office.forms.domain.ReleaseInfoReport;
 import com.modern.office.forms.services.ReportGeneratorService;
 import com.modern.office.forms.services.SignRequestService;
+import com.modern.office.scheduler.controllers.SchedulerApiController;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +17,7 @@ import org.eclipse.collections.impl.factory.Maps;
 import org.eclipse.collections.impl.tuple.Tuples;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -165,6 +168,18 @@ public class FormGenerator {
     public String generateEyeGlassesForm(@RequestBody final FormData formData) throws IOException {
         log.info("Generating form {}", formData);
         return this.reportGeneratorService.generateForm(formData);
+    }
+
+    @PostMapping(value = "/commissions/download", consumes = "application/json", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public ResponseEntity<byte[]> downloadCommissionsReport(@RequestBody SchedulerApiController.PaymentComissionsRequest request) {
+        try {
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"PaymentCommissions.pdf")
+                    .body(this.reportGeneratorService.generateCommissions(request));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     @CrossOrigin(origins = "*")

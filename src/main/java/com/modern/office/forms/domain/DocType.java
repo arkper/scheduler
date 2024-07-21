@@ -21,6 +21,7 @@ public enum DocType {
     Consent(1107, "consent", "/reports/consent.jrxml", FormType.HIPAA, "Consent"),
     Complaint(1108, "complaint", null, FormType.HIPAA, "Complaint"),
     ConsentToExam(1282, "consent1", "/reports/consent.jrxml", FormType.HIPAA, "Consent To Examination"),
+    Commissions(1282, "commissions", "/reports/commissions.jrxml", FormType.HIPAA, "Payment Commissions"),
     Other(1109, "other", null, FormType.HIPAA, "Other");
 
     private final int value;
