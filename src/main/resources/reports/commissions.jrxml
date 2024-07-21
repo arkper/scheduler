@@ -48,8 +48,12 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="provider"/>
 		<fieldDescription><![CDATA[provider]]></fieldDescription>
 	</field>
+	<field name="commissionedAmount" class="java.lang.Float">
+		<property name="net.sf.jasperreports.json.field.expression" value="commissionedAmount"/>
+		<fieldDescription><![CDATA[commissionedAmount]]></fieldDescription>
+	</field>
 	<variable name="commisions" class="java.lang.Float" calculation="Sum">
-		<variableExpression><![CDATA[SUM($F{paymentAmount} )]]></variableExpression>
+		<variableExpression><![CDATA[SUM($F{commissionedAmount} )]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
