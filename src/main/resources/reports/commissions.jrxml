@@ -36,9 +36,9 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="paymentAmount"/>
 		<fieldDescription><![CDATA[paymentAmount]]></fieldDescription>
 	</field>
-	<field name="billlingCode" class="java.lang.String">
-		<property name="net.sf.jasperreports.json.field.expression" value="billlingCode"/>
-		<fieldDescription><![CDATA[billlingCode]]></fieldDescription>
+	<field name="billingCode" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="billingCode"/>
+		<fieldDescription><![CDATA[billingCode]]></fieldDescription>
 	</field>
 	<field name="insurance" class="java.lang.String">
 		<property name="net.sf.jasperreports.json.field.expression" value="insurance"/>
@@ -193,7 +193,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="740b0abc-9003-4aff-af51-c9ec7d47a52b"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[LEFT($F{billlingCode}, 5)]]></textFieldExpression>
+				<textFieldExpression><![CDATA[LEFT($F{billingCode}, 5)]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
