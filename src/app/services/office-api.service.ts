@@ -177,7 +177,7 @@ export class OfficeApiService {
 
   downloadComissionsReport(request: PaymentComissionsReportRequest): Observable<any> {
     if (environment.production) {    
-      return this.http.post('/comissions/download', request, {responseType: 'blob'});
+      return this.http.post('/forms/commissions/download', request, {responseType: 'blob'});
     } else {
       return of([{patientNo: 1, lastName: "Perepelyuk", firstName: 'Arkady', birthDate: "1962-12-17", lastExamDate: "2022-12-09"}]);
     }   
