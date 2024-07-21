@@ -175,9 +175,10 @@ public class FormGenerator {
         try {
             return ResponseEntity.ok()
                     .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"PaymentCommissions.pdf")
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"PaymentCommissions.pdf\"")
                     .body(this.reportGeneratorService.generateCommissions(request));
         } catch (Exception e) {
+            log.error("Failed generating Commissions report", e);
             return ResponseEntity.internalServerError().build();
         }
     }

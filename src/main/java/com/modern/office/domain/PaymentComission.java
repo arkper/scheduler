@@ -1,5 +1,11 @@
 package com.modern.office.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -22,9 +28,18 @@ public class PaymentComission {
     @Column(name="payment_amount")
     double paymentAmount;
 
+    @Column(name="billing_code")
+    String billingCode;
+
     @Column(name="insurance")
     String insurance;
 
     @Column(name="provider")
     String provider;
+
+    public double getCommissionedAmount() {
+        return this.getBillingCode().startsWith("92004") || this.getBillingCode().startsWith("92014")
+                ? 0
+                : this.paymentAmount;
+    }
 }

@@ -1,6 +1,8 @@
 package com.modern.office.forms.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.modern.office.domain.Address;
 import com.modern.office.domain.Document;
 import com.modern.office.domain.HippaDocument;
@@ -164,7 +166,9 @@ public class ReportGeneratorService {
 
     public byte[] generateCommissions(SchedulerApiController.PaymentComissionsRequest request) {
         var reportData = this.schedulerApiService.getPayments(request.provider(), request.insurances(), request.fromPaymentPeriod(), request.toPaymentPeriod());
-        var objectMapper = new ObjectMapper();
+        var objectMapper = new ObjectMapper()
+                .registerModule(new JavaTimeModule())
+                .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         var report = FORMS_MAP.get(DocType.Commissions);
         try (ByteArrayInputStream reportContentStream = new ByteArrayInputStream(objectMapper.writeValueAsBytes(reportData))) {
             JsonDataSource jsonDataSource = new JsonDataSource(reportContentStream, "");
