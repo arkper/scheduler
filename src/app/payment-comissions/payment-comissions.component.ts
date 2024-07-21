@@ -108,6 +108,10 @@ export class PaymentComissionsComponent {
   }
 
   save(){
+    if (!this.isValid()) {
+      return;
+    }
+
     this.apiService.savePayment(this.payment)
     .subscribe({
       next: _ => this.displaySuccess(),
@@ -117,16 +121,32 @@ export class PaymentComissionsComponent {
     this.run();
   }
 
+  isValid(): Boolean {
+    if (!this.payment.insurance){
+      alert("Insurance must be specified!");
+      return false;
+    }
+    if (!this.payment.provider) {
+      alert("Provider must be specified!");
+      return false;
+    }
+    if (isNaN(this.payment.paymentAmount) || this.payment.paymentAmount == 0.0) {
+      alert("Valid payment amount must be specified!");
+      return false;
+    }
+    return true;
+  }
+
   cancel(){
     this.payment = this.initPayment();
   }
 
   delete(){
-    if (this.payment.id == 0)
-      {
-        return;
-      }
-    this.apiService.deletePayment(this.payment.id)
+  if (this.payment.id == 0)
+  {
+    return;
+  }
+  this.apiService.deletePayment(this.payment.id)
     .subscribe({
       next: _ => this.displaySuccess(),
       complete: () => this.displaySuccess(),
