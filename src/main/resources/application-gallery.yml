@@ -20,6 +20,7 @@ office-forms:
   company-state: NY
   company-zip: 11205
   company-phone: (718) 246-2020
+  commission-rate: 20
   office-forms:
   entry-prompt: EN
 
