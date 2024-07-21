@@ -76,6 +76,14 @@
         </div>
         <div class="col">
             <mat-form-field>
+              <mat-label>Billing Code</mat-label>
+              <mat-select [(ngModel)]="payment.billingCode" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let billingCode of billingCodes"  [value]="billingCode">{{ billingCode }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field>
               <mat-label>Insurance</mat-label>
               <mat-select [(ngModel)]="payment.insurance" [ngModelOptions]="{standalone: true}">
                 <mat-option *ngFor="let i of insurances"  [value]="i.insuranceName">{{ i.insuranceName }}</mat-option>

@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CellClickedEvent, GridOptions } from 'ag-grid-community';
 import { PaymentComissionsReportRequest, PaymentCommision, Provider } from '../store/model/patient.model';
 import { saveAs } from 'file-saver';
+import { BILLING_CODES } from './billing-codes';
 
 @Component({
   selector: 'app-payment-comissions',
@@ -26,6 +27,8 @@ export class PaymentComissionsComponent {
   selectedInsurances: string[] = [];
   insurances!: [{insuranceNo: number, insuranceName: string}];
 
+  billingCodes = BILLING_CODES;
+
   selectedProvider: string = "";
   providers!: Provider[];
 
@@ -38,6 +41,7 @@ export class PaymentComissionsComponent {
         { field: "id", flex: 25, sortable: true, filter: 'agNumberColumnFilter'},
         { field: 'paymentDate', flex: 50, sortable: true, filter: 'agDateColumnFilter',  cellRenderer: (value: any) => this.datepipe.transform(value.data['paymentDate'])},
         { field: 'paymentAmount', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
+        { field: 'billingCode', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
         { field: 'insurance', flex: 50, sortable: true, filter: 'agNumberColumnFilter'},        
         { field: 'provider', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
     ]
@@ -104,7 +108,7 @@ export class PaymentComissionsComponent {
   }
 
   initPayment(): PaymentCommision {
-    return {id: 0, paymentDate: new Date(), paymentAmount: 0.0, insurance: "", provider: ""};
+    return {id: 0, paymentDate: new Date(), paymentAmount: 0.0, billingCode: "", insurance: "", provider: ""};
   }
 
   save(){

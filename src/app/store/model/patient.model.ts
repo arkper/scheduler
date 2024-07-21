@@ -107,6 +107,7 @@ export interface PaymentCommision {
   id: number,
   paymentDate: Date,
   paymentAmount: number,
+  billingCode: string,
   insurance: string,
   provider: string, 
 }
