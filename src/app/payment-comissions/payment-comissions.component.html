@@ -98,6 +98,12 @@
                 </mat-select>
             </mat-form-field>
         </div>
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Patient</mat-label>
+                <input matInput [(ngModel)]="payment.patient" [ngModelOptions]="{standalone: true}"/>
+            </mat-form-field>
+        </div>
     </div>
     <div class="row">
         <div class="col-auto">

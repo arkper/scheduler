@@ -44,6 +44,7 @@ export class PaymentComissionsComponent {
         { field: 'billingCode', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
         { field: 'insurance', flex: 50, sortable: true, filter: 'agNumberColumnFilter'},        
         { field: 'provider', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
+        { field: 'patient', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
     ]
   }
 
@@ -108,7 +109,7 @@ export class PaymentComissionsComponent {
   }
 
   initPayment(): PaymentCommision {
-    return {id: 0, paymentDate: new Date(), paymentAmount: 0.0, billingCode: "", insurance: "", provider: ""};
+    return {id: 0, paymentDate: new Date(), paymentAmount: 0.0, billingCode: "", insurance: "", provider: "", patient: ""};
   }
 
   save(){
@@ -132,6 +133,10 @@ export class PaymentComissionsComponent {
     }
     if (!this.payment.provider) {
       alert("Provider must be specified!");
+      return false;
+    }
+    if (!this.payment.patient) {
+      alert("Patient must be specified!");
       return false;
     }
     if (isNaN(this.payment.paymentAmount) || this.payment.paymentAmount == 0.0) {

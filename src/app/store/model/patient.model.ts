@@ -110,4 +110,5 @@ export interface PaymentCommision {
   billingCode: string,
   insurance: string,
   provider: string, 
+  patient: string,
 }
