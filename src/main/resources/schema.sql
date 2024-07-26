@@ -518,4 +518,5 @@ create table PAYMENT_COMISSIONS(
     payment_amount float not null,
     billing_code varchar(128) not null,
     insurance varchar(100) not null,
-    provider varchar(100) not null);
+    provider varchar(100) not null,
+    patient varchar(100) not null);

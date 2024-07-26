@@ -37,6 +37,9 @@ public class PaymentComission {
     @Column(name="provider")
     String provider;
 
+    @Column(name="patient")
+    String patient;
+
     public double getCommissionedAmount() {
         return this.getBillingCode().startsWith("92004") || this.getBillingCode().startsWith("92014")
                 ? 0
