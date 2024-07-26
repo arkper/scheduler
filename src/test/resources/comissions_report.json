@@ -2,7 +2,7 @@
   {
     "id": 6,
     "paymentDate": "2024-07-21",
-    "paymentAmount": 12341,
+    "paymentAmount": 12341.15,
     "billingCode": "68761 punctum plugs",
     "insurance": "AFFINITY",
     "provider": "Steven Givner",
@@ -12,7 +12,7 @@
   {
     "id": 7,
     "paymentDate": "2024-07-21",
-    "paymentAmount": 1000,
+    "paymentAmount": 1000.00,
     "billingCode": "92083 visual field",
     "insurance": "AETNA",
     "provider": "Steven Givner",
