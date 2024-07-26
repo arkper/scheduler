@@ -28,6 +28,7 @@ office-forms:
   company-state: NY
   company-zip: 11223
   company-phone: (718) 336-3090
+  commission-rate: 20
   entry-prompt: RU
 
   document-folder: o:/data/edocuments/
