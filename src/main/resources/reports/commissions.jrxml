@@ -48,9 +48,13 @@
 		<property name="net.sf.jasperreports.json.field.expression" value="provider"/>
 		<fieldDescription><![CDATA[provider]]></fieldDescription>
 	</field>
-	<field name="commissionedAmount" class="java.lang.Float">
+	<field name="commissionedAmount" class="java.lang.Double">
 		<property name="net.sf.jasperreports.json.field.expression" value="commissionedAmount"/>
 		<fieldDescription><![CDATA[commissionedAmount]]></fieldDescription>
+	</field>
+	<field name="patient" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="patient"/>
+		<fieldDescription><![CDATA[patient]]></fieldDescription>
 	</field>
 	<variable name="commisions" class="java.lang.Float" calculation="Sum">
 		<variableExpression><![CDATA[SUM($F{commissionedAmount} )]]></variableExpression>
@@ -102,7 +106,7 @@
 		</band>
 	</title>
 	<columnHeader>
-		<band height="25" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="38" height="20" uuid="cb7559e6-ae76-4b82-b4d2-ed27b7a81ad4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f1e57b5-82f6-4b84-b612-161ee58e2b2b"/>
@@ -113,7 +117,7 @@
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="40" y="0" width="100" height="20" uuid="19cdcaae-dcc4-4960-ac5d-e50589c48ea6">
+				<reportElement x="40" y="0" width="80" height="20" uuid="19cdcaae-dcc4-4960-ac5d-e50589c48ea6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="caa555b1-64ae-4e82-9447-5b5111547aed"/>
 				</reportElement>
 				<textElement>
@@ -122,8 +126,9 @@
 				<text><![CDATA[Payment Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="150" y="0" width="100" height="20" uuid="3d2fc57b-b278-4aab-aa71-ffbd7b9cea2c">
+				<reportElement x="120" y="0" width="70" height="20" uuid="3d2fc57b-b278-4aab-aa71-ffbd7b9cea2c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="70a61956-cf96-40c7-aef7-9857950e7558"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
@@ -131,7 +136,7 @@
 				<text><![CDATA[Payment Amount]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="360" y="0" width="100" height="20" uuid="f4182ca5-1fb6-4cf5-b106-77ba7c7cb166">
+				<reportElement x="283" y="0" width="89" height="20" uuid="f4182ca5-1fb6-4cf5-b106-77ba7c7cb166">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="740b0abc-9003-4aff-af51-c9ec7d47a52b"/>
 				</reportElement>
 				<textElement>
@@ -140,7 +145,7 @@
 				<text><![CDATA[Insurance]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="470" y="0" width="100" height="20" uuid="23bab9a3-db56-4518-9f9d-069a1733eb39">
+				<reportElement x="369" y="0" width="81" height="26" uuid="23bab9a3-db56-4518-9f9d-069a1733eb39">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8cab25b8-8334-4505-b121-ad190f39a2ca"/>
 				</reportElement>
 				<textElement>
@@ -149,18 +154,29 @@
 				<text><![CDATA[Provider]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="260" y="1" width="90" height="20" uuid="c46b6f87-0cd5-4a91-95c4-d9381f5b8f10">
+				<reportElement x="190" y="0" width="90" height="20" uuid="c46b6f87-0cd5-4a91-95c4-d9381f5b8f10">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="70a61956-cf96-40c7-aef7-9857950e7558"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Right">
+				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Billing Code]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="100" height="25" uuid="b168f2da-b1e8-4bb2-a38c-360d3bf6717e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e0056eaf-6c24-4e19-a530-abd23dfb8152"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="40" splitType="Stretch">
+		<band height="48" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="38" height="30" uuid="a3a7f501-4188-460a-a91d-366a9ffc9d22">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f1e57b5-82f6-4b84-b612-161ee58e2b2b"/>
@@ -168,36 +184,42 @@
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="0" width="100" height="30" uuid="e1a37499-383c-455e-bd0c-e51ecb016f21">
+				<reportElement x="40" y="0" width="80" height="30" uuid="e1a37499-383c-455e-bd0c-e51ecb016f21">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="caa555b1-64ae-4e82-9447-5b5111547aed"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("MM/dd/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($F{paymentDate}))]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="0" width="100" height="30" uuid="35471066-a8a7-4515-840d-10851202d976">
+				<reportElement x="120" y="1" width="70" height="30" uuid="35471066-a8a7-4515-840d-10851202d976">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="70a61956-cf96-40c7-aef7-9857950e7558"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[new java.text.DecimalFormat("$ #,##0.00").format($F{paymentAmount})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="360" y="0" width="100" height="30" uuid="7f85a6a7-80c6-4c69-9af5-600c0d8b1a90">
+				<reportElement x="282" y="0" width="90" height="30" uuid="7f85a6a7-80c6-4c69-9af5-600c0d8b1a90">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="740b0abc-9003-4aff-af51-c9ec7d47a52b"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{insurance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="470" y="0" width="100" height="30" uuid="185e7e1f-1a2d-4d57-a885-7d1e9a14fd29">
+				<reportElement x="371" y="0" width="79" height="30" uuid="185e7e1f-1a2d-4d57-a885-7d1e9a14fd29">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8cab25b8-8334-4505-b121-ad190f39a2ca"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{provider}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="260" y="0" width="90" height="30" uuid="d1eb1742-b2f6-4958-a755-2f04cb56ffed">
+				<reportElement x="193" y="0" width="87" height="30" uuid="d1eb1742-b2f6-4958-a755-2f04cb56ffed">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="740b0abc-9003-4aff-af51-c9ec7d47a52b"/>
 				</reportElement>
-				<textElement textAlignment="Right"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[LEFT($F{billingCode}, 5)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="100" height="30" uuid="4bc01819-14a3-467c-b374-f6da0694d822">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e0056eaf-6c24-4e19-a530-abd23dfb8152"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{patient}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

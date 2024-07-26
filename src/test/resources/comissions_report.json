@@ -6,7 +6,8 @@
     "billingCode": "68761 punctum plugs",
     "insurance": "AFFINITY",
     "provider": "Steven Givner",
-    "commissionedAmount": 12341
+    "commissionedAmount": 12341,
+    "patient": "John Dow"
   },
   {
     "id": 7,
@@ -15,7 +16,8 @@
     "billingCode": "92083 visual field",
     "insurance": "AETNA",
     "provider": "Steven Givner",
-    "commissionedAmount": 1000
+    "commissionedAmount": 1000,
+    "patient": "Margaret Thatcher"
   },
   {
     "id": 8,
@@ -24,7 +26,8 @@
     "billingCode": "92004 comprehensive eye exam for a new patient",
     "insurance": "AFFINITY",
     "provider": "Steven Givner",
-    "commissionedAmount": 0.0
+    "commissionedAmount": 0.0,
+    "patient": "Marc Maheiu"
   },
   {
     "id": 9,
@@ -33,6 +36,7 @@
     "billingCode": "92202 extended ophthalmoscopy",
     "insurance": "AETNA",
     "provider": "Steven Givner",
-    "commissionedAmount": 432.45
+    "commissionedAmount": 432.45,
+    "patient": "Bill Harrington"
   }
 ]
