@@ -13,12 +13,14 @@ import { Observable, of } from 'rxjs';
   templateUrl: './payment-comissions.component.html',
   styleUrls: ['./payment-comissions.component.scss']
 })
-export class PaymentComissionsComponent {
+export class PaymentComissionsComponent{
   constructor(private apiService: OfficeApiService, private datepipe: DatePipe, private snackBar: MatSnackBar){
     this.apiService.getInsurances()
       .subscribe({next: data => this.insurances = data});
     this.apiService.getProviders()
       .subscribe({next: data => this.providers = data});
+    this.filteredPatients =
+      this.apiService.getPatientsByName('any', 'any');
   }
 
   payment: PaymentCommision = this.initPayment();
@@ -36,7 +38,7 @@ export class PaymentComissionsComponent {
   gridData: any[] = [];
   rowCount: number = 0;
 
-  filteredPatients: Observable<Array<any>> = of([{id: 1, firstName: 'John', lastName: 'Doe'}, {id: 2, firstName: 'Jim', lastName: 'Walker'}]);
+  filteredPatients: Observable<Array<any>> = of([]);
 
   filterPatient(event: any) {
     const value = event;
