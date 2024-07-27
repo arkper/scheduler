@@ -99,11 +99,26 @@
                 </mat-select>
             </mat-form-field>
         </div>
+        <!-- <div class="col">
+            <mat-form-field>
+                <mat-label>Patient</mat-label>
+                <input placeholder="Patient Name" matInput [(ngModel)]="payment.patient" [ngModelOptions]="{standalone: true}"/>
+            </mat-form-field>
+        </div> -->
         <div class="col">
             <mat-form-field>
                 <mat-label>Patient</mat-label>
-                <input matInput [(ngModel)]="payment.patient" [ngModelOptions]="{standalone: true}"/>
-            </mat-form-field>
+                <input type="text"
+                       (ngModelChange) = "filterPatient($event)"
+                       placeholder="Pick patient"
+                       matInput
+                       [(ngModel)]="payment.patient"
+                       [ngModelOptions]="{standalone: true}"
+                       [matAutocomplete]="auto">
+                       <mat-autocomplete #auto="matAutocomplete">
+                         <mat-option *ngFor="let patient of filteredPatients | async; track patient" [value]="patient.name">{{ patient.name }}</mat-option>
+                      </mat-autocomplete>
+                  </mat-form-field>
         </div>
     </div>
     <div class="row">

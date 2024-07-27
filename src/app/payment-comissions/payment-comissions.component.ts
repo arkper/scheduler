@@ -6,6 +6,7 @@ import { CellClickedEvent, GridOptions } from 'ag-grid-community';
 import { PaymentComissionsReportRequest, PaymentCommision, Provider } from '../store/model/patient.model';
 import { saveAs } from 'file-saver';
 import { BILLING_CODES } from './billing-codes';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-payment-comissions',
@@ -34,6 +35,15 @@ export class PaymentComissionsComponent {
 
   gridData: any[] = [];
   rowCount: number = 0;
+
+  filteredPatients: Observable<Array<any>> = of([{id: 1, name: 'John Doe'}, {id: 2, name: 'Jim Walker'}]);
+
+  filterPatient(event: any) {
+    const value = event;
+    console.log('Value', value);
+    this.payment.patient = value;
+     this.filteredPatients = of([{id: 1, name: 'Johon Doe'}]);
+  }
 
   gridOptions: GridOptions = {
     rowHeight: 30,

@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { DatePipe } from '@angular/common';
 import { SigPadComponent } from './sig-pad/sig-pad.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReleaseFormComponent } from './forms/release-form/release-form.component';
 import { DocViewerComponent } from './doc-viewer/doc-viewer.component';
@@ -77,6 +78,7 @@ const ROUTES: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatAutocompleteModule,
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
