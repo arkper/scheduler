@@ -3,7 +3,7 @@ import { OfficeApiService } from '../services/office-api.service';
 import { DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CellClickedEvent, GridOptions } from 'ag-grid-community';
-import { PaymentComissionsReportRequest, PaymentCommision, Provider } from '../store/model/patient.model';
+import { Patient, PaymentComissionsReportRequest, PaymentCommision, Provider } from '../store/model/patient.model';
 import { saveAs } from 'file-saver';
 import { BILLING_CODES } from './billing-codes';
 import { Observable, of } from 'rxjs';
@@ -42,7 +42,11 @@ export class PaymentComissionsComponent {
     const value = event;
     console.log('Value', value);
     this.payment.patient = value;
-     this.filteredPatients = of([{id: 1, name: 'Johon Doe'}]);
+    this.filteredPatients = this.apiService.getPatientsByName(value, value)
+  }
+
+  getName(patient: Patient): string {
+    return patient.firstName + ' ' + patient.lastName;
   }
 
   gridOptions: GridOptions = {

@@ -116,7 +116,7 @@
                        [ngModelOptions]="{standalone: true}"
                        [matAutocomplete]="auto">
                        <mat-autocomplete #auto="matAutocomplete">
-                         <mat-option *ngFor="let patient of filteredPatients | async; track patient" [value]="patient.name">{{ patient.name }}</mat-option>
+                         <mat-option *ngFor="let patient of filteredPatients | async; track patient" [value]="getName(patient)">{{ getName(patient) }}</mat-option>
                       </mat-autocomplete>
                   </mat-form-field>
         </div>
