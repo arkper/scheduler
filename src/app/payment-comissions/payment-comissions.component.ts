@@ -46,6 +46,7 @@ export class PaymentComissionsComponent {
   }
 
   getName(patient: Patient): string {
+    console.log('Parient', patient);
     return patient.firstName + ' ' + patient.lastName;
   }
 
