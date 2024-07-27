@@ -240,7 +240,6 @@ public class SchedulerApiController {
     }
 
     @GetMapping(path = "/patients-by-name/{last-name}/{first-name}", produces = "application/json")
-    @CrossOrigin
     public ResponseEntity<Iterable<Patient>> getPatientsByName(@PathVariable("last-name") String lastName,
                                                                @PathVariable("first-name") String firstName) {
         try {
@@ -269,6 +268,20 @@ public class SchedulerApiController {
         }
     }
 
+    @GetMapping(path = "/patients-by-name-like/{last-name}/or/{first-name}", produces = "application/json")
+    @CrossOrigin
+    public ResponseEntity<Iterable<Patient>> getPatientsByEitherNameLike(@PathVariable("last-name") String lastName,
+                                                                   @PathVariable("first-name") String firstName) {
+        try {
+            return ResponseEntity.ok()
+                    .body(this.schedulerApiService.findPatientsByLastNameOrFirstNameLike(lastName, firstName));
+        } catch (Exception e) {
+            log.error("Failed getting patients for lastName {} or firstName {} with error: {}", lastName, firstName,
+                    e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("Error Message", e.getMessage())
+                    .build();
+        }
+    }
     @PostMapping(path = "/patients", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Patient> save(@RequestBody Patient patient) {
         try {

@@ -11,6 +11,7 @@ public interface PatientRepository extends CrudRepository<Patient, Integer> {
 	Iterable<Patient> findPatientsByLastNameAndBirthDate(String lastName, LocalDate birthDate);
 	Iterable<Patient> findPatientsByLastNameAndSalutation(String lastName, String salutation);
 
+	Iterable<Patient> findPatientsByLastNameOrSalutationLike(String lastName, String salutation);
 	@Query(value = "select top 100 * from patient where last_name like ?1 and salutation like ?2 and address_no is not null order by last_name, first_name", nativeQuery = true)
 	Iterable<Patient> findPatientsByLastNameAndSalutationLike (String lastName, String salutation);
 }
