@@ -42,9 +42,12 @@ export class PaymentComissionsComponent{
 
   filterPatient(event: any) {
     const value = event;
-    console.log('Value', value);
-    this.payment.patient = value;
-    this.filteredPatients = this.apiService.getPatientsByName(value, value)
+    if (value) {
+      this.payment.patient = value;
+      this.filteredPatients = this.apiService.getPatientsByName(value, value);  
+    } else {
+      this.filteredPatients = this.apiService.getPatientsByName('any', 'any');
+    }
   }
 
   getName(patient: Patient): string {
