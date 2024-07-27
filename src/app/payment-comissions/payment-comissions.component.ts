@@ -44,7 +44,7 @@ export class PaymentComissionsComponent{
     const value = event;
     if (value) {
       this.payment.patient = value;
-      this.filteredPatients = this.apiService.getPatientsByName(value, value);  
+      this.filteredPatients = this.apiService.getPatientsByLastNameOrFirstName(value, value);  
     } else {
       this.filteredPatients = this.apiService.getPatientsByName('any', 'any');
     }

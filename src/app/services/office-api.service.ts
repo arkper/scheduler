@@ -72,6 +72,27 @@ export class OfficeApiService {
     }
   }
 
+  getPatientsByLastNameOrFirstName(lastName: string, firstName: string): Observable<Patient[]> {
+    if (environment.production) {
+      return this.http
+        .get<Patient[]>(`/patients-by-name-like/${ lastName }/or/${ firstName }`, this.getHttpOptions());
+    } else {
+      const address: Address = {addressNo: 1, address1: "123 East 12th St", address2: null, city: "Brooklyn", stateNo: 65, state: null, zip: "11223", phone1: "(718) 123-45678", phone2: null};
+      const insurance: PatientInsurance = {patientInsuranceNo: 1, insuranceNo: 2, insuredId: "A12345", insuredNo: 111, relationToInsuredNo: 335}
+      const patients = [
+        {patientNo: 111, lastName: 'Perepelyuk', firstName: 'Arkady', address: address, salutation: null, birthDate: '1962-09-27', sex: 1, ssNo: '123456', patientInsurances: [insurance]},
+        {patientNo: 112, lastName: 'Perepelyuk', firstName: 'Dina', address: null, salutation: null, birthDate: '1964-09-07', sex:0, ssNo: '23232323', patientInsurances: null}
+      ];
+      const found: Patient[] | undefined = patients.filter(p => (lastName === 'any' || p.lastName.includes(lastName)) && (firstName === 'any' || p.firstName.includes(firstName)));
+
+      if (found !== undefined) {
+        return of<Patient[]>(found);
+      } else {
+        return of([]);
+      }
+    }
+  }
+
   getPatientsById(patientNo: string): Observable<Patient> {
     if (environment.production) {
       return this.http
