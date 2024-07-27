@@ -118,6 +118,9 @@
                        <mat-autocomplete #auto="matAutocomplete">
                          <mat-option *ngFor="let patient of filteredPatients | async; track patient" [value]="getName(patient)">{{ getName(patient) }}</mat-option>
                       </mat-autocomplete>
+                      <button matSuffix mat-icon-button aria-label="Clear" (click)="payment.patient = ''">
+                        <mat-icon>close</mat-icon>
+                      </button>
                   </mat-form-field>
         </div>
     </div>
