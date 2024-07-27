@@ -36,7 +36,7 @@ export class PaymentComissionsComponent {
   gridData: any[] = [];
   rowCount: number = 0;
 
-  filteredPatients: Observable<Array<any>> = of([{id: 1, name: 'John Doe'}, {id: 2, name: 'Jim Walker'}]);
+  filteredPatients: Observable<Array<any>> = of([{id: 1, firstName: 'John', lastName: 'Doe'}, {id: 2, firstName: 'Jim', lastName: 'Walker'}]);
 
   filterPatient(event: any) {
     const value = event;
@@ -46,7 +46,7 @@ export class PaymentComissionsComponent {
   }
 
   getName(patient: Patient): string {
-    console.log('Parient', patient);
+    console.log('Patient', patient);
     return patient.firstName + ' ' + patient.lastName;
   }
 
