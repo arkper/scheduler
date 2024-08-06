@@ -12,5 +12,7 @@ export const BILLING_CODES = [
   '76512 Ophthalmic ultrasound, diagnostic; B-scan',
   '83861 TearLab Osmolarity test',
   '68761 punctum plugs',
-  '92273 electroretinography (ERG)'
+  '92273 electroretinography (ERG)',
+  '92012 Intermediate eye exam for established patient',
+  '92002 Intermediate eye exam for new patient',
 ]
