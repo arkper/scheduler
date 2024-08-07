@@ -1,6 +1,7 @@
 package com.modern.office.forms.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.eclipse.collections.api.factory.Maps;
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.tuple.Tuples;
@@ -13,6 +14,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class SignRequestService {
     private final ConcurrentLinkedQueue<Map<String, String>> requestQueue = new ConcurrentLinkedQueue<>();
@@ -34,6 +36,7 @@ public class SignRequestService {
 
     public void clear() {
         this.requestQueue.clear();
+        log.info("Cleared request queue.");
     }
 
     public List<Map<String, String>> list() {
