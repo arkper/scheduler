@@ -117,7 +117,7 @@ export class PatientListComponent {
   }
 
   clearQueue() {
-    this.apiService.clearQueue();
+    this.apiService.clearQueue().subscribe();
   }
 
   clearSelection(): void {
