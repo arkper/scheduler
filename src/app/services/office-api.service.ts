@@ -43,6 +43,10 @@ export class OfficeApiService {
     return this.http.post("/forms/register", null, this.getHttpOptions());
   }
 
+  clearQueue(): Observable<any>{
+    return this.http.post("/forms/sign-requests/clear", null, this.getHttpOptions());
+  }
+
   getDocTypes(category: string): DocType[]{
     return category === 'EDoc'
       ? [{id: "release", desc: "Release Of Medical Info"},

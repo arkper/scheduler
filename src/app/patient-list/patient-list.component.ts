@@ -116,6 +116,10 @@ export class PatientListComponent {
     });
   }
 
+  clearQueue() {
+    this.apiService.clearQueue();
+  }
+
   clearSelection(): void {
     this.gridApi?.deselectAll();
     this.patientNo = "";
