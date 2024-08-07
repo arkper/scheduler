@@ -1,6 +1,5 @@
 package com.modern.office.forms.services;
 
-import com.modern.office.config.ClientMappings;
 import lombok.RequiredArgsConstructor;
 import org.eclipse.collections.api.factory.Maps;
 import org.eclipse.collections.api.tuple.Pair;
@@ -21,7 +20,7 @@ public class SignRequestService {
 
     public boolean put(final Map<String, String> requestData) {
         var subscriber = requestData.get("subscriber");
-        if (Objects.nonNull(subscriber) && !this.subscriberState.get(subscriber)){
+        if (Objects.nonNull(subscriber) && !this.subscriberState.get(subscriber)) {
             this.requestQueue.add(requestData);
             // this.subscriberState.put(subscriber, true);
             return true;
@@ -31,6 +30,10 @@ public class SignRequestService {
 
     public Map<String, String> get() {
         return this.requestQueue.poll();
+    }
+
+    public void clear() {
+        this.requestQueue.clear();
     }
 
     public List<Map<String, String>> list() {
@@ -52,11 +55,11 @@ public class SignRequestService {
                 .orElse(null);
     }
 
-    public void setSubscriberState(final String subscriber, Boolean state){
+    public void setSubscriberState(final String subscriber, Boolean state) {
         this.subscriberState.put(subscriber, state);
     }
 
-    public List<Pair<String, Boolean>> getSubscriberState(){
+    public List<Pair<String, Boolean>> getSubscriberState() {
         return this.subscriberState
                 .entrySet()
                 .stream()

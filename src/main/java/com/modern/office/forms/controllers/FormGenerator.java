@@ -2,7 +2,6 @@ package com.modern.office.forms.controllers;
 
 import com.modern.office.config.ClientMappings;
 import com.modern.office.forms.domain.Company;
-import com.modern.office.forms.domain.CorrespondenceReportRequest;
 import com.modern.office.forms.domain.FormData;
 import com.modern.office.forms.domain.ReleaseInfoReport;
 import com.modern.office.forms.services.ReportGeneratorService;
@@ -11,7 +10,6 @@ import com.modern.office.scheduler.controllers.SchedulerApiController;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.factory.Maps;
 import org.eclipse.collections.impl.tuple.Tuples;
@@ -41,13 +39,12 @@ public class FormGenerator {
     @Value("${office-forms.document-local-folder}")
     private String documentLocalFolder;
 
-    @PostMapping(path="/register")
-    public List<Pair<String, String>> registerOfficeFormsClient(HttpServletRequest request){
+    @PostMapping(path = "/register")
+    public List<Pair<String, String>> registerOfficeFormsClient(HttpServletRequest request) {
         var publisher = this.getRequestorAddress(request);
-        if (Objects.nonNull(publisher))
-        {
+        if (Objects.nonNull(publisher)) {
             log.info("Registering Office Forms publisher at {}", publisher);
-            if (!this.clientMappings.getMappings().containsKey(publisher)){
+            if (!this.clientMappings.getMappings().containsKey(publisher)) {
                 this.clientMappings.getMappings().put(publisher, null);
             }
         }
@@ -57,9 +54,9 @@ public class FormGenerator {
                 .toList();
     }
 
-    @PostMapping(path={"/link/{publisher-ip}", "/link"})
+    @PostMapping(path = {"/link/{publisher-ip}", "/link"})
     public boolean registerOfficeFormsSignerClient(HttpServletRequest request,
-                                                   @PathVariable(value = "publisher-ip", required = false) final String publisherIp){
+                                                   @PathVariable(value = "publisher-ip", required = false) final String publisherIp) {
         var subscriber = this.getRequestorAddress(request);
         if (Objects.isNull(subscriber)) {
             return false;
@@ -68,21 +65,21 @@ public class FormGenerator {
         var currentMappings = Maps.adapt(this.clientMappings.getMappings());
 
         if (currentMappings.detectOptional((k, v) -> subscriber.equals(v))
-                .isPresent()){
+                .isPresent()) {
             return false;
         }
 
         log.info("Linking up subscriber {}", subscriber);
 
-        var publisher =  Objects.isNull(publisherIp)
+        var publisher = Objects.isNull(publisherIp)
                 ? currentMappings.detectOptional((k, v) -> Objects.isNull(v))
-                  .map(Pair::getOne).orElse(null)
+                .map(Pair::getOne).orElse(null)
                 : currentMappings.detectOptional((k, v) -> publisherIp.equals(k))
-                  .map(Pair::getOne).orElse(null);
+                .map(Pair::getOne).orElse(null);
 
         log.info("Linking up subscriber {} to publisher {}", subscriber, publisher);
 
-        if (publisher != null){
+        if (publisher != null) {
             this.clientMappings.getMappings().put(publisher, subscriber);
             this.signRequestService.setSubscriberState(subscriber, false);
             return true;
@@ -91,16 +88,15 @@ public class FormGenerator {
         return false;
     }
 
-    @PostMapping(path="/link/{publisher-ip}/{subscriber-ip}")
+    @PostMapping(path = "/link/{publisher-ip}/{subscriber-ip}")
     public void linkPubSub(@PathVariable(value = "publisher-ip") final String publisherIp,
-                           @PathVariable(value = "subscriber-ip") final String subscriberIp)
-    {
+                           @PathVariable(value = "subscriber-ip") final String subscriberIp) {
         log.info("Linking up subscriber {} to publisher {}", subscriberIp, publisherIp);
         this.clientMappings.getMappings().put(publisherIp, subscriberIp);
     }
 
     @GetMapping(value = "/mappings", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Pair<String, String>> getMappings(){
+    public List<Pair<String, String>> getMappings() {
         return this.clientMappings.getMappings().entrySet()
                 .stream()
                 .map(entry -> Tuples.pair(entry.getKey(), entry.getValue()))
@@ -111,6 +107,7 @@ public class FormGenerator {
     public byte[] generateReleaseLegacyReport(@RequestBody ReleaseInfoReport releaseInfoReport) {
         return this.reportGeneratorService.generateReleaseInfoReportLegacy(releaseInfoReport);
     }
+
     @RequestMapping(value = "/{file-name}", method = RequestMethod.GET, produces = "application/pdf")
     public ResponseEntity<InputStreamResource> downloadPDFFile(@PathVariable("file-name") final String fileName)
             throws IOException {
@@ -126,41 +123,46 @@ public class FormGenerator {
     }
 
     @PostMapping("/sign-requests")
-    public String postRequest(@RequestBody final Map<String, String> requestData, final HttpServletRequest request)
-    {
+    public String postRequest(@RequestBody final Map<String, String> requestData, final HttpServletRequest request) {
         var subscriber = this.clientMappings.getMappings().get(this.getRequestorAddress(request));
-        if (Objects.nonNull(subscriber))
-        {
+        if (Objects.nonNull(subscriber)) {
             requestData.put("subscriber", subscriber);
-            return this.signRequestService.put(requestData)? "ok" : "busy";
+            return this.signRequestService.put(requestData) ? "ok" : "busy";
         }
         return "no subscriber";
+    }
+
+    @PostMapping("/sign-requests/clear")
+    public String clearRequest() {
+        try {
+            this.signRequestService.clear();
+            return "ok";
+        } catch (Exception e) {
+            log.error("Failed to clear request queue", e);
+            return "failed";
+        }
     }
 
     @PostMapping("/subscriber/{state}")
     public String setSubscriberState(
             final HttpServletRequest request,
-            @PathVariable("state") final Boolean state)
-    {
+            @PathVariable("state") final Boolean state) {
         this.signRequestService.setSubscriberState(request.getRemoteAddr(), state);
         return "ok";
     }
 
     @GetMapping("/subscribers")
-    public List<Pair<String, Boolean>> getSubscriberState()
-    {
+    public List<Pair<String, Boolean>> getSubscriberState() {
         return this.signRequestService.getSubscriberState();
     }
 
     @GetMapping("/sign-requests")
-    public Map<String, String> getRequest(final HttpServletRequest request)
-    {
+    public Map<String, String> getRequest(final HttpServletRequest request) {
         return this.signRequestService.getBySubscriber(this.getRequestorAddress(request));
     }
 
     @GetMapping("/sign-requests/view")
-    public List<Map<String, String>> getRequests()
-    {
+    public List<Map<String, String>> getRequests() {
         return this.signRequestService.list();
     }
 
@@ -200,8 +202,7 @@ public class FormGenerator {
         }
     }
 
-    private String getRequestorAddress(final HttpServletRequest request)
-    {
+    private String getRequestorAddress(final HttpServletRequest request) {
         return request.getRemoteAddr();
     }
 }
