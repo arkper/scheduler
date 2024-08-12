@@ -116,6 +116,9 @@ export class PatientListComponent {
     });
   }
 
+  /**
+   * This is added to remove all requests from the request queue
+   */
   clearQueue() {
     this.apiService.clearQueue().subscribe();
   }
