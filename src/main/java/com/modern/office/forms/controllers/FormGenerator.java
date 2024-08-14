@@ -7,6 +7,7 @@ import com.modern.office.forms.domain.ReleaseInfoReport;
 import com.modern.office.forms.services.ReportGeneratorService;
 import com.modern.office.forms.services.SignRequestService;
 import com.modern.office.scheduler.controllers.SchedulerApiController;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
@@ -38,6 +40,12 @@ public class FormGenerator {
 
     @Value("${office-forms.document-local-folder}")
     private String documentLocalFolder;
+
+    @PostConstruct
+    private void initializeMappings()
+    {
+        log.info("Client mappings: {}", this.clientMappings.getMappings());
+    }
 
     @PostMapping(path = "/register")
     public List<Pair<String, String>> registerOfficeFormsClient(HttpServletRequest request) {
