@@ -11,9 +11,8 @@ server:
 #  http-port: 9989
 spring:
   datasource:
-    url: jdbc:sqlserver://localhost;databaseName=OMSQLDB;encrypt=false;trustServerCertificate=true
-    username: OM_USER
-    password: OMSQL@2004
+    url: jdbc:sqlserver://localhost;databaseName=OMATESQL;encrypt=true;trustServerCertificate=true
+    username: OF_USER
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     show-sql: false
@@ -22,12 +21,12 @@ spring:
       dialect: "org.hibernate.dialect.SQLServer2012Dialect"
 
 office-forms:
-  company: Modern Optical
-  company-address: 453 Kings Highway
+  company: Flatbush Optical
+  company-address: 1594 Flatbush Ave
   company-city: Brooklyn
   company-state: NY
-  company-zip: 11223
-  company-phone: (718) 336-3090
+  company-zip: 11210
+  company-phone: (718) 434-0539
   commission-rate: 20
   entry-prompt: RU
 
