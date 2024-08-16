@@ -23,7 +23,7 @@ export class PaymentComissionsComponent{
       this.apiService.getPatientsByName('any', 'any');
   }
 
-  exemptions = EXEMPTIONS;
+  exemptions = EXEMPTIONS.sort((a, b) => Number(a) - Number(b));
 
   payment: PaymentCommision = this.initPayment();
 
