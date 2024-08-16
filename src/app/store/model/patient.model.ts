@@ -96,6 +96,7 @@ export interface PaymentComissionsReportRequest {
   toPaymentPeriod: string,
   insurances: string[] | null,
   provider: string,
+  exemptions: string[],
 }
 
 export interface DocType {

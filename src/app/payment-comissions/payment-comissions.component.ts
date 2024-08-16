@@ -29,6 +29,7 @@ export class PaymentComissionsComponent{
   toPaymentPeriod: Date = this.subtractMonths(new Date(), 0);
   selectedInsurances: string[] = [];
   insurances!: [{insuranceNo: number, insuranceName: string}];
+  selectedExemptions: string[] = ['92002', '92012', '92004', '92014'];
 
   billingCodes = BILLING_CODES;
 
@@ -108,7 +109,8 @@ export class PaymentComissionsComponent{
       fromPaymentPeriod: this.datepipe.transform(this.fromPaymentPeriod, 'yyyy-MM-dd') ?? "",
       toPaymentPeriod: this.datepipe.transform(this.toPaymentPeriod, 'yyyy-MM-dd') ?? "",
       insurances: this.selectedInsurances,
-      provider: this.selectedProvider
+      provider: this.selectedProvider,
+      exemptions: this.selectedExemptions,
     }
     console.log(request);
     return request;
