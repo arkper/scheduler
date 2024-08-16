@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin("*")
 @RestController("/")
@@ -271,7 +272,7 @@ public class SchedulerApiController {
     @GetMapping(path = "/patients-by-name-like/{last-name}/or/{first-name}", produces = "application/json")
     @CrossOrigin
     public ResponseEntity<Iterable<Patient>> getPatientsByEitherNameLike(@PathVariable("last-name") String lastName,
-                                                                   @PathVariable("first-name") String firstName) {
+                                                                         @PathVariable("first-name") String firstName) {
         try {
             return ResponseEntity.ok()
                     .body(this.schedulerApiService.findPatientsByLastNameOrFirstNameLike(lastName, firstName));
@@ -282,6 +283,7 @@ public class SchedulerApiController {
                     .build();
         }
     }
+
     @PostMapping(path = "/patients", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Patient> save(@RequestBody Patient patient) {
         try {
@@ -389,6 +391,6 @@ public class SchedulerApiController {
     }
 
     public record PaymentComissionsRequest(LocalDate fromPaymentPeriod, LocalDate toPaymentPeriod,
-                                           List<String> insurances, String provider) {
+                                           List<String> insurances, String provider, Set<String> exemptions) {
     }
 }

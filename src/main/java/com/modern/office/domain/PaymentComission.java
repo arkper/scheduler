@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "payment_comissions")
@@ -35,9 +36,12 @@ public class PaymentComission {
     @Column(name = "patient")
     String patient;
 
-    public double getCommissionedAmount() {
-        return StringUtils.startsWithAny(this.getBillingCode(), "92004", "92014", "92002", "92012")
+    transient double commissionedAmount;
+
+    public PaymentComission setCommissionedAmount(Set<String> exemptions) {
+        this.commissionedAmount = StringUtils.startsWithAny(this.getBillingCode(), exemptions.toArray(new String[0]))
                 ? 0
                 : this.paymentAmount;
+        return this;
     }
 }

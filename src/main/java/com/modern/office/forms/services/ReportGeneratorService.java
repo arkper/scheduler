@@ -16,6 +16,7 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JsonDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import org.eclipse.collections.api.factory.Maps;
+import org.eclipse.collections.impl.factory.Lists;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
@@ -165,7 +166,9 @@ public class ReportGeneratorService {
     }
 
     public byte[] generateCommissions(SchedulerApiController.PaymentComissionsRequest request) {
-        var reportData = this.schedulerApiService.getPayments(request.provider(), request.insurances(), request.fromPaymentPeriod(), request.toPaymentPeriod());
+        var reportData = Lists.mutable.withAll(this.schedulerApiService.getPayments(request.provider(), request.insurances(), request.fromPaymentPeriod(), request.toPaymentPeriod()))
+                .collect(p -> p.setCommissionedAmount(request.exemptions()));
+
         var objectMapper = new ObjectMapper()
                 .registerModule(new JavaTimeModule())
                 .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
