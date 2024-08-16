@@ -15,4 +15,23 @@ export const BILLING_CODES = [
   '92273 electroretinography (ERG)',
   '92012 Intermediate eye exam for established patient',
   '92002 Intermediate eye exam for new patient',
-]
+];
+
+export const EXEMPTIONS = [
+  '92002',
+  '92004',
+  '92012',
+  '92014',
+  '92202',
+  '92250',
+  '92083',
+  '92133', 
+  '92134',
+  '92132',
+  '92285',
+  '92286',
+  '76512',
+  '83861',
+  '68761',
+  '92273',
+];

@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CellClickedEvent, GridOptions } from 'ag-grid-community';
 import { Patient, PaymentComissionsReportRequest, PaymentCommision, Provider } from '../store/model/patient.model';
 import { saveAs } from 'file-saver';
-import { BILLING_CODES } from './billing-codes';
+import { BILLING_CODES, EXEMPTIONS } from './billing-codes';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -22,6 +22,8 @@ export class PaymentComissionsComponent{
     this.filteredPatients =
       this.apiService.getPatientsByName('any', 'any');
   }
+
+  exemptions = EXEMPTIONS;
 
   payment: PaymentCommision = this.initPayment();
 

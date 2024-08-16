@@ -29,6 +29,14 @@
                     </mat-select>
                 </mat-form-field>   
             </div>
+            <div class="col">
+                <mat-form-field appearance="fill">
+                    <mat-label>Exemptions</mat-label>
+                    <mat-select multiple [(value)] = "selectedExemptions">
+                        <mat-option *ngFor="let e of exemptions"  [value]="e">{{ e }}</mat-option>
+                    </mat-select>
+                </mat-form-field>    
+            </div>
             <div class="col-auto">
                 <button mat-fab extended color="primary" (click)="run()"><mat-icon>pageview</mat-icon>View</button> 
             </div>
