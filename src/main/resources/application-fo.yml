@@ -33,7 +33,7 @@ office-forms:
   document-folder: o:/data/edocuments/
   document-local-folder: c:/officemate/data/data/edocuments/
   mappings:
-    192.168.1.248: 192.168.1.18
+    192.168.1.248: 192.168.1.20
 
 scheduler:
   user: user123
