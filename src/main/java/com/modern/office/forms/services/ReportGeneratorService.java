@@ -182,7 +182,9 @@ public class ReportGeneratorService {
                     .withKeyValue("companyCity", this.companyCity)
                     .withKeyValue("companyState", this.companyState)
                     .withKeyValue("companyZip", this.companyZip)
-                    .withKeyValue("companyPhone", this.companyPhone);
+                    .withKeyValue("companyPhone", this.companyPhone)
+                    .withKeyValue("fromDate", request.fromPaymentPeriod().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")))
+                    .withKeyValue("toDate", request.toPaymentPeriod().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, jsonDataSource);
             byte[] bytes = JasperExportManager.exportReportToPdf(jasperPrint);
