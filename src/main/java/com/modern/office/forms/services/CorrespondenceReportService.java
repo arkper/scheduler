@@ -17,12 +17,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CorrespondenceReportService {
     private static final String SQL = "SELECT distinct patient.patient_no, patient.last_name, patient.first_name, address.address1, address.address2, address.city, code.description AS state, address.zip, " +
-            "address.phone1, address.phone2, patient.eMail_address, patient.last_exam_date, patient.birth_date, insurance_name, datediff(year, patient.birth_date, SYSDATETIME()) as age " +
-            "FROM (((((address INNER JOIN " +
-            "patient ON address.address_no = patient.address_no) INNER JOIN " +
-            "patient_insurances ON patient.patient_no = patient_insurances.patient_no) INNER JOIN " +
-            "insurance ON patient_insurances.insurance_no = insurance.insurance_no) INNER JOIN " +
-            "code ON address.state = code.code) Inner Join patient_recalls on patient.patient_no = patient_recalls.patient_no) " +
+            "v_patient_phone.phone, address.phone1, patient.eMail_address, patient.last_exam_date, patient.birth_date, insurance_name, datediff(year, patient.birth_date, SYSDATETIME()) as age " +
+            "FROM address INNER JOIN " +
+            "patient ON address.address_no = patient.address_no INNER JOIN " +
+            "patient_insurances ON patient.patient_no = patient_insurances.patient_no INNER JOIN " +
+            "insurance ON patient_insurances.insurance_no = insurance.insurance_no INNER JOIN " +
+            "code ON address.state = code.code INNER JOIN " +
+            "patient_recalls on patient.patient_no = patient_recalls.patient_no LEFT OUTER JOIN" +
+            "v_patient_phone on v_patient_phone.phone_no = patient.patient_no " +
             "WHERE 1=1";
 
     private final DataSource dataSource;
@@ -45,8 +47,8 @@ public class CorrespondenceReportService {
                             rs.getString("city"),
                             rs.getString("state"),
                             rs.getString("zip"),
+                            rs.getString("phone"),
                             rs.getString("phone1"),
-                            rs.getString("phone2"),
                             rs.getString("eMail_address"),
                             rs.getDate("last_exam_date"),
                             rs.getDate("birth_date"),

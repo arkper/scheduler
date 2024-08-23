@@ -193,7 +193,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     public Iterable<Patient> findPatientsByLastNameOrFirstNameLike(String lastName, String firstName) {
         lastName = "any".equalsIgnoreCase(lastName) ? "%" : lastName + "%";
         firstName = "any".equalsIgnoreCase(firstName) ? "%" : firstName + "%";
-        log.info("Searching by lastName {}, firstName {}", lastName, firstName);
+        // log.info("Searching by lastName {}, firstName {}", lastName, firstName);
         return this.patientRepo.findPatientsByLastNameLikeOrSalutationLike(lastName, "Dear " + firstName + ":");
     }
 
@@ -201,7 +201,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
     public Iterable<Patient> findPatientsByLastNameAndFirstNameLike(String lastName, String firstName) {
         lastName = "any".equalsIgnoreCase(lastName) ? "%" : lastName + "%";
         firstName = "any".equalsIgnoreCase(firstName) ? "%" : firstName + "%";
-        log.info("Searching by lastName {}, firstName {}", lastName, firstName);
+        // log.info("Searching by lastName {}, firstName {}", lastName, firstName);
 
         return Lists.mutable.withAll(
                         this.patientRepo.findPatientsByLastNameAndSalutationLike(lastName, "Dear " + firstName))
@@ -230,7 +230,7 @@ public class SchedulerApiServiceImpl implements SchedulerApiService {
 
     @Override
     public Patient getPatient(int patientNo) {
-        log.info("Getting patient info for id {}", patientNo);
+        // log.info("Getting patient info for id {}", patientNo);
 
         return this.patientRepo.findById(patientNo)
                 .map(Patient::transform)
