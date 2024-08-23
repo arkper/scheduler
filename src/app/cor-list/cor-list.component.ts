@@ -26,7 +26,8 @@ export class CorListComponent {
         { field: 'firstName', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
         { field: 'age', flex: 50, sortable: true, filter: 'agNumberColumnFilter'},        
         { field: 'lastExamDate', flex: 50, sortable: true, filter: 'agDateColumnFilter',  cellRenderer: (value: any) => this.datepipe.transform(value.data['lastExamDate'])},
-        { field: 'insuranceName', flex: 75, sortable: true, filter: 'agTextColumnFilter'}        
+        { field: 'insuranceName', flex: 75, sortable: true, filter: 'agTextColumnFilter'},        
+        { field: 'phone', flex: 75, sortable: true, filter: 'agTextColumnFilter'},        
     ]
   }
 
