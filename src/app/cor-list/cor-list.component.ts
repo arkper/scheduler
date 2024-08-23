@@ -21,13 +21,13 @@ export class CorListComponent {
   gridOptions: GridOptions = {
     rowHeight: 30,
     columnDefs : [
-        { field: "patientNo", flex: 25, sortable: true, filter: 'agNumberColumnFilter'},
+        { field: "patientNo", flex: 35, sortable: true, filter: 'agNumberColumnFilter'},
         { field: 'lastName', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
         { field: 'firstName', flex: 50, sortable: true, filter: 'agTextColumnFilter'},
         { field: 'age', flex: 50, sortable: true, filter: 'agNumberColumnFilter'},        
         { field: 'lastExamDate', flex: 50, sortable: true, filter: 'agDateColumnFilter',  cellRenderer: (value: any) => this.datepipe.transform(value.data['lastExamDate'])},
         { field: 'insuranceName', flex: 75, sortable: true, filter: 'agTextColumnFilter'},        
-        { field: 'phone', flex: 75, sortable: true, filter: 'agTextColumnFilter'},        
+        { field: 'phone1', flex: 75, sortable: true, filter: 'agTextColumnFilter'},        
     ]
   }
 
