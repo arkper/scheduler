@@ -23,7 +23,7 @@ public class CorrespondenceReportService {
             "patient_insurances ON patient.patient_no = patient_insurances.patient_no INNER JOIN " +
             "insurance ON patient_insurances.insurance_no = insurance.insurance_no INNER JOIN " +
             "code ON address.state = code.code INNER JOIN " +
-            "patient_recalls on patient.patient_no = patient_recalls.patient_no LEFT OUTER JOIN" +
+            "patient_recalls on patient.patient_no = patient_recalls.patient_no LEFT OUTER JOIN " +
             "v_patient_phone on v_patient_phone.phone_no = patient.patient_no " +
             "WHERE 1=1";
 
