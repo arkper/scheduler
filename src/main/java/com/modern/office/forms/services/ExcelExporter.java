@@ -31,6 +31,7 @@ public class ExcelExporter {
         this.createCell(header, 3, "Age", headerStyle);
         this.createCell(header, 4, "Last Exam Date", headerStyle);
         this.createCell(header, 5, "Insurance Name", headerStyle);
+        this.createCell(header, 6, "Phone", headerStyle);
 
         Lists.mutable.withAll(records).forEachWithIndex(
                 (record, index) -> {
@@ -42,6 +43,7 @@ public class ExcelExporter {
                     this.createCell(row, col++, record.age(), null);
                     this.createCell(row, col++, record.lastExamDate(), null);
                     this.createCell(row, col++, record.insuranceName(), null);
+                    this.createCell(row, col, record.phone1(), null);
                 }
         );
 
