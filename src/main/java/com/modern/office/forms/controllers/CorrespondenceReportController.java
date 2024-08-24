@@ -33,6 +33,7 @@ public class CorrespondenceReportController {
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"CorresponenceReport.xls")
                     .body(this.exporter.createExcelReport(this.service.getReportData(request)));
         } catch (Exception e) {
+            log.error("Failed generating report.", e);
             return ResponseEntity.internalServerError().build();
         }
     }

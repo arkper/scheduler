@@ -1,5 +1,9 @@
 package com.modern.office.forms.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Data;
+
 import java.util.Date;
 
 public record CorrespondenceReportRecord(
@@ -21,4 +25,12 @@ public record CorrespondenceReportRecord(
         String insuranceName
 
 ) {
+    public String toString()
+    {
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

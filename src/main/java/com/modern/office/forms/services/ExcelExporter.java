@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 @Component
 @Slf4j
@@ -33,7 +34,9 @@ public class ExcelExporter {
         this.createCell(header, 5, "Insurance Name", headerStyle);
         this.createCell(header, 6, "Phone", headerStyle);
 
-        Lists.mutable.withAll(records).forEachWithIndex(
+        Lists.mutable.withAll(records)
+                .reject(Objects::isNull)
+                .forEachWithIndex(
                 (record, index) -> {
                     int col = 0;
                     Row row = sheet.createRow(index + 1);
@@ -43,7 +46,7 @@ public class ExcelExporter {
                     this.createCell(row, col++, record.age(), null);
                     this.createCell(row, col++, record.lastExamDate(), null);
                     this.createCell(row, col++, record.insuranceName(), null);
-                    this.createCell(row, col, record.phone1(), null);
+                    this.createCell(row, col++, record.phone1(), null);
                 }
         );
 
@@ -60,6 +63,11 @@ public class ExcelExporter {
 
     private void createCell(Row row, int index, Object value, CellStyle style)
     {
+        if (Objects.isNull(value))
+        {
+            value = "";
+        }
+
         Cell cell = row.createCell(index);
         cell.setCellValue(value.toString());
         if (style != null)
