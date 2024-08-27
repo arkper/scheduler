@@ -33,7 +33,7 @@ export class PaymentComissionsComponent{
   insurances!: [{insuranceNo: number, insuranceName: string}];
   selectedExemptions: string[] = ['92002', '92012', '92004', '92014'];
 
-  billingCodes = BILLING_CODES;
+  billingCodes = BILLING_CODES.sort();
 
   selectedProvider: string = "";
   providers!: Provider[];
