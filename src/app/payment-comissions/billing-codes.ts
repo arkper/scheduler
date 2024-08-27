@@ -15,6 +15,7 @@ export const BILLING_CODES = [
   '92273 electroretinography (ERG)',
   '92012 Intermediate eye exam for established patient',
   '92002 Intermediate eye exam for new patient',
+  '76514 Corneal Pachymetry',
 ];
 
 export const EXEMPTIONS = [
@@ -34,4 +35,5 @@ export const EXEMPTIONS = [
   '83861',
   '68761',
   '92273',
+  '76514',
 ];
