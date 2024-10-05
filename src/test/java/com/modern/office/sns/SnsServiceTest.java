@@ -69,7 +69,7 @@ public class SnsServiceTest {
 				.sdkHttpResponse(SdkHttpResponse.builder().statusCode(200).build())
 				.build();
 
-		when(this.schedulerApiService.getAppointmentToConfirm(0,0,1))
+		when(this.schedulerApiService.getAppointmentToConfirm(0,0,1, 0))
 				.thenReturn(Lists.list(new Appointment().setApptPhone("(347) 555-1212")));
 
 		when(this.snsClient.publish(Mockito.any(PublishRequest.class)))

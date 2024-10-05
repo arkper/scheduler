@@ -82,7 +82,7 @@ public class VoiceReminderService {
     @Scheduled(cron = "0 0 14 * * *", zone = "America/New_York")
     public void processNotifications() {
         log.info("Starting notification processing job");
-        StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false).filter(appt -> appt.getApptPhone() != null).forEach(appt -> this.processNotification(appt));
+        StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1, 0).spliterator(), false).filter(appt -> appt.getApptPhone() != null).forEach(appt -> this.processNotification(appt));
         log.info("Finished notification processing job");
     }
 

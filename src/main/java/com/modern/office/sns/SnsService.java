@@ -83,7 +83,7 @@ public class SnsService {
     @Scheduled(cron = "0 0 10 * * *", zone = "America/New_York")
     public void processNotifications() {
         log.info("Starting notification processing jobs");
-        Lists.mutable.withAll(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0))
+        Lists.mutable.withAll(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0, 0))
                 .select(it -> Objects.nonNull(it.getApptPhone()))
                 .forEach(it -> this.processNotification(getNotificationMessage(it), it));
 
@@ -218,7 +218,7 @@ public class SnsService {
 
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
         try {
-            var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
+            var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1, 0).spliterator(), false)
                     .filter(a -> matchPhone(a.getApptPhone(), phoneNumber)).findAny();
 
             if (appointment.isPresent()) {
@@ -267,7 +267,7 @@ public class SnsService {
         final var message = (String) data.get("messageBody");
         final var phoneNumber = (String) data.get("originationNumber");
         log.info("Updating appointment for phone {} with reply {}", phoneNumber, message);
-        var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1).spliterator(), false)
+        var appointment = StreamSupport.stream(this.schedulerApiService.getAppointmentToConfirm(0, 0, 1, 0).spliterator(), false)
                 .filter(a -> matchPhone(a.getApptPhone(), phoneNumber)).findAny();
 
         if (appointment.isPresent()) {
