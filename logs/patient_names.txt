@@ -1,0 +1,3 @@
+select salutation, count(*) from Patient
+group by salutation
+order by 2 desc
