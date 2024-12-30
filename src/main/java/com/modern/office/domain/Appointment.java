@@ -58,7 +58,7 @@ public class Appointment {
 	private Integer apptColor;
 	
 	@Column(name = "appt_Om_no")
-	private int patientNo;
+	private Integer patientNo;
 
 	@Column(name = "appt_cancel_ind")
 	private Integer apptCancelInd = 0;

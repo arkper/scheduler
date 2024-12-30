@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="credit_card" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="70cf8eb2-5a75-4aed-bdb5-a9afa044dabf">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Credit_Card_DS"/>
+	<import value="org.apache.commons.codec.binary.Base64"/>
+	<queryString language="json">
+		<![CDATA[data]]>
+	</queryString>
+	<field name="patientName" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="patientName"/>
+		<fieldDescription><![CDATA[patientName]]></fieldDescription>
+	</field>
+	<field name="patientNo" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="patientNo"/>
+		<fieldDescription><![CDATA[patientNo]]></fieldDescription>
+	</field>
+	<field name="company" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="company"/>
+		<fieldDescription><![CDATA[company]]></fieldDescription>
+	</field>
+	<field name="companyAddress" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="companyAddress"/>
+		<fieldDescription><![CDATA[companyAddress]]></fieldDescription>
+	</field>
+	<field name="companyCity" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="companyCity"/>
+		<fieldDescription><![CDATA[companyCity]]></fieldDescription>
+	</field>
+	<field name="companyState" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="companyState"/>
+		<fieldDescription><![CDATA[companyState]]></fieldDescription>
+	</field>
+	<field name="companyZip" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="companyZip"/>
+		<fieldDescription><![CDATA[companyZip]]></fieldDescription>
+	</field>
+	<field name="companyPhone" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="companyPhone"/>
+		<fieldDescription><![CDATA[companyPhone]]></fieldDescription>
+	</field>
+	<field name="lastName" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="lastName"/>
+		<fieldDescription><![CDATA[lastName]]></fieldDescription>
+	</field>
+	<field name="firstName" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="firstName"/>
+		<fieldDescription><![CDATA[firstName]]></fieldDescription>
+	</field>
+	<field name="signature" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="signature"/>
+		<fieldDescription><![CDATA[signature]]></fieldDescription>
+	</field>
+	<field name="date" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="date"/>
+		<fieldDescription><![CDATA[date]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<textField>
+				<reportElement x="190" y="0" width="170" height="20" uuid="daee1858-7660-4d70-bd04-5295673898e4"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{company}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="21" width="170" height="21" uuid="3b35e312-cdd1-43bf-9e5b-3f061a2c697c"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{companyAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="44" width="170" height="21" uuid="f823484d-3011-4a23-995b-0b14c259e873">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{companyCity} + ", " + $F{companyState} + " " + $F{companyZip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="60" width="170" height="21" uuid="eb209294-28ad-4249-a1e4-85d61fe9d2c4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Telephone: " + $F{companyPhone}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="645" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="10" width="300" height="20" uuid="c4056b43-15f1-4d55-b953-b68a96abe012"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CREDIT CARD POLICY AND FINANCIAL AGREEMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="400" width="300" height="20" uuid="dae90f0b-5305-4027-a458-7fbe2d3c1e57"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CREDIT CARD ON FILE POLICY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="338" width="550" height="21" uuid="e5709d5d-81bf-443e-be6e-38290e2cb2af"/>
+				<text><![CDATA[There is a $50 fee for appointments that are not canceled within 24 hours in advance.
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="556" width="560" height="46" uuid="2dd77995-f9bd-48f4-964a-54bc44100d3d"/>
+				<textFieldExpression><![CDATA["This authorization relates to all payments not covered by my insurance company for services provided to me by " + $F{company} + ". This authorization will remain in effect until I cancel this authorization. To cancel, I must give a 60 day notification to the practice in writing and the account must be in good standing."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="207" width="550" height="100" uuid="ece295a7-b59c-4268-87f1-8c5369f3eab1"/>
+				<text><![CDATA[This office accepts assignments for Medicare patients. However, each patient is responsible for payment of all non-covered costs. Examples of non-covered Medicare services would be: the refraction for glasses that is part of almost every comprehensive eye examination, the annual Medicare deductible, and any remaining balance of Medicare allowable fees not covered by the supplemental insurance plan. It is important to understand that when a participating physician accepts assignment from Medicare, it does not mean that whatever Medicare pays is to be considered payment in full. Medicare has never paid 100% of any charge. Many other insurance companies follow this same basic philosophy. The Stark II legislation, recently passed by the United States Congress, prohibits this office from extending courtesy discounts and/or professional write-offs.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="463" width="550" height="67" uuid="8c183a38-4de8-4e32-b833-6634050856b9"/>
+				<text><![CDATA[Your credit card information is kept confidential and SECURE by First Data. Any payments to your credit card are processed only after the claim has been filed and processed by your insurer, the insurance portion of the claim has been paid and posted to the account. Please keep in mind that this is a hassle free way to receive payments and/or give refunds. NO BILLS WILL BE SENT as this method is to reduce the amount of time it takes for our office to be paid. PLEASE BE SURE TO ALWAYS CHECK YOU EOB.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="308" width="550" height="30" uuid="eaffa19f-f3b2-4c23-8a9c-9c0cf3e4ab71"/>
+				<text><![CDATA[Payments on all accounts billed are expected within 30 days. If your account is sent to collections a 25% collections fee will be added.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="361" width="550" height="38" uuid="e541b45b-028e-4b59-97f6-1a8d6e2059c9"/>
+				<text><![CDATA[By signing below, I agree to the above terms and I agree to pay any collection costs and/or reasonable attorney fees, if a delinquent balance is placed with a collection agency and/or attorney for collection, or suit.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="550" height="120" uuid="ed60718a-1fe7-46f4-97aa-aacdd1e6a9fa"/>
+				<text><![CDATA[As a courtesy to you, we will file your claim with your insurance company. However, you are the sole responsible party for all charges incurred and guarantee payment thereof. If we are contracted with your insurance company we will accept assignments and you will be responsible for your payment portion at the time of service. Failure to provide necessary referrals and/or authorizations or failure to provide accurate billing information will result in all charges for services becoming the sole responsibility of the patient/responsible party. You are expected to understand your benefits, coverage and responsibilities. This includes, obtaining referrals and/or authorizations, if your insurance company requires before care is provided. If we do not have a contractual obligation with your insurance company you are responsible for 100% of the payments at the time services are rendered. If one of our doctors is a participating physician for your primary insurance plan, payment for any deductibles, co-pay amounts and non-covered services will be due at the time of service.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="153" width="550" height="56" uuid="70e33c67-39d1-4deb-b282-40c89b10ca8f"/>
+				<text><![CDATA[It should be remembered that eye examinations, or certain other ophthalmic services, are not always covered by every insurance company. Even within the same insurance plan there may be many individual variations. It is your responsibility to know whether or not your insurance plan will cover the services that you receive in our office. It is simply not possible for the staff of this office to know how each and every insurance plan works.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="530" width="560" height="30" uuid="6e3b99d1-1637-45cb-8700-e81ef8b1a8ac"/>
+				<textFieldExpression><![CDATA["I authorize " + $F{company} + " to charge my card for balances due for services rendered that my insurance company identifies as my financial responsibility."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="602" width="560" height="30" uuid="fb11d949-4f7a-4cca-9908-78912d5550f1"/>
+				<text><![CDATA[We will bill your insurance company first and upon their determination of benefits, we will only charge your credit card when they inform us of patient responsibility. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="423" width="550" height="40" uuid="c2529ada-c7bd-46ae-8054-0b49dde557ba"/>
+				<textFieldExpression><![CDATA[$F{company} + " requires keeping your credit card or debit card on file as a convenient method of payment for the portion of services that your insurance does not cover for which you are responsible and/or any refund that is due to you once the claim has been properly adjudicated by your insurance company."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band/>
+	</detail>
+	<summary>
+		<band height="470">
+			<staticText>
+				<reportElement x="-1" y="10" width="560" height="16" uuid="f9b5ad1c-aef5-441c-9709-b05d3094aded"/>
+				<text><![CDATA[Circumstances when your card would be charged include but are not limited to:
+]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="-1" width="570" height="1" uuid="139dac62-2b13-4e4f-afe6-74bedef41a6b"/>
+			</break>
+			<staticText>
+				<reportElement x="0" y="26" width="560" height="53" uuid="70877d8f-792e-4323-82dc-c1cde51fa0bf"/>
+				<text><![CDATA[ - Missed co-payments, deductible and co-insurance
+ - Missed or canceled appointments without 24-hour notice
+ - Any non-covered services and/or denial of services allocated to patient responsibility
+ - Any amount not paid by your insurance 60 days after a corrected claim has been filed.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-3" y="80" width="559" height="79" uuid="e8c692b2-ba2e-468f-aab3-f103855d266c"/>
+				<textFieldExpression><![CDATA["I hereby assign all medical and/or surgical benefits, to include major medical benefits to which I am entitled, including Medicare, private insurance, and any other health plan to " + $F{company} + ". This assignment will remain in effect until revoked by me in writing. A photocopy of this assignment is to be considered as valid as the original. I understand that I am financially responsible for all charges, whether or not these charges are paid by my medical insurance. I hereby authorize" + $F{company} + " to release any and all information necessary to payment."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-3" y="155" width="558" height="62" uuid="80e8cfe6-9386-486f-b469-e9ccd6461d50"/>
+				<text><![CDATA[I certify that the information I have provided on this form is correct. I authorize the release of any necessary information, including medical information, for this or any related claim to the above named carrier(s), or in the case of Medicare Part B benefits, to the Social Security Administration and Health Care Financing Administration. I permit a copy of this authorization to be used in place of the original. I may revoke this authorization at any time in writing.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-3" y="222" width="240" height="18" uuid="2ac20d50-f818-47b8-8a65-5e5317c7b3d0"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSENT FOR TREATMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="331" width="140" height="40" uuid="eeab93b2-8562-49df-974a-515dd7918e81"/>
+				<text><![CDATA[Signature of Patient/Relative/Guardian:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="140" y="331" width="250" height="91" uuid="3982d573-3f1e-4b70-abed-56dc42b2091d"/>
+				<imageExpression><![CDATA[new ByteArrayInputStream(Base64.decodeBase64($F{signature}))]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="407" y="331" width="141" height="40" uuid="0df39f14-d6d5-4a03-a675-01bce8c6eccd"/>
+				<textFieldExpression><![CDATA["Date: " + NOW( )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-3" y="439" width="111" height="30" uuid="a06d2ed6-435a-444b-ba28-c5ed45624285"/>
+				<text><![CDATA[PRINT NAME:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="108" y="439" width="268" height="30" uuid="c7271b68-883b-4541-b66f-e10c967b8f38"/>
+				<textElement>
+					<font fontName="Brush Script MT"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{patientName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-3" y="240" width="556" height="80" uuid="60d94b67-e993-4c31-a23d-0cecc4e4c16e"/>
+				<textFieldExpression><![CDATA["I HEREBY AUTHORIZE " + $F{company} + " to examine and treat me, or the individual for whom I am responsible. During the course of diagnosis or treatment, eye drops may be used to dilate the pupils. These drops may cause temporary blurred vision and glare. Driving an automobile, or operating machinery, is not advised until the effects of the drops have worn off. I authorize " + $F{company} + " to release information acquired in the course of my examination and treatment to my insurance carriers. I further understand that I have primary responsibility for payment of my charges."]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

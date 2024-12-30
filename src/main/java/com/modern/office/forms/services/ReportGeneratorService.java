@@ -75,8 +75,8 @@ public class ReportGeneratorService {
         FORMS_MAP.put(DocType.MedicaidEyeglasses, compileReport(DocType.MedicaidEyeglasses.getTemplate()));
         FORMS_MAP.put(DocType.TransportationApproval, compileReport(DocType.TransportationApproval.getTemplate()));
         FORMS_MAP.put(DocType.Commissions, compileReport(DocType.Commissions.getTemplate()));
-
-        compileReport("/reports/release-legacy.jrxml");
+        FORMS_MAP.put(DocType.CreditCard, compileReport(DocType.CreditCard.getTemplate()));
+//        compileReport("/reports/release-legacy.jrxml");
     }
 
     private static JasperReport compileReport(String reportTemplatePath) {

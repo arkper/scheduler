@@ -16,7 +16,7 @@ public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="patient_no")
-	private int patientNo;
+	private Integer patientNo;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "address_no", referencedColumnName = "address_no")

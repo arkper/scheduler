@@ -84,7 +84,7 @@ public class SnsService {
     public void processNotifications() {
         log.info("Starting notification processing jobs");
         Lists.mutable.withAll(this.schedulerApiService.getAppointmentToConfirm(0, 0, 0, 0))
-                .select(it -> Objects.nonNull(it.getApptPhone()))
+                .select(it -> Objects.nonNull(it.getApptPhone()) && Objects.nonNull(it.getPatientNo()))
                 .forEach(it -> this.processNotification(getNotificationMessage(it), it));
 
         log.info("Finished notification processing job");
@@ -109,8 +109,8 @@ public class SnsService {
     }
 
     public void processNotification(String message, Appointment appt) {
-        if (Objects.isNull(appt.getApptPhone()) || appt.getApptPhone().length() < 10) {
-            log.error("Appointment {} has invalid phone - skipping", appt.getApptNo());
+        if (Objects.isNull(appt.getApptPhone()) || Objects.isNull(appt.getPatientNo()) || appt.getApptPhone().length() < 10) {
+            log.error("Appointment {} has invalid phone or patient - skipping", appt.getApptNo());
             return;
         }
         var phone = this.transform(appt.getApptPhone());
