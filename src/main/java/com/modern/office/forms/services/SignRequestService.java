@@ -22,7 +22,10 @@ public class SignRequestService {
 
     public boolean put(final Map<String, String> requestData) {
         var subscriber = requestData.get("subscriber");
+        log.info("subscriber: {}", subscriber);
+        log.info("subscriber state: {}", subscriberState);
         if (Objects.nonNull(subscriber) && !this.subscriberState.get(subscriber)) {
+            log.info("requestData: {}", requestData);
             this.requestQueue.add(requestData);
             // this.subscriberState.put(subscriber, true);
             return true;
