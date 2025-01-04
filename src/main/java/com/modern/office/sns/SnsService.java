@@ -336,14 +336,18 @@ public class SnsService {
         return this.getLang(appt.getPatientNo());
     }
 
-    private String getLang(int patientNo) {
+    private String getLang(Integer patientNo) {
         var lang = "EN";
 
-        var patientPrefs = this.schedulerApiService.getPatientPreferences(patientNo);
+        if (Objects.nonNull(patientNo))
+        {
+            var patientPrefs = this.schedulerApiService.getPatientPreferences(patientNo);
 
-        if (!CollectionUtils.isEmpty(patientPrefs)) {
-            lang = patientPrefs.get(0).getLanguage();
+            if (!CollectionUtils.isEmpty(patientPrefs)) {
+                lang = patientPrefs.get(0).getLanguage();
+            }
         }
+
         return lang;
     }
 }
