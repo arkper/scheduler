@@ -1,7 +1,18 @@
-<ag-grid-angular id="patientGrid"
-style="width: 100%; height: 750px"
-class="ag-theme-alpine"
-[gridOptions]="gridOptions"
-(gridReady)="onGridReady($event)"
-[rowData] = "gridData"
-></ag-grid-angular>
+<div class="header">
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="visitDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker [(ngModel)]="visitDate" ngDefaultControl (selectedChanged)="refresh()"></mat-datepicker>
+      </mat-form-field>
+      <button mat-fab extended color="primary" (click)="refresh()"><mat-icon>refresh</mat-icon>Refresh</button>
+ 
+</div>
+<div>
+    <ag-grid-angular id="patientGrid"
+      style="width: 100%; height: 750px"
+      class="ag-theme-alpine"
+      [gridOptions]="gridOptions"
+      (gridReady)="onGridReady($event)"
+      [rowData] = "gridData"
+    ></ag-grid-angular>    
+</div>

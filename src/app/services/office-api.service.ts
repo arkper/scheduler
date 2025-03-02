@@ -149,8 +149,8 @@ export class OfficeApiService {
 
   }
 
-  getSigninRecords(): Observable<any> {
-    let date = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+  getSigninRecords(visitDate: Date): Observable<any> {
+    let date = this.datepipe.transform(visitDate, 'yyyy-MM-dd');
     if (environment.production) {
       return this.http.get(`/signin/${date}`, this.getHttpOptions());
     } else {

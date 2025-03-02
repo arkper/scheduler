@@ -9,18 +9,17 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./signin-sheet-view.component.scss']
 })
 export class SigninSheetViewComponent {
-  constructor(private apiService: OfficeApiService, private datepipe: DatePipe) {
-    this.apiService.getSigninRecords()
-      .subscribe({next: data => {
-        console.log(data);
-        this.gridData = data;
-        this.autoSize();
-      }});
-  }
+
+  visitDate: Date = new Date();
+
   gridData: any[] = [];
 
   private gridApi: GridApi | null = null;
 
+  constructor(private apiService: OfficeApiService, private datepipe: DatePipe) {
+    this.refresh();
+  }
+  
   gridOptions: GridOptions = {
     rowHeight: 40,
     columnDefs : [
@@ -41,4 +40,17 @@ export class SigninSheetViewComponent {
     })
   }
   
+  refresh() {
+    console.log("Visit Date:", this.visitDate);
+    this.apiService.getSigninRecords(this.visitDate)
+      .subscribe({next: data => {
+        console.log(data);
+        this.gridData = data;
+        this.autoSize();
+      }});
+  }
+
+  // filterChanged($event: Event) {
+  //   this.visitDate = $event.target.value;
+  // }
 }
