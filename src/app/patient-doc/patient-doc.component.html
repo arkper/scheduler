@@ -1,7 +1,10 @@
 <div style="width: 100%; height: 400px; align-items: center;">
-<button matTooltip="Refresh" mat-fab extended color="primary" (click)="refreshPatientDocs()">
-  <mat-icon>refresh</mat-icon>{{ title }}
-</button>
+  <button matTooltip="Refresh" mat-fab extended color="primary" (click)="refreshPatientDocs()">
+    <mat-icon>refresh</mat-icon>{{ title }}
+  </button>
+  <mat-checkbox *ngIf="!isHidden"class="mat-fab" [checked]=true [hidden] = "isHidden">
+    OK to receive notification messages
+  </mat-checkbox>
   <ag-grid-angular
     style="width: 100%; height: 70%"
     class="ag-theme-alpine"

@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AgGridModule } from 'ag-grid-angular';
 import { ConsentFormComponent } from './forms/consent-form/consent-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
@@ -84,6 +85,7 @@ const ROUTES: Routes = [
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatOptionModule,
     MatChipsModule,

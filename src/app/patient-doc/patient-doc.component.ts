@@ -85,6 +85,10 @@ export class PatientDocComponent  implements OnInit {
     this.refreshPatientDocs();
   }
 
+  isHidden(): Boolean {
+    return this.category != 'EDoc';
+  }
+
   refreshPatientDocs()
   {
     if (this.patient !== null)
