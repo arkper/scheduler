@@ -1,6 +1,7 @@
 export const BILLING_CODES = [
   '92004 comprehensive eye exam for a new patient',
   '92014 comprehensive eye exam for a existent patient',
+  '92020 describes gonioscopy',
   '92202 extended ophthalmoscopy',
   '92250 fundus photography',
   '92083 visual field',
