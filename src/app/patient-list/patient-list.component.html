@@ -26,6 +26,7 @@
       (gridReady)="onGridReady($event)"
       [rowData] = "gridData"
       (cellClicked)="onCellClicked($event)"
+      (cellDoubleClicked)="showPreferences()"
       (rowDataUpdated)="onRowDataUpdated($event)"
     ></ag-grid-angular>
   </div>

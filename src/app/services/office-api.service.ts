@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
-import { Address, Appointment, Code, Company, CorrespondenceReportRequest, DocType, Document, Patient, PatientInsurance, PaymentComissionsReportRequest, PaymentCommision, Provider, SigninRecord } from '../store/model/patient.model';
+import { Address, Appointment, Code, Company, CorrespondenceReportRequest, DocType, Document, Patient, PatientInsurance, PatientPreferences, PaymentComissionsReportRequest, PaymentCommision, Provider, SigninRecord } from '../store/model/patient.model';
 import { DatePipe } from '@angular/common';
 
 const STATE_CODE_CATEGORY: number = 32;
@@ -174,6 +174,24 @@ export class OfficeApiService {
       return of({apptNo: 1, apptName: "Arkady Perepelyuk", apptDate: "2023-12-17", apptTime: "13:30", provider: "Steven Givner"});
     }
   }
+
+  getPatinetPreferences(id: number): Observable<any> {
+    if (environment.production) {    
+      return this.http.get(`/patient-preferences/${id}`, this.getHttpOptions());
+    } else {
+      return of({patientPreferenceNo: 1, patientNo: 111, firstName: "Arkady", lastName: "Perepelyuk", language: "Russian", unsubscribe: false});
+    }
+  }
+
+  saveUserPreferences(patientPrefs: PatientPreferences | null): Observable<any> {
+    if (environment.production) {  
+      console.log('patient preferences:', patientPrefs);
+      return this.http.post("/patient-preferences", patientPrefs, {responseType: 'text'});
+    } else {
+      return of("OK");
+    }
+  }
+
 
   generateDocument(data: any): Observable<any>
   {

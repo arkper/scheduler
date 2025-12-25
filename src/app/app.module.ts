@@ -40,6 +40,8 @@ import { CorListComponent } from './cor-list/cor-list.component';
 import { FileSaverModule } from 'ngx-filesaver';
 import { PatientDocComponent } from './patient-doc/patient-doc.component';
 import { PaymentComissionsComponent } from './payment-comissions/payment-comissions.component';
+import { PatientPrefComponent } from './patient-pref/patient-pref.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const ROUTES: Routes = [
   {path: 'patient-list', component: PatientListComponent},
@@ -74,7 +76,8 @@ const ROUTES: Routes = [
     BaseFormComponent,
     SigninSheetViewComponent,
     CorListComponent,
-    PaymentComissionsComponent
+    PaymentComissionsComponent,
+    PatientPrefComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +103,8 @@ const ROUTES: Routes = [
     PdfViewerModule,
     MatRadioModule,
     StoreModule.forRoot(reducers),
-    FileSaverModule
+    FileSaverModule,
+    MatDialogModule,
   ],  
   providers: [DatePipe, MatSnackBar],
   bootstrap: [AppComponent]

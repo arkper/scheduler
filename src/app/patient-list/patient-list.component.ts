@@ -7,6 +7,8 @@ import { PatientActionType } from '../store/actions/patient.action';
 import { AppState } from '../store/reducers';
 import { DatePipe } from '@angular/common';
 import { _isNumberValue } from '@angular/cdk/coercion';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PatientPrefComponent } from '../patient-pref/patient-pref.component';
 
 @Component({
   selector: 'app-patient-list',
@@ -26,7 +28,8 @@ export class PatientListComponent {
   constructor(
     private apiService: OfficeApiService, 
     private store: Store<AppState>,
-    private datepipe: DatePipe) {
+    private datepipe: DatePipe,
+    public dialog: MatDialog) {
     this.store.select(state => state.selectedPatient.patients)
       .subscribe((selectedPatients) => {this.onPatientSelectionChanged(selectedPatients)});
   }
@@ -152,5 +155,17 @@ export class PatientListComponent {
         });
       }
     });
+  }
+
+  showPreferences() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      patient: this.patient
+    };
+    dialogConfig.width = "350px";
+    dialogConfig.height = "450px"
+
+
+    this.dialog.open(PatientPrefComponent, dialogConfig);
   }
 }

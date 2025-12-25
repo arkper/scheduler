@@ -113,3 +113,12 @@ export interface PaymentCommision {
   provider: string, 
   patient: string,
 }
+
+export interface PatientPreferences {
+  patientPreferenceNo: number | null,
+  patientNo: number,
+  lastName: string,
+  firstName: string,
+  language: string,
+  unsubscribe: boolean,
+}

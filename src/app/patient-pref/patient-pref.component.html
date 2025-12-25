@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Patient Preferences Dialog</h1>
+<form>
+  <div class="header">
+    <mat-form-field appearance="fill">
+        <mat-label>Name:</mat-label>
+        <input matInput id="nameCtl" [value]="getName()" readonly="true"/>
+    </mat-form-field>
+    <mat-checkbox id="unsubscribeCtl" name="unsubscribeCtl" [checked] = "patientPrefs?.unsubscribe" [(ngModel)] = "unsubscribe">Unsubscribe</mat-checkbox>
+    <mat-form-field appearance="fill">
+        <mat-label>Language: </mat-label>
+        <mat-select name="currentLanguageCtl" id ="currentLanguageCtl" [(ngModel)] = "language">
+          <mat-option *ngFor="let lang of languages" [value]="lang">{{ lang }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-fab extended color="primary" (click)="doSave()">Save</button>
+    <button mat-fab extended color="primary" (click)="doCancel()">Cancel</button> 
+  </div>
+</form>
